@@ -1,0 +1,523 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DevColoradoRockiesModelStoreContainer" CdmEntityContainer="DevColoradoRockiesEntities">
+    <EntitySetMapping Name="PitcherProfile_CurrentAndSplits">
+      <EntityTypeMapping TypeName="DevColoradoRockiesModel.PitcherProfile_CurrentAndSplits">
+        <MappingFragment StoreEntitySet="PitcherProfile_CurrentAndSplits">
+          <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+          <ScalarProperty Name="mlbam" ColumnName="mlbam" />
+          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+          <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+          <ScalarProperty Name="G" ColumnName="G" />
+          <ScalarProperty Name="Record" ColumnName="Record" />
+          <ScalarProperty Name="ERA" ColumnName="ERA" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+          <ScalarProperty Name="H" ColumnName="H" />
+          <ScalarProperty Name="HR" ColumnName="HR" />
+          <ScalarProperty Name="BB" ColumnName="BB" />
+          <ScalarProperty Name="SO" ColumnName="SO" />
+          <ScalarProperty Name="SBA" ColumnName="SBA" />
+          <ScalarProperty Name="PperPA" ColumnName="PperPA" />
+          <ScalarProperty Name="PperIP" ColumnName="PperIP" />
+          <ScalarProperty Name="PperGS" ColumnName="PperGS" />
+          <ScalarProperty Name="GB__Overall" ColumnName="GB%_Overall" />
+          <ScalarProperty Name="FB__Overall" ColumnName="FB%_Overall" />
+          <ScalarProperty Name="AVG_vsLHH" ColumnName="AVG_vsLHH" />
+          <ScalarProperty Name="H_vsLHH" ColumnName="H_vsLHH" />
+          <ScalarProperty Name="HR_vsLHH" ColumnName="HR_vsLHH" />
+          <ScalarProperty Name="BB_vsLHH" ColumnName="BB_vsLHH" />
+          <ScalarProperty Name="SO_vsLHH" ColumnName="SO_vsLHH" />
+          <ScalarProperty Name="PperPA_vsLHH" ColumnName="PperPA_vsLHH" />
+          <ScalarProperty Name="OBP_vsLHH" ColumnName="OBP_vsLHH" />
+          <ScalarProperty Name="SLG_vsLHH" ColumnName="SLG_vsLHH" />
+          <ScalarProperty Name="GB__vsLHH" ColumnName="GB%_vsLHH" />
+          <ScalarProperty Name="FB__vsLHH" ColumnName="FB%_vsLHH" />
+          <ScalarProperty Name="AVG_vsRHH" ColumnName="AVG_vsRHH" />
+          <ScalarProperty Name="H_vsRHH" ColumnName="H_vsRHH" />
+          <ScalarProperty Name="HR_vsRHH" ColumnName="HR_vsRHH" />
+          <ScalarProperty Name="BB_vsRHH" ColumnName="BB_vsRHH" />
+          <ScalarProperty Name="SO_vsRHH" ColumnName="SO_vsRHH" />
+          <ScalarProperty Name="PperPA_vsRHH" ColumnName="PperPA_vsRHH" />
+          <ScalarProperty Name="OBP_vsRHH" ColumnName="OBP_vsRHH" />
+          <ScalarProperty Name="SLG_vsRHH" ColumnName="SLG_vsRHH" />
+          <ScalarProperty Name="GB__vsRHH" ColumnName="GB%_vsRHH" />
+          <ScalarProperty Name="FB__vsRHH" ColumnName="FB%_vsRHH" />
+          <ScalarProperty Name="BasesEmpty_AllCounts_Change__Pitches" ColumnName="BasesEmpty_AllCounts_Change_%Pitches" />
+          <ScalarProperty Name="BasesEmpty_AllCounts_Curve__Pitches" ColumnName="BasesEmpty_AllCounts_Curve_%Pitches" />
+          <ScalarProperty Name="BasesEmpty_AllCounts_Cutter__Pitches" ColumnName="BasesEmpty_AllCounts_Cutter_%Pitches" />
+          <ScalarProperty Name="BasesEmpty_AllCounts_FB__4sm___2sm___Pitches" ColumnName="BasesEmpty_AllCounts_FB (4sm   2sm)_%Pitches" />
+          <ScalarProperty Name="BasesEmpty_AllCounts_Knuckleball__Pitches" ColumnName="BasesEmpty_AllCounts_Knuckleball_%Pitches" />
+          <ScalarProperty Name="BasesEmpty_AllCounts_Slider__Pitches" ColumnName="BasesEmpty_AllCounts_Slider_%Pitches" />
+          <ScalarProperty Name="BasesEmpty_AllCounts_Split_Finger__Pitches" ColumnName="BasesEmpty_AllCounts_Split-Finger_%Pitches" />
+          <ScalarProperty Name="BasesEmpty_FirstPitch_Change__Pitches" ColumnName="BasesEmpty_FirstPitch_Change_%Pitches" />
+          <ScalarProperty Name="BasesEmpty_FirstPitch_Curve__Pitches" ColumnName="BasesEmpty_FirstPitch_Curve_%Pitches" />
+          <ScalarProperty Name="BasesEmpty_FirstPitch_Cutter__Pitches" ColumnName="BasesEmpty_FirstPitch_Cutter_%Pitches" />
+          <ScalarProperty Name="BasesEmpty_FirstPitch_FB__4sm___2sm___Pitches" ColumnName="BasesEmpty_FirstPitch_FB (4sm   2sm)_%Pitches" />
+          <ScalarProperty Name="BasesEmpty_FirstPitch_Knuckleball__Pitches" ColumnName="BasesEmpty_FirstPitch_Knuckleball_%Pitches" />
+          <ScalarProperty Name="BasesEmpty_FirstPitch_Slider__Pitches" ColumnName="BasesEmpty_FirstPitch_Slider_%Pitches" />
+          <ScalarProperty Name="BasesEmpty_FirstPitch_Split_Finger__Pitches" ColumnName="BasesEmpty_FirstPitch_Split-Finger_%Pitches" />
+          <ScalarProperty Name="BasesEmpty_PitcherAhead_Change__Pitches" ColumnName="BasesEmpty_PitcherAhead_Change_%Pitches" />
+          <ScalarProperty Name="BasesEmpty_PitcherAhead_Curve__Pitches" ColumnName="BasesEmpty_PitcherAhead_Curve_%Pitches" />
+          <ScalarProperty Name="BasesEmpty_PitcherAhead_Cutter__Pitches" ColumnName="BasesEmpty_PitcherAhead_Cutter_%Pitches" />
+          <ScalarProperty Name="BasesEmpty_PitcherAhead_FB__4sm___2sm___Pitches" ColumnName="BasesEmpty_PitcherAhead_FB (4sm   2sm)_%Pitches" />
+          <ScalarProperty Name="BasesEmpty_PitcherAhead_Knuckleball__Pitches" ColumnName="BasesEmpty_PitcherAhead_Knuckleball_%Pitches" />
+          <ScalarProperty Name="BasesEmpty_PitcherAhead_Slider__Pitches" ColumnName="BasesEmpty_PitcherAhead_Slider_%Pitches" />
+          <ScalarProperty Name="BasesEmpty_PitcherAhead_Split_Finger__Pitches" ColumnName="BasesEmpty_PitcherAhead_Split-Finger_%Pitches" />
+          <ScalarProperty Name="BasesEmpty_PitcherBehind_Change__Pitches" ColumnName="BasesEmpty_PitcherBehind_Change_%Pitches" />
+          <ScalarProperty Name="BasesEmpty_PitcherBehind_Curve__Pitches" ColumnName="BasesEmpty_PitcherBehind_Curve_%Pitches" />
+          <ScalarProperty Name="BasesEmpty_PitcherBehind_Cutter__Pitches" ColumnName="BasesEmpty_PitcherBehind_Cutter_%Pitches" />
+          <ScalarProperty Name="BasesEmpty_PitcherBehind_FB__4sm___2sm___Pitches" ColumnName="BasesEmpty_PitcherBehind_FB (4sm   2sm)_%Pitches" />
+          <ScalarProperty Name="BasesEmpty_PitcherBehind_Knuckleball__Pitches" ColumnName="BasesEmpty_PitcherBehind_Knuckleball_%Pitches" />
+          <ScalarProperty Name="BasesEmpty_PitcherBehind_Slider__Pitches" ColumnName="BasesEmpty_PitcherBehind_Slider_%Pitches" />
+          <ScalarProperty Name="BasesEmpty_PitcherBehind_Split_Finger__Pitches" ColumnName="BasesEmpty_PitcherBehind_Split-Finger_%Pitches" />
+          <ScalarProperty Name="BasesEmpty_2Ks__Excl3_2_Change__Pitches" ColumnName="BasesEmpty_2Ks (Excl3-2)Change_%Pitches" />
+          <ScalarProperty Name="BasesEmpty_2Ks__Excl3_2_Curve__Pitches" ColumnName="BasesEmpty_2Ks (Excl3-2)Curve_%Pitches" />
+          <ScalarProperty Name="BasesEmpty_2Ks__Excl3_2_Cutter__Pitches" ColumnName="BasesEmpty_2Ks (Excl3-2)Cutter_%Pitches" />
+          <ScalarProperty Name="BasesEmpty_2Ks__Excl3_2_FB__4sm___2sm___Pitches" ColumnName="BasesEmpty_2Ks (Excl3-2)FB (4sm   2sm)_%Pitches" />
+          <ScalarProperty Name="BasesEmpty_2Ks__Excl3_2_Knuckleball__Pitches" ColumnName="BasesEmpty_2Ks (Excl3-2)Knuckleball_%Pitches" />
+          <ScalarProperty Name="BasesEmpty_2Ks__Excl3_2_Slider__Pitches" ColumnName="BasesEmpty_2Ks (Excl3-2)Slider_%Pitches" />
+          <ScalarProperty Name="BasesEmpty_2Ks__Excl3_2_Split_Finger__Pitches" ColumnName="BasesEmpty_2Ks (Excl3-2)Split-Finger_%Pitches" />
+          <ScalarProperty Name="RISP_AllCounts_Change__Pitches" ColumnName="RISP_AllCounts_Change_%Pitches" />
+          <ScalarProperty Name="RISP_AllCounts_Curve__Pitches" ColumnName="RISP_AllCounts_Curve_%Pitches" />
+          <ScalarProperty Name="RISP_AllCounts_Cutter__Pitches" ColumnName="RISP_AllCounts_Cutter_%Pitches" />
+          <ScalarProperty Name="RISP_AllCounts_FB__4sm___2sm___Pitches" ColumnName="RISP_AllCounts_FB (4sm   2sm)_%Pitches" />
+          <ScalarProperty Name="RISP_AllCounts_Knuckleball__Pitches" ColumnName="RISP_AllCounts_Knuckleball_%Pitches" />
+          <ScalarProperty Name="RISP_AllCounts_Slider__Pitches" ColumnName="RISP_AllCounts_Slider_%Pitches" />
+          <ScalarProperty Name="RISP_AllCounts_Split_Finger__Pitches" ColumnName="RISP_AllCounts_Split-Finger_%Pitches" />
+          <ScalarProperty Name="RISP_FirstPitch_Change__Pitches" ColumnName="RISP_FirstPitch_Change_%Pitches" />
+          <ScalarProperty Name="RISP_FirstPitch_Curve__Pitches" ColumnName="RISP_FirstPitch_Curve_%Pitches" />
+          <ScalarProperty Name="RISP_FirstPitch_Cutter__Pitches" ColumnName="RISP_FirstPitch_Cutter_%Pitches" />
+          <ScalarProperty Name="RISP_FirstPitch_FB__4sm___2sm___Pitches" ColumnName="RISP_FirstPitch_FB (4sm   2sm)_%Pitches" />
+          <ScalarProperty Name="RISP_FirstPitch_Knuckleball__Pitches" ColumnName="RISP_FirstPitch_Knuckleball_%Pitches" />
+          <ScalarProperty Name="RISP_FirstPitch_Slider__Pitches" ColumnName="RISP_FirstPitch_Slider_%Pitches" />
+          <ScalarProperty Name="RISP_FirstPitch_Split_Finger__Pitches" ColumnName="RISP_FirstPitch_Split-Finger_%Pitches" />
+          <ScalarProperty Name="RISP_PitcherAhead_Change__Pitches" ColumnName="RISP_PitcherAhead_Change_%Pitches" />
+          <ScalarProperty Name="RISP_PitcherAhead_Curve__Pitches" ColumnName="RISP_PitcherAhead_Curve_%Pitches" />
+          <ScalarProperty Name="RISP_PitcherAhead_Cutter__Pitches" ColumnName="RISP_PitcherAhead_Cutter_%Pitches" />
+          <ScalarProperty Name="RISP_PitcherAhead_FB__4sm___2sm___Pitches" ColumnName="RISP_PitcherAhead_FB (4sm   2sm)_%Pitches" />
+          <ScalarProperty Name="RISP_PitcherAhead_Knuckleball__Pitches" ColumnName="RISP_PitcherAhead_Knuckleball_%Pitches" />
+          <ScalarProperty Name="RISP_PitcherAhead_Slider__Pitches" ColumnName="RISP_PitcherAhead_Slider_%Pitches" />
+          <ScalarProperty Name="RISP_PitcherAhead_Split_Finger__Pitches" ColumnName="RISP_PitcherAhead_Split-Finger_%Pitches" />
+          <ScalarProperty Name="RISP_PitcherBehind_Change__Pitches" ColumnName="RISP_PitcherBehind_Change_%Pitches" />
+          <ScalarProperty Name="RISP_PitcherBehind_Curve__Pitches" ColumnName="RISP_PitcherBehind_Curve_%Pitches" />
+          <ScalarProperty Name="RISP_PitcherBehind_Cutter__Pitches" ColumnName="RISP_PitcherBehind_Cutter_%Pitches" />
+          <ScalarProperty Name="RISP_PitcherBehind_FB__4sm___2sm___Pitches" ColumnName="RISP_PitcherBehind_FB (4sm   2sm)_%Pitches" />
+          <ScalarProperty Name="RISP_PitcherBehind_Knuckleball__Pitches" ColumnName="RISP_PitcherBehind_Knuckleball_%Pitches" />
+          <ScalarProperty Name="RISP_PitcherBehind_Slider__Pitches" ColumnName="RISP_PitcherBehind_Slider_%Pitches" />
+          <ScalarProperty Name="RISP_PitcherBehind_Split_Finger__Pitches" ColumnName="RISP_PitcherBehind_Split-Finger_%Pitches" />
+          <ScalarProperty Name="RISP_2Ks__Excl3_2_Change__Pitches" ColumnName="RISP_2Ks (Excl3-2)Change_%Pitches" />
+          <ScalarProperty Name="RISP_2Ks__Excl3_2_Curve__Pitches" ColumnName="RISP_2Ks (Excl3-2)Curve_%Pitches" />
+          <ScalarProperty Name="RISP_2Ks__Excl3_2_Cutter__Pitches" ColumnName="RISP_2Ks (Excl3-2)Cutter_%Pitches" />
+          <ScalarProperty Name="RISP_2Ks__Excl3_2_FB__4sm___2sm___Pitches" ColumnName="RISP_2Ks (Excl3-2)FB (4sm   2sm)_%Pitches" />
+          <ScalarProperty Name="RISP_2Ks__Excl3_2_Knuckleball__Pitches" ColumnName="RISP_2Ks (Excl3-2)Knuckleball_%Pitches" />
+          <ScalarProperty Name="RISP_2Ks__Excl3_2_Slider__Pitches" ColumnName="RISP_2Ks (Excl3-2)Slider_%Pitches" />
+          <ScalarProperty Name="RISP_2Ks__Excl3_2_Split_Finger__Pitches" ColumnName="RISP_2Ks (Excl3-2)Split-Finger_%Pitches" />
+          <ScalarProperty Name="C3_2_Change__Pitches" ColumnName="3-2_Change_%Pitches" />
+          <ScalarProperty Name="C3_2_Curve__Pitches" ColumnName="3-2_Curve_%Pitches" />
+          <ScalarProperty Name="C3_2_Cutter__Pitches" ColumnName="3-2_Cutter_%Pitches" />
+          <ScalarProperty Name="C3_2_FB__4sm___2sm___Pitches" ColumnName="3-2_FB (4sm   2sm)_%Pitches" />
+          <ScalarProperty Name="C3_2_Knuckleball__Pitches" ColumnName="3-2_Knuckleball_%Pitches" />
+          <ScalarProperty Name="C3_2_Slider__Pitches" ColumnName="3-2_Slider_%Pitches" />
+          <ScalarProperty Name="C3_2_Split_Finger__Pitches" ColumnName="3-2_Split-Finger_%Pitches" />
+          <ScalarProperty Name="StrikeZone__Change" ColumnName="StrikeZone%_Change" />
+          <ScalarProperty Name="Chase__Change" ColumnName="Chase%_Change" />
+          <ScalarProperty Name="StrikeZone__Curve" ColumnName="StrikeZone%_Curve" />
+          <ScalarProperty Name="Chase__Curve" ColumnName="Chase%_Curve" />
+          <ScalarProperty Name="StrikeZone__Cutter" ColumnName="StrikeZone%_Cutter" />
+          <ScalarProperty Name="Chase__Cutter" ColumnName="Chase%_Cutter" />
+          <ScalarProperty Name="StrikeZone__FB__4sm___2sm_" ColumnName="StrikeZone%_FB (4sm   2sm)" />
+          <ScalarProperty Name="Chase__FB__4sm___2sm_" ColumnName="Chase%_FB (4sm   2sm)" />
+          <ScalarProperty Name="StrikeZone__Knuckleball" ColumnName="StrikeZone%_Knuckleball" />
+          <ScalarProperty Name="Chase__Knuckleball" ColumnName="Chase%_Knuckleball" />
+          <ScalarProperty Name="StrikeZone__Slider" ColumnName="StrikeZone%_Slider" />
+          <ScalarProperty Name="Chase__Slider" ColumnName="Chase%_Slider" />
+          <ScalarProperty Name="StrikeZone__Split_Finger" ColumnName="StrikeZone%_Split-Finger" />
+          <ScalarProperty Name="Chase__Split_Finger" ColumnName="Chase%_Split-Finger" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pitchers">
+      <EntityTypeMapping TypeName="DevColoradoRockiesModel.Pitcher">
+        <MappingFragment StoreEntitySet="Pitchers">
+          <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Dexterity" ColumnName="Dexterity" />
+          <ScalarProperty Name="FastballVelocity" ColumnName="FastballVelocity" />
+          <ScalarProperty Name="FastballDescription" ColumnName="FastballDescription" />
+          <ScalarProperty Name="SinkerVelocity" ColumnName="SinkerVelocity" />
+          <ScalarProperty Name="SinkerDescription" ColumnName="SinkerDescription" />
+          <ScalarProperty Name="CutterVelocity" ColumnName="CutterVelocity" />
+          <ScalarProperty Name="CutterDescription" ColumnName="CutterDescription" />
+          <ScalarProperty Name="SliderVelocity" ColumnName="SliderVelocity" />
+          <ScalarProperty Name="SliderDescription" ColumnName="SliderDescription" />
+          <ScalarProperty Name="CurveballVelocity" ColumnName="CurveballVelocity" />
+          <ScalarProperty Name="CurveballDescription" ColumnName="CurveballDescription" />
+          <ScalarProperty Name="ChangeupVelocity" ColumnName="ChangeupVelocity" />
+          <ScalarProperty Name="ChangeupDescription" ColumnName="ChangeupDescription" />
+          <ScalarProperty Name="SplitfingerVelocity" ColumnName="SplitfingerVelocity" />
+          <ScalarProperty Name="SplitfingerDescription" ColumnName="SplitfingerDescription" />
+          <ScalarProperty Name="KnuckleballVelocity" ColumnName="KnuckleballVelocity" />
+          <ScalarProperty Name="KnuckleballDescription" ColumnName="KnuckleballDescription" />
+          <ScalarProperty Name="ScrewballVelocity" ColumnName="ScrewballVelocity" />
+          <ScalarProperty Name="ScrewballDescription" ColumnName="ScrewballDescription" />
+          <ScalarProperty Name="MOVES" ColumnName="MOVES" />
+          <ScalarProperty Name="NOTES" ColumnName="NOTES" />
+          <ScalarProperty Name="STRENGTHS" ColumnName="STRENGTHS" />
+          <ScalarProperty Name="WEAKNESSES" ColumnName="WEAKNESSES" />
+          <ScalarProperty Name="TENDENCIES" ColumnName="TENDENCIES" />
+          <ScalarProperty Name="ArmAngle" ColumnName="ArmAngle" />
+          <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserEntereds">
+      <EntityTypeMapping TypeName="DevColoradoRockiesModel.UserEntered">
+        <MappingFragment StoreEntitySet="UserEntered">
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="LooksWRunner_2B" ColumnName="LooksWRunner_2B" />
+          <ScalarProperty Name="SlideStepTime_1B" ColumnName="SlideStepTime_1B" />
+          <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+          <ScalarProperty Name="ArmSlot" ColumnName="ArmSlot" />
+          <ScalarProperty Name="Control" ColumnName="Control" />
+          <ScalarProperty Name="Command" ColumnName="Command" />
+          <ScalarProperty Name="Approach" ColumnName="Approach" />
+          <ScalarProperty Name="Out_Pitch" ColumnName="Out_Pitch" />
+          <ScalarProperty Name="PickoffMove_1B" ColumnName="PickoffMove_1B" />
+          <ScalarProperty Name="PickoffMove_2B" ColumnName="PickoffMove_2B" />
+          <ScalarProperty Name="ReleaseTimes_1B" ColumnName="ReleaseTimes_1B" />
+          <ScalarProperty Name="ReleaseTimes_2B" ColumnName="ReleaseTimes_2B" />
+          <ScalarProperty Name="ReleaseTimes_SS" ColumnName="ReleaseTimes_SS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserEntered2">
+      <EntityTypeMapping TypeName="DevColoradoRockiesModel.UserEntered2">
+        <MappingFragment StoreEntitySet="UserEntered2">
+          <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+          <ScalarProperty Name="FB2SMVelocity" ColumnName="FB2SMVelocity" />
+          <ScalarProperty Name="FB2SMDescription" ColumnName="FB2SMDescription" />
+          <ScalarProperty Name="FB4SMVelocity" ColumnName="FB4SMVelocity" />
+          <ScalarProperty Name="FB4SMDescription" ColumnName="FB4SMDescription" />
+          <ScalarProperty Name="FB2SMCommand" ColumnName="FB2SMCommand" />
+          <ScalarProperty Name="FB4SMCommand" ColumnName="FB4SMCommand" />
+          <ScalarProperty Name="CutterCommand" ColumnName="CutterCommand" />
+          <ScalarProperty Name="SliderCommand" ColumnName="SliderCommand" />
+          <ScalarProperty Name="CurveballCommand" ColumnName="CurveballCommand" />
+          <ScalarProperty Name="ChangeupCommand" ColumnName="ChangeupCommand" />
+          <ScalarProperty Name="SplitfingerCommand" ColumnName="SplitfingerCommand" />
+          <ScalarProperty Name="KnuckleballCommand" ColumnName="KnuckleballCommand" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="cr_sproc_pitcherprofile_currentoverallstats" FunctionName="DevColoradoRockiesModel.Store.cr_sproc_pitcherprofile_currentoverallstats">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DevColoradoRockiesModel.cr_sproc_pitcherprofile_currentoverallstats_Result">
+          <ScalarProperty Name="Record" ColumnName="Record" />
+          <ScalarProperty Name="G" ColumnName="G" />
+          <ScalarProperty Name="ERA" ColumnName="ERA" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+          <ScalarProperty Name="H" ColumnName="H" />
+          <ScalarProperty Name="HR" ColumnName="HR" />
+          <ScalarProperty Name="BB" ColumnName="BB" />
+          <ScalarProperty Name="SO" ColumnName="SO" />
+          <ScalarProperty Name="SBA" ColumnName="SBA" />
+          <ScalarProperty Name="PperPA" ColumnName="PperPA" />
+          <ScalarProperty Name="PperIP" ColumnName="PperIP" />
+          <ScalarProperty Name="PperGS" ColumnName="PperGS" />
+          <ScalarProperty Name="GB__Overall" ColumnName="GB%_Overall" />
+          <ScalarProperty Name="FB__Overall" ColumnName="FB%_Overall" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cr_sproc_pitcherprofile_currentstatsvslhh" FunctionName="DevColoradoRockiesModel.Store.cr_sproc_pitcherprofile_currentstatsvslhh">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DevColoradoRockiesModel.cr_sproc_pitcherprofile_currentstatsvslhh_Result">
+          <ScalarProperty Name="Record" ColumnName="Record" />
+          <ScalarProperty Name="AVG_vsLHH" ColumnName="AVG_vsLHH" />
+          <ScalarProperty Name="H_vsLHH" ColumnName="H_vsLHH" />
+          <ScalarProperty Name="HR_vsLHH" ColumnName="HR_vsLHH" />
+          <ScalarProperty Name="BB_vsLHH" ColumnName="BB_vsLHH" />
+          <ScalarProperty Name="SO_vsLHH" ColumnName="SO_vsLHH" />
+          <ScalarProperty Name="PperPA_vsLHH" ColumnName="PperPA_vsLHH" />
+          <ScalarProperty Name="GB__vsLHH" ColumnName="GB%_vsLHH" />
+          <ScalarProperty Name="FB__vsLHH" ColumnName="FB%_vsLHH" />
+          <ScalarProperty Name="SLG_vsLHH" ColumnName="SLG_vsLHH" />
+          <ScalarProperty Name="OBP_vsLHH" ColumnName="OBP_vsLHH" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cr_sproc_pitcherprofile_currentstatsvsrhh" FunctionName="DevColoradoRockiesModel.Store.cr_sproc_pitcherprofile_currentstatsvsrhh">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DevColoradoRockiesModel.cr_sproc_pitcherprofile_currentstatsvsrhh_Result">
+          <ScalarProperty Name="Record" ColumnName="Record" />
+          <ScalarProperty Name="AVG_vsRHH" ColumnName="AVG_vsRHH" />
+          <ScalarProperty Name="H_vsRHH" ColumnName="H_vsRHH" />
+          <ScalarProperty Name="HR_vsRHH" ColumnName="HR_vsRHH" />
+          <ScalarProperty Name="BB_vsRHH" ColumnName="BB_vsRHH" />
+          <ScalarProperty Name="SO_vsRHH" ColumnName="SO_vsRHH" />
+          <ScalarProperty Name="PperPA_vsRHH" ColumnName="PperPA_vsRHH" />
+          <ScalarProperty Name="GB__vsRHH" ColumnName="GB%_vsRHH" />
+          <ScalarProperty Name="FB__vsRHH" ColumnName="FB%_vsRHH" />
+          <ScalarProperty Name="SLG_vsRHH" ColumnName="SLG_vsRHH" />
+          <ScalarProperty Name="OBP_vsRHH" ColumnName="OBP_vsRHH" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cr_sproc_pitchersplits" FunctionName="DevColoradoRockiesModel.Store.cr_sproc_pitchersplits">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DevColoradoRockiesModel.cr_sproc_pitchersplits_Result">
+          <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="RHH" ColumnName="RHH" />
+          <ScalarProperty Name="Career_RHB" ColumnName="Career RHB" />
+          <ScalarProperty Name="LHH" ColumnName="LHH" />
+          <ScalarProperty Name="Career_LHB" ColumnName="Career LHB" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="PitcherSplits">
+      <EntityTypeMapping TypeName="DevColoradoRockiesModel.PitcherSplit">
+        <MappingFragment StoreEntitySet="PitcherSplits">
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="CareerLHB" ColumnName="CareerLHB" />
+          <ScalarProperty Name="CareerRHB" ColumnName="CareerRHB" />
+          <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="cr_sproc_runnerchart" FunctionName="DevColoradoRockiesModel.Store.cr_sproc_runnerchart">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DevColoradoRockiesModel.cr_sproc_runnerchart_Result">
+          <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ReleaseTimes_1B" ColumnName="ReleaseTimes_1B" />
+          <ScalarProperty Name="SlideStepTime_1B" ColumnName="SlideStepTime_1B" />
+          <ScalarProperty Name="PickoffMove_1B" ColumnName="PickoffMove_1B" />
+          <ScalarProperty Name="ReleaseTimes_2B" ColumnName="ReleaseTimes_2B" />
+          <ScalarProperty Name="PickoffMove_2B" ColumnName="PickoffMove_2B" />
+          <ScalarProperty Name="LooksWRunner_2B" ColumnName="LooksWRunner_2B" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Outfielder_Pitcher">
+      <EntityTypeMapping TypeName="DevColoradoRockiesModel.Outfielder_Pitcher">
+        <MappingFragment StoreEntitySet="Outfielder_Pitcher">
+          <ScalarProperty Name="SPAofHit_BuntingAbility" ColumnName="SPAofHit_BuntingAbility" />
+          <ScalarProperty Name="SPAofHit_Detail" ColumnName="SPAofHit_Detail" />
+          <ScalarProperty Name="SPAofHit_Summary" ColumnName="SPAofHit_Summary" />
+          <ScalarProperty Name="Aggressiveness" ColumnName="Aggressiveness" />
+          <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="cr_sproc_outfielderpitcher_agg" FunctionName="DevColoradoRockiesModel.Store.cr_sproc_outfielderpitcher_agg">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DevColoradoRockiesModel.cr_sproc_outfielderpitcher_agg_Result">
+          <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Aggressiveness" ColumnName="Aggressiveness" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cr_sproc_outfielderpitcher_sta" FunctionName="DevColoradoRockiesModel.Store.cr_sproc_outfielderpitcher_sta">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DevColoradoRockiesModel.cr_sproc_outfielderpitcher_sta_Result">
+          <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SPAofHit_Summary" ColumnName="SPAofHit_Summary" />
+          <ScalarProperty Name="SPAofHit_Detail" ColumnName="SPAofHit_Detail" />
+          <ScalarProperty Name="SPAofHit_BuntingAbility" ColumnName="SPAofHit_BuntingAbility" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="HitterProfiles">
+      <EntityTypeMapping TypeName="DevColoradoRockiesModel.HitterProfile">
+        <MappingFragment StoreEntitySet="HitterProfile">
+          <ScalarProperty Name="FB__Total" ColumnName="FB%_Total" />
+          <ScalarProperty Name="GB__Total" ColumnName="GB%_Total" />
+          <ScalarProperty Name="FB__vsRHP" ColumnName="FB%_vsRHP" />
+          <ScalarProperty Name="GB__vsRHP" ColumnName="GB%_vsRHP" />
+          <ScalarProperty Name="FB__vsLHP" ColumnName="FB%_vsLHP" />
+          <ScalarProperty Name="GB__vsLHP" ColumnName="GB%_vsLHP" />
+          <ScalarProperty Name="PperPA_Total" ColumnName="PperPA_Total" />
+          <ScalarProperty Name="CS_Total" ColumnName="CS_Total" />
+          <ScalarProperty Name="SB_Total" ColumnName="SB_Total" />
+          <ScalarProperty Name="K_Total" ColumnName="K_Total" />
+          <ScalarProperty Name="BB_Total" ColumnName="BB_Total" />
+          <ScalarProperty Name="HR_Total" ColumnName="HR_Total" />
+          <ScalarProperty Name="H_Total" ColumnName="H_Total" />
+          <ScalarProperty Name="AB_Total" ColumnName="AB_Total" />
+          <ScalarProperty Name="SLG__Total" ColumnName="SLG%_Total" />
+          <ScalarProperty Name="AVG__Total" ColumnName="AVG _Total" />
+          <ScalarProperty Name="PperPA_vsRHP" ColumnName="PperPA_vsRHP" />
+          <ScalarProperty Name="CS_vsRHP" ColumnName="CS_vsRHP" />
+          <ScalarProperty Name="SB_vsRHP" ColumnName="SB_vsRHP" />
+          <ScalarProperty Name="K_vsRHP" ColumnName="K_vsRHP" />
+          <ScalarProperty Name="BB_vsRHP" ColumnName="BB_vsRHP" />
+          <ScalarProperty Name="HR_vsRHP" ColumnName="HR_vsRHP" />
+          <ScalarProperty Name="H_vsRHP" ColumnName="H_vsRHP" />
+          <ScalarProperty Name="AB_vsRHP" ColumnName="AB_vsRHP" />
+          <ScalarProperty Name="SLG__vsRHP" ColumnName="SLG%_vsRHP" />
+          <ScalarProperty Name="AVG__vsRHP" ColumnName="AVG _vsRHP" />
+          <ScalarProperty Name="PperPA_vsLHP" ColumnName="PperPA_vsLHP" />
+          <ScalarProperty Name="CS_vsLHP" ColumnName="CS_vsLHP" />
+          <ScalarProperty Name="SB_vsLHP" ColumnName="SB_vsLHP" />
+          <ScalarProperty Name="K_vsLHP" ColumnName="K_vsLHP" />
+          <ScalarProperty Name="BB_vsLHP" ColumnName="BB_vsLHP" />
+          <ScalarProperty Name="HR_vsLHP" ColumnName="HR_vsLHP" />
+          <ScalarProperty Name="H_vsLHP" ColumnName="H_vsLHP" />
+          <ScalarProperty Name="AB_vsLHP" ColumnName="AB_vsLHP" />
+          <ScalarProperty Name="SLG__vsLHP" ColumnName="SLG%_vsLHP" />
+          <ScalarProperty Name="AVG__vsLHP" ColumnName="AVG _vsLHP" />
+          <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+          <ScalarProperty Name="MLBAM" ColumnName="MLBAM" />
+          <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HitterProfile_UserEntered">
+      <EntityTypeMapping TypeName="DevColoradoRockiesModel.HitterProfile_UserEntered">
+        <MappingFragment StoreEntitySet="HitterProfile_UserEntered">
+          <ScalarProperty Name="Speed_Avg" ColumnName="Speed_Avg" />
+          <ScalarProperty Name="Accuracy_Avg" ColumnName="Accuracy_Avg" />
+          <ScalarProperty Name="Arm_Avg" ColumnName="Arm_Avg" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="LHP_Def_OF" ColumnName="LHP_Def_OF" />
+          <ScalarProperty Name="RHP_Def_OF" ColumnName="RHP_Def_OF" />
+          <ScalarProperty Name="LHP_Def_INF" ColumnName="LHP_Def_INF" />
+          <ScalarProperty Name="RHP_Def_INF" ColumnName="RHP_Def_INF" />
+          <ScalarProperty Name="LHP_2Ks_Chase" ColumnName="LHP_2Ks_Chase" />
+          <ScalarProperty Name="RHP_2Ks_Chase" ColumnName="RHP_2Ks_Chase" />
+          <ScalarProperty Name="LHP_HowtoPitch" ColumnName="LHP_HowtoPitch" />
+          <ScalarProperty Name="RHP_HowtoPitch" ColumnName="RHP_HowtoPitch" />
+          <ScalarProperty Name="Drag" ColumnName="Drag" />
+          <ScalarProperty Name="Push" ColumnName="Push" />
+          <ScalarProperty Name="Steal" ColumnName="Steal" />
+          <ScalarProperty Name="Speed" ColumnName="Speed" />
+          <ScalarProperty Name="Accuracy" ColumnName="Accuracy" />
+          <ScalarProperty Name="Arm" ColumnName="Arm" />
+          <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DugoutPitchers">
+      <EntityTypeMapping TypeName="DevColoradoRockiesModel.DugoutPitcher">
+        <MappingFragment StoreEntitySet="DugoutPitcher">
+          <ScalarProperty Name="BasesEmpty_FullCount_Pitch4" ColumnName="BasesEmpty_FullCount_Pitch4" />
+          <ScalarProperty Name="BasesEmpty_FullCount_Pitch3" ColumnName="BasesEmpty_FullCount_Pitch3" />
+          <ScalarProperty Name="BasesEmpty_FullCount_Pitch2" ColumnName="BasesEmpty_FullCount_Pitch2" />
+          <ScalarProperty Name="BasesEmpty_FullCount_Pitch1" ColumnName="BasesEmpty_FullCount_Pitch1" />
+          <ScalarProperty Name="BasesEmpty_2K_Pitch4" ColumnName="BasesEmpty_2K_Pitch4" />
+          <ScalarProperty Name="BasesEmpty_2K_Pitch3" ColumnName="BasesEmpty_2K_Pitch3" />
+          <ScalarProperty Name="BasesEmpty_2K_Pitch2" ColumnName="BasesEmpty_2K_Pitch2" />
+          <ScalarProperty Name="BasesEmpty_2K_Pitch1" ColumnName="BasesEmpty_2K_Pitch1" />
+          <ScalarProperty Name="BasesEmpty_PitBhd_Pitch4" ColumnName="BasesEmpty_PitBhd_Pitch4" />
+          <ScalarProperty Name="BasesEmpty_PitBhd_Pitch3" ColumnName="BasesEmpty_PitBhd_Pitch3" />
+          <ScalarProperty Name="BasesEmpty_PitBhd_Pitch2" ColumnName="BasesEmpty_PitBhd_Pitch2" />
+          <ScalarProperty Name="BasesEmpty_PitBhd_Pitch1" ColumnName="BasesEmpty_PitBhd_Pitch1" />
+          <ScalarProperty Name="BasesEmpty_PitAhd_Pitch4" ColumnName="BasesEmpty_PitAhd_Pitch4" />
+          <ScalarProperty Name="BasesEmpty_PitAhd_Pitch3" ColumnName="BasesEmpty_PitAhd_Pitch3" />
+          <ScalarProperty Name="BasesEmpty_PitAhd_Pitch2" ColumnName="BasesEmpty_PitAhd_Pitch2" />
+          <ScalarProperty Name="BasesEmpty_PitAhd_Pitch1" ColumnName="BasesEmpty_PitAhd_Pitch1" />
+          <ScalarProperty Name="BasesEmpty_0_0_Pitch4" ColumnName="BasesEmpty_0-0_Pitch4" />
+          <ScalarProperty Name="BasesEmpty_0_0_Pitch3" ColumnName="BasesEmpty_0-0_Pitch3" />
+          <ScalarProperty Name="BasesEmpty_0_0_Pitch2" ColumnName="BasesEmpty_0-0_Pitch2" />
+          <ScalarProperty Name="BasesEmpty_0_0_Pitch1" ColumnName="BasesEmpty_0-0_Pitch1" />
+          <ScalarProperty Name="RISP_FullCount_Pitch4" ColumnName="RISP_FullCount_Pitch4" />
+          <ScalarProperty Name="RISP_FullCount_Pitch3" ColumnName="RISP_FullCount_Pitch3" />
+          <ScalarProperty Name="RISP_FullCount_Pitch2" ColumnName="RISP_FullCount_Pitch2" />
+          <ScalarProperty Name="RISP_FullCount_Pitch1" ColumnName="RISP_FullCount_Pitch1" />
+          <ScalarProperty Name="RISP_2K_Pitch4" ColumnName="RISP_2K_Pitch4" />
+          <ScalarProperty Name="RISP_2K_Pitch3" ColumnName="RISP_2K_Pitch3" />
+          <ScalarProperty Name="RISP_2K_Pitch2" ColumnName="RISP_2K_Pitch2" />
+          <ScalarProperty Name="RISP_2K_Pitch1" ColumnName="RISP_2K_Pitch1" />
+          <ScalarProperty Name="RISP_PitBhd_Pitch4" ColumnName="RISP_PitBhd_Pitch4" />
+          <ScalarProperty Name="RISP_PitBhd_Pitch3" ColumnName="RISP_PitBhd_Pitch3" />
+          <ScalarProperty Name="RISP_PitBhd_Pitch2" ColumnName="RISP_PitBhd_Pitch2" />
+          <ScalarProperty Name="RISP_PitBhd_Pitch1" ColumnName="RISP_PitBhd_Pitch1" />
+          <ScalarProperty Name="RISP_PitAhd_Pitch4" ColumnName="RISP_PitAhd_Pitch4" />
+          <ScalarProperty Name="RISP_PitAhd_Pitch3" ColumnName="RISP_PitAhd_Pitch3" />
+          <ScalarProperty Name="RISP_PitAhd_Pitch2" ColumnName="RISP_PitAhd_Pitch2" />
+          <ScalarProperty Name="RISP_PitAhd_Pitch1" ColumnName="RISP_PitAhd_Pitch1" />
+          <ScalarProperty Name="RISP_0_0_Pitch4" ColumnName="RISP_0-0_Pitch4" />
+          <ScalarProperty Name="RISP_0_0_Pitch3" ColumnName="RISP_0-0_Pitch3" />
+          <ScalarProperty Name="RISP_0_0_Pitch2" ColumnName="RISP_0-0_Pitch2" />
+          <ScalarProperty Name="RISP_0_0_Pitch1" ColumnName="RISP_0-0_Pitch1" />
+          <ScalarProperty Name="Pitch4_Type" ColumnName="Pitch4_Type" />
+          <ScalarProperty Name="Pitch3_Type" ColumnName="Pitch3_Type" />
+          <ScalarProperty Name="Pitch2_Type" ColumnName="Pitch2_Type" />
+          <ScalarProperty Name="Pitch1_Type" ColumnName="Pitch1_Type" />
+          <ScalarProperty Name="SPL_Velo" ColumnName="SPL_Velo" />
+          <ScalarProperty Name="CH_Velo" ColumnName="CH_Velo" />
+          <ScalarProperty Name="CB_Velo" ColumnName="CB_Velo" />
+          <ScalarProperty Name="SL_Velo" ColumnName="SL_Velo" />
+          <ScalarProperty Name="CutFB_Velo" ColumnName="CutFB_Velo" />
+          <ScalarProperty Name="FB_Velo" ColumnName="FB_Velo" />
+          <ScalarProperty Name="CS" ColumnName="CS" />
+          <ScalarProperty Name="SB" ColumnName="SB" />
+          <ScalarProperty Name="SO" ColumnName="SO" />
+          <ScalarProperty Name="BB" ColumnName="BB" />
+          <ScalarProperty Name="HR" ColumnName="HR" />
+          <ScalarProperty Name="H" ColumnName="H" />
+          <ScalarProperty Name="ERA" ColumnName="ERA" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+          <ScalarProperty Name="L" ColumnName="L" />
+          <ScalarProperty Name="W" ColumnName="W" />
+          <ScalarProperty Name="mlbam" ColumnName="mlbam" />
+          <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+          <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="cr_sproc_NEF_Hitter" FunctionName="DevColoradoRockiesModel.Store.cr_sproc_NEF_Hitter">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DevColoradoRockiesModel.cr_sproc_NEF_Hitter_Result">
+          <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="grandtotalnulls" ColumnName="grandtotalnulls" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cr_sproc_NEF_Pitcher" FunctionName="DevColoradoRockiesModel.Store.cr_sproc_NEF_Pitcher">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DevColoradoRockiesModel.cr_sproc_NEF_Pitcher_Result">
+          <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="grandtotalnulls" ColumnName="grandtotalnulls" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="PitcherProfile_PitchCountLastStart">
+      <EntityTypeMapping TypeName="DevColoradoRockiesModel.PitcherProfile_PitchCountLastStart">
+        <MappingFragment StoreEntitySet="PitcherProfile_PitchCountLastStart">
+          <ScalarProperty Name="SPL_Total" ColumnName="SPL_Total" />
+          <ScalarProperty Name="CH_Total" ColumnName="CH_Total" />
+          <ScalarProperty Name="CB_Total" ColumnName="CB_Total" />
+          <ScalarProperty Name="SL_Total" ColumnName="SL_Total" />
+          <ScalarProperty Name="FB_Total" ColumnName="FB_Total" />
+          <ScalarProperty Name="TotalPitches_Total" ColumnName="TotalPitches_Total" />
+          <ScalarProperty Name="SPL_vsRHH" ColumnName="SPL_vsRHH" />
+          <ScalarProperty Name="CH_vsRHH" ColumnName="CH_vsRHH" />
+          <ScalarProperty Name="CB_vsRHH" ColumnName="CB_vsRHH" />
+          <ScalarProperty Name="SL_vsRHH" ColumnName="SL_vsRHH" />
+          <ScalarProperty Name="FB_vsRHH" ColumnName="FB_vsRHH" />
+          <ScalarProperty Name="TotalPitches_vsRHH" ColumnName="TotalPitches_vsRHH" />
+          <ScalarProperty Name="SPL_vsLHH" ColumnName="SPL_vsLHH" />
+          <ScalarProperty Name="CH_vsLHH" ColumnName="CH_vsLHH" />
+          <ScalarProperty Name="CB_vsLHH" ColumnName="CB_vsLHH" />
+          <ScalarProperty Name="SL_vsLHH" ColumnName="SL_vsLHH" />
+          <ScalarProperty Name="FB_vsLHH" ColumnName="FB_vsLHH" />
+          <ScalarProperty Name="TotalPitches_vsLHH" ColumnName="TotalPitches_vsLHH" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+          <ScalarProperty Name="mlbam" ColumnName="mlbam" />
+          <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

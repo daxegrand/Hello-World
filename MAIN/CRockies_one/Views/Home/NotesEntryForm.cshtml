@@ -1,0 +1,80 @@
+﻿@model CRockies_one.Models.NotesEntryForm
+@{
+    ViewBag.Title = "NotesEntryForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="innerContainer">
+    <h2>Player Notes Entry</h2>
+    @if (Model != null)
+{
+    <div id="teamname" class="r5opp" style="text-transform:uppercase;">@Model.nefteam.City_or_State @Model.nefteam.Nickname</div>
+    
+    <div class="standardTable" style="width:100%; table-layout:fixed">
+        <div class="standardTableRow">
+            <div class="standardTableCell" style="padding:0 5px 0 0px;">
+                <h3 class="noteslist">Hitters</h3>
+                <h3 class="noteslist">Notes Missing<input type="checkbox" /></h3>
+                <ol id="hitter" class="playerNotesNums">
+                    @if (Model.htable != null)
+                    {
+                        foreach (var item in Model.htable)
+                        {
+                            <li><span id="@item.PlayerId" class="hPlayer">@item.Name</span><span id="@item.PlayerId" class="hPlayerMN"><input type="text" value="@item.grandtotalnulls" /></span></li>
+                        }
+                    }
+                </ol>
+            </div>
+            <div class="standardTableCell" style="padding:0 0px 0 5px;">
+                
+                <h3 class="noteslist">Pitchers</h3>
+                <h3 class="noteslist">Notes Missing<input type="checkbox" /></h3>
+                <ol id="pitcher" class="playerNotesNums">
+                    @if (Model.ptable != null)
+                    {
+                        foreach (var item in Model.ptable)
+                        {
+                            <li><span id="@item.PlayerId" class="pPlayer">@item.Name</span><span id="@item.PlayerId" class="pPlayerMN"><input type="text" value="@item.grandtotalnulls" /></span></li>
+                        }
+                    }
+                </ol>
+            </div>
+        </div>
+    </div>
+    }
+</div>
+
+
+@section scripts{
+    <script>
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        };
+        $(function () {
+            $(".hPlayer").click(function () {
+                var _teamid = getParameterByName("_teamid");
+
+                location.replace('/Home/NEF_Hitter?_pid=' + $(this).attr('id') + '&_teamid=' + _teamid + '&_tag=' + 1);
+            });
+            $(".hPlayerMN").click(function () {
+                var _teamid = getParameterByName("_teamid");
+                location.replace('/Home/NEF_Hitter?_pid=' + $(this).attr('id') + '&_teamid=' + _teamid + '&_tag=' + 2);
+            });
+
+
+            $(".pPlayer").click(function () {
+                var _teamid = getParameterByName("_teamid");
+
+                location.replace('/Home/NEF_Pitcher?_pid=' + $(this).attr('id') + '&_teamid=' + _teamid + '&_tag=' + 1);
+            });
+            $(".pPlayerMN").click(function () {
+                var _teamid = getParameterByName("_teamid");
+                location.replace('/Home/NEF_Pitcher?_pid=' + $(this).attr('id') + '&_teamid=' + _teamid + '&_tag=' + 2);
+            });
+        });
+        
+    </script>
+}

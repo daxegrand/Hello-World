@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<players>
+
+  <player>
+    <fname>clayton</fname>
+    <lname>kershaw</lname>
+    <aggresiveness>0</aggresiveness>
+    <hitability>1</hitability>
+    <aggresivenote></aggresivenote>
+    <hitsum>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas quis tincidunt neque, at gravida elit. Proin luctus nisl in purus mollis, sit amet consequat orci porta. Nulla facilisi. </p></hitsum>
+    <hitdet>
+      <p>Integer aliquet pretium neque at vulputate. In tristique libero eu urna congue lobortis. Etiam in turpis pharetra, faucibus arcu et, imperdiet tellus. Pellentesque in placerat felis. Nam luctus placerat scelerisque. Praesent in purus eget diam interdum porta. Proin ut bibendum est. </p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas quis tincidunt neque, at gravida elit. Proin luctus nisl in purus mollis, sit amet consequat orci porta. Nulla facilisi. </p>
+    </hitdet>
+    <hitbunt>
+      <p>Suspendisse potenti. Pellentesque rhoncus urna commodo erat egestas vestibulum. Morbi venenatis ipsum vel ipsum posuere volutpat.</p>
+    </hitbunt>
+
+  </player>
+
+  <player>
+    <fname>zack</fname>
+    <lname>greinke</lname>
+    <aggresiveness>0</aggresiveness>
+    <hitability>1</hitability>
+    <aggresivenote></aggresivenote>
+    <hitsum>
+      <p>Suspendisse potenti. Pellentesque rhoncus urna commodo erat egestas vestibulum. Morbi venenatis ipsum vel ipsum posuere volutpat.</p>
+    </hitsum>
+    <hitdet>
+      <p>Integer aliquet pretium neque at vulputate. In tristique libero eu urna congue lobortis.</p>
+    </hitdet>
+    <hitbunt>
+      Pellentesque in placerat felis.
+    </hitbunt>
+
+  </player>
+
+  <player>
+    <fname>hyun-jin</fname>
+    <lname>ryu</lname>
+    <aggresiveness>1</aggresiveness>
+    <hitability>0</hitability>
+    <aggresivenote>
+      <p>Suspendisse potenti. Pellentesque rhoncus urna commodo erat egestas vestibulum. Morbi venenatis ipsum vel ipsum posuere volutpat.</p>
+    </aggresivenote>
+    <hitsum></hitsum>
+    <hitdet></hitdet>
+    <hitbunt></hitbunt>
+
+  </player>
+
+  <player>
+    <fname>kenley</fname>
+    <lname>jansen</lname>
+    <aggresiveness>1</aggresiveness>
+    <hitability>0</hitability>
+    <aggresivenote>
+      <p>Suspendisse potenti. Pellentesque rhoncus urna commodo erat egestas vestibulum. Morbi venenatis ipsum vel ipsum posuere volutpat.</p>
+    </aggresivenote>
+    <hitsum></hitsum>
+    <hitdet></hitdet>
+    <hitbunt></hitbunt>
+
+  </player>
+
+  <player>
+    <fname>ronald</fname>
+    <lname>bellsario</lname>
+    <aggresiveness>0</aggresiveness>
+    <hitability>0</hitability>
+    <aggresivenote></aggresivenote>
+    <hitsum></hitsum>
+    <hitdet></hitdet>
+    <hitbunt></hitbunt>
+
+  </player>
+
+  <player>
+    <fname>J.P.</fname>
+    <lname>Howell</lname>
+    <aggresiveness>0</aggresiveness>
+    <hitability>0</hitability>
+    <aggresivenote></aggresivenote>
+    <hitsum></hitsum>
+    <hitdet></hitdet>
+    <hitbunt></hitbunt>
+
+  </player>
+
+  <player>
+    <fname>brian</fname>
+    <lname>wilson</lname>
+    <aggresiveness>0</aggresiveness>
+    <hitability>0</hitability>
+    <aggresivenote></aggresivenote>
+    <hitsum></hitsum>
+    <hitdet></hitdet>
+    <hitbunt></hitbunt>
+
+  </player>
+
+  <player>
+    <fname>carlos</fname>
+    <lname>marmol</lname>
+    <aggresiveness>0</aggresiveness>
+    <hitability>0</hitability>
+    <aggresivenote></aggresivenote>
+    <hitsum></hitsum>
+    <hitdet></hitdet>
+    <hitbunt></hitbunt>
+
+  </player>
+
+  <player>
+    <fname>brandon</fname>
+    <lname>league</lname>
+    <aggresiveness>0</aggresiveness>
+    <hitability>0</hitability>
+    <aggresivenote></aggresivenote>
+    <hitsum></hitsum>
+    <hitdet></hitdet>
+    <hitbunt></hitbunt>
+
+  </player>
+
+  <player>
+    <fname>edinson</fname>
+    <lname>volquez</lname>
+    <aggresiveness>0</aggresiveness>
+    <hitability>0</hitability>
+    <aggresivenote></aggresivenote>
+    <hitsum></hitsum>
+    <hitdet></hitdet>
+    <hitbunt></hitbunt>
+
+  </player>
+
+  <player>
+    <fname>chris</fname>
+    <lname>withrow</lname>
+    <aggresiveness>0</aggresiveness>
+    <hitability>0</hitability>
+    <aggresivenote></aggresivenote>
+    <hitsum></hitsum>
+    <hitdet></hitdet>
+    <hitbunt></hitbunt>
+
+  </player>
+
+  <player>
+    <fname>peter</fname>
+    <lname>moylan</lname>
+    <aggresiveness>0</aggresiveness>
+    <hitability>0</hitability>
+    <aggresivenote></aggresivenote>
+    <hitsum></hitsum>
+    <hitdet></hitdet>
+    <hitbunt></hitbunt>
+
+  </player>
+
+  <player>
+    <fname>stephen</fname>
+    <lname>fife</lname>
+    <aggresiveness>0</aggresiveness>
+    <hitability>0</hitability>
+    <aggresivenote></aggresivenote>
+    <hitsum></hitsum>
+    <hitdet></hitdet>
+    <hitbunt></hitbunt>
+
+  </player>
+
+  <player>
+    <fname>onelki</fname>
+    <lname>garcia</lname>
+    <aggresiveness>0</aggresiveness>
+    <hitability>0</hitability>
+    <aggresivenote></aggresivenote>
+    <hitsum></hitsum>
+    <hitdet></hitdet>
+    <hitbunt></hitbunt>
+
+  </player>
+
+</players>

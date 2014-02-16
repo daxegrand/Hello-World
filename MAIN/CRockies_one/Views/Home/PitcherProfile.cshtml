@@ -1,0 +1,2357 @@
+﻿@model CRockies_one.Models.PitcherProfileModels
+@{
+    ViewBag.Title = "Pitcher Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="commonMessage"></div>
+<h2>Pitcher Profile</h2>
+@*<div style = "float: right; padding-bottom: 15px; text-decoration: none;">@Html.ActionLink("Export", "Export", "Home", new { _pid = @Request.QueryString["_pid"] }, null)</div>*@
+@if (Model != null)
+{
+<input type="hidden" id="hdnPID" value="@Request.QueryString["_pid"]"/>
+<section class="quickPlayerBox">
+    <table class="stdTable fullTblW rep3PlayerInfoRow">
+        <tr>
+            <td>
+                <img src="~/Images/Logos/@(Model.playerinfo.TeamId + ".gif")" />
+            </td>
+            <td class="rep3PlayerQuickData">
+                <div class="standardTable fullTblW">
+                    <div class="standardTableRow">
+                        <div class="standardTableCell playerName">
+                            <h3 class="playerName"># @Model.playerinfo.Uniform @Model.playerinfo.Firstname @Model.playerinfo.Lastname <span class="player_playtype"> @string.Concat(Model.playerinfo.Bats, "HP")</span></h3>
+                        </div>
+                        <div class="standardTableCell playerName">
+                            @if (@Model.playerinfo.Bats.Equals("L", StringComparison.OrdinalIgnoreCase))
+                            {
+                                <h3 class="playerName">VS RHH</h3>
+                            }
+                            else
+                            {
+                                <h3 class="playerName">VS LHH</h3>
+                            }
+                        </div>
+                        <div class="standardTableCell">
+                            <h4>Role:</h4>
+                            <p class="subheads10px">Starter</p>
+                        </div>
+                        <div id="darmslot" class="standardTableCell">
+                            <h4>Arm Slot</h4>
+                            
+                            <p id="armslot" class="subheads10px">@try
+                                                                 { @Model.UserEntereds.ArmSlot }
+                                                                 catch { }</p>
+                        </div>
+                        <div id="dcontrol" class="standardTableCell">
+                            <h4>Control</h4>
+                            <p id="control" class="subheads10px">@try
+                                                                 { @Model.UserEntereds.Control }
+                                                                 catch { }</p>
+                        </div>
+                    </div>
+                    <div class="standardTableRow">
+                        <div class="standardTableCell ">
+                            <table class="stdTable lastFewGameInfo">
+                                <tbody>
+                                    <tr>
+                                        @if (@Model.playerinfo.Bats.Equals("L", StringComparison.OrdinalIgnoreCase))
+                                        {
+                                            <td class="subheads"># Of Pitches Thrown In Last Start VS RHH</td>
+                                        }
+                                        else
+                                        {
+                                            <td class="subheads"># Of Pitches Thrown In Last Start VS LHH</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        @if (@Model.playerinfo.Bats.Equals("L", StringComparison.OrdinalIgnoreCase))//Ronnel: 2/10/14
+                                        {
+                                            <td>
+                                            @if(Model.PP_PitchCountLastStart != null)
+                                            {
+                                            if (Model.PP_PitchCountLastStart.FB_vsRHH != string.Empty ||
+                                                !Model.PP_PitchCountLastStart.FB_vsRHH.Equals("", StringComparison.OrdinalIgnoreCase))
+                                            {
+                                                <span>FB - @Model.PP_PitchCountLastStart.FB_vsRHH</span>
+                                            }
+                                            if (Model.PP_PitchCountLastStart.SL_vsRHH != string.Empty ||
+                                                !Model.PP_PitchCountLastStart.SL_vsRHH.Equals("", StringComparison.OrdinalIgnoreCase))
+                                            {
+                                                <span>SL - @Model.PP_PitchCountLastStart.SL_vsRHH</span>
+                                            }
+                                            if (Model.PP_PitchCountLastStart.CB_vsRHH != string.Empty ||
+                                                !Model.PP_PitchCountLastStart.CB_vsRHH.Equals("", StringComparison.OrdinalIgnoreCase))
+                                            {
+                                                <span>CB - @Model.PP_PitchCountLastStart.CB_vsRHH</span>
+                                            }
+                                            if (Model.PP_PitchCountLastStart.CH_vsRHH != string.Empty ||
+                                                !Model.PP_PitchCountLastStart.CH_vsRHH.Equals("", StringComparison.OrdinalIgnoreCase))
+                                            {
+                                                <span>CH - @Model.PP_PitchCountLastStart.CH_vsRHH</span>
+                                            }
+                                            if (Model.PP_PitchCountLastStart.SPL_vsRHH != string.Empty ||
+                                                !Model.PP_PitchCountLastStart.SPL_vsRHH.Equals("", StringComparison.OrdinalIgnoreCase))
+                                            {
+                                                <span>SPL - @Model.PP_PitchCountLastStart.SPL_vsRHH</span>
+                                            }
+                                            }
+                                        </td>
+                                        }
+                                        else
+                                        {
+                                            <td>
+                                            @if(Model.PP_PitchCountLastStart != null)
+                                            {
+                                            if (Model.PP_PitchCountLastStart.FB_vsLHH != string.Empty ||
+                                                !Model.PP_PitchCountLastStart.FB_vsLHH.Equals("", StringComparison.OrdinalIgnoreCase))
+                                            {
+                                                <span>FB - @Model.PP_PitchCountLastStart.FB_vsLHH</span>
+                                            }
+                                            if (Model.PP_PitchCountLastStart.SL_vsLHH != string.Empty ||
+                                                !Model.PP_PitchCountLastStart.SL_vsLHH.Equals("", StringComparison.OrdinalIgnoreCase))
+                                            {
+                                                <span>SL - @Model.PP_PitchCountLastStart.SL_vsLHH</span>
+                                            }
+                                            if (Model.PP_PitchCountLastStart.CB_vsLHH != string.Empty ||
+                                                !Model.PP_PitchCountLastStart.CB_vsLHH.Equals("", StringComparison.OrdinalIgnoreCase))
+                                            {
+                                                <span>CB - @Model.PP_PitchCountLastStart.CB_vsLHH</span>
+                                            }
+                                            if (Model.PP_PitchCountLastStart.CH_vsLHH != string.Empty ||
+                                                !Model.PP_PitchCountLastStart.CH_vsLHH.Equals("", StringComparison.OrdinalIgnoreCase))
+                                            {
+                                                <span>CH - @Model.PP_PitchCountLastStart.CH_vsLHH</span>
+                                            }
+                                            if (Model.PP_PitchCountLastStart.SPL_vsLHH != string.Empty ||
+                                                !Model.PP_PitchCountLastStart.SPL_vsLHH.Equals("", StringComparison.OrdinalIgnoreCase))
+                                            {
+                                                <span>SPL - @Model.PP_PitchCountLastStart.SPL_vsLHH</span>
+                                            }
+                                            }
+                                        </td>
+                                        }
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="standardTableCell ">
+                            
+                        </div>
+                        <div class="standardTableCell">
+                            
+                        </div>
+                        <div class="standardTableCell">
+                            
+                        </div>
+                        <div id="dcommand" class="standardTableCell rep3leftBorder">
+                            <h4>Command</h4>
+                            <p id="command" class="subheads10px">@try
+                                                                 { @Model.UserEntereds.Command }
+                                                                 catch { }</p>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <img src="~/Images/player_pitcher.png" />
+            </td>
+        </tr>
+    </table>
+</section>
+<section class="OAstatsSec">
+    <div class="r5opp">Current Overall Stats</div>
+    <table class="stdTable fullTblW OAstats">
+        <thead>
+            <tr>
+                <th>Record</th>
+                <th>Games</th>
+                <th>ERA</th>
+                <th>IP</th>
+                <th>H</th>
+                <th>HR</th>
+                <th>BB</th>
+                <th>SO</th>
+                <th>SBA</th>
+                <th>P/PA</th>
+                <th>P/IP</th>
+                <th>P/GS</th>
+                <th>GB%</th>
+                <th>FB%</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="subheads10px">@Model.currentoverallstats.Record</td>
+                <td class="subheads10px">@Model.currentoverallstats.G</td>
+                <td class="subheads10px">@Model.currentoverallstats.ERA</td>
+                <td class="subheads10px">@Model.currentoverallstats.IP</td>
+                <td class="subheads10px">@Model.currentoverallstats.H</td>
+                <td class="subheads10px">@Model.currentoverallstats.HR</td>
+                <td class="subheads10px">@Model.currentoverallstats.BB</td>
+                <td class="subheads10px">@Model.currentoverallstats.SO</td>
+                <td class="subheads10px">@Model.currentoverallstats.SBA</td>
+                <td class="subheads10px">@Model.currentoverallstats.PperPA</td>
+                <td class="subheads10px">@Model.currentoverallstats.PperIP</td>
+                <td class="subheads10px">@Model.currentoverallstats.PperGS</td>
+                @if (Model.currentoverallstats.GB__Overall == string.Empty || Model.currentoverallstats.GB__Overall.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td class="subheads10px"></td>
+                }
+                else
+                {
+                    <td class="subheads10px">@Math.Round(Convert.ToDecimal(Model.currentoverallstats.GB__Overall) * 100, 1)%</td>
+                }
+                @if (Model.currentoverallstats.FB__Overall == string.Empty || Model.currentoverallstats.FB__Overall.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td class="subheads10px"></td>
+                }
+                else
+                {
+                    <td class="subheads10px">@Math.Round(Convert.ToDecimal(Model.currentoverallstats.FB__Overall) * 100, 1)%</td>
+                }
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<section class="OAstatsSec">
+     @if (@Model.playerinfo.Bats.Equals("L", StringComparison.OrdinalIgnoreCase))
+     {
+         <div class="r5opp">Current Stats VS RHH </div>
+     }
+     else
+     {
+         <div class="r5opp">Current Stats VS LHH </div>
+     }
+
+    <table class="stdTable fullTblW OAstats">
+        <thead>
+            <tr>
+                <th>AVG Against: </th>
+                <th>H</th>
+                <th>HR</th>
+                <th>BB</th>
+                <th>SO</th>
+                <th>P/PA</th>
+                <th>GB%</th>
+                <th>FB%</th>
+                <th>SLG</th>
+                <th>OBP</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (@Model.playerinfo.Bats.Equals("L", StringComparison.OrdinalIgnoreCase))
+            {
+                 <tr>
+                    @if (Model.currentoverallstatsvsrhh.AVG_vsRHH == string.Empty || Model.currentoverallstatsvsrhh.AVG_vsRHH.Equals("", StringComparison.OrdinalIgnoreCase))
+                    {
+                        <td class="subheads10px"></td>
+                    }
+                    else
+                    {
+                        <td class="subheads10px">@Convert.ToDecimal(Model.currentoverallstatsvsrhh.AVG_vsRHH).ToString("#.000")</td>
+                    }
+                    
+                    <td class="subheads10px">@Model.currentoverallstatsvsrhh.H_vsRHH</td>
+                    <td class="subheads10px">@Model.currentoverallstatsvsrhh.HR_vsRHH</td>
+                    <td class="subheads10px">@Model.currentoverallstatsvsrhh.BB_vsRHH</td>
+                    <td class="subheads10px">@Model.currentoverallstatsvsrhh.SO_vsRHH</td>
+                    <td class="subheads10px">@Model.currentoverallstatsvsrhh.PperPA_vsRHH</td>
+                    @if (Model.currentoverallstatsvsrhh.GB__vsRHH == string.Empty || Model.currentoverallstatsvsrhh.GB__vsRHH.Equals("", StringComparison.OrdinalIgnoreCase))
+                    {
+                        <td class="subheads10px"></td>
+                    }
+                    else
+                    {
+                        <td class="subheads10px">@Math.Round(Convert.ToDecimal(Model.currentoverallstatsvsrhh.GB__vsRHH) * 100, 1)%</td>
+                    }
+                    @if (Model.currentoverallstatsvsrhh.FB__vsRHH == string.Empty || Model.currentoverallstatsvsrhh.FB__vsRHH.Equals("", StringComparison.OrdinalIgnoreCase))
+                    {
+                        <td class="subheads10px"></td>
+                    }
+                    else
+                    {
+                        <td class="subheads10px">@Math.Round(Convert.ToDecimal(Model.currentoverallstatsvsrhh.FB__vsRHH) * 100, 1)%</td>
+                    }
+                    @if (Model.currentoverallstatsvsrhh.SLG_vsRHH == string.Empty || Model.currentoverallstatsvsrhh.SLG_vsRHH.Equals("", StringComparison.OrdinalIgnoreCase))
+                    {
+                        <td class="subheads10px"></td>
+                    }
+                    else
+                    {
+                        <td class="subheads10px">@Convert.ToDecimal(Model.currentoverallstatsvsrhh.SLG_vsRHH).ToString("#.000")</td>
+                    }
+                    @if (Model.currentoverallstatsvsrhh.OBP_vsRHH == string.Empty || Model.currentoverallstatsvsrhh.OBP_vsRHH.Equals("", StringComparison.OrdinalIgnoreCase))
+                    {
+                        <td class="subheads10px"></td>
+                    }
+                    else
+                    {
+                        <td class="subheads10px">@Convert.ToDecimal(Model.currentoverallstatsvsrhh.OBP_vsRHH).ToString("#.000")</td>
+                    }
+                </tr>
+            }
+            else
+            {
+                 <tr>
+                    @if (Model.currentoverallstatsvslhh.AVG_vsLHH == string.Empty || Model.currentoverallstatsvslhh.AVG_vsLHH.Equals("", StringComparison.OrdinalIgnoreCase))
+                    {
+                        <td class="subheads10px"></td>
+                    }
+                    else
+                    {
+                        <td class="subheads10px">@Convert.ToDecimal(Model.currentoverallstatsvslhh.AVG_vsLHH).ToString("#.000")</td>
+                    }
+                    
+                    <td class="subheads10px">@Model.currentoverallstatsvslhh.H_vsLHH</td>
+                    <td class="subheads10px">@Model.currentoverallstatsvslhh.HR_vsLHH</td>
+                    <td class="subheads10px">@Model.currentoverallstatsvslhh.BB_vsLHH</td>
+                    <td class="subheads10px">@Model.currentoverallstatsvslhh.SO_vsLHH</td>
+                    <td class="subheads10px">@Model.currentoverallstatsvslhh.PperPA_vsLHH</td>
+                    @if (Model.currentoverallstatsvslhh.GB__vsLHH == string.Empty || Model.currentoverallstatsvslhh.GB__vsLHH.Equals("", StringComparison.OrdinalIgnoreCase))
+                    {
+                        <td class="subheads10px"></td>
+                    }
+                    else
+                    {
+                        <td class="subheads10px">@Math.Round(Convert.ToDecimal(Model.currentoverallstatsvslhh.GB__vsLHH) * 100, 1)%</td>
+                    }
+                    @if (Model.currentoverallstatsvslhh.FB__vsLHH == string.Empty || Model.currentoverallstatsvslhh.FB__vsLHH.Equals("", StringComparison.OrdinalIgnoreCase))
+                    {
+                        <td class="subheads10px"></td>
+                    }
+                    else
+                    {
+                        <td class="subheads10px">@Math.Round(Convert.ToDecimal(Model.currentoverallstatsvslhh.FB__vsLHH) * 100, 1)%</td>
+                    }
+                    @if (Model.currentoverallstatsvslhh.SLG_vsLHH == string.Empty || Model.currentoverallstatsvslhh.SLG_vsLHH.Equals("", StringComparison.OrdinalIgnoreCase))
+                    {
+                        <td class="subheads10px"></td>
+                    }
+                    else
+                    {
+                        <td class="subheads10px">@Convert.ToDecimal(Model.currentoverallstatsvslhh.SLG_vsLHH).ToString("#.000")</td>
+                    }
+                    @if (Model.currentoverallstatsvslhh.OBP_vsLHH == string.Empty || Model.currentoverallstatsvslhh.OBP_vsLHH.Equals("", StringComparison.OrdinalIgnoreCase))
+                    {
+                        <td class="subheads10px"></td>
+                    }
+                    else
+                    {
+                        <td class="subheads10px">@Convert.ToDecimal(Model.currentoverallstatsvslhh.OBP_vsLHH).ToString("#.000")</td>
+                    }
+                </tr>
+            }
+            
+        </tbody>
+    </table>
+</section>
+
+<section id="approachoutpitch" class="OAstatsSec">
+    <div class="r5opp">Approach / Outpitch</div>
+    <div class="standardTable repStdTblSkin_border fullTblWFixed">
+        <div id="ApproachOP" class="standardTableRow">
+            <div class="standardTableCell cellPadding">Approach - <label id="lblApproach">@try
+                                                                                          { @Model.UserEntereds.Approach }
+                                                                                          catch { }</label><span class="r5redTxt">(OUT-PITCH - <label id="lblOutpitch">@try
+                                                                                                                                                                       { @Model.UserEntereds.Out_Pitch }
+                                                                                                                                                                       catch { }</label>)</span></div>
+        </div>
+    </div>
+    
+</section>
+
+<section class="OAstatsSec">
+    <div class="standardTable repStdTblSkin_border fullTblWFixed">
+        <div class="standardTableRow">
+            <div class="standardTableCell noBorderLeft releaseTimes">
+                <table id="RT" class="stdTable">
+                    <thead>
+                        <tr>
+                            <th colspan="3"  class="noBorderLeft">Release Times</th>
+                        </tr>
+                        <tr>
+                            <th class="noBorderLeft">1B</th>
+                            <th class="noBorderLeft">2B</th>
+                            <th class="noBorderLeft">SS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="rt1B" class="noBorderLeft" style="height:16px;">@try
+                                                                                    { @Model.UserEntereds.ReleaseTimes_1B }
+                                                                                    catch { }</td>
+                            <td id="rt2B" class="noBorderLeft" style="height:16px;">@try
+                                                                                    { @Model.UserEntereds.ReleaseTimes_2B }
+                                                                                    catch { }</td>
+                            <td id="rtSS" class="noBorderLeft" style="height:16px;"><span class="r5redTxt">@try
+                                                                                                           { @Model.UserEntereds.ReleaseTimes_SS }
+                                                                                                           catch { }</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="pm1B" class="standardTableCell cellPadding4a noBorderLeft">
+                <h4>Pickoff Move 1B:<label id="lblpm1B">@try
+                                                        { @Model.UserEntereds.PickoffMove_1B }
+                                                        catch { }</label></h4>
+            </div>
+            <div id="pm2B" class="standardTableCell cellPadding4a noBorderLeft">
+                <h4>Pickoff Move 2B:<label id="lblpm2B">@try
+                                                        { @Model.UserEntereds.PickoffMove_2B }
+                                                        catch { }</label></h4>
+            </div>
+        </div>
+    </div>
+    
+</section>
+
+<section class="OAstatsSec">
+    <table id="2ttLastTable" class="stdTable fullTblW PVCAction">
+        <thead>
+            <tr>
+                <th>pitches</th>
+                <th>velocity</th>
+                <th>command</th>
+                <th>action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="ud2sm">
+                <td>2SM</td>
+                <td id="lbl2smVel" style="text-align:center;">@try
+                                                              { @Model.UserEntered2.FB2SMVelocity }
+                                                              catch { }</td>
+                <td id="lbl2smCom" style="padding:3px;">@try
+                                                        { @Model.UserEntered2.FB2SMCommand }
+                                                        catch { }</td>
+                <td id="lbl2smDes" style="padding:3px;">@try
+                                                        { @Model.UserEntered2.FB2SMDescription }
+                                                        catch { }</td>
+            </tr>
+            <tr id="ud4sm">
+                <td class="">4SM</td>
+                <td id="lbl4smVel" style="text-align:center;">@try
+                                                              { @Model.UserEntered2.FB4SMVelocity }
+                                                              catch { }</td>
+                <td id="lbl4smCom" style="padding:3px;">@try
+                                                        { @Model.UserEntered2.FB4SMCommand }
+                                                        catch { }</td>
+                <td id="lbl4smDes" style="padding:3px;">@try
+                                                        { @Model.UserEntered2.FB4SMDescription }
+                                                        catch { }</td>
+            </tr>
+            <tr id="udcut">
+                <td class="">CUT FB</td>
+                <td id="lblcutVel" style="text-align:center;">@try
+                                                              { @Model.PitcherNote.CutterVelocity }
+                                                              catch { }</td>
+                <td id="lblcutCom" style="padding:3px;">@try
+                                                        { @Model.UserEntered2.CutterCommand }
+                                                        catch { }</td>
+                <td id="lblcutDes" style="padding:3px;">@try
+                                                        { @Model.PitcherNote.CutterDescription }
+                                                        catch { }</td>
+            </tr>
+            <tr id="udsl">
+                <td class="">SL</td>
+                <td id="lblslVel" style="text-align:center;">@try
+                                                             { @Model.PitcherNote.SliderVelocity }
+                                                             catch { }</td>
+                <td id="lblslCom" style="padding:3px;">@try
+                                                       { @Model.UserEntered2.SliderCommand }
+                                                       catch { }</td>
+                <td id="lblslDes" style="padding:3px;">@try
+                                                       { @Model.PitcherNote.SliderDescription }
+                                                       catch { }</td>
+            </tr>
+            <tr id="udcb">
+                <td class="">CB</td>
+                <td id="lblcbVel" style="text-align:center;">@try
+                                                             { @Model.PitcherNote.CurveballVelocity }
+                                                             catch { }</td>
+                <td id="lblcbCom" style="padding:3px;">@try
+                                                       { @Model.UserEntered2.CurveballCommand }
+                                                       catch { }</td>
+                <td id="lblcbDes" style="padding:3px;">@try
+                                                       { @Model.PitcherNote.CurveballDescription }
+                                                       catch { }</td>
+            </tr>
+            <tr id="udch">
+                <td class="">CH</td>
+                <td id="lblchVel" style="text-align:center;">@try
+                                                             { @Model.PitcherNote.ChangeupVelocity }
+                                                             catch { }</td>
+                <td id="lblchCom" style="padding:3px;">@try
+                                                       { @Model.UserEntered2.ChangeupCommand }
+                                                       catch { }</td>
+                <td id="lblchDes" style="padding:3px;">@try
+                                                       { @Model.PitcherNote.ChangeupDescription }
+                                                       catch { }</td>
+            </tr>
+            <tr id="udspl">
+                <td class="">SPL</td>
+                <td id="lblsplVel" style="text-align:center;">@try
+                                                              { @Model.PitcherNote.SplitfingerVelocity }
+                                                              catch { }</td>
+                <td id="lblsplCom" style="padding:3px;">@try
+                                                        { @Model.UserEntered2.SplitfingerCommand }
+                                                        catch { }</td>
+                <td id="lblsplDes" style="padding:3px;">@try
+                                                        { @Model.PitcherNote.SplitfingerDescription }
+                                                        catch { }</td>
+            </tr>
+            <tr id="udknb">
+                <td class="">KNB</td>
+                <td id="lblknbVel" style="text-align:center;">@try
+                                                              { @Model.PitcherNote.KnuckleballVelocity }
+                                                              catch { }</td>
+                <td id="lblknbCom" style="padding:3px;">@try
+                                                        { @Model.UserEntered2.KnuckleballCommand }
+                                                        catch { }</td>
+                <td id="lblknbDes" style="padding:3px;">@try
+                                                        { @Model.PitcherNote.KnuckleballDescription }
+                                                        catch { }</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<section class="OAstatsSec">
+    <table id="LastTable" class="stdTable fullTblWFixed ppitches">
+        <thead>
+            <tr>
+                <th>% of pitches</th>
+                <th colspan="5">Bases Empty</th>
+                <th colspan="5">runners in scoring position</th>
+                <th>overall</th>
+                
+                <th rowspan="3">Strike Zone%</th>
+                <th rowspan="3">Chase %</th>
+            </tr>
+            <tr>
+                <th class="subheads10px">total # of pitches</th>
+                <th class="subheads10px"></th>
+                <th class="subheads10px"></th>
+                <th class="subheads10px"></th>
+                <th class="subheads10px"></th>
+                <th class="subheads10px"></th>
+                <th class="subheads10px"></th>
+                <th class="subheads10px"></th>
+                <th class="subheads10px"></th>
+                <th class="subheads10px"></th>
+                <th class="subheads10px"></th>
+                <th class="subheads10px"></th>
+            </tr>
+            <tr>
+                <th></th>
+                <th>All Counts</th>
+                <th>0-0</th>
+                <th>Pitcher Ahead</th>
+                <th>Pitcher Behind</th>
+                <th>2K's Excl. 3-2</th>
+                <th>All Counts</th>
+                <th>0-0</th>
+                <th>Pitcher Ahead</th>
+                <th>Pitcher Behind</th>
+                <th>2K's Excl. 3-2</th>
+                <th>3-2 Counts</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="">FB</td>
+                @if (Model.PP_CurrentAndSplits.BasesEmpty_AllCounts_FB__4sm___2sm___Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.BasesEmpty_AllCounts_FB__4sm___2sm___Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.BasesEmpty_AllCounts_FB__4sm___2sm___Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.BasesEmpty_FirstPitch_FB__4sm___2sm___Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.BasesEmpty_FirstPitch_FB__4sm___2sm___Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.BasesEmpty_FirstPitch_FB__4sm___2sm___Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.BasesEmpty_PitcherAhead_FB__4sm___2sm___Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.BasesEmpty_PitcherAhead_FB__4sm___2sm___Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.BasesEmpty_PitcherAhead_FB__4sm___2sm___Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.BasesEmpty_PitcherBehind_FB__4sm___2sm___Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.BasesEmpty_PitcherBehind_FB__4sm___2sm___Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.BasesEmpty_PitcherBehind_FB__4sm___2sm___Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.BasesEmpty_2Ks__Excl3_2_FB__4sm___2sm___Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.BasesEmpty_2Ks__Excl3_2_FB__4sm___2sm___Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.BasesEmpty_2Ks__Excl3_2_FB__4sm___2sm___Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.RISP_AllCounts_FB__4sm___2sm___Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.RISP_AllCounts_FB__4sm___2sm___Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.RISP_AllCounts_FB__4sm___2sm___Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.RISP_FirstPitch_FB__4sm___2sm___Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.RISP_FirstPitch_FB__4sm___2sm___Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.RISP_FirstPitch_FB__4sm___2sm___Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.RISP_PitcherAhead_FB__4sm___2sm___Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.RISP_PitcherAhead_FB__4sm___2sm___Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.RISP_PitcherAhead_FB__4sm___2sm___Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.RISP_PitcherBehind_FB__4sm___2sm___Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.RISP_PitcherBehind_FB__4sm___2sm___Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.RISP_PitcherBehind_FB__4sm___2sm___Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.RISP_2Ks__Excl3_2_FB__4sm___2sm___Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.RISP_2Ks__Excl3_2_FB__4sm___2sm___Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.RISP_2Ks__Excl3_2_FB__4sm___2sm___Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.C3_2_FB__4sm___2sm___Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.C3_2_FB__4sm___2sm___Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Model.PP_CurrentAndSplits.C3_2_FB__4sm___2sm___Pitches)%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.StrikeZone__FB__4sm___2sm_ == string.Empty
+                    || Model.PP_CurrentAndSplits.StrikeZone__FB__4sm___2sm_.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.PP_CurrentAndSplits.StrikeZone__FB__4sm___2sm_) * 100)%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.Chase__FB__4sm___2sm_ == string.Empty
+                    || Model.PP_CurrentAndSplits.Chase__FB__4sm___2sm_.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.PP_CurrentAndSplits.Chase__FB__4sm___2sm_) * 100)%</td>
+                }
+                
+            </tr>
+            <tr>
+                <td class="">CUT FB</td>
+                
+                @if (Model.PP_CurrentAndSplits.BasesEmpty_AllCounts_Cutter__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.BasesEmpty_AllCounts_Cutter__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.BasesEmpty_AllCounts_Cutter__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.BasesEmpty_FirstPitch_Cutter__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.BasesEmpty_FirstPitch_Cutter__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.BasesEmpty_FirstPitch_Cutter__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.BasesEmpty_PitcherAhead_Cutter__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.BasesEmpty_PitcherAhead_Cutter__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.BasesEmpty_PitcherAhead_Cutter__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.BasesEmpty_PitcherBehind_Cutter__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.BasesEmpty_PitcherBehind_Cutter__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.BasesEmpty_PitcherBehind_Cutter__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.BasesEmpty_2Ks__Excl3_2_Cutter__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.BasesEmpty_2Ks__Excl3_2_Cutter__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.BasesEmpty_2Ks__Excl3_2_Cutter__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.RISP_AllCounts_Cutter__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.RISP_AllCounts_Cutter__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.RISP_AllCounts_Cutter__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.RISP_FirstPitch_Cutter__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.RISP_FirstPitch_Cutter__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.RISP_FirstPitch_Cutter__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.RISP_PitcherAhead_Cutter__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.RISP_PitcherAhead_Cutter__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.RISP_PitcherAhead_Cutter__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.RISP_PitcherBehind_Cutter__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.RISP_PitcherBehind_Cutter__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.RISP_PitcherBehind_Cutter__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.RISP_2Ks__Excl3_2_Cutter__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.RISP_2Ks__Excl3_2_Cutter__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.RISP_2Ks__Excl3_2_Cutter__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.C3_2_Cutter__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.C3_2_Cutter__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Model.PP_CurrentAndSplits.C3_2_Cutter__Pitches)%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.StrikeZone__Cutter == string.Empty
+                    || Model.PP_CurrentAndSplits.StrikeZone__Cutter.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.PP_CurrentAndSplits.StrikeZone__Cutter) * 100)%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.Chase__Cutter == string.Empty
+                    || Model.PP_CurrentAndSplits.Chase__Cutter.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.PP_CurrentAndSplits.Chase__Cutter) * 100)%</td>
+                }
+            </tr>
+            <tr>
+                <td class="">SL</td>
+                @if (Model.PP_CurrentAndSplits.BasesEmpty_AllCounts_Slider__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.BasesEmpty_AllCounts_Slider__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.BasesEmpty_AllCounts_Slider__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.BasesEmpty_FirstPitch_Slider__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.BasesEmpty_FirstPitch_Slider__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.BasesEmpty_FirstPitch_Slider__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.BasesEmpty_PitcherAhead_Slider__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.BasesEmpty_PitcherAhead_Slider__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.BasesEmpty_PitcherAhead_Slider__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.BasesEmpty_PitcherBehind_Slider__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.BasesEmpty_PitcherBehind_Slider__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.BasesEmpty_PitcherBehind_Slider__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.BasesEmpty_2Ks__Excl3_2_Slider__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.BasesEmpty_2Ks__Excl3_2_Slider__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.BasesEmpty_2Ks__Excl3_2_Slider__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.RISP_AllCounts_Slider__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.RISP_AllCounts_Slider__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.RISP_AllCounts_Slider__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.RISP_FirstPitch_Slider__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.RISP_FirstPitch_Slider__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.RISP_FirstPitch_Slider__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.RISP_PitcherAhead_Slider__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.RISP_PitcherAhead_Slider__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.RISP_PitcherAhead_Slider__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.RISP_PitcherBehind_Slider__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.RISP_PitcherBehind_Slider__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.RISP_PitcherBehind_Slider__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.RISP_2Ks__Excl3_2_Slider__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.RISP_2Ks__Excl3_2_Slider__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.RISP_2Ks__Excl3_2_Slider__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.C3_2_Slider__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.C3_2_Slider__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Model.PP_CurrentAndSplits.C3_2_Slider__Pitches)%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.StrikeZone__Slider == string.Empty
+                    || Model.PP_CurrentAndSplits.StrikeZone__Slider.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.PP_CurrentAndSplits.StrikeZone__Slider) * 100)%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.Chase__Slider == string.Empty
+                    || Model.PP_CurrentAndSplits.Chase__Slider.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.PP_CurrentAndSplits.Chase__Slider) * 100)%</td>
+                }
+            </tr>
+            <tr>
+                <td class="">CSB</td>
+                @if (Model.PP_CurrentAndSplits.BasesEmpty_AllCounts_Curve__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.BasesEmpty_AllCounts_Curve__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.BasesEmpty_AllCounts_Curve__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.BasesEmpty_FirstPitch_Curve__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.BasesEmpty_FirstPitch_Curve__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.BasesEmpty_FirstPitch_Curve__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.BasesEmpty_PitcherAhead_Curve__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.BasesEmpty_PitcherAhead_Curve__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.BasesEmpty_PitcherAhead_Curve__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.BasesEmpty_PitcherBehind_Curve__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.BasesEmpty_PitcherBehind_Curve__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.BasesEmpty_PitcherBehind_Curve__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.BasesEmpty_2Ks__Excl3_2_Curve__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.BasesEmpty_2Ks__Excl3_2_Curve__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.BasesEmpty_2Ks__Excl3_2_Curve__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.RISP_AllCounts_Curve__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.RISP_AllCounts_Curve__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.RISP_AllCounts_Curve__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.RISP_FirstPitch_Curve__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.RISP_FirstPitch_Curve__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.RISP_FirstPitch_Curve__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.RISP_PitcherAhead_Curve__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.RISP_PitcherAhead_Curve__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.RISP_PitcherAhead_Curve__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.RISP_PitcherBehind_Curve__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.RISP_PitcherBehind_Curve__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.RISP_PitcherBehind_Curve__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.RISP_2Ks__Excl3_2_Curve__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.RISP_2Ks__Excl3_2_Curve__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.RISP_2Ks__Excl3_2_Curve__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.C3_2_Curve__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.C3_2_Curve__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Model.PP_CurrentAndSplits.C3_2_Curve__Pitches)%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.StrikeZone__Curve == string.Empty
+                    || Model.PP_CurrentAndSplits.StrikeZone__Curve.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.PP_CurrentAndSplits.StrikeZone__Curve) * 100)%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.Chase__Curve == string.Empty
+                    || Model.PP_CurrentAndSplits.Chase__Curve.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.PP_CurrentAndSplits.Chase__Curve) * 100)%</td>
+                }
+            </tr>
+            <tr>
+                <td class="">CH</td>
+                @if (Model.PP_CurrentAndSplits.BasesEmpty_AllCounts_Change__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.BasesEmpty_AllCounts_Change__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.BasesEmpty_AllCounts_Change__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.BasesEmpty_FirstPitch_Change__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.BasesEmpty_FirstPitch_Change__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.BasesEmpty_FirstPitch_Change__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.BasesEmpty_PitcherAhead_Change__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.BasesEmpty_PitcherAhead_Change__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.BasesEmpty_PitcherAhead_Change__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.BasesEmpty_PitcherBehind_Change__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.BasesEmpty_PitcherBehind_Change__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.BasesEmpty_PitcherBehind_Change__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.BasesEmpty_2Ks__Excl3_2_Change__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.BasesEmpty_2Ks__Excl3_2_Change__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.BasesEmpty_2Ks__Excl3_2_Change__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.RISP_AllCounts_Change__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.RISP_AllCounts_Change__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.RISP_AllCounts_Change__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.RISP_FirstPitch_Change__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.RISP_FirstPitch_Change__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.RISP_FirstPitch_Change__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.RISP_PitcherAhead_Change__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.RISP_PitcherAhead_Change__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.RISP_PitcherAhead_Change__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.RISP_PitcherBehind_Change__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.RISP_PitcherBehind_Change__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.RISP_PitcherBehind_Change__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.RISP_2Ks__Excl3_2_Change__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.RISP_2Ks__Excl3_2_Change__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.RISP_2Ks__Excl3_2_Change__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.C3_2_Change__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.C3_2_Change__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Model.PP_CurrentAndSplits.C3_2_Change__Pitches)%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.StrikeZone__Change == string.Empty
+                    || Model.PP_CurrentAndSplits.StrikeZone__Change.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.PP_CurrentAndSplits.StrikeZone__Change) * 100)%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.Chase__Change == string.Empty
+                    || Model.PP_CurrentAndSplits.Chase__Change.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.PP_CurrentAndSplits.Chase__Change) * 100)%</td>
+                }
+            </tr>
+            <tr>
+                <td class="">SPL</td>
+                @if (Model.PP_CurrentAndSplits.BasesEmpty_AllCounts_Split_Finger__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.BasesEmpty_AllCounts_Split_Finger__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.BasesEmpty_AllCounts_Split_Finger__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.BasesEmpty_FirstPitch_Split_Finger__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.BasesEmpty_FirstPitch_Split_Finger__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.BasesEmpty_FirstPitch_Split_Finger__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.BasesEmpty_PitcherAhead_Split_Finger__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.BasesEmpty_PitcherAhead_Split_Finger__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.BasesEmpty_PitcherAhead_Split_Finger__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.BasesEmpty_PitcherBehind_Split_Finger__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.BasesEmpty_PitcherBehind_Split_Finger__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.BasesEmpty_PitcherBehind_Split_Finger__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.BasesEmpty_2Ks__Excl3_2_Split_Finger__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.BasesEmpty_2Ks__Excl3_2_Split_Finger__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.BasesEmpty_2Ks__Excl3_2_Split_Finger__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.RISP_AllCounts_Split_Finger__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.RISP_AllCounts_Split_Finger__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.RISP_AllCounts_Split_Finger__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.RISP_FirstPitch_Split_Finger__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.RISP_FirstPitch_Split_Finger__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.RISP_FirstPitch_Split_Finger__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.RISP_PitcherAhead_Split_Finger__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.RISP_PitcherAhead_Split_Finger__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.RISP_PitcherAhead_Split_Finger__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.RISP_PitcherBehind_Split_Finger__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.RISP_PitcherBehind_Split_Finger__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.RISP_PitcherBehind_Split_Finger__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.RISP_2Ks__Excl3_2_Split_Finger__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.RISP_2Ks__Excl3_2_Split_Finger__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.RISP_2Ks__Excl3_2_Split_Finger__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.C3_2_Split_Finger__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.C3_2_Split_Finger__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Model.PP_CurrentAndSplits.C3_2_Split_Finger__Pitches)%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.StrikeZone__Split_Finger == string.Empty
+                    || Model.PP_CurrentAndSplits.StrikeZone__Split_Finger.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.PP_CurrentAndSplits.StrikeZone__Split_Finger) * 100)%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.Chase__Split_Finger == string.Empty
+                    || Model.PP_CurrentAndSplits.Chase__Split_Finger.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.PP_CurrentAndSplits.Chase__Split_Finger) * 100)%</td>
+                }
+            </tr>
+            <tr>
+                <td class="">KNB</td>
+                @if (Model.PP_CurrentAndSplits.BasesEmpty_AllCounts_Knuckleball__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.BasesEmpty_AllCounts_Knuckleball__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.BasesEmpty_AllCounts_Knuckleball__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.BasesEmpty_FirstPitch_Knuckleball__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.BasesEmpty_FirstPitch_Knuckleball__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.BasesEmpty_FirstPitch_Knuckleball__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.BasesEmpty_PitcherAhead_Knuckleball__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.BasesEmpty_PitcherAhead_Knuckleball__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.BasesEmpty_PitcherAhead_Knuckleball__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.BasesEmpty_PitcherBehind_Knuckleball__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.BasesEmpty_PitcherBehind_Knuckleball__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.BasesEmpty_PitcherBehind_Knuckleball__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.BasesEmpty_2Ks__Excl3_2_Knuckleball__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.BasesEmpty_2Ks__Excl3_2_Knuckleball__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.BasesEmpty_2Ks__Excl3_2_Knuckleball__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.RISP_AllCounts_Knuckleball__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.RISP_AllCounts_Knuckleball__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.RISP_AllCounts_Knuckleball__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.RISP_FirstPitch_Knuckleball__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.RISP_FirstPitch_Knuckleball__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.RISP_FirstPitch_Knuckleball__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.RISP_PitcherAhead_Knuckleball__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.RISP_PitcherAhead_Knuckleball__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.RISP_PitcherAhead_Knuckleball__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.RISP_PitcherBehind_Knuckleball__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.RISP_PitcherBehind_Knuckleball__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.RISP_PitcherBehind_Knuckleball__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.RISP_2Ks__Excl3_2_Knuckleball__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.RISP_2Ks__Excl3_2_Knuckleball__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Model.PP_CurrentAndSplits.RISP_2Ks__Excl3_2_Knuckleball__Pitches%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.C3_2_Knuckleball__Pitches == string.Empty
+                    || Model.PP_CurrentAndSplits.C3_2_Knuckleball__Pitches.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Model.PP_CurrentAndSplits.C3_2_Knuckleball__Pitches)%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.StrikeZone__Knuckleball == string.Empty
+                    || Model.PP_CurrentAndSplits.StrikeZone__Knuckleball.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.PP_CurrentAndSplits.StrikeZone__Knuckleball) * 100)%</td>
+                }
+                
+                
+                @if (Model.PP_CurrentAndSplits.Chase__Knuckleball == string.Empty
+                    || Model.PP_CurrentAndSplits.Chase__Knuckleball.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.PP_CurrentAndSplits.Chase__Knuckleball) * 100)%</td>
+                }
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<div id="udArmSlot" title="Arm Slot"><textarea id="txtarmslot" style="resize:none;">@try
+                                                                                    { @Model.UserEntereds.ArmSlot }
+                                                                                    catch { }</textarea></div>
+<div id="udControl" title="Control"><textarea id="txtcontrol" style="resize:none;">@try
+                                                                                   { @Model.UserEntereds.Control }
+                                                                                   catch { }</textarea></div>
+<div id="udCommand" title="Command"><textarea id="txtcommand" style="resize:none;">@try
+                                                                                   { @Model.UserEntereds.Command }
+                                                                                   catch { }</textarea></div>
+<div id="udApproachOutpitch" title="Approach / Outpitch">
+    <h4>Approach</h4>
+    <textarea id="txtapproach" style="resize:none;">@try
+                                                    { @Model.UserEntereds.Approach }
+                                                    catch { }</textarea>
+    <h4>Outpitch</h4>
+    <textarea id="txtoutpitch" style="resize:none;">@try
+                                                    { @Model.UserEntereds.Out_Pitch }
+                                                    catch { }</textarea>
+</div>
+
+<div id="udRT" title="Release Times">
+    <h4>1B</h4>
+    <textarea id="txtrt1B" style="resize:none;">@try
+                                                { @Model.UserEntereds.ReleaseTimes_1B }
+                                                catch { }</textarea>
+    <h4>2B</h4>
+    <textarea id="txtrt2B" style="resize:none;">@try
+                                                { @Model.UserEntereds.ReleaseTimes_2B }
+                                                catch { }</textarea>
+    <h4>SS</h4>
+    <textarea id="txtrtSS" style="resize:none;">@try
+                                                { @Model.UserEntereds.ReleaseTimes_SS }
+                                                catch { }</textarea>
+</div>
+    
+<div id="udPM1B" title="Pickoff Move 1B"><textarea id="txtpm1B" style="resize:none;">@try
+                                                                                     { @Model.UserEntereds.PickoffMove_1B }
+                                                                                     catch { }</textarea></div>
+<div id="udPM2B" title="Pickoff Move 2B"><textarea id="txtpm2B" style="resize:none;">@try
+                                                                                     { @Model.UserEntereds.PickoffMove_2B }
+                                                                                     catch { }</textarea></div>
+<div id="2sm" title="Pitches 2SM">
+    <h4>Velocity</h4>
+    <textarea id="txt2smVel" style="resize:none;">@try
+                                                  { @Model.UserEntered2.FB2SMVelocity }
+                                                  catch { }</textarea>
+    <h4>Command</h4>
+    <textarea id="txt2smCom" style="resize:none;">@try
+                                                  { @Model.UserEntered2.FB2SMCommand }
+                                                  catch { }</textarea>
+    <h4>Action</h4>
+    <textarea id="txt2smDes" style="resize:none;">@try
+                                                  { @Model.UserEntered2.FB2SMDescription }
+                                                  catch { }</textarea>
+</div>
+
+<div id="4sm" title="Pitches 4SM">
+    <h4>Velocity</h4>
+    <textarea id="txt4smVel" style="resize:none;">@try
+                                                  { @Model.UserEntered2.FB4SMVelocity }
+                                                  catch { }</textarea>
+    <h4>Command</h4>
+    <textarea id="txt4smCom" style="resize:none;">@try
+                                                  { @Model.UserEntered2.FB4SMCommand }
+                                                  catch { }</textarea>
+    <h4>Action</h4>
+    <textarea id="txt4smDes" style="resize:none;">@try
+                                                  { @Model.UserEntered2.FB4SMDescription }
+                                                  catch { }</textarea>
+</div>
+
+<div id="cut" title="Pitches Cut FB">
+    <h4>Velocity</h4>
+    <textarea id="txtcutVel" style="resize:none;">@try
+                                                  { @Model.PitcherNote.CutterVelocity }
+                                                  catch { }</textarea>
+    <h4>Command</h4>
+    <textarea id="txtcutCom" style="resize:none;">@try
+                                                  { @Model.UserEntered2.CutterCommand }
+                                                  catch { }</textarea>
+    <h4>Action</h4>
+    <textarea id="txtcutDes" style="resize:none;">@try
+                                                  { @Model.PitcherNote.CutterDescription }
+                                                  catch { }</textarea>
+</div>
+
+<div id="sl" title="Pitches Slider">
+    <h4>Velocity</h4>
+    <textarea id="txtslVel" style="resize:none;">@try
+                                                 { @Model.PitcherNote.SliderVelocity }
+                                                 catch { }</textarea>
+    <h4>Command</h4>
+    <textarea id="txtslCom" style="resize:none;">@try
+                                                 { @Model.UserEntered2.SliderCommand }
+                                                 catch { }</textarea>
+    <h4>Action</h4>
+    <textarea id="txtslDes" style="resize:none;">@try
+                                                 { @Model.PitcherNote.SliderDescription }
+                                                 catch { }</textarea>
+</div>    
+
+<div id="cb" title="Pitches Curveball">
+    <h4>Velocity</h4>
+    <textarea id="txtcbVel" style="resize:none;">@try
+                                                 { @Model.PitcherNote.CurveballVelocity }
+                                                 catch { }</textarea>
+    <h4>Command</h4>
+    <textarea id="txtcbCom" style="resize:none;">@try
+                                                 { @Model.UserEntered2.CurveballCommand }
+                                                 catch { }</textarea>
+    <h4>Action</h4>
+    <textarea id="txtcbDes" style="resize:none;">@try
+                                                 { @Model.PitcherNote.CurveballDescription }
+                                                 catch { }</textarea>
+</div> 
+
+    
+<div id="ch" title="Pitches Changeup">
+    <h4>Velocity</h4>
+    <textarea id="txtchVel" style="resize:none;">@try
+                                                 { @Model.PitcherNote.ChangeupVelocity }
+                                                 catch { }</textarea>
+    <h4>Command</h4>
+    <textarea id="txtchCom" style="resize:none;">@try
+                                                 { @Model.UserEntered2.ChangeupCommand }
+                                                 catch { }</textarea>
+    <h4>Action</h4>
+    <textarea id="txtchDes" style="resize:none;">@try
+                                                 { @Model.PitcherNote.ChangeupDescription }
+                                                 catch { }</textarea>
+</div> 
+    
+<div id="spl" title="Pitches Splitfinger">
+    <h4>Velocity</h4>
+    <textarea id="txtsplVel" style="resize:none;">@try
+                                                  { @Model.PitcherNote.SplitfingerVelocity }
+                                                  catch { }</textarea>
+    <h4>Command</h4>
+    <textarea id="txtsplCom" style="resize:none;">@try
+                                                  { @Model.UserEntered2.SplitfingerCommand }
+                                                  catch { }</textarea>
+    <h4>Action</h4>
+    <textarea id="txtsplDes" style="resize:none;">@try
+                                                  { @Model.PitcherNote.SplitfingerDescription }
+                                                  catch { }</textarea>
+</div>
+    
+<div id="knb" title="Pitches Knuckleball">
+    <h4>Velocity</h4>
+    <textarea id="txtknbVel" style="resize:none;">@try
+                                                  { @Model.PitcherNote.KnuckleballVelocity }
+                                                  catch { }</textarea>
+    <h4>Command</h4>
+    <textarea id="txtknbCom" style="resize:none;">@try
+                                                  { @Model.UserEntered2.KnuckleballCommand }
+                                                  catch { }</textarea>
+    <h4>Action</h4>
+    <textarea id="txtknbDes" style="resize:none;">@try
+                                                  { @Model.PitcherNote.KnuckleballDescription }
+                                                  catch { }</textarea>
+</div>    
+                     
+}
+@section customstyle{
+    <link href="~/Content/themes/report3.css" rel="stylesheet" />
+}
+@section scripts{
+    <script type="text/javascript">
+        $("#LastTable tbody tr").filter(function () { return $("td:last", this).is(":empty"); }).hide();
+
+        //$("#2ttLastTable tbody tr").filter(function () { return $("td:last", this).is(":empty"); }).hide();
+
+        
+        //$('#2ttLastTable').each(function () {
+        //    if ($('tbody:empty', this))
+        //        $(this).hide();
+        //    else $(this).show();
+        //});
+        
+
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        };
+        //ARMSLOT
+        $(function () {
+            $('#udArmSlot').dialog({
+            autoOpen: false,
+            width: 400,
+            resizable: false,
+            modal: true,
+            buttons: {
+                "Update": function () {
+                    var _pid = getParameterByName("_pid");
+                    var _armslot = document.getElementById("txtarmslot").value
+                    var data = { "PlayerID": _pid, "ArmSlot": _armslot }
+                    $.post("/Home/EditArmSlot", data, updateSuccess())
+                },
+                "Cancel": function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+        
+        function updateSuccess() {
+            var _armslot = document.getElementById("txtarmslot").value
+            $("#armslot").empty().append(_armslot);
+            $('#commonMessage').stop(true, true);
+            $('#udArmSlot').dialog('close');
+            $('#commonMessage').html("Update Complete");
+            $('#commonMessage').delay(300).slideDown(300).delay(2000).slideUp(300);
+        }
+
+        $("#darmslot").click(function () {
+            $("#udArmSlot").dialog("open");
+            });
+        });
+        //CONTROL
+        $(function () {
+            $('#udControl').dialog({
+                autoOpen: false,
+                width: 400,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Update": function () {
+                        var _pid = getParameterByName("_pid");
+                        var _control = document.getElementById("txtcontrol").value
+                        var data = { "PlayerID": _pid, "Control": _control }
+                        $.post("/Home/EditControl", data, updateSuccess())
+                    },
+                    "Cancel": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            function updateSuccess() {
+                var _control = document.getElementById("txtcontrol").value
+                $("#control").empty().append(_control);
+                $('#commonMessage').stop(true, true);
+                $('#udControl').dialog('close');
+                $('#commonMessage').html("Update Complete");
+                $('#commonMessage').delay(300).slideDown(300).delay(2000).slideUp(300);
+            }
+
+            $("#dcontrol").click(function () {
+                $("#udControl").dialog("open");
+            });
+        });
+        //COMMAND
+        $(function () {
+            $('#udCommand').dialog({
+                autoOpen: false,
+                width: 400,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Update": function () {
+                        var _pid = getParameterByName("_pid");
+                        var _command = document.getElementById("txtcommand").value
+                        var data = { "PlayerID": _pid, "Command": _command }
+                        $.post("/Home/EditCommand", data, updateSuccess())
+                    },
+                    "Cancel": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            function updateSuccess() {
+                var _command = document.getElementById("txtcommand").value
+                $("#command").empty().append(_command);
+                $('#commonMessage').stop(true, true);
+                $('#udCommand').dialog('close');
+                $('#commonMessage').html("Update Complete");
+                $('#commonMessage').delay(300).slideDown(300).delay(2000).slideUp(300);
+            }
+
+            $("#dcommand").click(function () {
+                $("#udCommand").dialog("open");
+            });
+        });
+        //Approach / Outpitch
+        $(function () {
+            $('#udApproachOutpitch').dialog({
+                autoOpen: false,
+                width: 400,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Update": function () {
+                        var _pid = getParameterByName("_pid");
+                        var _approach = document.getElementById("txtapproach").value
+                        var _outpitch = document.getElementById("txtoutpitch").value
+                        var data = { "PlayerID": _pid, "Approach": _approach, "Outpitch": _outpitch }
+                        $.post("/Home/EditApproachOutpitch", data, updateSuccess())
+                    },
+                    "Cancel": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            function updateSuccess() {
+                var _approach = document.getElementById("txtapproach").value
+                $("#lblApproach").empty().append(_approach);
+                var _outpitch = document.getElementById("txtoutpitch").value
+                $("#lblOutpitch").empty().append(_outpitch);
+                $('#commonMessage').stop(true, true);
+
+                $('#udApproachOutpitch').dialog('close');
+                $('#commonMessage').html("Update Complete");
+                $('#commonMessage').delay(300).slideDown(300).delay(2000).slideUp(300);
+            }
+
+            $("#approachoutpitch").click(function () {
+                $("#udApproachOutpitch").dialog("open");
+            });
+        });
+        //Release Times
+        $(function () {
+            $('#udRT').dialog({
+                autoOpen: false,
+                width: 400,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Update": function () {
+                        var _pid = getParameterByName("_pid");
+                        var _rt1B = document.getElementById("txtrt1B").value
+                        var _rt2B = document.getElementById("txtrt2B").value
+                        var _rtSS = document.getElementById("txtrtSS").value
+                        var data = { "PlayerID": _pid, "rt1B": _rt1B, "rt2B": _rt2B, "rtSS": _rtSS }
+                        $.post("/Home/EditReleaseTimes", data, updateSuccess())
+                    },
+                    "Cancel": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            function updateSuccess() {
+                var _rt1B = document.getElementById("txtrt1B").value
+                $("#rt1B").empty().append(_rt1B);
+
+                var _rt2B = document.getElementById("txtrt2B").value
+                $("#rt2B").empty().append(_rt2B);
+
+                var _rtSS = document.getElementById("txtrtSS").value
+                $("#rtSS").empty().append(_rtSS);
+                $('#commonMessage').stop(true, true);
+
+                $('#udRT').dialog('close');
+                $('#commonMessage').html("Update Complete");
+                $('#commonMessage').delay(300).slideDown(300).delay(2000).slideUp(300);
+            }
+
+            $("#RT").click(function () {
+                $("#udRT").dialog("open");
+            });
+        });
+        //Pickoff Move 1B
+        $(function () {
+            $('#udPM1B').dialog({
+                autoOpen: false,
+                width: 400,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Update": function () {
+                        var _pid = getParameterByName("_pid");
+                        var _pm1B = document.getElementById("txtpm1B").value
+                        var data = { "PlayerID": _pid, "pm1B": _pm1B }
+                        $.post("/Home/EditPickoffMove1B", data, updateSuccess())
+                    },
+                    "Cancel": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            function updateSuccess() {
+                var _pm1B = document.getElementById("txtpm1B").value
+                $("#lblpm1B").empty().append(_pm1B);
+                $('#commonMessage').stop(true, true);
+                $('#udPM1B').dialog('close');
+                $('#commonMessage').html("Update Complete");
+                $('#commonMessage').delay(300).slideDown(300).delay(2000).slideUp(300);
+            }
+
+            $("#pm1B").click(function () {
+                $("#udPM1B").dialog("open");
+            });
+        });
+        //Pickoff Move 2B
+        $(function () {
+            $('#udPM2B').dialog({
+                autoOpen: false,
+                width: 400,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Update": function () {
+                        var _pid = getParameterByName("_pid");
+                        var _pm2B = document.getElementById("txtpm2B").value
+                        var data = { "PlayerID": _pid, "pm2B": _pm2B }
+                        $.post("/Home/EditPickoffMove2B", data, updateSuccess())
+                    },
+                    "Cancel": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            function updateSuccess() {
+                var _pm2B = document.getElementById("txtpm2B").value
+                $("#lblpm2B").empty().append(_pm2B);
+                $('#commonMessage').stop(true, true);
+                $('#udPM2B').dialog('close');
+                $('#commonMessage').html("Update Complete");
+                $('#commonMessage').delay(300).slideDown(300).delay(2000).slideUp(300);
+            }
+
+            $("#pm2B").click(function () {
+                $("#udPM2B").dialog("open");
+            });
+        });
+
+
+
+        //2sm
+        $(function () {
+            $('#2sm').dialog({
+                autoOpen: false,
+                width: 400,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Update": function () {
+                        var _pid = getParameterByName("_pid");
+                        var _vel = document.getElementById("txt2smVel").value
+                        var _com = document.getElementById("txt2smCom").value
+                        var _des = document.getElementById("txt2smDes").value
+                        var data = { "PlayerID": _pid, "vel": _vel, "com": _com, "des": _des }
+                        $.post("/Home/Edit2sm", data, updateSuccess())
+                    },
+                    "Cancel": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            function updateSuccess() {
+                var _vel = document.getElementById("txt2smVel").value
+                $("#lbl2smVel").empty().append(_vel);
+
+                var _com = document.getElementById("txt2smCom").value
+                $("#lbl2smCom").empty().append(_com);
+
+                var _des = document.getElementById("txt2smDes").value
+                $("#lbl2smDes").empty().append(_des);
+                $('#commonMessage').stop(true, true);
+
+                $('#2sm').dialog('close');
+                $('#commonMessage').html("Update Complete");
+                $('#commonMessage').delay(300).slideDown(300).delay(2000).slideUp(300);
+            }
+
+            $("#ud2sm").click(function () {
+                $("#2sm").dialog("open");
+            });
+        });
+        //4sm
+        $(function () {
+            $('#4sm').dialog({
+                autoOpen: false,
+                width: 400,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Update": function () {
+                        var _pid = getParameterByName("_pid");
+                        var _vel = document.getElementById("txt4smVel").value
+                        var _com = document.getElementById("txt4smCom").value
+                        var _des = document.getElementById("txt4smDes").value
+                        var data = { "PlayerID": _pid, "vel": _vel, "com": _com, "des": _des }
+                        $.post("/Home/Edit4sm", data, updateSuccess())
+                    },
+                    "Cancel": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            function updateSuccess() {
+                var _vel = document.getElementById("txt4smVel").value
+                $("#lbl4smVel").empty().append(_vel);
+
+                var _com = document.getElementById("txt4smCom").value
+                $("#lbl4smCom").empty().append(_com);
+
+                var _des = document.getElementById("txt4smDes").value
+                $("#lbl4smDes").empty().append(_des);
+                $('#commonMessage').stop(true, true);
+
+                $('#4sm').dialog('close');
+                $('#commonMessage').html("Update Complete");
+                $('#commonMessage').delay(300).slideDown(300).delay(2000).slideUp(300);
+            }
+
+            $("#ud4sm").click(function () {
+                $("#4sm").dialog("open");
+            });
+        });
+
+
+
+        //cut
+        $(function () {
+            $('#cut').dialog({
+                autoOpen: false,
+                width: 400,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Update": function () {
+                        var _pid = getParameterByName("_pid");
+                        var _vel = document.getElementById("txtcutVel").value
+                        var _com = document.getElementById("txtcutCom").value
+                        var _des = document.getElementById("txtcutDes").value
+                        var data = { "PlayerID": _pid, "vel": _vel, "com": _com, "des": _des }
+                        $.post("/Home/Editcut", data, updateSuccess())
+                    },
+                    "Cancel": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            function updateSuccess() {
+                var _vel = document.getElementById("txtcutVel").value
+                $("#lblcutVel").empty().append(_vel);
+
+                var _com = document.getElementById("txtcutCom").value
+                $("#lblcutCom").empty().append(_com);
+
+                var _des = document.getElementById("txtcutDes").value
+                $("#lblcutDes").empty().append(_des);
+                $('#commonMessage').stop(true, true);
+
+                $('#cut').dialog('close');
+                $('#commonMessage').html("Update Complete");
+                $('#commonMessage').delay(300).slideDown(300).delay(2000).slideUp(300);
+            }
+
+            $("#udcut").click(function () {
+                $("#cut").dialog("open");
+            });
+        });
+
+
+        //sl
+        $(function () {
+            $('#sl').dialog({
+                autoOpen: false,
+                width: 400,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Update": function () {
+                        var _pid = getParameterByName("_pid");
+                        var _vel = document.getElementById("txtslVel").value
+                        var _com = document.getElementById("txtslCom").value
+                        var _des = document.getElementById("txtslDes").value
+                        var data = { "PlayerID": _pid, "vel": _vel, "com": _com, "des": _des }
+                        $.post("/Home/Editsl", data, updateSuccess())
+                    },
+                    "Cancel": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            function updateSuccess() {
+                var _vel = document.getElementById("txtslVel").value
+                $("#lblslVel").empty().append(_vel);
+
+                var _com = document.getElementById("txtslCom").value
+                $("#lblslCom").empty().append(_com);
+
+                var _des = document.getElementById("txtslDes").value
+                $("#lblslDes").empty().append(_des);
+                $('#commonMessage').stop(true, true);
+
+                $('#sl').dialog('close');
+                $('#commonMessage').html("Update Complete");
+                $('#commonMessage').delay(300).slideDown(300).delay(2000).slideUp(300);
+            }
+
+            $("#udsl").click(function () {
+                $("#sl").dialog("open");
+            });
+        });
+
+
+        //cb
+        $(function () {
+            $('#cb').dialog({
+                autoOpen: false,
+                width: 400,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Update": function () {
+                        var _pid = getParameterByName("_pid");
+                        var _vel = document.getElementById("txtcbVel").value
+                        var _com = document.getElementById("txtcbCom").value
+                        var _des = document.getElementById("txtcbDes").value
+                        var data = { "PlayerID": _pid, "vel": _vel, "com": _com, "des": _des }
+                        $.post("/Home/Editcb", data, updateSuccess())
+                    },
+                    "Cancel": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            function updateSuccess() {
+                var _vel = document.getElementById("txtcbVel").value
+                $("#lblcbVel").empty().append(_vel);
+
+                var _com = document.getElementById("txtcbCom").value
+                $("#lblcbCom").empty().append(_com);
+
+                var _des = document.getElementById("txtcbDes").value
+                $("#lblcbDes").empty().append(_des);
+                $('#commonMessage').stop(true, true);
+
+                $('#cb').dialog('close');
+                $('#commonMessage').html("Update Complete");
+                $('#commonMessage').delay(300).slideDown(300).delay(2000).slideUp(300);
+            }
+
+            $("#udcb").click(function () {
+                $("#cb").dialog("open");
+            });
+        });
+
+        //ch
+        $(function () {
+            $('#ch').dialog({
+                autoOpen: false,
+                width: 400,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Update": function () {
+                        var _pid = getParameterByName("_pid");
+                        var _vel = document.getElementById("txtchVel").value
+                        var _com = document.getElementById("txtchCom").value
+                        var _des = document.getElementById("txtchDes").value
+                        var data = { "PlayerID": _pid, "vel": _vel, "com": _com, "des": _des }
+                        $.post("/Home/Editch", data, updateSuccess())
+                    },
+                    "Cancel": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            function updateSuccess() {
+                var _vel = document.getElementById("txtchVel").value
+                $("#lblchVel").empty().append(_vel);
+
+                var _com = document.getElementById("txtchCom").value
+                $("#lblchCom").empty().append(_com);
+
+                var _des = document.getElementById("txtchDes").value
+                $("#lblchDes").empty().append(_des);
+                $('#commonMessage').stop(true, true);
+
+                $('#ch').dialog('close');
+                $('#commonMessage').html("Update Complete");
+                $('#commonMessage').delay(300).slideDown(300).delay(2000).slideUp(300);
+            }
+
+            $("#udch").click(function () {
+                $("#ch").dialog("open");
+            });
+        });
+
+        //spl
+        $(function () {
+            $('#spl').dialog({
+                autoOpen: false,
+                width: 400,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Update": function () {
+                        var _pid = getParameterByName("_pid");
+                        var _vel = document.getElementById("txtsplVel").value
+                        var _com = document.getElementById("txtsplCom").value
+                        var _des = document.getElementById("txtsplDes").value
+                        var data = { "PlayerID": _pid, "vel": _vel, "com": _com, "des": _des }
+                        $.post("/Home/Editspl", data, updateSuccess())
+                    },
+                    "Cancel": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            function updateSuccess() {
+                var _vel = document.getElementById("txtsplVel").value
+                $("#lblsplVel").empty().append(_vel);
+
+                var _com = document.getElementById("txtsplCom").value
+                $("#lblsplCom").empty().append(_com);
+
+                var _des = document.getElementById("txtsplDes").value
+                $("#lblsplDes").empty().append(_des);
+                $('#commonMessage').stop(true, true);
+
+                $('#spl').dialog('close');
+                $('#commonMessage').html("Update Complete");
+                $('#commonMessage').delay(300).slideDown(300).delay(2000).slideUp(300);
+            }
+
+            $("#udspl").click(function () {
+                $("#spl").dialog("open");
+            });
+        });
+
+        //knb
+        $(function () {
+            $('#knb').dialog({
+                autoOpen: false,
+                width: 400,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Update": function () {
+                        var _pid = getParameterByName("_pid");
+                        var _vel = document.getElementById("txtknbVel").value
+                        var _com = document.getElementById("txtknbCom").value
+                        var _des = document.getElementById("txtknbDes").value
+                        var data = { "PlayerID": _pid, "vel": _vel, "com": _com, "des": _des }
+                        $.post("/Home/Editknb", data, updateSuccess())
+                    },
+                    "Cancel": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            function updateSuccess() {
+                var _vel = document.getElementById("txtknbVel").value
+                $("#lblknbVel").empty().append(_vel);
+
+                var _com = document.getElementById("txtknbCom").value
+                $("#lblknbCom").empty().append(_com);
+
+                var _des = document.getElementById("txtknbDes").value
+                $("#lblknbDes").empty().append(_des);
+                $('#commonMessage').stop(true, true);
+
+                $('#knb').dialog('close');
+                $('#commonMessage').html("Update Complete");
+                $('#commonMessage').delay(300).slideDown(300).delay(2000).slideUp(300);
+            }
+
+            $("#udknb").click(function () {
+                $("#knb").dialog("open");
+            });
+        });
+    </script>
+}

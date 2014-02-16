@@ -1,0 +1,350 @@
+﻿.col100w {
+    width:100px;
+}
+
+.releaseTimes{
+    /*background-color:#333367;*/
+    background-color:rgba(137, 137, 217, 0.81);
+    width:30%;
+}
+
+.releaseTimes table {
+    /*width:70%;*/
+    background-color:white;
+    border:none;
+    width:100%;
+}
+
+    .releaseTimes table.stdTable th {
+        font-size:1.15em;
+    }
+
+    .releaseTimes table.stdTable tr:nth-child(1) th {
+        /*background-color:#7f7f7f;*/
+    }
+
+    .releaseTimes table.stdTable tr:nth-child(2) th {
+        background-color:rgba(137, 137, 217, 0.81);
+        text-shadow:rgba(137,137,217,1) 0 -1px 0px, rgba(0,0,0,.25) -1px -1px 1px, rgba(0,0,0,.25) 1px -1px 1px;
+    }
+
+    .releaseTimes table.stdTable tr:nth-child(2) {
+        background-color:white;
+    }
+
+    .releaseTimes table.stdTable th:nth-child(3), .releaseTimes table.stdTable td:nth-child(3), .releaseTimes table.stdTable tr:nth-child(1) th  {
+       border-right:none;
+    }
+
+.releaseTimes table.stdTable td, .releaseTimes table.stdTable th{
+
+    border-top:none;
+    border-left :none;
+    border-right:solid 1px rgba(0,0,0,.5);
+}
+
+    .releaseTimes table.stdTable td {
+        border-bottom:none;
+        text-align:center;
+    }
+
+.rep3leftBorder{
+    border-left:rgba(0,0,0,.5) solid 1px;
+}
+
+.rep8PlayerInfoRow img {
+    height:131px;
+    display:block;
+}
+
+.rep8PlayerQuickData {
+    vertical-align:top;
+}
+
+.rep8PlayerQuickData .standardTable {
+    
+    overflow:hidden;
+}
+
+.rep8PlayerQuickData .standardTable .standardTableCell {
+    vertical-align:top;
+    height:66px;
+    text-align:center;
+    
+}
+
+.rep8PlayerQuickData .standardTable .standardTableRow:nth-child(1) .standardTableCell {
+    border-bottom:rgba(0,0,0,.5) solid 1px;
+    border-left:rgba(0,0,0,.5) solid 1px;
+}
+
+
+.rep8PlayerQuickData .standardTable .standardTableRow:nth-child(1) .standardTableCell:nth-child(1) {
+    border-left:none;
+}
+
+.rep8PlayerQuickData .standardTable .standardTableRow .standardTableCell h4 {
+    background-color:#333367;
+    color:white;
+    height:33px;
+    line-height:230%;
+    font-size:1em;
+}
+
+.rep8PlayerQuickData .standardTable .standardTableCell h3{
+    padding:5px 0 0;
+    font-size:1.75em;
+    margin:0;
+    font-family: 'Open Sans Condensed', sans-serif;
+    text-transform:uppercase;
+}
+
+.rep8PlayerQuickData .standardTable .standardTableCell.playerName{
+   vertical-align:top;
+   padding:0;
+   font-weight:normal;
+}
+
+table.stdTable.fullTblW.rep8Std td.rowsHead, table.stdTable.fullTblW.runnersScore td.rowsHead {
+    padding:3px;
+    color:whitesmoke;
+    font-family: 'Open Sans Condensed', sans-serif;
+    text-transform:uppercase;
+    background-color:rgba(137, 137, 217, 0.81);
+    text-shadow:rgba(137,137,217,1) 0 -1px 0px, rgba(0,0,0,.25) -1px -1px 1px, rgba(0,0,0,.25) 1px -1px 1px;
+    font-size:1.2em;
+    width:100px;
+}
+
+table.stdTable.fullTblW.runnersScore {
+    text-align:center;
+}
+
+table.stdTable.fullTblW.runnersScore td {
+    vertical-align:middle;
+}
+
+section#quickPlayerBox {
+    height:132px;
+    overflow:hidden;
+}
+
+table.stdTable td {
+    vertical-align:top;
+}
+
+table.stdTable.fullTblW.rep8Std td {
+    padding:0 10px;
+}
+
+table.stdTable.fullTblW.innerTableRep8 {
+    border-left:none;
+    border-top:none;
+    border-right:none;
+}
+
+    table.stdTable.fullTblW.innerTableRep8 tr {
+        background-color:white;
+    }
+
+    table.stdTable.fullTblW.innerTableRep8 th {
+        border-top:none;
+        background-color:#333367;
+        line-height:100%;
+    }
+
+        table.stdTable.fullTblW.innerTableRep8 th.playerName {
+            font-size:1.8em;
+            background-color:rgba(50, 50, 103, 0.2);
+            color:#323267;
+            padding:11px 0 10px;
+        }
+
+table.stdTable.fullTblW.innerTableRep8 th:first-child, table.stdTable.fullTblW.innerTableRep8 td:first-child{
+    border-left:none;
+}
+
+table.stdTable.fullTblW.innerTableRep8 th:last-child, table.stdTable.fullTblW.innerTableRep8 td:last-child{
+    border-right:none;
+}
+
+table.stdTable.fullTblW.innerTableRep8 td{
+    /*padding:2px;*/
+    text-align:center;
+    font-size:14px;
+    vertical-align:top;
+    line-height:130%;
+}
+
+table.stdTable.fullTblW.innerTableRep8 td.leftalignText {
+    text-align:left;
+}
+
+    table.stdTable.fullTblW.innerTableRep8 tbody tr td.bgPtBluHeaders {
+        padding:0;
+    }
+
+    table.stdTable.fullTblW.innerTableRep8 td span {
+        display:block;
+        padding:2px;
+        font-size:14px;
+        line-height:130%;
+    }
+
+    table.stdTable.fullTblW.innerTableRep8 tr:last-child td, table.stdTable.fullTblW.innerTableRep8 {
+        border-bottom:none;
+    }
+
+.appOutPitch tr:nth-child(1) td:nth-child(2), .appOutPitch tr:nth-child(1) td:nth-child(4) {
+    font-size:.8em;
+}
+
+table.runnersScore thead tr:nth-child(2){
+    background-color:rgba(137, 137, 217, 0.81);
+    color:white;
+}
+
+
+
+
+
+
+
+section.quickPlayerBox, section.OAstatsSec {
+    margin:0 0 20px;
+}
+
+table.stdTable.fullTblW.rep8PlayerInfoRow tbody tr td:nth-child(1){
+    width:132px;
+}
+
+table.stdTable.fullTblW.rep8PlayerInfoRow tbody tr td:nth-child(3){
+    width:65px;
+}
+
+table.stdTable.lastFewGameInfo {
+    margin:auto;
+    border-top:none;
+}
+
+table.stdTable.fullTblW.PVCAction {
+}
+
+    table.stdTable.fullTblW.PVCAction th:nth-child(4) {
+        width:55%;
+    }
+
+table.stdTable.fullTblW.PVCAction th, table.stdTable.fullTblW.PVCAction td:nth-child(1){
+    text-align:center;
+    text-transform:uppercase;
+    
+}
+
+table.stdTable.fullTblW.PVCAction td:nth-child(1){
+    color:whitesmoke;
+    font-family: 'Open Sans Condensed', sans-serif;
+    text-transform:uppercase;
+    background-color:rgba(137, 137, 217, 0.81);
+    text-shadow:rgba(137,137,217,1) 0 -1px 0px, rgba(0,0,0,.25) -1px -1px 1px, rgba(0,0,0,.25) 1px -1px 1px;
+    font-size:1.2em;
+    font-weight:bold;
+}
+
+table.stdTable.fullTblW.rep8PlayerInfoRow tbody tr td table.stdTable.lastFewGameInfo tbody tr td:nth-child(1) {
+    font-size:.8em;
+    width:auto;
+}
+
+/*table.stdTable.OAstats{
+    width:70%;
+}*/
+
+table.stdTable.fullTblW.OAstats {
+    width:100%;
+}
+
+table.stdTable.fullTblW.OAstats thead tr th {
+    text-transform:none;
+    /*background-color:#fff;
+    color:black;*/
+}
+
+table.stdTable.fullTblW.OAstats tbody tr td {
+    text-align:center;
+    font-size:.9em;
+    padding:4px 0;
+    font-weight:normal;
+}
+
+table.stdTable.fullTblW.OAstats tbody tr td.normalAligned {
+    text-align:justify;
+    padding:4px;
+}
+
+table.stdTable.fullTblWFixed.ppitches {
+}
+
+table.stdTable.fullTblWFixed.ppitches thead tr:nth-child(1) th:nth-child(1)  {
+    font-size:1.1em;
+    line-height:100%;
+    padding:3px 2px;
+}
+
+table.stdTable.fullTblWFixed.ppitches thead tr:nth-child(2) th:nth-child(1)  {
+    
+}
+
+table.stdTable.fullTblWFixed.ppitches thead tr:nth-child(1) th{
+    padding:3px 4px;
+}
+
+table.stdTable.fullTblWFixed.ppitches thead tr:nth-child(1) th:nth-child(1), 
+table.stdTable.fullTblWFixed.ppitches thead tr:nth-child(1) th:nth-child(2), 
+table.stdTable.fullTblWFixed.ppitches thead tr:nth-child(1) th:nth-child(3),
+table.stdTable.fullTblWFixed.ppitches thead tr:nth-child(2) th:nth-child(1) {
+    text-transform:uppercase;
+}
+
+    table.stdTable.fullTblWFixed.ppitches thead tr:nth-child(2) {
+        background-color:white;
+    }
+
+        table.stdTable.fullTblWFixed.ppitches thead tr:nth-child(2) th {
+            color:black;
+            font-size:.9em;
+            line-height:100%;
+            padding:3px 4px;
+        }
+
+table.stdTable.fullTblWFixed.ppitches thead tr:nth-child(1) th:nth-child(2), 
+table.stdTable.fullTblWFixed.ppitches thead tr:nth-child(1) th:nth-child(3)  {
+    background-color:rgba(137, 137, 217, 0.81);
+}
+
+table.stdTable.fullTblWFixed.ppitches thead tr:nth-child(1) th{
+    font-size:1.1em;
+    text-transform:uppercase;
+}
+
+table.stdTable.fullTblWFixed.ppitches thead tr:nth-child(3) th {
+            font-size:.9em;
+            padding:3px 4px;
+            line-height:100%;
+            
+}
+
+table.stdTable.fullTblWFixed.ppitches tbody tr td:nth-child(1){
+    font-size:.95em;
+    font-weight:bold;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+table.stdTable.fullTblWFixed.ppitches tbody tr td{
+    font-size:.8em;
+    text-align:center;
+    padding:3px 4px;
+}
+
+    table.stdTable.fullTblWFixed.ppitches tbody tr:nth-child(2n), table.stdTable.fullTblW.PVCAction tbody tr:nth-child(2n){
+        background-color:rgba(0, 0, 0, 0.05);
+    }

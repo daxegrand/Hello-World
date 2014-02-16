@@ -1,0 +1,715 @@
+﻿@model CRockies_one.Models.NEFHitterModels
+@{
+    ViewBag.Title = "Notes Entry Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Notes Entry Form -Hitter (<span style="color:red;">@Model.playerinfo.Firstname @Model.playerinfo.Lastname</span>)</h2>
+<div id="saveAllTableFixed">
+    <div class="saveAllTableFixedBoxBrdr"></div>
+    <div class="stdContWidth tirStdContWidth" id="fixedSaveAllBtnCont"></div>
+</div>
+<div class="stdTable fullWidth margin_bottom">
+    <div class="stdTableRow">
+        <div class="stdTableCell alignRight" id="saveAllTableCell">
+            <div class="btnSaveTable" id="cancelAll">Cancel</div>
+            <div class="btnSaveTable" id="saveAll">Save</div>
+        </div>
+    </div>
+</div>
+<div>
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_Arm" title="Arm" style="margin-right:15px;padding-bottom:15px;">
+            <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">Arm</label>
+            <select id="Arm_Avg">
+                <option id="arm_abvavg" value="3">Abv Avg</option>
+                <option id="arm_eavg" value="2">Avg</option>
+                <option id="arm_belavg" value="1">Bel Avg</option>
+            </select>
+
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.UserEntered != null)
+        {
+            if (Model.UserEntered.Arm == null || Model.UserEntered.Arm == string.Empty)
+            {
+                <div id="dialog_Arm" title="Arm" style="margin-right:15px;padding-bottom:15px;">
+                    <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">Arm</label>
+                    <select id="Arm_Avg">
+                        <option id="arm_abvavg" value="3">Abv Avg</option>
+                        <option id="arm_eavg" value="2">Avg</option>
+                        <option id="arm_belavg" value="1">Bel Avg</option>
+                    </select>
+                </div>
+            }
+            else
+            {
+                
+                <select id="Arm_Avg" style="display:none;">
+                    <option id="arm_abvavg" value="3">Abv Avg</option>
+                    <option id="arm_eavg" value="2">Avg</option>
+                    <option id="arm_belavg" value="1">Bel Avg</option>
+                </select>
+            }
+        }
+        else
+        {
+            <div id="dialog_Arm" title="Arm" style="margin-right:15px;padding-bottom:15px;">
+                <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">Arm</label>
+                    <select id="Arm_Avg">
+                        <option id="arm_abvavg" value="3">Abv Avg</option>
+                        <option id="arm_eavg" value="2">Avg</option>
+                        <option id="arm_belavg" value="1">Bel Avg</option>
+                    </select>
+            </div>
+        }
+
+    }
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_Accuracy" title="Accuracy" style="margin-right:15px;padding-bottom:15px;">
+        <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">Accuracy</label>
+        <select id="Accuracy_Avg">
+            <option id="accuracy_abvavg" value="3">Abv Avg</option>
+            <option id="accuracy_eavg" value="2">Avg</option>
+            <option id="accuracy_belavg" value="1">Bel Avg</option>
+        </select>
+    </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.UserEntered != null)
+        {
+            if (Model.UserEntered.Accuracy == null || Model.UserEntered.Accuracy == "")
+            {
+                <div id="dialog_Accuracy" title="Accuracy" style="margin-right:15px;padding-bottom:15px;">
+                    <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">Accuracy</label>
+                    <select id="Accuracy_Avg">
+                        <option id="accuracy_abvavg" value="3">Abv Avg</option>
+                        <option id="accuracy_eavg" value="2">Avg</option>
+                        <option id="accuracy_belavg" value="1">Bel Avg</option>
+                    </select>
+                </div>
+            }
+            else
+            {
+                
+                <select id="Accuracy_Avg" style="display:none;">
+                    <option id="accuracy_abvavg" value="3">Abv Avg</option>
+                    <option id="accuracy_eavg" value="2">Avg</option>
+                    <option id="accuracy_belavg" value="1">Bel Avg</option>
+                </select>
+            }
+        }
+        else
+        {
+             <div id="dialog_Accuracy" title="Accuracy" style="margin-right:15px;padding-bottom:15px;">
+                    <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">Accuracy</label>
+                    <select id="Accuracy_Avg">
+                        <option id="accuracy_abvavg" value="3">Abv Avg</option>
+                        <option id="accuracy_eavg" value="2">Avg</option>
+                        <option id="accuracy_belavg" value="1">Bel Avg</option>
+                    </select>
+                </div>
+        }
+    }
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_Speed" title="Speed" style="margin-right:15px;padding-bottom:15px;">
+            <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">Speed</label>
+            <select id="Speed_Avg">
+                <option id="speed_abvavg" value="3">Abv Avg</option>
+                <option id="speed_eavg" value="2">Avg</option>
+                <option id="speed_belavg" value="1">Bel Avg</option>
+            </select>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+
+        if (Model.UserEntered != null)
+        {
+            if (Model.UserEntered.Speed == null || Model.UserEntered.Speed == "")
+            {
+            <div id="dialog_Speed" title="Speed" style="margin-right:15px;padding-bottom:15px;">
+                <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">Speed</label>
+                <select id="Speed_Avg">
+                    <option id="speed_abvavg" value="3">Abv Avg</option>
+                    <option id="speed_eavg" value="2">Avg</option>
+                    <option id="speed_belavg" value="1">Bel Avg</option>
+                </select>
+            </div>
+            }
+            else
+            {
+                
+                <select id="Speed_Avg" style="display:none;">
+                    <option id="speed_abvavg" value="3">Abv Avg</option>
+                    <option id="speed_eavg" value="2">Avg</option>
+                    <option id="speed_belavg" value="1">Bel Avg</option>
+                </select>
+            }
+        }
+        else
+        {
+            <div id="dialog_Speed" title="Speed" style="margin-right:15px;padding-bottom:15px;">
+                <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">Speed</label>
+                <select id="Speed_Avg">
+                    <option id="speed_abvavg" value="3">Abv Avg</option>
+                    <option id="speed_eavg" value="2">Avg</option>
+                    <option id="speed_belavg" value="1">Bel Avg</option>
+                </select>
+            </div>
+        }
+    }
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_Steal" title="Steal" style="margin-right:15px;">
+            <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">Steal</label><br />
+            <textarea id="txt_Steal" style="resize:vertical;" class ="TextboxPlayer">@try
+                                                                                     { @Model.UserEntered.Steal }
+                                                                                     catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+
+        if (Model.UserEntered != null)
+        {
+            if (Model.UserEntered.Steal == null || Model.UserEntered.Steal == "")
+            {
+            <div id="dialog_Steal" title="Steal" style="margin-right:15px;">
+                <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">Steal</label><br />
+                <textarea id="txt_Steal" style="resize:vertical;" class ="TextboxPlayer">@try
+                                                                                         { @Model.UserEntered.Steal }
+                                                                                         catch { }</textarea>
+            </div>
+            }
+            else
+            {
+                <input type="hidden" id="txt_Steal" value="@Model.UserEntered.Steal" />
+            }
+        }
+        else
+        {
+            <div id="dialog_Steal" title="Steal" style="margin-right:15px;">
+                <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">Steal</label><br />
+                <textarea id="txt_Steal" style="resize:vertical;" class ="TextboxPlayer">@try
+                                                                                         { @Model.UserEntered.Steal }
+                                                                                         catch { }</textarea>
+            </div>
+        }
+    }
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_Push" title="Push" style="margin-right:15px;">
+            <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">Push</label><br />
+            <textarea id="txt_Push" style="resize:vertical;" class ="TextboxPlayer">@try
+                                                                                    { @Model.UserEntered.Push }
+                                                                                    catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+
+        if (Model.UserEntered != null)
+        {
+            if (Model.UserEntered.Push == null || Model.UserEntered.Push == "")
+            {
+            <div id="dialog_Push" title="Push" style="margin-right:15px;">
+                <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">Push</label><br />
+                <textarea id="txt_Push" style="resize:vertical;" class ="TextboxPlayer">@try
+                                                                                        { @Model.UserEntered.Push }
+                                                                                        catch { }</textarea>
+            </div>
+            }
+            else
+            {
+                <input type="hidden" id="txt_Push" value="@Model.UserEntered.Push" />
+            }
+        }
+        else
+        {
+            <div id="dialog_Push" title="Push" style="margin-right:15px;">
+                <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">Push</label><br />
+                <textarea id="txt_Push" style="resize:vertical;" class ="TextboxPlayer">@try
+                                                                                        { @Model.UserEntered.Push }
+                                                                                        catch { }</textarea>
+            </div>
+        }
+    }
+    
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_Drag" title="Drag" style="margin-right:15px;">
+            <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">Drag</label><br />
+            <textarea id="txt_Drag" style="resize:vertical;" class ="TextboxPlayer">@try
+                                                                                    { @Model.UserEntered.Drag }
+                                                                                    catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+
+        if (Model.UserEntered != null)
+        {
+            if (Model.UserEntered.Drag == null || Model.UserEntered.Drag == "")
+            {
+            <div id="dialog_Drag" title="Drag" style="margin-right:15px;">
+                <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">Drag</label><br />
+                <textarea id="txt_Drag" style="resize:vertical;" class ="TextboxPlayer">@try
+                                                                                        { @Model.UserEntered.Drag }
+                                                                                        catch { }</textarea>
+            </div>
+            }
+            else
+            {
+                <input type="hidden" id="txt_Drag" value="@Model.UserEntered.Drag" />
+            }
+        }
+        else
+        {
+            <div id="dialog_Drag" title="Drag" style="margin-right:15px;">
+                <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">Drag</label><br />
+                <textarea id="txt_Drag" style="resize:vertical;" class ="TextboxPlayer">@try
+                                                                                        { @Model.UserEntered.Drag }
+                                                                                        catch { }</textarea>
+            </div>
+        }
+    }
+    
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_RHP_HowtoPitch" title="RHP HOW TO PITCH" style="margin-right:15px;">
+            <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">RHP HOW TO PITCH</label><br />
+            <textarea id="txt_RHP_HowtoPitch" style="resize:vertical;" class ="TextboxPlayer">@try
+                                                                                              { @Model.UserEntered.RHP_HowtoPitch }
+                                                                                              catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+
+        if (Model.UserEntered != null)
+        {
+            if (Model.UserEntered.RHP_HowtoPitch == null || Model.UserEntered.RHP_HowtoPitch == "")
+            {
+            <div id="dialog_RHP_HowtoPitch" title="RHP HOW TO PITCH" style="margin-right:15px;">
+                <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">RHP HOW TO PITCH</label><br />
+                <textarea id="txt_RHP_HowtoPitch" style="resize:vertical;" class ="TextboxPlayer">@try
+                                                                                                  { @Model.UserEntered.RHP_HowtoPitch }
+                                                                                                  catch { }</textarea>
+            </div>
+            }
+            else
+            {
+                <input type="hidden" id="txt_RHP_HowtoPitch" value="@Model.UserEntered.RHP_HowtoPitch" />
+            }
+        }
+        else
+        {
+            <div id="dialog_RHP_HowtoPitch" title="RHP HOW TO PITCH" style="margin-right:15px;">
+                <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">RHP HOW TO PITCH</label><br />
+                <textarea id="txt_RHP_HowtoPitch" style="resize:vertical;" class ="TextboxPlayer">@try
+                                                                                                  { @Model.UserEntered.RHP_HowtoPitch }
+                                                                                                  catch { }</textarea>
+            </div>
+        }
+    }
+    
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_RHP_2Ks_Chase" title="RHP 2K'S / Chase" style="margin-right:15px;">
+            <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">RHP 2K'S / Chase</label><br />
+            <textarea id="txt_RHP_2Ks_Chase" style="resize:vertical;" class ="TextboxPlayer">@try
+                                                                                             { @Model.UserEntered.RHP_2Ks_Chase }
+                                                                                             catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+
+        if (Model.UserEntered != null)
+        {
+            if (Model.UserEntered.RHP_2Ks_Chase == null || Model.UserEntered.RHP_2Ks_Chase == "")
+            {
+            <div id="dialog_RHP_2Ks_Chase" title="RHP 2K'S / Chase" style="margin-right:15px;">
+                <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">RHP 2K'S / Chase</label><br />
+                <textarea id="txt_RHP_2Ks_Chase" style="resize:vertical;" class ="TextboxPlayer">@try
+                                                                                                 { @Model.UserEntered.RHP_2Ks_Chase }
+                                                                                                 catch { }</textarea>
+            </div>
+            }
+            else
+            {
+                <input type="hidden" id="txt_RHP_2Ks_Chase" value="@Model.UserEntered.RHP_2Ks_Chase" />
+            }
+        }
+        else
+        {
+            <div id="dialog_RHP_2Ks_Chase" title="RHP 2K'S / Chase" style="margin-right:15px;">
+                <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">RHP 2K'S / Chase</label><br />
+                <textarea id="txt_RHP_2Ks_Chase" style="resize:vertical;" class ="TextboxPlayer">@try
+                                                                                                 { @Model.UserEntered.RHP_2Ks_Chase }
+                                                                                                 catch { }</textarea>
+            </div>
+        }
+    }
+    
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_RHP_Def_INF" title="RHP Defense INF" style="margin-right:15px;">
+            <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">RHP Defense INF</label><br />
+            <textarea id="txt_RHP_Def_INF" style="resize:vertical;" class ="TextboxPlayer">@try
+                                                                                           { @Model.UserEntered.RHP_Def_INF }
+                                                                                           catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+
+        if (Model.UserEntered != null)
+        {
+            if (Model.UserEntered.RHP_Def_INF == null || Model.UserEntered.RHP_Def_INF == "")
+            {
+            <div id="dialog_RHP_Def_INF" title="RHP Defense INF" style="margin-right:15px;">
+                <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">RHP Defense INF</label><br />
+                <textarea id="txt_RHP_Def_INF" style="resize:vertical;" class ="TextboxPlayer">@try
+                                                                                               { @Model.UserEntered.RHP_Def_INF }
+                                                                                               catch { }</textarea>
+            </div>
+            }
+            else
+            {
+                <input type="hidden" id="txt_RHP_Def_INF" value="@Model.UserEntered.RHP_Def_INF" />
+            }
+        }
+        else
+        {
+            <div id="dialog_RHP_Def_INF" title="RHP Defense INF" style="margin-right:15px;">
+                <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">RHP Defense INF</label><br />
+                <textarea id="txt_RHP_Def_INF" style="resize:vertical;" class ="TextboxPlayer">@try
+                                                                                               { @Model.UserEntered.RHP_Def_INF }
+                                                                                               catch { }</textarea>
+            </div>
+        }
+    }
+    
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_RHP_Def_OF" title="RHP Defense OF" style="margin-right:15px;">
+            <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">RHP Defense OF</label><br />
+            <textarea id="txt_RHP_Def_OF" style="resize:vertical;" class ="TextboxPlayer">@try
+                                                                                          { @Model.UserEntered.RHP_Def_OF }
+                                                                                          catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+
+        if (Model.UserEntered != null)
+        {
+            if (Model.UserEntered.RHP_Def_OF == null || Model.UserEntered.RHP_Def_OF == "")
+            {
+            <div id="dialog_RHP_Def_OF" title="RHP Defense OF" style="margin-right:15px;">
+                <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">RHP Defense OF</label><br />
+                <textarea id="txt_RHP_Def_OF" style="resize:vertical;" class ="TextboxPlayer">@try
+                                                                                              { @Model.UserEntered.RHP_Def_OF }
+                                                                                              catch { }</textarea>
+            </div>
+            }
+            else
+            {
+                <input type="hidden" id="txt_RHP_Def_OF" value="@Model.UserEntered.RHP_Def_OF" />
+            }
+        }
+        else
+        {
+            <div id="dialog_RHP_Def_OF" title="RHP Defense OF" style="margin-right:15px;">
+                <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">RHP Defense OF</label><br />
+                <textarea id="txt_RHP_Def_OF" style="resize:vertical;" class ="TextboxPlayer">@try
+                                                                                              { @Model.UserEntered.RHP_Def_OF }
+                                                                                              catch { }</textarea>
+            </div>
+        }
+    }
+    
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_LHP_HowtoPitch" title="LHP HOW TO PITCH" style="margin-right:15px;">
+            <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">LHP HOW TO PITCH</label><br />
+            <textarea id="txt_LHP_HowtoPitch" style="resize:vertical;" class ="TextboxPlayer">@try
+                                                                                              { @Model.UserEntered.LHP_HowtoPitch }
+                                                                                              catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+
+        if (Model.UserEntered != null)
+        {
+            if (Model.UserEntered.LHP_HowtoPitch == null || Model.UserEntered.LHP_HowtoPitch == "")
+            {
+            <div id="dialog_LHP_HowtoPitch" title="LHP HOW TO PITCH" style="margin-right:15px;">
+            <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">LHP HOW TO PITCH</label><br />
+            <textarea id="txt_LHP_HowtoPitch" style="resize:vertical;" class ="TextboxPlayer">@try
+                                                                                              { @Model.UserEntered.LHP_HowtoPitch }
+                                                                                              catch { }</textarea>
+        </div>
+            }
+            else
+            {
+                <input type="hidden" id="txt_LHP_HowtoPitch" value="@Model.UserEntered.LHP_HowtoPitch" />
+            }
+        }
+        else
+        {
+            <div id="dialog_LHP_HowtoPitch" title="LHP HOW TO PITCH" style="margin-right:15px;">
+            <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">LHP HOW TO PITCH</label><br />
+            <textarea id="txt_LHP_HowtoPitch" style="resize:vertical;" class ="TextboxPlayer">@try
+                                                                                              { @Model.UserEntered.LHP_HowtoPitch }
+                                                                                              catch { }</textarea>
+        </div>
+        }
+    }
+    
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_LHP_2Ks_Chase" title="LHP 2K'S / Chase" style="margin-right:15px;">
+            <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">LHP 2K'S / Chase</label><br />
+            <textarea id="txt_LHP_2Ks_Chase" style="resize:vertical;" class ="TextboxPlayer">@try
+                                                                                             { @Model.UserEntered.LHP_2Ks_Chase }
+                                                                                             catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+
+        if (Model.UserEntered != null)
+        {
+            if (Model.UserEntered.LHP_2Ks_Chase == null || Model.UserEntered.LHP_2Ks_Chase == "")
+            {
+            <div id="dialog_LHP_2Ks_Chase" title="LHP 2K'S / Chase" style="margin-right:15px;">
+                <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">LHP 2K'S / Chase</label><br />
+                <textarea id="txt_LHP_2Ks_Chase" style="resize:vertical;" class ="TextboxPlayer">@try
+                                                                                                 { @Model.UserEntered.LHP_2Ks_Chase }
+                                                                                                 catch { }</textarea>
+            </div>
+            }
+            else
+            {
+                <input type="hidden" id="txt_LHP_2Ks_Chase" value="@Model.UserEntered.LHP_2Ks_Chase" />
+            }
+        }
+        else
+        {
+            <div id="dialog_LHP_2Ks_Chase" title="LHP 2K'S / Chase" style="margin-right:15px;">
+                <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">LHP 2K'S / Chase</label><br />
+                <textarea id="txt_LHP_2Ks_Chase" style="resize:vertical;" class ="TextboxPlayer">@try
+                                                                                                 { @Model.UserEntered.LHP_2Ks_Chase }
+                                                                                                 catch { }</textarea>
+            </div>
+        }
+    }
+    
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_LHP_Def_INF" title="LHP Defense INF" style="margin-right:15px;">
+            <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">LHP Defense INF</label><br />
+            <textarea id="txt_LHP_Def_INF" style="resize:vertical;" class ="TextboxPlayer">@try
+                                                                                           { @Model.UserEntered.LHP_Def_INF }
+                                                                                           catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+
+        if (Model.UserEntered != null)
+        {
+            if (Model.UserEntered.LHP_Def_INF == null || Model.UserEntered.LHP_Def_INF == "")
+            {
+            <div id="dialog_LHP_Def_INF" title="LHP Defense INF" style="margin-right:15px;">
+                <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">LHP Defense INF</label><br />
+                <textarea id="txt_LHP_Def_INF" style="resize:vertical;" class ="TextboxPlayer">@try
+                                                                                               { @Model.UserEntered.LHP_Def_INF }
+                                                                                               catch { }</textarea>
+            </div>
+            }
+            else
+            {
+                <input type="hidden" id="txt_LHP_Def_INF" value="@Model.UserEntered.LHP_Def_INF" />
+            }
+        }
+        else
+        {
+            <div id="dialog_LHP_Def_INF" title="LHP Defense INF" style="margin-right:15px;">
+                <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">LHP Defense INF</label><br />
+                <textarea id="txt_LHP_Def_INF" style="resize:vertical;" class ="TextboxPlayer">@try
+                                                                                               { @Model.UserEntered.LHP_Def_INF }
+                                                                                               catch { }</textarea>
+            </div>
+        }
+    }
+    
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_LHP_Def_OF" title="LHP Defense OF" style="margin-right:15px;">
+            <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">LHP Defense OF</label><br />
+            <textarea id="txt_LHP_Def_OF" style="resize:vertical;" class ="TextboxPlayer">@try
+                                                                                          { @Model.UserEntered.LHP_Def_OF }
+                                                                                          catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+
+        if (Model.UserEntered != null)
+        {
+            if (Model.UserEntered.LHP_Def_OF == null || Model.UserEntered.LHP_Def_OF == "")
+            {
+		    <div id="dialog_LHP_Def_OF" title="LHP Defense OF" style="margin-right:15px;">
+                <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">LHP Defense OF</label><br />
+                <textarea id="txt_LHP_Def_OF" style="resize:vertical;" class ="TextboxPlayer">@try
+                                                                                              { @Model.UserEntered.LHP_Def_OF }
+                                                                                              catch { }</textarea>
+            </div>
+            }
+            else
+            {
+                <input type="hidden" id="txt_LHP_Def_OF" value="@Model.UserEntered.LHP_Def_OF" />
+            }
+        }
+        else
+        {
+            <div id="dialog_LHP_Def_OF" title="LHP Defense OF" style="margin-right:15px;">
+                <label style="margin-left:7px;text-transform:uppercase;font-weight:bolder;">LHP Defense OF</label><br />
+                <textarea id="txt_LHP_Def_OF" style="resize:vertical;" class ="TextboxPlayer">@try
+                                                                                              { @Model.UserEntered.LHP_Def_OF }
+                                                                                              catch { }</textarea>
+            </div>
+        }
+    }
+    
+<textarea id="lbl_Arm_Avg" style="display:none;">@try
+                                                 {@Model.UserEntered.Arm_Avg}
+                                                 catch { }</textarea>
+<textarea id="lbl_Accuracy_Avg" style="display:none;">@try
+                                                 {@Model.UserEntered.Accuracy_Avg}
+                                                 catch { }</textarea>
+<textarea id="lbl_Speed_Avg" style="display:none;">@try
+                                                 {@Model.UserEntered.Speed_Avg}
+                                                 catch { }</textarea>
+    
+
+
+</div>
+@section scripts{
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#saveAllTableFixed').hide();
+            //Check to see if the window is top if not then display button
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 250) {//155
+                    $("#saveAll").appendTo($("#fixedSaveAllBtnCont"));
+                    $("#cancelAll").appendTo($("#fixedSaveAllBtnCont"));
+                    $('#saveAllTableFixed').show();
+                } else {
+                    $("#saveAll").appendTo($("#saveAllTableCell"));
+                    $("#cancelAll").appendTo($("#saveAllTableCell"));
+                    $('#saveAllTableFixed').hide();
+                }
+            });
+        });
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        };
+        $(document).ready(function () {
+            $("#Arm_Avg").find('option').each(function (i, opt) {
+                var td_Arm_Avg = document.getElementById("lbl_Arm_Avg").value
+                if (opt.value === td_Arm_Avg)
+                    $(opt).attr('selected', 'selected');
+            });
+
+            $("#Accuracy_Avg").find('option').each(function (i, opt) {
+                var td_Accuracy_Avg = document.getElementById("lbl_Accuracy_Avg").value
+                if (opt.value === td_Accuracy_Avg)
+                    $(opt).attr('selected', 'selected');
+            });
+
+            $("#Speed_Avg").find('option').each(function (i, opt) {
+                var td_Speed_Avg = document.getElementById("lbl_Speed_Avg").value
+                if (opt.value === td_Speed_Avg)
+                    $(opt).attr('selected', 'selected');
+            });
+        });
+        $("#cancelAll").click(function () {
+            var _teamid = getParameterByName("_teamid");
+            location.replace('/Home/NotesEntryForm?_teamid=' + _teamid);
+        });
+        $('#Arm_Avg').change(function () {
+            var selects = document.getElementById("Arm_Avg");
+            var selectedValue = selects.options[selects.selectedIndex].value;
+            $.jStorage.set('Armkey', selectedValue)
+        });
+        $('#Accuracy_Avg').change(function () {
+            var selects = document.getElementById("Accuracy_Avg");
+            var selectedValue = selects.options[selects.selectedIndex].value;
+            $.jStorage.set('Accuracykey', selectedValue)
+        });
+        $('#Speed_Avg').change(function () {
+            var selects = document.getElementById("Speed_Avg");
+            var selectedValue = selects.options[selects.selectedIndex].value;
+            $.jStorage.set('Speedkey', selectedValue)
+            //alert($.jStorage.get('Speedkey'));
+        });
+        $("#saveAll").click(function () {
+            var _teamid = getParameterByName("_teamid");
+            var _pid = getParameterByName("_pid");
+
+                //var _Arm = document.getElementById("txt_Arm").value
+                //var _Accuracy = document.getElementById("txt_Accuracy").value
+                //var _Speed = document.getElementById("txt_Speed").value
+                var _Steal = document.getElementById("txt_Steal").value
+                var _Push = document.getElementById("txt_Push").value
+                var _Drag = document.getElementById("txt_Drag").value
+                var _RHP_HowtoPitch = document.getElementById("txt_RHP_HowtoPitch").value
+                var _RHP_2Ks_Chase = document.getElementById("txt_RHP_2Ks_Chase").value
+                var _RHP_Def_INF = document.getElementById("txt_RHP_Def_INF").value
+                var _RHP_Def_OF = document.getElementById("txt_RHP_Def_OF").value
+                var _LHP_HowtoPitch = document.getElementById("txt_LHP_HowtoPitch").value
+                var _LHP_2Ks_Chase = document.getElementById("txt_LHP_2Ks_Chase").value
+                var _LHP_Def_INF = document.getElementById("txt_LHP_Def_INF").value
+                var _LHP_Def_OF = document.getElementById("txt_LHP_Def_OF").value
+                
+
+                
+                var ArmselectedAvgValue = $.jStorage.get('Armkey');
+                
+                
+                var AccuracyselectedAvgValue = $.jStorage.get('Accuracykey');
+
+                
+                var SpeedselectedAvgValue = $.jStorage.get('Speedkey');
+
+                var data = {
+                    "PlayerID": _pid, "Steal": _Steal, "Push": _Push, "Drag": _Drag, "Drag": _Drag,
+                    "RHP_HowtoPitch": _RHP_HowtoPitch, "LHP_HowtoPitch": _LHP_HowtoPitch, "RHP_2Ks_Chase": _RHP_2Ks_Chase, "LHP_2Ks_Chase": _LHP_2Ks_Chase,
+                    "RHP_Def_INF": _RHP_Def_INF, "RHP_Def_OF": _RHP_Def_OF, "LHP_Def_INF": _LHP_Def_INF, "LHP_Def_OF": _LHP_Def_OF,
+                    "Arm_Avg": ArmselectedAvgValue, "Accuracy_Avg": AccuracyselectedAvgValue, "Speed_Avg": SpeedselectedAvgValue
+                }
+
+            $.post("/Home/EditHitterUserEntered", data, null)
+            location.replace('/Home/NotesEntryForm?_teamid=' + _teamid);
+        });
+    </script>
+}

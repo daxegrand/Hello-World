@@ -1,0 +1,94 @@
+﻿@model CRockies_one.Models.DepthChartModels
+@{
+    ViewBag.Title = "Depth Chart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Depth Chart
+    @if(Model != null)
+    {
+        <span style="color: red;">( @Model.dcteam.City_or_State @Model.dcteam.Nickname )</span>
+    }
+
+</h2>
+@if(Model != null)
+{
+<div class="innerContainer">
+    <p class="note">25 Man Roster last updated September 21, 2013</p>
+    <div class="standardTable" style="width:100%;">
+        <div class="standardTableRow">
+            <div class="standardTableCell">
+                <h3>Go-To Starting Lineup</h3>					
+					
+                    <ol>
+                      <li>2B	hittername </li>
+                      <li> 3B	hittername </li>
+                      <li> SS	hittername </li>
+                      <li> etc	hittername </li>
+                      <li> etc	hittername </li>
+                      <li> etc	hittername </li>
+                      <li> etc	hittername </li>
+                      <li> etc	hittername </li>
+                      <li> etc	hittername</li>
+                    </ol>
+                
+                <h3>Bench</h3>
+                <ul>
+                  <li>1B	hittername </li>
+                  <li> 1B	hittername </li>
+                  <li> 1B	hittername </li>
+                  <li> 1B	hittername </li>
+                  <li> 1B	hittername </li>
+                  <li> 1B	hittername </li>
+                  <li> 1B	hittername </li>
+                  <li> 1B	hittername </li>
+                  <li> 1B	hittername </li>
+                </ul>
+                <h3>Disabled List</h3>
+                <ul>
+                  <li> pos	playername and note </li>
+                  <li> pos	playername and note </li>
+                  <li> pos	playername and note <br />
+                  </li>
+                </ul>
+
+
+            </div>
+            <div class="standardTableCell">
+                
+                <h3>Starting Rotation</h3>
+                <ol>
+                  <li>RHP	pitchername</li>
+                  <li> LHP	pitchername </li>
+                  <li> etc	pitchername </li>
+                  <li> etc	pitchername </li>
+                  <li> etc	pitchername </li>
+                  <li> etc	pitchername <br />
+                  </li>
+                </ol>
+                
+                <h3>Bullpen</h3>
+                <ul>
+                  <li>CL	RHP	pitchername </li>
+                  <li> SU	LHP	pitchername </li>
+                  <li> SU	etc	pitchername </li>
+                  <li> MID	etc	pitchername </li>
+                  <li> MID	etc	pitchername </li>
+                  <li> MID	etc	pitchername </li>
+                  <li> MID	etc	pitchername </li>
+                  <li> MID	etc	pitchername </li>
+                  <li> MID	etc	pitchername </li>
+                  <li> MID	etc	pitchername </li>
+                  <li> LONG	etc	pitchername </li>
+                </ul>
+                <p> <br />
+                </p>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
+}
+

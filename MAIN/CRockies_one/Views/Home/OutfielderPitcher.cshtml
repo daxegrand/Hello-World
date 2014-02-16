@@ -1,0 +1,166 @@
+﻿@model CRockies_one.Models.OutfielderPitcherModels
+@{
+    ViewBag.Title = "Outfielder/Pitcher";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="commonMessage"></div>
+<h2>Outfielder/Pitcher</h2>
+<div class="r5opp" style="text-transform:uppercase;">@Model.opteam.City_or_State @Model.opteam.Nickname</div>
+<table class="stdTable fullTblW" id="r6Rep1">
+    <thead>
+        <tr>
+            <th colspan="2">Agressiveness of All Outfielders</th>
+        </tr>
+    </thead>
+    <tbody id="AgressivenessTable">
+        @if (Model.ListAgressiveness != null && Model.ListAgressiveness != null)
+        {
+            foreach (var item in Model.ListAgressiveness)
+            {
+                <tr id="@item.PlayerId" class="pl">
+                  <td class="r5playername">@item.Name</td>
+                  <td id="tdagg">@item.Aggressiveness</td>
+  	            </tr>
+            }
+        }
+    </tbody>
+    
+</table>
+
+<table class="stdTable fullTblW" id="r6Rep2">
+    <thead>
+        <tr>
+            <th colspan="4">starting pitchers ability to hit</th>
+        </tr>
+    </thead>
+    
+
+    <tbody id="SPAofHitTable">
+        @if (Model.ListStartingPitchers != null && Model.ListStartingPitchers != null)
+        {
+            foreach (var item in Model.ListStartingPitchers)
+            {
+                <tr id="@item.PlayerId" class="pl">
+                  <td class="r5playername">@item.Name</td>
+                  <td id="tdsum">@item.SPAofHit_Summary</td>
+                  <td id="tddet">@item.SPAofHit_Detail</td>
+                  <td id="tdbun">@item.SPAofHit_BuntingAbility</td>
+  	            </tr>
+            }
+        }
+    <tbody>
+</table>
+
+<div id="udAgg">
+    <textarea id="myplayerid" style="visibility:hidden;height:1px;"></textarea><br />
+    <h3>Agressiveness of All Outfielders</h3>
+    <textarea id="txtagg" style="resize:none;width:517px; height:100px;"></textarea>
+</div>
+<div id="udSPAofHit">
+    <textarea id="myplayerid" style="visibility:hidden;height:1px;"></textarea><br />
+    <h3>Starting Pitcher Ability to Hit Summary</h3>
+    <textarea id="txtsum" style="resize:none;width:517px; height:100px;">
+    </textarea><br />
+    <h3>Starting Pitcher Ability to Hit Detail</h3>
+    <textarea id="txtdet" style="resize:none;width:517px; height:100px;">
+    </textarea><br />
+    <h3>Starting Pitcher Ability to Hit Bunting ability</h3>
+    <textarea id="txtbun" style="resize:none;width:517px; height:100px;">
+    </textarea>
+</div>
+@section customstyle{
+    <link href="~/Content/themes/report7.css" rel="stylesheet" />
+}
+@section scripts{
+    <script>
+        $(function () {
+            $('#udSPAofHit').dialog({
+                autoOpen: false,
+                width: 550,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Update": function () {
+                        var _pid = document.getElementById("myplayerid").value
+                        var _sum = document.getElementById("txtsum").value
+                        var _det = document.getElementById("txtdet").value
+                        var _bun = document.getElementById("txtbun").value
+                        var data = { "PlayerID": _pid, "sum": _sum, "det": _det, "bun": _bun }
+                        $.post("/Home/EditSPAofHit", data, updateSuccess(_pid, _sum, _det, _bun))
+                    },
+                    "Cancel": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+            function updateSuccess(_pid, _sum, _det, _bun) {
+
+                $('#' + _pid + ' ' + "#tdsum").empty().append(_sum);
+                $('#' + _pid + ' ' + "#tddet").empty().append(_det);
+                $('#' + _pid + ' ' + "#tdbun").empty().append(_bun);
+                $('#commonMessage').stop(true, true);
+                $('#udSPAofHit').dialog('close');
+                $('#commonMessage').html("Update Complete");
+                $('#commonMessage').delay(300).slideDown(300).delay(2000).slideUp(300);
+            }
+            $('#SPAofHitTable').on('click', 'tr', function () {
+                var values = $(this).find('td').map(function () {
+                    return $(this).text();
+                });
+                var id = $(this).closest('tr').attr('id');
+
+                $("#myplayerid").empty().append(id);
+                $("#txtsum").empty().append(values[1]);
+                $("#txtdet").empty().append(values[2]);
+                $("#txtbun").empty().append(values[3]);
+
+                $('#udSPAofHit').dialog('option', 'title', values[0]);
+
+                $("#udSPAofHit").dialog("open");
+            });
+        });
+
+        $(function () {
+            $('#udAgg').dialog({
+                autoOpen: false,
+                width: 550,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Update": function () {
+                        var _pid = document.getElementById("myplayerid").value
+                        var _agg = document.getElementById("txtagg").value
+
+                        var data = { "PlayerID": _pid, "agg": _agg }
+                        $.post("/Home/EditAgressiveness", data, updateSuccess(_pid, _agg))
+                    },
+                    "Cancel": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+            function updateSuccess(_pid, _agg) {
+
+                $('#' + _pid + ' ' + "#tdagg").empty().append(_agg);
+
+                $('#commonMessage').stop(true, true);
+                $('#udAgg').dialog('close');
+                $('#commonMessage').html("Update Complete");
+                $('#commonMessage').delay(300).slideDown(300).delay(2000).slideUp(300);
+            }
+            $('#AgressivenessTable').on('click', 'tr', function () {
+                var values = $(this).find('td').map(function () {
+                    return $(this).text();
+                });
+                var id = $(this).closest('tr').attr('id');
+
+                $("#myplayerid").empty().append(id);
+                $("#txtagg").empty().append(values[1]);
+
+                $('#udAgg').dialog('option', 'title', values[0]);
+
+                $("#udAgg").dialog("open");
+            });
+        });
+    </script>
+}

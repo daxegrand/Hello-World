@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="InsideEdModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="InsideEdEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="player_tables" EntityType="InsideEdModel.player_table" />
+    <EntitySet Name="Team_tables" EntityType="InsideEdModel.Team_table" />
+    <FunctionImport Name="sproc_depthchart_bench" ReturnType="Collection(String)">
+      <Parameter Name="TID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sproc_depthchart_disabledlist" ReturnType="Collection(String)">
+      <Parameter Name="TID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="sproc_depthchart_startinglineup" ReturnType="Collection(String)">
+      <Parameter Name="TID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sproc_depthchart_startingrotation" ReturnType="Collection(InsideEdModel.sproc_depthchart_startingrotation_Result)">
+      <Parameter Name="TID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sproc_playerinfo" ReturnType="Collection(InsideEdModel.sproc_playerinfo_Result)">
+      <Parameter Name="PID" Mode="In" Type="Int64" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="player_table">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Player_ID" Type="Double" />
+    <Property Name="Lastname" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="Firstname" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="MI" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Birthdate" Type="DateTime" Precision="3" />
+    <Property Name="Team_ID" Type="Double" />
+    <Property Name="Bats" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Throws" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Hitter_or_Pitcher" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Uniform__" Type="Double" />
+    <Property Name="Position" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="select_" Type="Boolean" Nullable="false" />
+    <Property Name="Active_" Type="Boolean" Nullable="false" />
+    <Property Name="Stance" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="C5th_Pitch" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Time_to_Plate" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Secondary" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="txn" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="MLBID" Type="Double" />
+    <Property Name="espnID" Type="Int32" />
+    <Property Name="TwoKID" Type="Int32" />
+    <Property Name="YahooID" Type="Int32" />
+    <Property Name="mlbam" Type="Int32" />
+    <Property Name="Status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="NickNotes" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="C40Man" Type="Boolean" />
+    <Property Name="BBRefID" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Height" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Weight" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="MLB_TeamID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Team_table">
+    <Key>
+      <PropertyRef Name="Team_ID" />
+    </Key>
+    <Property Name="Team_ID" Type="Int32" Nullable="false" />
+    <Property Name="City_or_State" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Nickname" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="League" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="Division" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Shortname" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="espnShortname" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Stadium" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="CustomDims" Type="Boolean" Nullable="false" />
+    <Property Name="LF" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="MidLF" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="LCF" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="MidLCF" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="CF" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="MidRCF" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="RCF" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="MidRF" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="RF" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Last_Referenced" Type="Boolean" Nullable="false" />
+    <Property Name="MLBID" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="TwoKTeamID" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Active_" Type="Boolean" Nullable="false" />
+    <Property Name="YahooTeamID" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="MLBcity" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="C2k_Mnemonic" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="MLB_AffiliateID" Type="Double" />
+    <Property Name="BITteamName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="mlb_shortName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="mlb_sportcode" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <ComplexType Name="sproc_depthchart_startingrotation_Result">
+    <Property Type="String" Name="Starting_Rotation" Nullable="true" MaxLength="457" />
+    <Property Type="Double" Name="PlayerID" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sproc_playerinfo_Result">
+    <Property Type="String" Name="Firstname" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Lastname" Nullable="true" MaxLength="100" />
+    <Property Type="Double" Name="Uniform" Nullable="true" />
+    <Property Type="String" Name="Position" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="HorP" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="TeamNickname" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="TeamFullname" Nullable="true" MaxLength="356" />
+    <Property Type="Int32" Name="TeamId" Nullable="false" />
+    <Property Type="String" Name="Bats" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Throws" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="Birthdate" Nullable="true" Precision="23" />
+    <Property Type="Double" Name="MLBID" Nullable="true" />
+    <Property Type="Int32" Name="mlbam" Nullable="true" />
+    <Property Type="Boolean" Name="Active_" Nullable="false" />
+  </ComplexType>
+</Schema>

@@ -1,0 +1,1746 @@
+﻿@model CRockies_one.Models.NEFPitcherModels
+@{
+    ViewBag.Title = "Notes Entry Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Notes Entry Form -Pitcher (<span style="color: red;">@Model.playerinfo.Firstname @Model.playerinfo.Lastname</span>)</h2>
+<div id="saveAllTableFixed">
+    <div class="saveAllTableFixedBoxBrdr"></div>
+    <div class="stdContWidth tirStdContWidth" id="fixedSaveAllBtnCont"></div>
+</div>
+<div class="stdTable fullWidth margin_bottom">
+    <div class="stdTableRow">
+        <div class="stdTableCell alignRight" id="saveAllTableCell">
+            <div class="btnSaveTable" id="cancelAll">Cancel</div>
+            <div class="btnSaveTable" id="saveAll">Save</div>
+        </div>
+    </div>
+</div>
+<div>
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_Armslot" title="Armslot" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Armslot</label><br />
+            <textarea id="txt_Armslot" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                       { @Model.UserEntered.ArmSlot }
+                                                                                       catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.UserEntered != null)
+        {
+            if (Model.UserEntered.ArmSlot == null || Model.UserEntered.ArmSlot == string.Empty)
+            {
+        <div id="dialog_Armslot" title="ArmSlot" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Armslot</label><br />
+            <textarea id="txt_Armslot" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                       { @Model.UserEntered.ArmSlot }
+                                                                                       catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_Armslot" value="@Model.UserEntered.ArmSlot" />
+            }
+        }
+        else
+        {
+        <div id="dialog_Armslot" title="ArmSlot" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Armslot</label><br />
+            <textarea id="txt_Armslot" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                       { @Model.UserEntered.ArmSlot }
+                                                                                       catch { }</textarea>
+        </div>
+        }
+    }
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_Control" title="Control" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Control</label><br />
+            <textarea id="txt_Control" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                       { @Model.UserEntered.Control }
+                                                                                       catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.UserEntered != null)
+        {
+            if (Model.UserEntered.Control == null || Model.UserEntered.Control == string.Empty)
+            {
+        <div id="dialog_Control" title="Control" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Control</label><br />
+            <textarea id="txt_Control" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                       { @Model.UserEntered.Control }
+                                                                                       catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_Control" value="@Model.UserEntered.Control" />
+            }
+        }
+        else
+        {
+        <div id="dialog_Control" title="Control" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Control</label><br />
+            <textarea id="txt_Control" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                       { @Model.UserEntered.Control }
+                                                                                       catch { }</textarea>
+        </div>
+        }
+    }
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_Command" title="Command" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Command</label><br />
+            <textarea id="txt_Command" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                       { @Model.UserEntered.Command }
+                                                                                       catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.UserEntered != null)
+        {
+            if (Model.UserEntered.Command == null || Model.UserEntered.Command == string.Empty)
+            {
+        <div id="dialog_Command" title="Command" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Command</label><br />
+            <textarea id="txt_Command" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                       { @Model.UserEntered.Command }
+                                                                                       catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_Command" value="@Model.UserEntered.Command" />
+            }
+        }
+        else
+        {
+        <div id="dialog_Command" title="Command" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Command</label><br />
+            <textarea id="txt_Command" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                       { @Model.UserEntered.Command }
+                                                                                       catch { }</textarea>
+        </div>
+        }
+    }
+
+
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_Approach" title="Approach" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Approach</label><br />
+            <textarea id="txt_Approach" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                        { @Model.UserEntered.Approach }
+                                                                                        catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.UserEntered != null)
+        {
+            if (Model.UserEntered.Approach == null || Model.UserEntered.Approach == string.Empty)
+            {
+        <div id="dialog_Approach" title="Approach" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Approach</label><br />
+            <textarea id="txt_Approach" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                        { @Model.UserEntered.Approach }
+                                                                                        catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_Approach" value="@Model.UserEntered.Approach" />
+            }
+        }
+        else
+        {
+        <div id="dialog_Approach" title="Approach" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Approach</label><br />
+            <textarea id="txt_Approach" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                        { @Model.UserEntered.Approach }
+                                                                                        catch { }</textarea>
+        </div>
+        }
+    }
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_Out_Pitch" title="Out_Pitch" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Out Pitch</label><br />
+            <textarea id="txt_Out_Pitch" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                         { @Model.UserEntered.Out_Pitch }
+                                                                                         catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.UserEntered != null)
+        {
+            if (Model.UserEntered.Out_Pitch == null || Model.UserEntered.Out_Pitch == string.Empty)
+            {
+        <div id="dialog_Out_Pitch" title="Out_Pitch" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Out Pitch</label><br />
+            <textarea id="txt_Out_Pitch" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                         { @Model.UserEntered.Out_Pitch }
+                                                                                         catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_Out_Pitch" value="@Model.UserEntered.Out_Pitch" />
+            }
+        }
+        else
+        {
+        <div id="dialog_Out_Pitch" title="Out_Pitch" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Out Pitch</label><br />
+            <textarea id="txt_Out_Pitch" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                         { @Model.UserEntered.Out_Pitch }
+                                                                                         catch { }</textarea>
+        </div>
+        }
+    }
+
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_PickoffMove_1B" title="PickoffMove_1B" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">PickoffMove 1B</label><br />
+            <textarea id="txt_PickoffMove_1B" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                              { @Model.UserEntered.PickoffMove_1B }
+                                                                                              catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.UserEntered != null)
+        {
+            if (Model.UserEntered.PickoffMove_1B == null || Model.UserEntered.PickoffMove_1B == string.Empty)
+            {
+        <div id="dialog_PickoffMove_1B" title="PickoffMove_1B" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">PickoffMove 1B</label><br />
+            <textarea id="txt_PickoffMove_1B" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                              { @Model.UserEntered.PickoffMove_1B }
+                                                                                              catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_PickoffMove_1B" value="@Model.UserEntered.PickoffMove_1B" />
+            }
+        }
+        else
+        {
+        <div id="dialog_PickoffMove_1B" title="PickoffMove_1B" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">PickoffMove 1B</label><br />
+            <textarea id="txt_PickoffMove_1B" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                              { @Model.UserEntered.PickoffMove_1B }
+                                                                                              catch { }</textarea>
+        </div>
+        }
+    }
+
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_PickoffMove_2B" title="PickoffMove_2B" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">PickoffMove 2B</label><br />
+            <textarea id="txt_PickoffMove_2B" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                              { @Model.UserEntered.PickoffMove_2B }
+                                                                                              catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.UserEntered != null)
+        {
+            if (Model.UserEntered.PickoffMove_2B == null || Model.UserEntered.PickoffMove_2B == string.Empty)
+            {
+        <div id="dialog_PickoffMove_2B" title="PickoffMove_2B" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">PickoffMove 2B</label><br />
+            <textarea id="txt_PickoffMove_2B" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                              { @Model.UserEntered.PickoffMove_2B }
+                                                                                              catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_PickoffMove_2B" value="@Model.UserEntered.PickoffMove_2B" />
+            }
+        }
+        else
+        {
+        <div id="dialog_PickoffMove_2B" title="PickoffMove_2B" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">PickoffMove 2B</label><br />
+            <textarea id="txt_PickoffMove_2B" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                              { @Model.UserEntered.PickoffMove_2B }
+                                                                                              catch { }</textarea>
+        </div>
+        }
+    }
+
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_ReleaseTimes_1B" title="ReleaseTimes_1B" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Runner &#64; 1st: Release Time</label><br />
+            <textarea id="txt_ReleaseTimes_1B" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                               { @Model.UserEntered.ReleaseTimes_1B }
+                                                                                               catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.UserEntered != null)
+        {
+            if (Model.UserEntered.ReleaseTimes_1B == null || Model.UserEntered.ReleaseTimes_1B == string.Empty)
+            {
+        <div id="dialog_ReleaseTimes_1B" title="ReleaseTimes_1B" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Runner &#64; 1st: Release Time</label><br />
+            <textarea id="txt_ReleaseTimes_1B" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                               { @Model.UserEntered.ReleaseTimes_1B }
+                                                                                               catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_ReleaseTimes_1B" value="@Model.UserEntered.ReleaseTimes_1B" />
+            }
+        }
+        else
+        {
+        <div id="dialog_ReleaseTimes_1B" title="ReleaseTimes_1B" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Runner &#64; 1st: Release Time</label><br />
+            <textarea id="txt_ReleaseTimes_1B" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                               { @Model.UserEntered.ReleaseTimes_1B }
+                                                                                               catch { }</textarea>
+        </div>
+        }
+    }
+
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_ReleaseTimes_2B" title="ReleaseTimes_2B" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Runner &#64; 2nd: Release Time</label><br />
+            <textarea id="txt_ReleaseTimes_2B" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                               { @Model.UserEntered.ReleaseTimes_2B }
+                                                                                               catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.UserEntered != null)
+        {
+            if (Model.UserEntered.ReleaseTimes_2B == null || Model.UserEntered.ReleaseTimes_2B == string.Empty)
+            {
+        <div id="dialog_ReleaseTimes_2B" title="ReleaseTimes_2B" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Runner &#64; 2nd: Release Time</label><br />
+            <textarea id="txt_ReleaseTimes_2B" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                               { @Model.UserEntered.ReleaseTimes_2B }
+                                                                                               catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_ReleaseTimes_2B" value="@Model.UserEntered.ReleaseTimes_2B" />
+            }
+        }
+        else
+        {
+        <div id="dialog_ReleaseTimes_2B" title="ReleaseTimes_2B" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Runner &#64; 2nd: Release Time</label><br />
+            <textarea id="txt_ReleaseTimes_2B" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                               { @Model.UserEntered.ReleaseTimes_2B }
+                                                                                               catch { }</textarea>
+        </div>
+        }
+    }
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_ReleaseTimes_SS" title="ReleaseTimes_SS" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Release Time SS</label><br />
+            <textarea id="txt_ReleaseTimes_SS" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                               { @Model.UserEntered.ReleaseTimes_SS }
+                                                                                               catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.UserEntered != null)
+        {
+            if (Model.UserEntered.ReleaseTimes_SS == null || Model.UserEntered.ReleaseTimes_SS == string.Empty)
+            {
+        <div id="dialog_ReleaseTimes_SS" title="ReleaseTimes_SS" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Release Time SS</label><br />
+            <textarea id="txt_ReleaseTimes_SS" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                               { @Model.UserEntered.ReleaseTimes_SS }
+                                                                                               catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_ReleaseTimes_SS" value="@Model.UserEntered.ReleaseTimes_SS" />
+            }
+        }
+        else
+        {
+        <div id="dialog_ReleaseTimes_SS" title="ReleaseTimes_SS" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Release Time SS</label><br />
+            <textarea id="txt_ReleaseTimes_SS" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                               { @Model.UserEntered.ReleaseTimes_SS }
+                                                                                               catch { }</textarea>
+        </div>
+        }
+    }
+
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_SlideStepTime_1B" title="SlideStepTime_1B" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Runner &#64; 2nd: Slide Step Time</label><br />
+            <textarea id="txt_SlideStepTime_1B" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                { @Model.UserEntered.SlideStepTime_1B }
+                                                                                                catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.UserEntered != null)
+        {
+            if (Model.UserEntered.SlideStepTime_1B == null || Model.UserEntered.SlideStepTime_1B == string.Empty)
+            {
+        <div id="dialog_SlideStepTime_1B" title="SlideStepTime_1B" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Runner &#64; 2nd: Slide Step Time</label><br />
+            <textarea id="txt_SlideStepTime_1B" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                { @Model.UserEntered.SlideStepTime_1B }
+                                                                                                catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_SlideStepTime_1B" value="@Model.UserEntered.SlideStepTime_1B" />
+            }
+        }
+        else
+        {
+        <div id="dialog_SlideStepTime_1B" title="SlideStepTime_1B" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Runner &#64; 2nd: Slide Step Time</label><br />
+            <textarea id="txt_SlideStepTime_1B" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                { @Model.UserEntered.SlideStepTime_1B }
+                                                                                                catch { }</textarea>
+        </div>
+        }
+    }
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_LooksWRunner_2B" title="LooksWRunner_2B" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Runner &#64; 2nd: Looks W Runner 2B</label><br />
+            <textarea id="txt_LooksWRunner_2B" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                               { @Model.UserEntered.LooksWRunner_2B }
+                                                                                               catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.UserEntered != null)
+        {
+            if (Model.UserEntered.LooksWRunner_2B == null || Model.UserEntered.LooksWRunner_2B == string.Empty)
+            {
+        <div id="dialog_LooksWRunner_2B" title="LooksWRunner_2B" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Runner &#64; 2nd: Looks W Runner 2B</label><br />
+            <textarea id="txt_LooksWRunner_2B" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                               { @Model.UserEntered.LooksWRunner_2B }
+                                                                                               catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_LooksWRunner_2B" value="@Model.UserEntered.LooksWRunner_2B" />
+            }
+        }
+        else
+        {
+        <div id="dialog_LooksWRunner_2B" title="LooksWRunner_2B" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Runner &#64; 2nd: Looks W Runner 2B</label><br />
+            <textarea id="txt_LooksWRunner_2B" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                               { @Model.UserEntered.LooksWRunner_2B }
+                                                                                               catch { }</textarea>
+        </div>
+        }
+    }
+
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_FB2SMVelocity" title="FB2SMVelocity" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">FB2SMVelocity</label><br />
+            <textarea id="txt_FB2SMVelocity" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                             { @Model.UserEntered2.FB2SMVelocity }
+                                                                                             catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.UserEntered2 != null)
+        {
+            if (Model.UserEntered2.FB2SMVelocity == null || Model.UserEntered2.FB2SMVelocity == string.Empty)
+            {
+        <div id="dialog_FB2SMVelocity" title="FB2SMVelocity" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">FB2SMVelocity</label><br />
+            <textarea id="txt_FB2SMVelocity" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                             { @Model.UserEntered2.FB2SMVelocity }
+                                                                                             catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_FB2SMVelocity" value="@Model.UserEntered2.FB2SMVelocity" />
+            }
+        }
+        else
+        {
+        <div id="dialog_FB2SMVelocity" title="FB2SMVelocity" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">FB2SMVelocity</label><br />
+            <textarea id="txt_FB2SMVelocity" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                             { @Model.UserEntered2.FB2SMVelocity }
+                                                                                             catch { }</textarea>
+        </div>
+        }
+    }
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_FB2SMCommand" title="FB2SMCommand" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">FB2SM Command</label><br />
+            <textarea id="txt_FB2SMCommand" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                            { @Model.UserEntered2.FB2SMCommand }
+                                                                                            catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.UserEntered2 != null)
+        {
+            if (Model.UserEntered2.FB2SMCommand == null || Model.UserEntered2.FB2SMCommand == string.Empty)
+            {
+        <div id="dialog_FB2SMCommand" title="FB2SMCommand" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">FB2SM Command</label><br />
+            <textarea id="txt_FB2SMCommand" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                            { @Model.UserEntered2.FB2SMCommand }
+                                                                                            catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_FB2SMCommand" value="@Model.UserEntered2.FB2SMCommand" />
+            }
+        }
+        else
+        {
+        <div id="dialog_FB2SMCommand" title="FB2SMCommand" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">FB2SM Command</label><br />
+            <textarea id="txt_FB2SMCommand" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                            { @Model.UserEntered2.FB2SMCommand }
+                                                                                            catch { }</textarea>
+        </div>
+        }
+    }
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_FB2SMDescription" title="FB2SMDescription" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">FB2SM Action</label><br />
+            <textarea id="txt_FB2SMDescription" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                { @Model.UserEntered2.FB2SMDescription }
+                                                                                                catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.UserEntered2 != null)
+        {
+            if (Model.UserEntered2.FB2SMDescription == null || Model.UserEntered2.FB2SMDescription == string.Empty)
+            {
+        <div id="dialog_FB2SMDescription" title="FB2SMDescription" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">FB2SM Action</label><br />
+            <textarea id="txt_FB2SMDescription" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                { @Model.UserEntered2.FB2SMDescription }
+                                                                                                catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_FB2SMDescription" value="@Model.UserEntered2.FB2SMDescription" />
+            }
+        }
+        else
+        {
+        <div id="dialog_FB2SMDescription" title="FB2SMDescription" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">FB2SM Action</label><br />
+            <textarea id="txt_FB2SMDescription" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                { @Model.UserEntered2.FB2SMDescription }
+                                                                                                catch { }</textarea>
+        </div>
+        }
+    }
+
+
+
+
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_FB4SMVelocity" title="FB4SMVelocity" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">FB4SM Velocity</label><br />
+            <textarea id="txt_FB4SMVelocity" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                             { @Model.UserEntered2.FB4SMVelocity }
+                                                                                             catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.UserEntered2 != null)
+        {
+            if (Model.UserEntered2.FB4SMVelocity == null || Model.UserEntered2.FB4SMVelocity == string.Empty)
+            {
+        <div id="dialog_FB4SMVelocity" title="FB4SMVelocity" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">FB4SM Velocity</label><br />
+            <textarea id="txt_FB4SMVelocity" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                             { @Model.UserEntered2.FB4SMVelocity }
+                                                                                             catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_FB4SMVelocity" value="@Model.UserEntered2.FB4SMVelocity" />
+            }
+        }
+        else
+        {
+        <div id="dialog_FB4SMVelocity" title="FB4SMVelocity" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">FB4SM Velocity</label><br />
+            <textarea id="txt_FB4SMVelocity" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                             { @Model.UserEntered2.FB4SMVelocity }
+                                                                                             catch { }</textarea>
+        </div>
+        }
+    }
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_FB4SMCommand" title="FB4SMCommand" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">FB4SM Command</label><br />
+            <textarea id="txt_FB4SMCommand" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                            { @Model.UserEntered2.FB4SMCommand }
+                                                                                            catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.UserEntered2 != null)
+        {
+            if (Model.UserEntered2.FB4SMCommand == null || Model.UserEntered2.FB4SMCommand == string.Empty)
+            {
+        <div id="dialog_FB4SMCommand" title="FB4SMCommand" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">FB4SM Command</label><br />
+            <textarea id="txt_FB4SMCommand" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                            { @Model.UserEntered2.FB4SMCommand }
+                                                                                            catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_FB4SMCommand" value="@Model.UserEntered2.FB4SMCommand" />
+            }
+        }
+        else
+        {
+        <div id="dialog_FB4SMCommand" title="FB4SMCommand" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">FB4SM Command</label><br />
+            <textarea id="txt_FB4SMCommand" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                            { @Model.UserEntered2.FB4SMCommand }
+                                                                                            catch { }</textarea>
+        </div>
+        }
+    }
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_FB4SMDescription" title="FB4SMDescription" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">FB4SM Action</label><br />
+            <textarea id="txt_FB4SMDescription" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                { @Model.UserEntered2.FB4SMDescription }
+                                                                                                catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.UserEntered2 != null)
+        {
+            if (Model.UserEntered2.FB4SMDescription == null || Model.UserEntered2.FB4SMDescription == string.Empty)
+            {
+        <div id="dialog_FB4SMDescription" title="FB4SMDescription" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">FB4SM Action</label><br />
+            <textarea id="txt_FB4SMDescription" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                { @Model.UserEntered2.FB4SMDescription }
+                                                                                                catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_FB4SMDescription" value="@Model.UserEntered2.FB4SMDescription" />
+            }
+        }
+        else
+        {
+        <div id="dialog_FB4SMDescription" title="FB4SMDescription" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">FB4SM Action</label><br />
+            <textarea id="txt_FB4SMDescription" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                { @Model.UserEntered2.FB4SMDescription }
+                                                                                                catch { }</textarea>
+        </div>
+        }
+    }
+
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_CutterVelocity" title="CutterVelocity" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Cutter Velocity</label><br />
+            <textarea id="txt_CutterVelocity" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                              { @Model.Pitcher.CutterVelocity }
+                                                                                              catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.Pitcher != null)
+        {
+            if (Model.Pitcher.CutterVelocity == null || Model.Pitcher.CutterVelocity == string.Empty)
+            {
+        <div id="dialog_CutterVelocity" title="CutterVelocity" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Cutter Velocity</label><br />
+            <textarea id="txt_CutterVelocity" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                              { @Model.Pitcher.CutterVelocity }
+                                                                                              catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_CutterVelocity" value="@Model.Pitcher.CutterVelocity" />
+            }
+        }
+        else
+        {
+        <div id="dialog_CutterVelocity" title="CutterVelocity" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Cutter Velocity</label><br />
+            <textarea id="txt_CutterVelocity" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                              { @Model.Pitcher.CutterVelocity }
+                                                                                              catch { }</textarea>
+        </div>
+        }
+    }
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_CutterCommand" title="CutterCommand" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Cutter Command</label><br />
+            <textarea id="txt_CutterCommand" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                             { @Model.UserEntered2.CutterCommand }
+                                                                                             catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.UserEntered2 != null)
+        {
+            if (Model.UserEntered2.CutterCommand == null || Model.UserEntered2.CutterCommand == string.Empty)
+            {
+        <div id="dialog_CutterCommand" title="CutterCommand" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Cutter Command</label><br />
+            <textarea id="txt_CutterCommand" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                             { @Model.UserEntered2.CutterCommand }
+                                                                                             catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_CutterCommand" value="@Model.UserEntered2.CutterCommand" />
+            }
+        }
+        else
+        {
+        <div id="dialog_CutterCommand" title="CutterCommand" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Cutter Command</label><br />
+            <textarea id="txt_CutterCommand" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                             { @Model.UserEntered2.CutterCommand }
+                                                                                             catch { }</textarea>
+        </div>
+        }
+    }
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_CutterDescription" title="CutterDescription" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Cutter Action</label><br />
+            <textarea id="txt_CutterDescription" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                 { @Model.Pitcher.CutterDescription }
+                                                                                                 catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.Pitcher != null)
+        {
+            if (Model.Pitcher.CutterDescription == null || Model.Pitcher.CutterDescription == string.Empty)
+            {
+        <div id="dialog_CutterDescription" title="CutterDescription" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Cutter Action</label><br />
+            <textarea id="txt_CutterDescription" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                 { @Model.Pitcher.CutterDescription }
+                                                                                                 catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_CutterDescription" value="@Model.Pitcher.CutterDescription" />
+            }
+        }
+        else
+        {
+        <div id="dialog_CutterDescription" title="CutterDescription" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Cutter Action</label><br />
+            <textarea id="txt_CutterDescription" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                 { @Model.Pitcher.CutterDescription }
+                                                                                                 catch { }</textarea>
+        </div>
+        }
+    }
+
+
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_SliderVelocity" title="SliderVelocity" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Slider Velocity</label><br />
+            <textarea id="txt_SliderVelocity" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                              { @Model.Pitcher.SliderVelocity }
+                                                                                              catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.Pitcher != null)
+        {
+            if (Model.Pitcher.SliderVelocity == null || Model.Pitcher.SliderVelocity == string.Empty)
+            {
+        <div id="dialog_SliderVelocity" title="SliderVelocity" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Slider Velocity</label><br />
+            <textarea id="txt_SliderVelocity" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                              { @Model.Pitcher.SliderVelocity }
+                                                                                              catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_SliderVelocity" value="@Model.Pitcher.SliderVelocity" />
+            }
+        }
+        else
+        {
+        <div id="dialog_SliderVelocity" title="SliderVelocity" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Slider Velocity</label><br />
+            <textarea id="txt_SliderVelocity" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                              { @Model.Pitcher.SliderVelocity }
+                                                                                              catch { }</textarea>
+        </div>
+        }
+    }
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_SliderCommand" title="SliderCommand" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Slider Command</label><br />
+            <textarea id="txt_SliderCommand" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                             { @Model.UserEntered2.SliderCommand }
+                                                                                             catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.UserEntered2 != null)
+        {
+            if (Model.UserEntered2.SliderCommand == null || Model.UserEntered2.SliderCommand == string.Empty)
+            {
+        <div id="dialog_SliderCommand" title="SliderCommand" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Slider Command</label><br />
+            <textarea id="txt_SliderCommand" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                             { @Model.UserEntered2.SliderCommand }
+                                                                                             catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_SliderCommand" value="@Model.UserEntered2.SliderCommand" />
+            }
+        }
+        else
+        {
+        <div id="dialog_SliderCommand" title="SliderCommand" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Slider Command</label><br />
+            <textarea id="txt_SliderCommand" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                             { @Model.UserEntered2.SliderCommand }
+                                                                                             catch { }</textarea>
+        </div>
+        }
+    }
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_SliderDescription" title="SliderDescription" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Slider Action</label><br />
+            <textarea id="txt_SliderDescription" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                 { @Model.Pitcher.SliderDescription }
+                                                                                                 catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.Pitcher != null)
+        {
+            if (Model.Pitcher.SliderDescription == null || Model.Pitcher.SliderDescription == string.Empty)
+            {
+        <div id="dialog_SliderDescription" title="SliderDescription" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Slider Action</label><br />
+            <textarea id="txt_SliderDescription" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                 { @Model.Pitcher.SliderDescription }
+                                                                                                 catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_SliderDescription" value="@Model.Pitcher.SliderDescription" />
+            }
+        }
+        else
+        {
+        <div id="dialog_SliderDescription" title="SliderDescription" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Slider Action</label><br />
+            <textarea id="txt_SliderDescription" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                 { @Model.Pitcher.SliderDescription }
+                                                                                                 catch { }</textarea>
+        </div>
+        }
+    }
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_CurveballVelocity" title="CurveballVelocity" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Curveball Velocity</label><br />
+            <textarea id="txt_CurveballVelocity" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                 { @Model.Pitcher.CurveballVelocity }
+                                                                                                 catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.Pitcher != null)
+        {
+            if (Model.Pitcher.CurveballVelocity == null || Model.Pitcher.CurveballVelocity == string.Empty)
+            {
+        <div id="dialog_CurveballVelocity" title="CurveballVelocity" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Curveball Velocity</label><br />
+            <textarea id="txt_CurveballVelocity" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                 { @Model.Pitcher.CurveballVelocity }
+                                                                                                 catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_CurveballVelocity" value="@Model.Pitcher.CurveballVelocity" />
+            }
+        }
+        else
+        {
+        <div id="dialog_CurveballVelocity" title="CurveballVelocity" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Curveball Velocity</label><br />
+            <textarea id="txt_CurveballVelocity" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                 { @Model.Pitcher.CurveballVelocity }
+                                                                                                 catch { }</textarea>
+        </div>
+        }
+    }
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_CurveballCommand" title="CurveballCommand" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Curveball Command</label><br />
+            <textarea id="txt_CurveballCommand" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                { @Model.UserEntered2.CurveballCommand }
+                                                                                                catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.UserEntered2 != null)
+        {
+            if (Model.UserEntered2.CurveballCommand == null || Model.UserEntered2.CurveballCommand == string.Empty)
+            {
+        <div id="dialog_CurveballCommand" title="CurveballCommand" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Curveball Command</label><br />
+            <textarea id="txt_CurveballCommand" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                { @Model.UserEntered2.CurveballCommand }
+                                                                                                catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_CurveballCommand" value="@Model.UserEntered2.CurveballCommand" />
+            }
+        }
+        else
+        {
+        <div id="dialog_CurveballCommand" title="CurveballCommand" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Curveball Command</label><br />
+            <textarea id="txt_CurveballCommand" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                { @Model.UserEntered2.CurveballCommand }
+                                                                                                catch { }</textarea>
+        </div>
+        }
+    }
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_CurveballDescription" title="CurveballDescription" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Curveball Action</label><br />
+            <textarea id="txt_CurveballDescription" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                    { @Model.Pitcher.CurveballDescription }
+                                                                                                    catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.Pitcher != null)
+        {
+            if (Model.Pitcher.CurveballDescription == null || Model.Pitcher.CurveballDescription == string.Empty)
+            {
+        <div id="dialog_CurveballDescription" title="CurveballDescription" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Curveball Action</label><br />
+            <textarea id="txt_CurveballDescription" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                    { @Model.Pitcher.CurveballDescription }
+                                                                                                    catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_CurveballDescription" value="@Model.Pitcher.CurveballDescription" />
+            }
+        }
+        else
+        {
+        <div id="dialog_CurveballDescription" title="CurveballDescription" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Curveball Action</label><br />
+            <textarea id="txt_CurveballDescription" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                    { @Model.Pitcher.CurveballDescription }
+                                                                                                    catch { }</textarea>
+        </div>
+        }
+    }
+
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_ChangeupVelocity" title="ChangeupVelocity" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Changeup Velocity</label><br />
+            <textarea id="txt_ChangeupVelocity" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                { @Model.Pitcher.ChangeupVelocity }
+                                                                                                catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.Pitcher != null)
+        {
+            if (Model.Pitcher.ChangeupVelocity == null || Model.Pitcher.ChangeupVelocity == string.Empty)
+            {
+        <div id="dialog_ChangeupVelocity" title="ChangeupVelocity" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Changeup Velocity</label><br />
+            <textarea id="txt_ChangeupVelocity" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                { @Model.Pitcher.ChangeupVelocity }
+                                                                                                catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_ChangeupVelocity" value="@Model.Pitcher.ChangeupVelocity" />
+            }
+        }
+        else
+        {
+        <div id="dialog_ChangeupVelocity" title="ChangeupVelocity" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Changeup Velocity</label><br />
+            <textarea id="txt_ChangeupVelocity" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                { @Model.Pitcher.ChangeupVelocity }
+                                                                                                catch { }</textarea>
+        </div>
+        }
+    }
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_ChangeupCommand" title="ChangeupCommand" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Changeup Command</label><br />
+            <textarea id="txt_ChangeupCommand" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                               { @Model.UserEntered2.ChangeupCommand }
+                                                                                               catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.UserEntered2 != null)
+        {
+            if (Model.UserEntered2.ChangeupCommand == null || Model.UserEntered2.ChangeupCommand == string.Empty)
+            {
+        <div id="dialog_ChangeupCommand" title="ChangeupCommand" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Changeup Command</label><br />
+            <textarea id="txt_ChangeupCommand" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                               { @Model.UserEntered2.ChangeupCommand }
+                                                                                               catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_ChangeupCommand" value="@Model.UserEntered2.ChangeupCommand" />
+            }
+        }
+        else
+        {
+        <div id="dialog_ChangeupCommand" title="ChangeupCommand" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Changeup Command</label><br />
+            <textarea id="txt_ChangeupCommand" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                               { @Model.UserEntered2.ChangeupCommand }
+                                                                                               catch { }</textarea>
+        </div>
+        }
+    }
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_ChangeupDescription" title="ChangeupDescription" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Changeup Action</label><br />
+            <textarea id="txt_ChangeupDescription" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                   { @Model.Pitcher.ChangeupDescription }
+                                                                                                   catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.Pitcher != null)
+        {
+            if (Model.Pitcher.ChangeupDescription == null || Model.Pitcher.ChangeupDescription == string.Empty)
+            {
+        <div id="dialog_ChangeupDescription" title="ChangeupDescription" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Changeup Action</label><br />
+            <textarea id="txt_ChangeupDescription" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                   { @Model.Pitcher.ChangeupDescription }
+                                                                                                   catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_ChangeupDescription" value="@Model.Pitcher.ChangeupDescription" />
+            }
+        }
+        else
+        {
+        <div id="dialog_ChangeupDescription" title="ChangeupDescription" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Changeup Action</label><br />
+            <textarea id="txt_ChangeupDescription" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                   { @Model.Pitcher.ChangeupDescription }
+                                                                                                   catch { }</textarea>
+        </div>
+        }
+    }
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_SplitfingerVelocity" title="SplitfingerVelocity" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Splitfinger Velocity</label><br />
+            <textarea id="txt_SplitfingerVelocity" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                   { @Model.Pitcher.SplitfingerVelocity }
+                                                                                                   catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.Pitcher != null)
+        {
+            if (Model.Pitcher.SplitfingerVelocity == null || Model.Pitcher.SplitfingerVelocity == string.Empty)
+            {
+        <div id="dialog_SplitfingerVelocity" title="SplitfingerVelocity" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Splitfinger Velocity</label><br />
+            <textarea id="txt_SplitfingerVelocity" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                   { @Model.Pitcher.SplitfingerVelocity }
+                                                                                                   catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_SplitfingerVelocity" value="@Model.Pitcher.SplitfingerVelocity" />
+            }
+        }
+        else
+        {
+        <div id="dialog_SplitfingerVelocity" title="SplitfingerVelocity" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Splitfinger Velocity</label><br />
+            <textarea id="txt_SplitfingerVelocity" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                   { @Model.Pitcher.SplitfingerVelocity }
+                                                                                                   catch { }</textarea>
+        </div>
+        }
+    }
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_SplitfingerCommand" title="SplitfingerCommand" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Splitfinger Command</label><br />
+            <textarea id="txt_SplitfingerCommand" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                  { @Model.UserEntered2.SplitfingerCommand }
+                                                                                                  catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.UserEntered2 != null)
+        {
+            if (Model.UserEntered2.SplitfingerCommand == null || Model.UserEntered2.SplitfingerCommand == string.Empty)
+            {
+        <div id="dialog_SplitfingerCommand" title="SplitfingerCommand" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Splitfinger Command</label><br />
+            <textarea id="txt_SplitfingerCommand" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                  { @Model.UserEntered2.SplitfingerCommand }
+                                                                                                  catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_SplitfingerCommand" value="@Model.UserEntered2.SplitfingerCommand" />
+            }
+        }
+        else
+        {
+        <div id="dialog_SplitfingerCommand" title="SplitfingerCommand" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Splitfinger Command</label><br />
+            <textarea id="txt_SplitfingerCommand" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                  { @Model.UserEntered2.SplitfingerCommand }
+                                                                                                  catch { }</textarea>
+        </div>
+        }
+    }
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_SplitfingerDescription" title="SplitfingerDescription" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Splitfinger Action</label><br />
+            <textarea id="txt_SplitfingerDescription" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                      { @Model.Pitcher.SplitfingerDescription }
+                                                                                                      catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.Pitcher != null)
+        {
+            if (Model.Pitcher.SplitfingerDescription == null || Model.Pitcher.SplitfingerDescription == string.Empty)
+            {
+        <div id="dialog_SplitfingerDescription" title="SplitfingerDescription" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Splitfinger Action</label><br />
+            <textarea id="txt_SplitfingerDescription" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                      { @Model.Pitcher.SplitfingerDescription }
+                                                                                                      catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_SplitfingerDescription" value="@Model.Pitcher.SplitfingerDescription" />
+            }
+        }
+        else
+        {
+        <div id="dialog_SplitfingerDescription" title="SplitfingerDescription" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Splitfinger Action</label><br />
+            <textarea id="txt_SplitfingerDescription" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                      { @Model.Pitcher.SplitfingerDescription }
+                                                                                                      catch { }</textarea>
+        </div>
+        }
+    }
+
+
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_KnuckleballVelocity" title="KnuckleballVelocity" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">KnuckleballVelocity</label><br />
+            <textarea id="txt_KnuckleballVelocity" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                   { @Model.Pitcher.KnuckleballVelocity }
+                                                                                                   catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.Pitcher != null)
+        {
+            if (Model.Pitcher.KnuckleballVelocity == null || Model.Pitcher.KnuckleballVelocity == string.Empty)
+            {
+        <div id="dialog_KnuckleballVelocity" title="KnuckleballVelocity" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">KnuckleballVelocity</label><br />
+            <textarea id="txt_KnuckleballVelocity" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                   { @Model.Pitcher.KnuckleballVelocity }
+                                                                                                   catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_KnuckleballVelocity" value="@Model.Pitcher.KnuckleballVelocity" />
+            }
+        }
+        else
+        {
+        <div id="dialog_KnuckleballVelocity" title="KnuckleballVelocity" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">KnuckleballVelocity</label><br />
+            <textarea id="txt_KnuckleballVelocity" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                   { @Model.Pitcher.KnuckleballVelocity }
+                                                                                                   catch { }</textarea>
+        </div>
+        }
+    }
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_KnuckleballCommand" title="KnuckleballCommand" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">KnuckleballCommand</label><br />
+            <textarea id="txt_KnuckleballCommand" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                  { @Model.UserEntered2.KnuckleballCommand }
+                                                                                                  catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.UserEntered2 != null)
+        {
+            if (Model.UserEntered2.KnuckleballCommand == null || Model.UserEntered2.KnuckleballCommand == string.Empty)
+            {
+        <div id="dialog_KnuckleballCommand" title="KnuckleballCommand" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">KnuckleballCommand</label><br />
+            <textarea id="txt_KnuckleballCommand" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                  { @Model.UserEntered2.KnuckleballCommand }
+                                                                                                  catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_KnuckleballCommand" value="@Model.UserEntered2.KnuckleballCommand" />
+            }
+        }
+        else
+        {
+        <div id="dialog_KnuckleballCommand" title="KnuckleballCommand" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">KnuckleballCommand</label><br />
+            <textarea id="txt_KnuckleballCommand" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                  { @Model.UserEntered2.KnuckleballCommand }
+                                                                                                  catch { }</textarea>
+        </div>
+        }
+    }
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_KnuckleballDescription" title="KnuckleballDescription" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Knuckleball Action</label><br />
+            <textarea id="txt_KnuckleballDescription" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                      { @Model.Pitcher.KnuckleballDescription }
+                                                                                                      catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.Pitcher != null)
+        {
+            if (Model.Pitcher.KnuckleballDescription == null || Model.Pitcher.KnuckleballDescription == string.Empty)
+            {
+        <div id="dialog_KnuckleballDescription" title="KnuckleballDescription" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Knuckleball Action</label><br />
+            <textarea id="txt_KnuckleballDescription" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                      { @Model.Pitcher.KnuckleballDescription }
+                                                                                                      catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_KnuckleballDescription" value="@Model.Pitcher.KnuckleballDescription" />
+            }
+        }
+        else
+        {
+        <div id="dialog_KnuckleballDescription" title="KnuckleballDescription" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Knuckleball Action</label><br />
+            <textarea id="txt_KnuckleballDescription" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                      { @Model.Pitcher.KnuckleballDescription }
+                                                                                                      catch { }</textarea>
+        </div>
+        }
+    }
+
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_CareerRHB" title="CareerRHB" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Career RHB</label><br />
+            <textarea id="txt_CareerRHB" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                         { @Model.PitcherSplit.CareerRHB }
+                                                                                         catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.PitcherSplit != null)
+        {
+            if (Model.PitcherSplit.CareerRHB == null || Model.PitcherSplit.CareerRHB == string.Empty)
+            {
+        <div id="dialog_CareerRHB" title="CareerRHB" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Career RHB</label><br />
+            <textarea id="txt_CareerRHB" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                         { @Model.PitcherSplit.CareerRHB }
+                                                                                         catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_CareerRHB" value="@Model.PitcherSplit.CareerRHB" />
+            }
+        }
+        else
+        {
+        <div id="dialog_CareerRHB" title="CareerRHB" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Career RHB</label><br />
+            <textarea id="txt_CareerRHB" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                         { @Model.PitcherSplit.CareerRHB }
+                                                                                         catch { }</textarea>
+        </div>
+        }
+    }
+
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_CareerLHB" title="CareerLHB" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Career LHB</label><br />
+            <textarea id="txt_CareerLHB" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                         { @Model.PitcherSplit.CareerLHB }
+                                                                                         catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.PitcherSplit != null)
+        {
+            if (Model.PitcherSplit.CareerLHB == null || Model.PitcherSplit.CareerLHB == string.Empty)
+            {
+        <div id="dialog_CareerLHB" title="CareerLHB" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Career LHB</label><br />
+            <textarea id="txt_CareerLHB" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                         { @Model.PitcherSplit.CareerLHB }
+                                                                                         catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_CareerLHB" value="@Model.PitcherSplit.CareerLHB" />
+            }
+        }
+        else
+        {
+        <div id="dialog_CareerLHB" title="CareerLHB" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Career LHB</label><br />
+            <textarea id="txt_CareerLHB" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                         { @Model.PitcherSplit.CareerLHB }
+                                                                                         catch { }</textarea>
+        </div>
+        }
+    }
+
+
+
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_Aggressiveness" title="Aggressiveness" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Agressiveness of All Outfielders</label><br />
+            <textarea id="txt_Aggressiveness" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                              { @Model.Outfielder_Pitcher.Aggressiveness }
+                                                                                              catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.Outfielder_Pitcher != null)
+        {
+            if (Model.Outfielder_Pitcher.Aggressiveness == null || Model.Outfielder_Pitcher.Aggressiveness == string.Empty)
+            {
+        <div id="dialog_Aggressiveness" title="Aggressiveness" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Agressiveness of All Outfielders</label><br />
+            <textarea id="txt_Aggressiveness" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                              { @Model.Outfielder_Pitcher.Aggressiveness }
+                                                                                              catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_Aggressiveness" value="@Model.Outfielder_Pitcher.Aggressiveness" />
+            }
+        }
+        else
+        {
+        <div id="dialog_Aggressiveness" title="Aggressiveness" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Agressiveness of All Outfielders</label><br />
+            <textarea id="txt_Aggressiveness" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                              { @Model.Outfielder_Pitcher.Aggressiveness }
+                                                                                              catch { }</textarea>
+        </div>
+        }
+    }
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_SPAofHit_Summary" title="SPAofHit_Summary" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Starting Pitcher Ability to Hit Summary</label><br />
+            <textarea id="txt_SPAofHit_Summary" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                { @Model.Outfielder_Pitcher.SPAofHit_Summary }
+                                                                                                catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.Outfielder_Pitcher != null)
+        {
+            if (Model.Outfielder_Pitcher.SPAofHit_Summary == null || Model.Outfielder_Pitcher.SPAofHit_Summary == string.Empty)
+            {
+        <div id="dialog_SPAofHit_Summary" title="SPAofHit_Summary" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Starting Pitcher Ability to Hit Summary</label><br />
+            <textarea id="txt_SPAofHit_Summary" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                { @Model.Outfielder_Pitcher.SPAofHit_Summary }
+                                                                                                catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_SPAofHit_Summary" value="@Model.Outfielder_Pitcher.SPAofHit_Summary" />
+            }
+        }
+        else
+        {
+        <div id="dialog_SPAofHit_Summary" title="SPAofHit_Summary" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Starting Pitcher Ability to Hit Summary</label><br />
+            <textarea id="txt_SPAofHit_Summary" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                { @Model.Outfielder_Pitcher.SPAofHit_Summary }
+                                                                                                catch { }</textarea>
+        </div>
+        }
+    }
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_SPAofHit_Detail" title="SPAofHit_Detail" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Starting Pitcher Ability to Hit Detail</label><br />
+            <textarea id="txt_SPAofHit_Detail" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                               { @Model.Outfielder_Pitcher.SPAofHit_Detail }
+                                                                                               catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.Outfielder_Pitcher != null)
+        {
+            if (Model.Outfielder_Pitcher.SPAofHit_Detail == null || Model.Outfielder_Pitcher.SPAofHit_Detail == string.Empty)
+            {
+        <div id="dialog_SPAofHit_Detail" title="SPAofHit_Detail" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Starting Pitcher Ability to Hit Detail</label><br />
+            <textarea id="txt_SPAofHit_Detail" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                               { @Model.Outfielder_Pitcher.SPAofHit_Detail }
+                                                                                               catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_SPAofHit_Detail" value="@Model.Outfielder_Pitcher.SPAofHit_Detail" />
+            }
+        }
+        else
+        {
+        <div id="dialog_SPAofHit_Detail" title="SPAofHit_Detail" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Starting Pitcher Ability to Hit Detail</label><br />
+            <textarea id="txt_SPAofHit_Detail" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                               { @Model.Outfielder_Pitcher.SPAofHit_Detail }
+                                                                                               catch { }</textarea>
+        </div>
+        }
+    }
+
+
+    @if (Request.QueryString["_tag"].ToString().Equals("1", StringComparison.OrdinalIgnoreCase))
+    {
+        <div id="dialog_SPAofHit_BuntingAbility" title="SPAofHit_BuntingAbility" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Starting Pitcher Ability to Hit Bunting ability</label><br />
+            <textarea id="txt_SPAofHit_BuntingAbility" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                       { @Model.Outfielder_Pitcher.SPAofHit_BuntingAbility }
+                                                                                                       catch { }</textarea>
+        </div>
+    }
+    else if (Request.QueryString["_tag"].ToString().Equals("2", StringComparison.OrdinalIgnoreCase))
+    {
+        if (Model.Outfielder_Pitcher != null)
+        {
+            if (Model.Outfielder_Pitcher.SPAofHit_BuntingAbility == null || Model.Outfielder_Pitcher.SPAofHit_BuntingAbility == string.Empty)
+            {
+        <div id="dialog_SPAofHit_BuntingAbility" title="SPAofHit_BuntingAbility" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Starting Pitcher Ability to Hit Bunting ability</label><br />
+            <textarea id="txt_SPAofHit_BuntingAbility" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                       { @Model.Outfielder_Pitcher.SPAofHit_BuntingAbility }
+                                                                                                       catch { }</textarea>
+        </div>
+            }
+            else
+            {
+        <input type="hidden" id="txt_SPAofHit_BuntingAbility" value="@Model.Outfielder_Pitcher.SPAofHit_BuntingAbility" />
+            }
+        }
+        else
+        {
+        <div id="dialog_SPAofHit_BuntingAbility" title="SPAofHit_BuntingAbility" style="margin-right: 15px;">
+            <label style="margin-left: 7px; text-transform: uppercase; font-weight: bolder;">Starting Pitcher Ability to Hit Bunting ability</label><br />
+            <textarea id="txt_SPAofHit_BuntingAbility" style="resize: vertical;" class="TextboxPlayer">@try
+                                                                                                       { @Model.Outfielder_Pitcher.SPAofHit_BuntingAbility }
+                                                                                                       catch { }</textarea>
+        </div>
+        }
+    }
+</div>
+
+@section scripts{
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#saveAllTableFixed').hide();
+            //Check to see if the window is top if not then display button
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 250) {//155
+                    $("#saveAll").appendTo($("#fixedSaveAllBtnCont"));
+                    $("#cancelAll").appendTo($("#fixedSaveAllBtnCont"));
+                    $('#saveAllTableFixed').show();
+                } else {
+                    $("#saveAll").appendTo($("#saveAllTableCell"));
+                    $("#cancelAll").appendTo($("#saveAllTableCell"));
+                    $('#saveAllTableFixed').hide();
+                }
+            });
+        });
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        };
+        $("#cancelAll").click(function () {
+            var _teamid = getParameterByName("_teamid");
+            location.replace('/Home/NotesEntryForm?_teamid=' + _teamid);
+        });
+        $("#saveAll").click(function () {
+            var _teamid = getParameterByName("_teamid");
+            var _pid = getParameterByName("_pid");
+
+            var _ArmSlot = document.getElementById("txt_Armslot").value
+            var _Control = document.getElementById("txt_Control").value
+            var _Command = document.getElementById("txt_Command").value
+            var _Approach = document.getElementById("txt_Approach").value
+            var _Outpitch = document.getElementById("txt_Out_Pitch").value
+            var _careerrhb = document.getElementById("txt_CareerRHB").value
+            var _careerlhb = document.getElementById("txt_CareerLHB").value
+            var _rt1B = document.getElementById("txt_ReleaseTimes_1B").value
+            var _rt2B = document.getElementById("txt_ReleaseTimes_2B").value
+            var _rtSS = document.getElementById("txt_ReleaseTimes_SS").value
+            var _pm1B = document.getElementById("txt_PickoffMove_1B").value
+            var _pm2B = document.getElementById("txt_PickoffMove_2B").value
+            var _ss1B = document.getElementById("txt_SlideStepTime_1B").value
+            var _lwr2B = document.getElementById("txt_LooksWRunner_2B").value
+
+            var _agg = document.getElementById("txt_Aggressiveness").value
+            var _sum = document.getElementById("txt_SPAofHit_Summary").value
+            var _det = document.getElementById("txt_SPAofHit_Detail").value
+            var _bun = document.getElementById("txt_SPAofHit_BuntingAbility").value
+
+            var _FB2SMvel = document.getElementById("txt_FB2SMVelocity").value
+            var _FB2SMcom = document.getElementById("txt_FB2SMCommand").value
+            var _FB2SMdes = document.getElementById("txt_FB2SMDescription").value
+
+            var _FB4SMvel = document.getElementById("txt_FB4SMVelocity").value
+            var _FB4SMcom = document.getElementById("txt_FB4SMCommand").value
+            var _FB4SMdes = document.getElementById("txt_FB4SMDescription").value
+
+            var _Cuttervel = document.getElementById("txt_CutterVelocity").value
+            var _Cuttercom = document.getElementById("txt_CutterCommand").value
+            var _Cutterdes = document.getElementById("txt_CutterDescription").value
+
+            var _Slidervel = document.getElementById("txt_SliderVelocity").value
+            var _Slidercom = document.getElementById("txt_SliderCommand").value
+            var _Sliderdes = document.getElementById("txt_SliderDescription").value
+
+            var _Curveballvel = document.getElementById("txt_CurveballVelocity").value
+            var _Curveballcom = document.getElementById("txt_CurveballCommand").value
+            var _Curveballdes = document.getElementById("txt_CurveballDescription").value
+
+            var _Changeupvel = document.getElementById("txt_ChangeupVelocity").value
+            var _Changeupcom = document.getElementById("txt_ChangeupCommand").value
+            var _Changeupdes = document.getElementById("txt_ChangeupDescription").value
+
+            var _Splitfingervel = document.getElementById("txt_SplitfingerVelocity").value
+            var _Splitfingercom = document.getElementById("txt_SplitfingerCommand").value
+            var _Splitfingerdes = document.getElementById("txt_SplitfingerDescription").value
+
+            var _Knuckleballvel = document.getElementById("txt_KnuckleballVelocity").value
+            var _Knuckleballcom = document.getElementById("txt_KnuckleballCommand").value
+            var _Knuckleballdes = document.getElementById("txt_KnuckleballDescription").value
+
+            var data = {
+                "PlayerID": _pid, "ArmSlot": _ArmSlot, "Control": _Control, "Command": _Command,
+                "Approach": _Approach, "Outpitch": _Outpitch,
+                "careerrhb": _careerrhb, "careerlhb": _careerlhb,
+                "rt1B": _rt1B, "rt2B": _rt2B, "rtSS": _rtSS, "pm1B": _pm1B, "pm2B": _pm2B, "ss1B": _ss1B, "lwr2B": _lwr2B,
+                "agg": _agg, "sum": _sum, "det": _det, "bun": _bun,
+                "FB2SMvel": _FB2SMvel, "FB2SMcom": _FB2SMcom, "FB2SMdes": _FB2SMdes,
+                "FB4SMvel": _FB4SMvel, "FB4SMcom": _FB4SMcom, "FB4SMdes": _FB4SMdes,
+                "Cuttervel": _Cuttervel, "Cuttercom": _Cuttercom, "Cutterdes": _Cutterdes,
+                "Slidervel": _Slidervel, "Slidercom": _Slidercom, "Sliderdes": _Sliderdes,
+                "Curveballvel": _Curveballvel, "Curveballcom": _Curveballcom, "Curveballdes": _Curveballdes,
+                "Changeupvel": _Changeupvel, "Changeupcom": _Changeupcom, "Changeupdes": _Changeupdes,
+                "Splitfingervel": _Splitfingervel, "Splitfingercom": _Splitfingercom, "Splitfingerdes": _Splitfingerdes,
+                "Knuckleballvel": _Knuckleballvel, "Knuckleballcom": _Knuckleballcom, "Knuckleballdes": _Knuckleballdes
+            }
+
+            $.post("/Home/EditPitcherUserEntered", data, null)
+            location.replace('/Home/NotesEntryForm?_teamid=' + _teamid);
+        });
+    </script>
+}

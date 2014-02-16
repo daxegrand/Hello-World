@@ -1,0 +1,730 @@
+﻿@model CRockies_one.Models.DugoutPitcherModels
+@{
+    ViewBag.Title = "Dugout Pitcher";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DugoutPitcher</h2>
+@if (Model != null)
+{
+<section class="quickPlayerBox">
+    <table class="stdTable fullTblWFixed rep8PlayerInfoRow">
+        <tbody>
+        <tr>
+            <td style="width:65px;">
+                <img src="~/Images/player_pitcher.png" />
+            </td>
+            <td class="rep8PlayerQuickData">
+                <table class="stdTable fullTblW innerTableRep8">
+                    <thead>
+                        <tr>
+                            <th colspan="6" class="playerName"># @Model.playerinfo.Uniform @Model.playerinfo.Firstname @Model.playerinfo.Lastname <span class="player_playtype"> @string.Concat(Model.playerinfo.Bats, "HP")</span></th>
+                            <th>AVG vs RHH</th>
+                            <th>AVG vs LHH</th>
+                            <th>GB %</th>
+                            <th>FB %</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="bgLightPurple boldText"><span>Arm Slot</span></td>
+                            <td><span class="subheads10px ">@try { @Model.UserEntered.ArmSlot } catch { }</span></td>
+                            <td class="bgLightPurple boldText"><span>Control</span></td>
+                            <td><span class="subheads10px ">@try { @Model.UserEntered.Control } catch { }</span></td>
+                            <td class="bgLightPurple boldText"><span>Command</span></td>
+                            <td><span class="subheads10px ">@try { @Model.UserEntered.Command } catch { }</span></td>
+
+                            @if (Model.PitcherProfile.AVG_vsRHH == string.Empty || Model.PitcherProfile.AVG_vsRHH.Equals("", StringComparison.OrdinalIgnoreCase))
+                            {
+                                <td><span class="subheads10px"></span></td>
+                            }
+                            else
+                            {
+                                if (Convert.ToDecimal(Model.PitcherProfile.AVG_vsRHH) > @Convert.ToDecimal(Model.PitcherProfile.AVG_vsLHH))
+                                {
+                                    <td class="bgRed"><span class="subheads10px ">@Convert.ToDecimal(Model.PitcherProfile.AVG_vsRHH).ToString("#.000")</span></td>
+                                }
+                                else if (Convert.ToDecimal(Model.PitcherProfile.AVG_vsRHH) < @Convert.ToDecimal(Model.PitcherProfile.AVG_vsLHH))
+                                {
+                                    <td class="bgPtBluHeaders"><span class="subheads10px ">@Convert.ToDecimal(Model.PitcherProfile.AVG_vsRHH).ToString("#.000")</span></td>
+                                }
+                                else
+                                {
+                                    <td><span class="subheads10px ">@Convert.ToDecimal(Model.PitcherProfile.AVG_vsRHH).ToString("#.000")</span></td>
+                                }
+                                
+                            }
+                            @if (Model.PitcherProfile.AVG_vsLHH == string.Empty || Model.PitcherProfile.AVG_vsLHH.Equals("", StringComparison.OrdinalIgnoreCase))
+                            {
+                                <td><span class="subheads10px"></span></td>
+                            }
+                            else
+                            {
+                                if (Convert.ToDecimal(Model.PitcherProfile.AVG_vsLHH) > @Convert.ToDecimal(Model.PitcherProfile.AVG_vsRHH))
+                                {
+                                    <td class="bgRed"><span class="subheads10px ">@Convert.ToDecimal(Model.PitcherProfile.AVG_vsLHH).ToString("#.000")</span></td>
+                                }
+                                else if (Convert.ToDecimal(Model.PitcherProfile.AVG_vsLHH) < @Convert.ToDecimal(Model.PitcherProfile.AVG_vsRHH))
+                                {
+                                    <td class="bgPtBluHeaders"><span class="subheads10px ">@Convert.ToDecimal(Model.PitcherProfile.AVG_vsLHH).ToString("#.000")</span></td>
+                                }
+                                else
+                                {
+                                    <td><span class="subheads10px ">@Convert.ToDecimal(Model.PitcherProfile.AVG_vsLHH).ToString("#.000")</span></td>
+                                }
+                                
+                            }
+
+                            @if (Model.PitcherProfile.GB__Overall == string.Empty || Model.PitcherProfile.GB__Overall.Equals("", StringComparison.OrdinalIgnoreCase))
+                            {
+                                <td><span class="subheads10px"></span></td>
+                            }
+                            else
+                            {
+                                <td><span class="subheads10px">@Math.Round(Convert.ToDecimal(Model.PitcherProfile.GB__Overall) * 100, 1)%</span></td>
+                            }
+                            @if (Model.PitcherProfile.FB__Overall == string.Empty || Model.PitcherProfile.FB__Overall.Equals("", StringComparison.OrdinalIgnoreCase))
+                            {
+                                <td><span class="subheads10px"></span></td>
+                            }
+                            else
+                            {
+                                <td><span class="subheads10px">@Math.Round(Convert.ToDecimal(Model.PitcherProfile.FB__Overall) * 100, 1)%</span></td>
+                            }
+                        </tr>
+                        <tr>
+                            <td colspan="10"><p>Current Overall Stats: Record - @try { @Model.PitcherProfile.Record } catch { }, IP- @try { @Model.DugoutPitcher.IP } catch { }, ERA-@try { @Model.DugoutPitcher.ERA } catch { }, H-@try { @Model.DugoutPitcher.H } catch { }, HR-@try { @Model.DugoutPitcher.HR } catch { }, BB-@try { @Model.DugoutPitcher.BB } catch { }, SO-@try { @Model.DugoutPitcher.SO } catch { }, SB-@try { @Model.DugoutPitcher.SB } catch { }, CS-@try { @Model.DugoutPitcher.CS } catch { }</p></td>
+                        </tr>
+                        <tr>
+                            <td class="bgLightPurple boldText"><span>Release Times:</span></td>
+                            <td class="leftalignText"><span>1B:@try { @Model.UserEntered.ReleaseTimes_1B } catch { }</span></td>
+                            <td class="leftalignText"><span>2B:@try { @Model.UserEntered.ReleaseTimes_2B } catch { }</span></td>
+                            <td class="leftalignText"><span>SS:@try { @Model.UserEntered.ReleaseTimes_SS } catch { }</span></td>
+                            <td colspan="6"></td>
+                            
+                        </tr>
+                        
+                    </tbody>
+                </table>
+               
+            </td>
+            
+        </tr>
+            
+        </tbody>
+
+    </table>
+    <table class="stdTable fullTblW noBorderTop rep8Std">
+        <tbody>
+            <tr>
+                <td class="bgLightPurple noBorderTop rowsHead boldText">Pickoff 1B:</td>
+                <td class="noBorderTop">
+                    <p>@try { @Model.UserEntered.PickoffMove_1B } catch { }</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="bgLightPurple rowsHead boldText">Pickoff 2B:</td>
+                <td class="">
+                    <p>@try { @Model.UserEntered.PickoffMove_2B } catch { }</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="stdTable fullTblW noBorderTop rep8Std">
+        <thead>
+            <tr>
+                <th class="capitalizeText">pitches</th>
+                <th class="capitalizeText col100w">velocity</th>
+                <th class="capitalizeText">action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="bgLightPurple rowsHead boldText centeredText">FB</td>
+                <td style="text-align:center;"><p>@try { @Model.DugoutPitcher.FB_Velo } catch { }</p></td>
+                <td><p>@try { @Model.PitcherNote.FastballDescription } catch { }</p></td>
+            </tr>
+            <tr>
+                <td class="bgLightPurple rowsHead boldText centeredText">CUT FB</td>
+                <td style="text-align:center;"><p>@try { @Model.DugoutPitcher.CutFB_Velo } catch { }</p></td>
+                <td><p>@try { @Model.PitcherNote.CutterDescription } catch { }</p></td>
+            </tr>
+            <tr>
+                <td class="bgLightPurple rowsHead boldText centeredText">SL</td>
+                <td style="text-align:center;"><p>@try { @Model.DugoutPitcher.SL_Velo } catch { }</p></td>
+                <td><p>@try { @Model.PitcherNote.SliderDescription } catch { }</p></td>
+            </tr>
+            <tr>
+                <td class="bgLightPurple rowsHead boldText centeredText">CB</td>
+                <td style="text-align:center;"><p>@try { @Model.DugoutPitcher.CB_Velo } catch { }</p></td>
+                <td><p>@try { @Model.PitcherNote.CurveballDescription } catch { }</p></td>
+            </tr>
+            <tr>
+                <td class="bgLightPurple rowsHead boldText centeredText">CH</td>
+                <td style="text-align:center;"><p>@try { @Model.DugoutPitcher.CH_Velo } catch { }</p></td>
+                <td><p>@try { @Model.PitcherNote.ChangeupDescription } catch { }</p></td>
+            </tr>
+            <tr>
+                <td class="bgLightPurple rowsHead boldText centeredText">SPL</td>
+                <td style="text-align:center;"><p>@try { @Model.DugoutPitcher.SPL_Velo } catch { }</p></td>
+                <td><p>@try { @Model.PitcherNote.SplitfingerDescription } catch { }</p></td>
+            </tr>
+            
+        </tbody>
+    </table>
+    
+</section>
+
+<section class="OAstatsSec">
+    <table class="stdTable fullTblW rep8Std appOutPitch">
+        <tbody>
+            <tr>
+                <td class="bgLightPurple noBorderTop rowsHead boldText centeredText">VS RHH</td>
+                <td class="noBorderTop">
+                    <p>Last Start - 
+                        @if (Model.PP_PitchCountLastStart.FB_vsRHH != string.Empty ||
+                            !Model.PP_PitchCountLastStart.FB_vsRHH.Equals("", StringComparison.OrdinalIgnoreCase))//Ronnel: 2/10/14
+                        {
+                            <span>FB - @Model.PP_PitchCountLastStart.FB_vsRHH,</span>
+                        }
+                        @if (Model.PP_PitchCountLastStart.SL_vsRHH != string.Empty ||
+                            !Model.PP_PitchCountLastStart.SL_vsRHH.Equals("", StringComparison.OrdinalIgnoreCase))
+                        {
+                            <span>SL - @Model.PP_PitchCountLastStart.SL_vsRHH,</span>
+                        }
+                        @if (Model.PP_PitchCountLastStart.CB_vsRHH != string.Empty ||
+                            !Model.PP_PitchCountLastStart.CB_vsRHH.Equals("", StringComparison.OrdinalIgnoreCase))
+                        {
+                            <span>CB - @Model.PP_PitchCountLastStart.CB_vsRHH,</span>
+                        }
+                        @if (Model.PP_PitchCountLastStart.CH_vsRHH != string.Empty ||
+                            !Model.PP_PitchCountLastStart.CH_vsRHH.Equals("", StringComparison.OrdinalIgnoreCase))
+                        {
+                            <span>CH - @Model.PP_PitchCountLastStart.CH_vsRHH,</span>
+                        }
+                        @if (Model.PP_PitchCountLastStart.SPL_vsRHH != string.Empty ||
+                            !Model.PP_PitchCountLastStart.SPL_vsRHH.Equals("", StringComparison.OrdinalIgnoreCase))
+                        {
+                            <span>SPL - @Model.PP_PitchCountLastStart.SPL_vsRHH,</span>
+                        }
+                    </p>
+                </td>
+                <td class="bgLightPurple noBorderTop rowsHead boldText centeredText">VS LHH</td>
+                <td class="noBorderTop">
+                    <p>Last Start - 
+                        @if (Model.PP_PitchCountLastStart.FB_vsLHH != string.Empty ||
+                            !Model.PP_PitchCountLastStart.FB_vsLHH.Equals("", StringComparison.OrdinalIgnoreCase))//Ronnel: 2/10/14
+                        {
+                            <span>FB - @Model.PP_PitchCountLastStart.FB_vsLHH,</span>
+                        }
+                        @if (Model.PP_PitchCountLastStart.SL_vsLHH != string.Empty ||
+                            !Model.PP_PitchCountLastStart.SL_vsLHH.Equals("", StringComparison.OrdinalIgnoreCase))
+                        {
+                            <span>SL - @Model.PP_PitchCountLastStart.SL_vsLHH,</span>
+                        }
+                        @if (Model.PP_PitchCountLastStart.CB_vsLHH != string.Empty ||
+                            !Model.PP_PitchCountLastStart.CB_vsLHH.Equals("", StringComparison.OrdinalIgnoreCase))
+                        {
+                            <span>CB - @Model.PP_PitchCountLastStart.CB_vsLHH,</span>
+                        }
+                        @if (Model.PP_PitchCountLastStart.CH_vsLHH != string.Empty ||
+                            !Model.PP_PitchCountLastStart.CH_vsLHH.Equals("", StringComparison.OrdinalIgnoreCase))
+                        {
+                            <span>CH - @Model.PP_PitchCountLastStart.CH_vsLHH,</span>
+                        }
+                        @if (Model.PP_PitchCountLastStart.SPL_vsLHH != string.Empty ||
+                            !Model.PP_PitchCountLastStart.SPL_vsLHH.Equals("", StringComparison.OrdinalIgnoreCase))
+                        {
+                            <span>SPL - @Model.PP_PitchCountLastStart.SPL_vsLHH,</span>
+                        }
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><p>Approach / Outpitch - </p></td>
+                <td colspan="2"><p>Approach / Outpitch - </p></td>
+                
+            </tr>
+        </tbody>
+    </table>
+    <table id="LastTable" class="stdTable fullTblW noBorderTop runnersScore">
+        <thead>
+            <tr class="darkPurple">
+                <th colspan="5">RUNNERS IN SCORING POSITION</th>
+                <th colspan="5">RUNNERS IN SCORING POSITION</th>
+            </tr>
+            <tr id="coltil">
+                <th class="col100w"></th>
+                <th>@try { @Model.DugoutPitcher.Pitch1_Type } catch { }</th>
+                <th>@try { @Model.DugoutPitcher.Pitch2_Type } catch { }</th>
+                <th>@try { @Model.DugoutPitcher.Pitch3_Type } catch { }</th>
+                <th>@try { @Model.DugoutPitcher.Pitch4_Type } catch { }</th>
+                <th class="col100w"></th>
+                <th>@try { @Model.DugoutPitcher.Pitch1_Type } catch { }</th>
+                <th>@try { @Model.DugoutPitcher.Pitch2_Type } catch { }</th>
+                <th>@try { @Model.DugoutPitcher.Pitch3_Type } catch { }</th>
+                <th>@try { @Model.DugoutPitcher.Pitch4_Type } catch { }</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td>Full Count</td>
+                @if (Model.DugoutPitcher.RISP_FullCount_Pitch1 == string.Empty
+                    || Model.DugoutPitcher.RISP_FullCount_Pitch1.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.RISP_FullCount_Pitch1) * 100)%</td>
+                }
+                @if (Model.DugoutPitcher.RISP_FullCount_Pitch2 == string.Empty
+                    || Model.DugoutPitcher.RISP_FullCount_Pitch2.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.RISP_FullCount_Pitch2) * 100)%</td>
+                }
+                @if (Model.DugoutPitcher.RISP_FullCount_Pitch3 == string.Empty
+                    || Model.DugoutPitcher.RISP_FullCount_Pitch3.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.RISP_FullCount_Pitch3) * 100)%</td>
+                }
+                @if (Model.DugoutPitcher.RISP_FullCount_Pitch4 == string.Empty
+                    || Model.DugoutPitcher.RISP_FullCount_Pitch4.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.RISP_FullCount_Pitch4) * 100)%</td>
+                }
+                <td>Full Count</td>
+                @if (Model.DugoutPitcher.BasesEmpty_FullCount_Pitch1 == string.Empty
+                    || Model.DugoutPitcher.BasesEmpty_FullCount_Pitch1.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.BasesEmpty_FullCount_Pitch1) * 100)%</td>
+                }
+                @if (Model.DugoutPitcher.BasesEmpty_FullCount_Pitch2 == string.Empty
+                    || Model.DugoutPitcher.BasesEmpty_FullCount_Pitch2.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.BasesEmpty_FullCount_Pitch2) * 100)%</td>
+                }
+                @if (Model.DugoutPitcher.BasesEmpty_FullCount_Pitch3 == string.Empty
+                    || Model.DugoutPitcher.BasesEmpty_FullCount_Pitch3.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.BasesEmpty_FullCount_Pitch3) * 100)%</td>
+                }
+                @if (Model.DugoutPitcher.BasesEmpty_FullCount_Pitch4 == string.Empty
+                    || Model.DugoutPitcher.BasesEmpty_FullCount_Pitch4.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.BasesEmpty_FullCount_Pitch4) * 100)%</td>
+                }
+            </tr>
+        </tfoot>
+        <tbody id="tbLastTable">
+            <tr>
+                <td class="bgLightPurple rowsHead boldText">0 - 0</td>
+                @if (Model.DugoutPitcher.RISP_0_0_Pitch1 == string.Empty
+                    || Model.DugoutPitcher.RISP_0_0_Pitch1.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.RISP_0_0_Pitch1) * 100)%</td>
+                }
+
+                @if (Model.DugoutPitcher.RISP_0_0_Pitch2 == string.Empty
+                    || Model.DugoutPitcher.RISP_0_0_Pitch2.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.RISP_0_0_Pitch2) * 100)%</td>
+                }
+
+                @if (Model.DugoutPitcher.RISP_0_0_Pitch3 == string.Empty
+                    || Model.DugoutPitcher.RISP_0_0_Pitch3.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.RISP_0_0_Pitch3) * 100)%</td>
+                }
+
+                
+                @if (Model.DugoutPitcher.RISP_0_0_Pitch4 == string.Empty
+                    || Model.DugoutPitcher.RISP_0_0_Pitch4.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.RISP_0_0_Pitch4) * 100)%</td>
+                }
+
+                <td class="bgLightPurple rowsHead boldText">0 - 0</td>
+
+                @if (Model.DugoutPitcher.BasesEmpty_0_0_Pitch1 == string.Empty
+                    || Model.DugoutPitcher.BasesEmpty_0_0_Pitch1.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.BasesEmpty_0_0_Pitch1) * 100)%</td>
+                }
+
+                @if (Model.DugoutPitcher.BasesEmpty_0_0_Pitch2 == string.Empty
+                    || Model.DugoutPitcher.BasesEmpty_0_0_Pitch2.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.BasesEmpty_0_0_Pitch2) * 100)%</td>
+                }
+
+                @if (Model.DugoutPitcher.BasesEmpty_0_0_Pitch3 == string.Empty
+                    || Model.DugoutPitcher.BasesEmpty_0_0_Pitch3.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.BasesEmpty_0_0_Pitch3) * 100)%</td>
+                }
+
+                @if (Model.DugoutPitcher.BasesEmpty_0_0_Pitch4 == string.Empty
+                    || Model.DugoutPitcher.BasesEmpty_0_0_Pitch4.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.BasesEmpty_0_0_Pitch4) * 100)%</td>
+                }
+            </tr>
+            <tr>
+                <td class="bgLightPurple rowsHead boldText">PIT. AHD</td>
+                @if (Model.DugoutPitcher.RISP_PitAhd_Pitch1 == string.Empty
+                    || Model.DugoutPitcher.RISP_PitAhd_Pitch1.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.RISP_PitAhd_Pitch1) * 100)%</td>
+                }
+
+                @if (Model.DugoutPitcher.RISP_PitAhd_Pitch2 == string.Empty
+                    || Model.DugoutPitcher.RISP_PitAhd_Pitch2.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.RISP_PitAhd_Pitch2) * 100)%</td>
+                }
+
+                @if (Model.DugoutPitcher.RISP_PitAhd_Pitch3 == string.Empty
+                    || Model.DugoutPitcher.RISP_PitAhd_Pitch3.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.RISP_PitAhd_Pitch3) * 100)%</td>
+                }
+
+                
+                @if (Model.DugoutPitcher.RISP_PitAhd_Pitch4 == string.Empty
+                    || Model.DugoutPitcher.RISP_PitAhd_Pitch4.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.RISP_PitAhd_Pitch4) * 100)%</td>
+                }
+                <td class="bgLightPurple rowsHead boldText">PIT. AHD</td>
+                @if (Model.DugoutPitcher.BasesEmpty_PitAhd_Pitch1 == string.Empty
+                    || Model.DugoutPitcher.BasesEmpty_PitAhd_Pitch1.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.BasesEmpty_PitAhd_Pitch1) * 100)%</td>
+                }
+
+                @if (Model.DugoutPitcher.BasesEmpty_PitAhd_Pitch2 == string.Empty
+                    || Model.DugoutPitcher.BasesEmpty_PitAhd_Pitch2.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.BasesEmpty_PitAhd_Pitch2) * 100)%</td>
+                }
+
+                @if (Model.DugoutPitcher.BasesEmpty_PitAhd_Pitch3 == string.Empty
+                    || Model.DugoutPitcher.BasesEmpty_PitAhd_Pitch3.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.BasesEmpty_PitAhd_Pitch3) * 100)%</td>
+                }
+
+                @if (Model.DugoutPitcher.BasesEmpty_PitAhd_Pitch4 == string.Empty
+                    || Model.DugoutPitcher.BasesEmpty_PitAhd_Pitch4.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.BasesEmpty_PitAhd_Pitch4) * 100)%</td>
+                }
+            </tr>
+            <tr>
+                <td class="bgLightPurple rowsHead boldText">PIT. BHD</td>
+                @if (Model.DugoutPitcher.RISP_PitBhd_Pitch1 == string.Empty
+                    || Model.DugoutPitcher.RISP_PitBhd_Pitch1.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.RISP_PitBhd_Pitch1) * 100)%</td>
+                }
+
+                @if (Model.DugoutPitcher.RISP_PitBhd_Pitch2 == string.Empty
+                    || Model.DugoutPitcher.RISP_PitBhd_Pitch2.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.RISP_PitBhd_Pitch2) * 100)%</td>
+                }
+
+                @if (Model.DugoutPitcher.RISP_PitBhd_Pitch3 == string.Empty
+                    || Model.DugoutPitcher.RISP_PitBhd_Pitch3.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.RISP_PitBhd_Pitch3) * 100)%</td>
+                }
+
+                
+                @if (Model.DugoutPitcher.RISP_PitBhd_Pitch4 == string.Empty
+                    || Model.DugoutPitcher.RISP_PitBhd_Pitch4.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.RISP_PitBhd_Pitch4) * 100)%</td>
+                }
+                <td class="bgLightPurple rowsHead boldText">PIT. BHD</td>
+                @if (Model.DugoutPitcher.BasesEmpty_PitBhd_Pitch1 == string.Empty
+                    || Model.DugoutPitcher.BasesEmpty_PitBhd_Pitch1.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.BasesEmpty_PitBhd_Pitch1) * 100)%</td>
+                }
+
+                @if (Model.DugoutPitcher.BasesEmpty_PitBhd_Pitch2 == string.Empty
+                    || Model.DugoutPitcher.BasesEmpty_PitBhd_Pitch2.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.BasesEmpty_PitBhd_Pitch2) * 100)%</td>
+                }
+
+                @if (Model.DugoutPitcher.BasesEmpty_PitBhd_Pitch3 == string.Empty
+                    || Model.DugoutPitcher.BasesEmpty_PitBhd_Pitch3.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.BasesEmpty_PitBhd_Pitch3) * 100)%</td>
+                }
+
+                @if (Model.DugoutPitcher.BasesEmpty_PitBhd_Pitch4 == string.Empty
+                    || Model.DugoutPitcher.BasesEmpty_PitBhd_Pitch4.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.BasesEmpty_PitBhd_Pitch4) * 100)%</td>
+                }
+            </tr>
+            <tr>
+                <td class="bgLightPurple rowsHead boldText">2K's</td>
+                @if (Model.DugoutPitcher.RISP_2K_Pitch1 == string.Empty
+                    || Model.DugoutPitcher.RISP_2K_Pitch1.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.RISP_2K_Pitch1) * 100)%</td>
+                }
+
+                @if (Model.DugoutPitcher.RISP_2K_Pitch2 == string.Empty
+                    || Model.DugoutPitcher.RISP_2K_Pitch2.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.RISP_2K_Pitch2) * 100)%</td>
+                }
+
+                @if (Model.DugoutPitcher.RISP_2K_Pitch3 == string.Empty
+                    || Model.DugoutPitcher.RISP_2K_Pitch3.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.RISP_2K_Pitch3) * 100)%</td>
+                }
+
+                
+                @if (Model.DugoutPitcher.RISP_2K_Pitch4 == string.Empty
+                    || Model.DugoutPitcher.RISP_2K_Pitch4.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.RISP_2K_Pitch4) * 100)%</td>
+                }
+                <td class="bgLightPurple rowsHead boldText">2K's</td>
+                @if (Model.DugoutPitcher.BasesEmpty_2K_Pitch1 == string.Empty
+                    || Model.DugoutPitcher.BasesEmpty_2K_Pitch1.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.BasesEmpty_2K_Pitch1) * 100)%</td>
+                }
+
+                @if (Model.DugoutPitcher.BasesEmpty_2K_Pitch2 == string.Empty
+                    || Model.DugoutPitcher.BasesEmpty_2K_Pitch2.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.BasesEmpty_2K_Pitch2) * 100)%</td>
+                }
+
+                @if (Model.DugoutPitcher.BasesEmpty_2K_Pitch3 == string.Empty
+                    || Model.DugoutPitcher.BasesEmpty_2K_Pitch3.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.BasesEmpty_2K_Pitch3) * 100)%</td>
+                }
+
+                @if (Model.DugoutPitcher.BasesEmpty_2K_Pitch4 == string.Empty
+                    || Model.DugoutPitcher.BasesEmpty_2K_Pitch4.Equals("", StringComparison.OrdinalIgnoreCase))
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@Convert.ToInt32(Convert.ToDecimal(Model.DugoutPitcher.BasesEmpty_2K_Pitch4) * 100)%</td>
+                }
+            </tr>
+        </tbody>
+    </table>
+</section>
+}
+@section customstyle{
+    <link href="~/Content/themes/report8.css" rel="stylesheet" />
+}
+@section scripts{
+    <script type="text/javascript">
+        //$(document).ready(function () {
+        //    $('#LastTable').each(function (a, tbl) {
+        //        $(tbl).find('th').each(function (i) {
+        //            var remove = true;
+        //            var currentTable = $(this).parents('#LastTable');
+        //            var tds = currentTable.find('tr td:nth-child(' + (i + 1) + ')');
+        //            tds.each(function (j) { if (this.innerHTML != '') remove = false; });
+        //            if (remove) {
+        //                $(this).hide();
+        //                tds.hide();
+        //            }
+        //        });
+        //    });
+        //});
+        $('#LastTable #coltil th').each(function (i) {
+            //select all td in this column
+            var tds = $(this).parents('table')
+                  .find('tr td:nth-child(' + (i + 1) + ')');
+            //check if all the cells in this column are empty
+            if (tds.length == tds.filter(':empty').length) {
+                //hide header
+                $(this).hide();
+                //hide cells
+                tds.hide();
+            }
+        });
+        $('#tbLastTable tr th').each(function (i) {
+            //select all td in this column
+            var tds = $(this).parents('table')
+                  .find('tr td:nth-child(' + (i + 1) + ')');
+            //check if all the cells in this column are empty
+            if (tds.length == tds.filter(':empty').length) {
+                //hide header
+                $(this).hide();
+                //hide cells
+                tds.hide();
+            }
+        });
+    </script>
+}

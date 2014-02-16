@@ -1,0 +1,176 @@
+﻿body {
+	padding:10px 0;
+}
+
+* {
+	margin:0;
+	padding:0;
+}
+
+footer {
+    clear:both;
+    padding:20px 0;
+}
+
+.fullTblWFixed {
+	table-layout:fixed;
+	width:100%;
+}
+
+.fullTblW {
+	width:100%;
+}
+
+header, .maincontainer {
+	width:900px;
+	margin:auto;
+}
+
+	header #teamLogo {
+		width:144px;
+		height:109px;
+		padding:0px 0 0 0px;
+		float:left;
+		display:block;
+		margin:11px 0 0 41px;
+	}
+
+	header #teamLogo a {
+		width:133px;
+		height:98px;
+		display:block;
+		text-indent:-1000px;
+	}
+
+	header #ieLogo {
+		width:156px;
+		height:70px;
+		margin:48px 41px 0 0;
+		float:right;
+		display:block;
+	}
+
+.innerContainer {
+	padding:0px 18px;
+}
+
+p {
+	padding:7px 0;
+}
+
+#reportBtns {
+	padding:10px 40px;
+}
+
+#reportBtns ul li {
+	display:inline-block;
+	width:17.1%;
+	text-align:center;
+	border-radius:6px;
+	padding:0px;
+	margin:1px 3px 4px;
+}
+
+#selectRow {
+	text-align:center;
+
+}
+
+.select2-container {
+	text-align:left;
+}
+
+#selectBox {
+	display:inline-block;
+	position:relative;
+	width:250px;
+	
+}
+
+	#selectBox #selectBoxList {
+		position:absolute;
+		left:0;
+		top:0;
+		width:100%;
+		overflow:auto;
+		height:200px;
+		text-align:left;
+	}
+
+	#selectBox ul {
+		float:left;
+	}
+
+		#selectBox ul li {
+			list-style:none;
+		}
+
+.standardTable {
+	display:table;
+}
+
+.standardTableRow {
+	display:table-row
+}
+
+.standardTableCell {
+	display:table-cell;
+	vertical-align:top;
+}
+
+.standardTableCell.reportTeamLogo, .standardTableCell.reportTeamLogo img{
+	width:100px;
+}
+
+.standardTableCell.playerHandImg{
+    width:56px;
+}
+
+.standardTableCell.playerHandImg img, .standardTableCell.reportTeamLogo img{
+    display:block;
+}
+
+.standardTableCell.playerHandHead {
+    text-align:center;
+    vertical-align:middle;
+}
+
+img {
+    
+}
+
+.standardTableCell.playerHandAtt table {
+    margin:auto;
+}
+
+.standardTableCell.playerHandAtt table thead tr th{
+    padding:3px;
+}
+
+.standardTableCell.playerHandAtt table tbody tr td{
+    text-align:center;
+}
+
+table.stdTable.tablePlayerAvgs {
+    width:100%;
+}
+
+table.stdTable.tablePlayerAvgsLRH {
+    width:100%;
+    margin:15px 0 0 0;
+}
+
+table.stdTable.tablePlayerAvgsLRH td:first-child, table.stdTable.tablePlayerAvgsLRH th:first-child{
+    width:15px;
+    text-align:center;
+    
+}
+
+
+/*vs table
+    the table should only have two main cells or columns
+    each should be 50% width
+    */
+.vsTableCell {
+    width:50%;
+}

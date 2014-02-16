@@ -1,0 +1,384 @@
+﻿blockquote {
+    margin:10px  10px  10px 40px;
+}
+
+body {
+	font-family:Arial, Tahoma, "MS Trebuchet";
+	font-size:14px;
+}
+
+.boldText {
+    font-weight:bold;
+}
+
+.buttonPaneSection {
+    text-align:right;
+}
+
+.buttonPaneSection .buttonDialog {
+    display:inline-block;
+}
+
+/*font-family: 'Noto Sans', sans-serif;
+font-family: 'PT Sans', sans-serif;
+font-family: 'Ubuntu Mono', sans-serif;
+font-family: 'Merriweather Sans', sans-serif;
+font-family: 'PT Sans Narrow', sans-serif;
+font-family: 'Droid Sans', sans-serif;
+font-family: 'Ubuntu', sans-serif;
+font-family: 'Open Sans Condensed', sans-serif;
+font-family: 'Cuprum', sans-serif;*/
+
+
+.capitalizeText {
+    text-transform:capitalize;
+}
+
+.centeredText {
+    text-align:center;
+}
+
+#dialog-form form {
+    overflow:auto;
+}
+
+#dialog-form form h4 {
+    /*font-family: 'Cuprum', sans-serif;*/
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-kerning:initial;
+    font-size:1.1em;
+    text-transform:capitalize;
+    margin:4px 0;
+}
+
+#dialog-form button {
+    float:right;
+}
+
+#dialog-form textarea {
+    width:99%;
+    height:150px;
+    margin-bottom:5px;
+}
+
+form.addMissNotes {
+    display:none;
+}
+
+h2 {
+    font-size:1.2em;
+    text-transform:uppercase;
+    margin:10px 0;
+    padding:8px 6px 6px 6px;
+    
+}
+
+h4 {
+    /*font-family: 'Cuprum', sans-serif;*/
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-kerning:initial;
+    font-size:1.1em;
+}
+
+.leftalignText {
+    text-align:left;
+}
+
+.missnNoteLists ul li {
+    cursor:pointer;
+    margin:0 0 0 10px;
+}
+
+.normalAligned {
+    text-align:justify;
+}
+
+.rowsHead {
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.standardTableCell.cellPadding {
+    padding:10px;
+}
+
+.standardTableCell.cellPadding4a {
+    padding:2px 4px;
+}
+
+.standardTableCell.noBorderLeft {
+    border-left:none;
+}
+
+.standardTableCell ul.legendBoxes {
+    margin:0;
+    padding:0;
+}
+
+.standardTableCell ul.legendBoxes li{
+    margin:2px;
+    padding:3px;
+    list-style:none;
+    display:block;
+    border:1px solid rgba(0,0,0,.5);
+}
+
+
+.marginTop{
+    margin-top:20px;
+}
+
+.note {
+	font-style:italic;
+}
+
+#r5table thead tr:nth-child(1) th {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size:1.3em;
+    line-height:100%;
+}
+
+.player_playtype{
+	font-size:.7em;
+	font-weight:bold;
+	padding:2px;
+	display:inline-block;
+	border:1px solid #323267;
+	border-radius:5px;
+	font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.r5playername {
+    font-weight:bold;
+    text-transform:capitalize;
+    width:150px;
+}
+
+table.stdTable#r5table td.r5playername {
+    font-weight:bold;
+    text-transform:capitalize;
+    /*width:270px;*/
+    text-align:left;
+}
+
+.r5w80 {
+    width:80px;
+    text-align:center;
+}
+
+.r5subheads, .subheads10px, table.stdTable tbody tr td.subheads {
+    font-size:10px;
+    text-transform:uppercase;
+	font-weight:bold;
+    line-height:150%;
+    /*box-shadow:0 1px 3px rgba(0, 0, 0, 0.9) inset;*/
+}
+.subheads10pxue {
+    font-size:10px;
+    text-transform:uppercase;
+	font-weight:bold;
+    line-height:150%;
+    /*box-shadow:0 1px 3px rgba(0, 0, 0, 0.9) inset;*/
+}
+#r5table, #r5table td, #r5table th {
+    border-collapse:collapse;
+    border:1px solid rgba(0,0,0,.5);
+}
+
+#r5table tbody tr:nth-child(even){
+    background-color:rgba(0,0,0,.05);
+}
+
+#r5table tbody tr td{
+    vertical-align:top;
+}
+
+#r5table td{
+    font-size:10px;
+    padding:2px;
+}
+
+table.stdTable#r5table td{
+    font-size:1em;
+    padding:2px;
+    text-align:center;
+}
+
+table.stdTable#r5table tfoot tr td {
+    font-size:1.25em;
+}
+
+.standardTableCell h3 {
+	margin:10px 0;
+	font-size:1.2em;
+}
+
+.standardTableCell h3.noteslist {
+    width:45%;
+    display:inline-block;
+    vertical-align:bottom;
+    padding:5px 1% 1px 10px;
+    margin:0;
+    font-size:1.1em;
+    font-weight:normal;
+}
+
+.standardTableCell h3.noteslist input[type=checkbox]{
+    margin:0 10px 0 0;
+    float:right;
+    display:none;
+}
+
+.standardTableCell ol {
+	margin:10px 20px 15px 35px;
+}
+
+.standardTableCell ol.playerNotesNums {
+	margin:0 0 0 10px;
+}
+
+.standardTableCell ul {
+	margin:10px 20px 15px 35px;
+}
+
+.standardTableCell ol li, .standardTableCell ul li{
+}
+
+.standardTableCell.playerHandHead h3{
+    font-size:1.8em;
+    font-family: 'Open Sans Condensed', sans-serif;
+    text-transform:uppercase;
+    margin:0;
+}
+.standardTableCell.playerHandHead p {
+    font-size:.8em;
+}
+
+.standardTableCell.playerHandAtt table thead tr th {
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.standardTableCell.playerHandAtt table tbody tr td{
+    font-size:.85em;
+}
+
+.standardTableCell ol.playerNotesNums li span  {
+    width:45%;
+    display:inline-block;
+    vertical-align:bottom;
+    padding:5px 1% 0px 0px;
+    margin:0;
+    font-size:1.1em;
+    font-weight:normal;
+    line-height:100%;
+}
+
+.standardTableCell ol.playerNotesNums li {
+    cursor:pointer;
+    margin:3px 0;
+}
+
+.standardTableCell ol.playerNotesNums li span:nth-child(2)  {
+    width:50px;
+    display:inline-block;
+    vertical-align:bottom;
+    padding:1px 1px;
+    margin:0;
+    text-align:center;
+    background-color:rgba(255,0,0,.2);
+    font-size:1.1em;
+    font-weight:normal;
+    margin:0 0 0 10px;
+   
+}
+
+.standardTableCell ol.playerNotesNums li span input[type=text]{
+    width:50px;
+    border:none;
+    background:none;
+    cursor:pointer;
+    text-align:center;
+}
+
+.standardTableCell ol.playerNotesNums li span:nth-child(2) input[type=text] {
+
+ }
+
+.standardTableCell ul li {
+	/*list-style:none;*/
+}
+
+table#tablePlayerAttr tr td{
+	font-size:11px;
+	padding:3px;
+	font-weight:bold;
+}
+
+table.stdTable#tablePlayerAttr tbody tr td.bgBigBlueTh {
+    font-weight:bold;
+    padding:2px 5px;
+    font-size:1.3em;
+	font-family: 'Open Sans Condensed', sans-serif;
+}
+
+table.stdTable thead tr th{
+    line-height:150%;
+    font-size:1.25em;
+    /*text-transform:uppercase;*/
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+table.stdTable tfoot tr td{
+    /*background-color:rgba(137,137,217,.30);*/
+    font-weight:bold;
+    font-size:1.25em;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+table.stdTable tbody tr td.headersRow {
+    font-size:1.15em;
+    text-transform:uppercase;
+    font-family: 'Open Sans Condensed', sans-serif;
+	font-weight:bold;
+    /*box-shadow:0 1px 3px rgba(0, 0, 0, 0.9) inset;*/
+}
+
+table.stdTable.tablePlayerAvgsLRH td {
+    font-size:.8em;
+    text-align:center;
+    padding:0 3px;
+}
+
+table.stdTable tbody tr td.bgPtBluHeaders, table.stdTable thead tr th.bgPtBluHeaders{
+    font-size:.8em;
+    /*font-weight:normal;*/
+    /*font-family:Arial, Tahoma, "MS Trebuchet";*/
+    font-family: 'Open Sans Condensed', sans-serif;
+    text-transform:capitalize;
+
+
+}
+
+table.stdTable tbody tr td.bgPtBluHeaders {
+    padding:2px 1px;
+    line-height:100%;
+}
+
+table.stdTable thead tr th.bgPtBluHeaders {
+    padding:3px 2px;
+    line-height:100%;
+}
+
+table.stdTable.fullTblWFixed.howToNotes {
+}
+
+table.stdTable.fullTblWFixed.howToNotes tr td{
+    padding:5px;
+}
+
+.textCenter {
+    text-align:center;
+}
+
+.uppercaseText {
+    text-transform:uppercase;
+}

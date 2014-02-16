@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="InsideEdModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="InsideEdModelStoreContainer">
+    <EntitySet Name="player table" EntityType="InsideEdModel.Store.player table" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Team table" EntityType="InsideEdModel.Store.Team table" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="player table">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Player ID" Type="float" />
+    <Property Name="Lastname" Type="nvarchar" MaxLength="100" />
+    <Property Name="Firstname" Type="nvarchar" MaxLength="100" />
+    <Property Name="MI" Type="nvarchar" MaxLength="255" />
+    <Property Name="Birthdate" Type="datetime" />
+    <Property Name="Team ID" Type="float" />
+    <Property Name="Bats" Type="nvarchar" MaxLength="255" />
+    <Property Name="Throws" Type="nvarchar" MaxLength="255" />
+    <Property Name="Hitter or Pitcher" Type="nvarchar" MaxLength="255" />
+    <Property Name="Uniform #" Type="float" />
+    <Property Name="Position" Type="nvarchar" MaxLength="255" />
+    <Property Name="select?" Type="bit" Nullable="false" />
+    <Property Name="Active?" Type="bit" Nullable="false" />
+    <Property Name="Stance" Type="nvarchar" MaxLength="255" />
+    <Property Name="5th Pitch" Type="nvarchar" MaxLength="255" />
+    <Property Name="Time to Plate" Type="nvarchar" MaxLength="255" />
+    <Property Name="Secondary" Type="nvarchar" MaxLength="255" />
+    <Property Name="txn" Type="nvarchar" MaxLength="255" />
+    <Property Name="MLBID" Type="float" />
+    <Property Name="espnID" Type="int" />
+    <Property Name="TwoKID" Type="int" />
+    <Property Name="YahooID" Type="int" />
+    <Property Name="mlbam" Type="int" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" />
+    <Property Name="NickNotes" Type="nvarchar" MaxLength="255" />
+    <Property Name="40Man" Type="bit" />
+    <Property Name="BBRefID" Type="nvarchar" MaxLength="255" />
+    <Property Name="Height" Type="nvarchar" MaxLength="255" />
+    <Property Name="Weight" Type="nvarchar" MaxLength="255" />
+    <Property Name="MLB_TeamID" Type="int" />
+  </EntityType>
+  <EntityType Name="Team table">
+    <Key>
+      <PropertyRef Name="Team ID" />
+    </Key>
+    <Property Name="Team ID" Type="int" Nullable="false" />
+    <Property Name="City or State" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Nickname" Type="nvarchar" MaxLength="100" />
+    <Property Name="League" Type="nvarchar" MaxLength="100" />
+    <Property Name="Division" Type="nvarchar" MaxLength="50" />
+    <Property Name="Shortname" Type="nvarchar" MaxLength="50" />
+    <Property Name="espnShortname" Type="nvarchar" MaxLength="50" />
+    <Property Name="Stadium" Type="nvarchar" MaxLength="50" />
+    <Property Name="CustomDims" Type="bit" Nullable="false" />
+    <Property Name="LF" Type="nvarchar" MaxLength="50" />
+    <Property Name="MidLF" Type="nvarchar" MaxLength="50" />
+    <Property Name="LCF" Type="nvarchar" MaxLength="50" />
+    <Property Name="MidLCF" Type="nvarchar" MaxLength="50" />
+    <Property Name="CF" Type="nvarchar" MaxLength="50" />
+    <Property Name="MidRCF" Type="nvarchar" MaxLength="50" />
+    <Property Name="RCF" Type="nvarchar" MaxLength="50" />
+    <Property Name="MidRF" Type="nvarchar" MaxLength="50" />
+    <Property Name="RF" Type="nvarchar" MaxLength="50" />
+    <Property Name="Last Referenced" Type="bit" Nullable="false" />
+    <Property Name="MLBID" Type="nvarchar" MaxLength="50" />
+    <Property Name="TwoKTeamID" Type="nvarchar" MaxLength="50" />
+    <Property Name="Active?" Type="bit" Nullable="false" />
+    <Property Name="YahooTeamID" Type="nvarchar" MaxLength="50" />
+    <Property Name="MLBcity" Type="nvarchar" MaxLength="50" />
+    <Property Name="2k_Mnemonic" Type="nvarchar" MaxLength="50" />
+    <Property Name="MLB_AffiliateID" Type="float" />
+    <Property Name="BITteamName" Type="varchar" MaxLength="50" />
+    <Property Name="mlb_shortName" Type="nvarchar" MaxLength="255" />
+    <Property Name="mlb_sportcode" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Function Name="sproc_depthchart_bench" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sproc_depthchart_disabledlist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TID" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="sproc_depthchart_startinglineup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sproc_depthchart_startingrotation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sproc_playerinfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PID" Type="bigint" Mode="In" />
+  </Function>
+  <!--Errors Found During Generation:
+      warning 6013: The table/view 'InsideEd.dbo.vwPlayers4CR' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="vwPlayers4CR">
+        <Property Name="snum" Type="bigint" />
+        <Property Name="PlayerID" Type="float" />
+        <Property Name="Surname" Type="nvarchar" MaxLength="100" />
+        <Property Name="Givenname" Type="nvarchar" MaxLength="100" />
+        <Property Name="GS" Type="nvarchar" MaxLength="201" />
+        <Property Name="GSS" Type="nvarchar" MaxLength="201" />
+        <Property Name="SCG" Type="nvarchar" MaxLength="201" />
+        <Property Name="SCSG" Type="nvarchar" MaxLength="202" />
+        <Property Name="SG" Type="nvarchar" MaxLength="201" />
+      </EntityType>-->
+</Schema>

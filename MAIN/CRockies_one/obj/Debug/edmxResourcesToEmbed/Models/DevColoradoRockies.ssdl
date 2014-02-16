@@ -1,0 +1,653 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DevColoradoRockiesModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="DevColoradoRockiesModelStoreContainer">
+    <EntitySet Name="DugoutPitcher" EntityType="DevColoradoRockiesModel.Store.DugoutPitcher" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="HitterProfile" EntityType="DevColoradoRockiesModel.Store.HitterProfile" store:Type="Tables" store:Schema="dbo" store:Name="HitterProfile">
+      <DefiningQuery>SELECT 
+      [HitterProfile].[PlayerId] AS [PlayerId], 
+      [HitterProfile].[MLBAM] AS [MLBAM], 
+      [HitterProfile].[Firstname] AS [Firstname], 
+      [HitterProfile].[Lastname] AS [Lastname], 
+      [HitterProfile].[AVG _vsLHP] AS [AVG _vsLHP], 
+      [HitterProfile].[SLG%_vsLHP] AS [SLG%_vsLHP], 
+      [HitterProfile].[AB_vsLHP] AS [AB_vsLHP], 
+      [HitterProfile].[H_vsLHP] AS [H_vsLHP], 
+      [HitterProfile].[HR_vsLHP] AS [HR_vsLHP], 
+      [HitterProfile].[BB_vsLHP] AS [BB_vsLHP], 
+      [HitterProfile].[K_vsLHP] AS [K_vsLHP], 
+      [HitterProfile].[SB_vsLHP] AS [SB_vsLHP], 
+      [HitterProfile].[CS_vsLHP] AS [CS_vsLHP], 
+      [HitterProfile].[PperPA_vsLHP] AS [PperPA_vsLHP], 
+      [HitterProfile].[AVG _vsRHP] AS [AVG _vsRHP], 
+      [HitterProfile].[SLG%_vsRHP] AS [SLG%_vsRHP], 
+      [HitterProfile].[AB_vsRHP] AS [AB_vsRHP], 
+      [HitterProfile].[H_vsRHP] AS [H_vsRHP], 
+      [HitterProfile].[HR_vsRHP] AS [HR_vsRHP], 
+      [HitterProfile].[BB_vsRHP] AS [BB_vsRHP], 
+      [HitterProfile].[K_vsRHP] AS [K_vsRHP], 
+      [HitterProfile].[SB_vsRHP] AS [SB_vsRHP], 
+      [HitterProfile].[CS_vsRHP] AS [CS_vsRHP], 
+      [HitterProfile].[PperPA_vsRHP] AS [PperPA_vsRHP], 
+      [HitterProfile].[AVG _Total] AS [AVG _Total], 
+      [HitterProfile].[SLG%_Total] AS [SLG%_Total], 
+      [HitterProfile].[AB_Total] AS [AB_Total], 
+      [HitterProfile].[H_Total] AS [H_Total], 
+      [HitterProfile].[HR_Total] AS [HR_Total], 
+      [HitterProfile].[BB_Total] AS [BB_Total], 
+      [HitterProfile].[K_Total] AS [K_Total], 
+      [HitterProfile].[SB_Total] AS [SB_Total], 
+      [HitterProfile].[CS_Total] AS [CS_Total], 
+      [HitterProfile].[PperPA_Total] AS [PperPA_Total], 
+      [HitterProfile].[GB%_vsLHP] AS [GB%_vsLHP], 
+      [HitterProfile].[FB%_vsLHP] AS [FB%_vsLHP], 
+      [HitterProfile].[GB%_vsRHP] AS [GB%_vsRHP], 
+      [HitterProfile].[FB%_vsRHP] AS [FB%_vsRHP], 
+      [HitterProfile].[GB%_Total] AS [GB%_Total], 
+      [HitterProfile].[FB%_Total] AS [FB%_Total]
+      FROM [dbo].[HitterProfile] AS [HitterProfile]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="HitterProfile_UserEntered" EntityType="DevColoradoRockiesModel.Store.HitterProfile_UserEntered" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Outfielder_Pitcher" EntityType="DevColoradoRockiesModel.Store.Outfielder_Pitcher" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PitcherProfile_CurrentAndSplits" EntityType="DevColoradoRockiesModel.Store.PitcherProfile_CurrentAndSplits" store:Type="Tables" store:Schema="dbo" store:Name="PitcherProfile_CurrentAndSplits">
+      <DefiningQuery>SELECT 
+      [PitcherProfile_CurrentAndSplits].[PlayerId] AS [PlayerId], 
+      [PitcherProfile_CurrentAndSplits].[mlbam] AS [mlbam], 
+      [PitcherProfile_CurrentAndSplits].[Firstname] AS [Firstname], 
+      [PitcherProfile_CurrentAndSplits].[Lastname] AS [Lastname], 
+      [PitcherProfile_CurrentAndSplits].[G] AS [G], 
+      [PitcherProfile_CurrentAndSplits].[Record] AS [Record], 
+      [PitcherProfile_CurrentAndSplits].[ERA] AS [ERA], 
+      [PitcherProfile_CurrentAndSplits].[IP] AS [IP], 
+      [PitcherProfile_CurrentAndSplits].[H] AS [H], 
+      [PitcherProfile_CurrentAndSplits].[HR] AS [HR], 
+      [PitcherProfile_CurrentAndSplits].[BB] AS [BB], 
+      [PitcherProfile_CurrentAndSplits].[SO] AS [SO], 
+      [PitcherProfile_CurrentAndSplits].[SBA] AS [SBA], 
+      [PitcherProfile_CurrentAndSplits].[PperPA] AS [PperPA], 
+      [PitcherProfile_CurrentAndSplits].[PperIP] AS [PperIP], 
+      [PitcherProfile_CurrentAndSplits].[PperGS] AS [PperGS], 
+      [PitcherProfile_CurrentAndSplits].[GB%_Overall] AS [GB%_Overall], 
+      [PitcherProfile_CurrentAndSplits].[FB%_Overall] AS [FB%_Overall], 
+      [PitcherProfile_CurrentAndSplits].[AVG_vsLHH] AS [AVG_vsLHH], 
+      [PitcherProfile_CurrentAndSplits].[H_vsLHH] AS [H_vsLHH], 
+      [PitcherProfile_CurrentAndSplits].[HR_vsLHH] AS [HR_vsLHH], 
+      [PitcherProfile_CurrentAndSplits].[BB_vsLHH] AS [BB_vsLHH], 
+      [PitcherProfile_CurrentAndSplits].[SO_vsLHH] AS [SO_vsLHH], 
+      [PitcherProfile_CurrentAndSplits].[PperPA_vsLHH] AS [PperPA_vsLHH], 
+      [PitcherProfile_CurrentAndSplits].[OBP_vsLHH] AS [OBP_vsLHH], 
+      [PitcherProfile_CurrentAndSplits].[SLG_vsLHH] AS [SLG_vsLHH], 
+      [PitcherProfile_CurrentAndSplits].[GB%_vsLHH] AS [GB%_vsLHH], 
+      [PitcherProfile_CurrentAndSplits].[FB%_vsLHH] AS [FB%_vsLHH], 
+      [PitcherProfile_CurrentAndSplits].[AVG_vsRHH] AS [AVG_vsRHH], 
+      [PitcherProfile_CurrentAndSplits].[H_vsRHH] AS [H_vsRHH], 
+      [PitcherProfile_CurrentAndSplits].[HR_vsRHH] AS [HR_vsRHH], 
+      [PitcherProfile_CurrentAndSplits].[BB_vsRHH] AS [BB_vsRHH], 
+      [PitcherProfile_CurrentAndSplits].[SO_vsRHH] AS [SO_vsRHH], 
+      [PitcherProfile_CurrentAndSplits].[PperPA_vsRHH] AS [PperPA_vsRHH], 
+      [PitcherProfile_CurrentAndSplits].[OBP_vsRHH] AS [OBP_vsRHH], 
+      [PitcherProfile_CurrentAndSplits].[SLG_vsRHH] AS [SLG_vsRHH], 
+      [PitcherProfile_CurrentAndSplits].[GB%_vsRHH] AS [GB%_vsRHH], 
+      [PitcherProfile_CurrentAndSplits].[FB%_vsRHH] AS [FB%_vsRHH], 
+      [PitcherProfile_CurrentAndSplits].[BasesEmpty_AllCounts_Change_%Pitches] AS [BasesEmpty_AllCounts_Change_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[BasesEmpty_AllCounts_Curve_%Pitches] AS [BasesEmpty_AllCounts_Curve_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[BasesEmpty_AllCounts_Cutter_%Pitches] AS [BasesEmpty_AllCounts_Cutter_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[BasesEmpty_AllCounts_FB (4sm   2sm)_%Pitches] AS [BasesEmpty_AllCounts_FB (4sm   2sm)_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[BasesEmpty_AllCounts_Knuckleball_%Pitches] AS [BasesEmpty_AllCounts_Knuckleball_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[BasesEmpty_AllCounts_Slider_%Pitches] AS [BasesEmpty_AllCounts_Slider_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[BasesEmpty_AllCounts_Split-Finger_%Pitches] AS [BasesEmpty_AllCounts_Split-Finger_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[BasesEmpty_FirstPitch_Change_%Pitches] AS [BasesEmpty_FirstPitch_Change_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[BasesEmpty_FirstPitch_Curve_%Pitches] AS [BasesEmpty_FirstPitch_Curve_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[BasesEmpty_FirstPitch_Cutter_%Pitches] AS [BasesEmpty_FirstPitch_Cutter_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[BasesEmpty_FirstPitch_FB (4sm   2sm)_%Pitches] AS [BasesEmpty_FirstPitch_FB (4sm   2sm)_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[BasesEmpty_FirstPitch_Knuckleball_%Pitches] AS [BasesEmpty_FirstPitch_Knuckleball_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[BasesEmpty_FirstPitch_Slider_%Pitches] AS [BasesEmpty_FirstPitch_Slider_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[BasesEmpty_FirstPitch_Split-Finger_%Pitches] AS [BasesEmpty_FirstPitch_Split-Finger_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[BasesEmpty_PitcherAhead_Change_%Pitches] AS [BasesEmpty_PitcherAhead_Change_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[BasesEmpty_PitcherAhead_Curve_%Pitches] AS [BasesEmpty_PitcherAhead_Curve_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[BasesEmpty_PitcherAhead_Cutter_%Pitches] AS [BasesEmpty_PitcherAhead_Cutter_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[BasesEmpty_PitcherAhead_FB (4sm   2sm)_%Pitches] AS [BasesEmpty_PitcherAhead_FB (4sm   2sm)_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[BasesEmpty_PitcherAhead_Knuckleball_%Pitches] AS [BasesEmpty_PitcherAhead_Knuckleball_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[BasesEmpty_PitcherAhead_Slider_%Pitches] AS [BasesEmpty_PitcherAhead_Slider_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[BasesEmpty_PitcherAhead_Split-Finger_%Pitches] AS [BasesEmpty_PitcherAhead_Split-Finger_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[BasesEmpty_PitcherBehind_Change_%Pitches] AS [BasesEmpty_PitcherBehind_Change_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[BasesEmpty_PitcherBehind_Curve_%Pitches] AS [BasesEmpty_PitcherBehind_Curve_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[BasesEmpty_PitcherBehind_Cutter_%Pitches] AS [BasesEmpty_PitcherBehind_Cutter_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[BasesEmpty_PitcherBehind_FB (4sm   2sm)_%Pitches] AS [BasesEmpty_PitcherBehind_FB (4sm   2sm)_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[BasesEmpty_PitcherBehind_Knuckleball_%Pitches] AS [BasesEmpty_PitcherBehind_Knuckleball_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[BasesEmpty_PitcherBehind_Slider_%Pitches] AS [BasesEmpty_PitcherBehind_Slider_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[BasesEmpty_PitcherBehind_Split-Finger_%Pitches] AS [BasesEmpty_PitcherBehind_Split-Finger_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[BasesEmpty_2Ks (Excl3-2)Change_%Pitches] AS [BasesEmpty_2Ks (Excl3-2)Change_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[BasesEmpty_2Ks (Excl3-2)Curve_%Pitches] AS [BasesEmpty_2Ks (Excl3-2)Curve_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[BasesEmpty_2Ks (Excl3-2)Cutter_%Pitches] AS [BasesEmpty_2Ks (Excl3-2)Cutter_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[BasesEmpty_2Ks (Excl3-2)FB (4sm   2sm)_%Pitches] AS [BasesEmpty_2Ks (Excl3-2)FB (4sm   2sm)_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[BasesEmpty_2Ks (Excl3-2)Knuckleball_%Pitches] AS [BasesEmpty_2Ks (Excl3-2)Knuckleball_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[BasesEmpty_2Ks (Excl3-2)Slider_%Pitches] AS [BasesEmpty_2Ks (Excl3-2)Slider_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[BasesEmpty_2Ks (Excl3-2)Split-Finger_%Pitches] AS [BasesEmpty_2Ks (Excl3-2)Split-Finger_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[RISP_AllCounts_Change_%Pitches] AS [RISP_AllCounts_Change_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[RISP_AllCounts_Curve_%Pitches] AS [RISP_AllCounts_Curve_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[RISP_AllCounts_Cutter_%Pitches] AS [RISP_AllCounts_Cutter_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[RISP_AllCounts_FB (4sm   2sm)_%Pitches] AS [RISP_AllCounts_FB (4sm   2sm)_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[RISP_AllCounts_Knuckleball_%Pitches] AS [RISP_AllCounts_Knuckleball_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[RISP_AllCounts_Slider_%Pitches] AS [RISP_AllCounts_Slider_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[RISP_AllCounts_Split-Finger_%Pitches] AS [RISP_AllCounts_Split-Finger_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[RISP_FirstPitch_Change_%Pitches] AS [RISP_FirstPitch_Change_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[RISP_FirstPitch_Curve_%Pitches] AS [RISP_FirstPitch_Curve_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[RISP_FirstPitch_Cutter_%Pitches] AS [RISP_FirstPitch_Cutter_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[RISP_FirstPitch_FB (4sm   2sm)_%Pitches] AS [RISP_FirstPitch_FB (4sm   2sm)_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[RISP_FirstPitch_Knuckleball_%Pitches] AS [RISP_FirstPitch_Knuckleball_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[RISP_FirstPitch_Slider_%Pitches] AS [RISP_FirstPitch_Slider_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[RISP_FirstPitch_Split-Finger_%Pitches] AS [RISP_FirstPitch_Split-Finger_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[RISP_PitcherAhead_Change_%Pitches] AS [RISP_PitcherAhead_Change_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[RISP_PitcherAhead_Curve_%Pitches] AS [RISP_PitcherAhead_Curve_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[RISP_PitcherAhead_Cutter_%Pitches] AS [RISP_PitcherAhead_Cutter_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[RISP_PitcherAhead_FB (4sm   2sm)_%Pitches] AS [RISP_PitcherAhead_FB (4sm   2sm)_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[RISP_PitcherAhead_Knuckleball_%Pitches] AS [RISP_PitcherAhead_Knuckleball_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[RISP_PitcherAhead_Slider_%Pitches] AS [RISP_PitcherAhead_Slider_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[RISP_PitcherAhead_Split-Finger_%Pitches] AS [RISP_PitcherAhead_Split-Finger_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[RISP_PitcherBehind_Change_%Pitches] AS [RISP_PitcherBehind_Change_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[RISP_PitcherBehind_Curve_%Pitches] AS [RISP_PitcherBehind_Curve_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[RISP_PitcherBehind_Cutter_%Pitches] AS [RISP_PitcherBehind_Cutter_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[RISP_PitcherBehind_FB (4sm   2sm)_%Pitches] AS [RISP_PitcherBehind_FB (4sm   2sm)_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[RISP_PitcherBehind_Knuckleball_%Pitches] AS [RISP_PitcherBehind_Knuckleball_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[RISP_PitcherBehind_Slider_%Pitches] AS [RISP_PitcherBehind_Slider_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[RISP_PitcherBehind_Split-Finger_%Pitches] AS [RISP_PitcherBehind_Split-Finger_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[RISP_2Ks (Excl3-2)Change_%Pitches] AS [RISP_2Ks (Excl3-2)Change_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[RISP_2Ks (Excl3-2)Curve_%Pitches] AS [RISP_2Ks (Excl3-2)Curve_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[RISP_2Ks (Excl3-2)Cutter_%Pitches] AS [RISP_2Ks (Excl3-2)Cutter_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[RISP_2Ks (Excl3-2)FB (4sm   2sm)_%Pitches] AS [RISP_2Ks (Excl3-2)FB (4sm   2sm)_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[RISP_2Ks (Excl3-2)Knuckleball_%Pitches] AS [RISP_2Ks (Excl3-2)Knuckleball_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[RISP_2Ks (Excl3-2)Slider_%Pitches] AS [RISP_2Ks (Excl3-2)Slider_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[RISP_2Ks (Excl3-2)Split-Finger_%Pitches] AS [RISP_2Ks (Excl3-2)Split-Finger_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[3-2_Change_%Pitches] AS [3-2_Change_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[3-2_Curve_%Pitches] AS [3-2_Curve_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[3-2_Cutter_%Pitches] AS [3-2_Cutter_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[3-2_FB (4sm   2sm)_%Pitches] AS [3-2_FB (4sm   2sm)_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[3-2_Knuckleball_%Pitches] AS [3-2_Knuckleball_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[3-2_Slider_%Pitches] AS [3-2_Slider_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[3-2_Split-Finger_%Pitches] AS [3-2_Split-Finger_%Pitches], 
+      [PitcherProfile_CurrentAndSplits].[StrikeZone%_Change] AS [StrikeZone%_Change], 
+      [PitcherProfile_CurrentAndSplits].[Chase%_Change] AS [Chase%_Change], 
+      [PitcherProfile_CurrentAndSplits].[StrikeZone%_Curve] AS [StrikeZone%_Curve], 
+      [PitcherProfile_CurrentAndSplits].[Chase%_Curve] AS [Chase%_Curve], 
+      [PitcherProfile_CurrentAndSplits].[StrikeZone%_Cutter] AS [StrikeZone%_Cutter], 
+      [PitcherProfile_CurrentAndSplits].[Chase%_Cutter] AS [Chase%_Cutter], 
+      [PitcherProfile_CurrentAndSplits].[StrikeZone%_FB (4sm   2sm)] AS [StrikeZone%_FB (4sm   2sm)], 
+      [PitcherProfile_CurrentAndSplits].[Chase%_FB (4sm   2sm)] AS [Chase%_FB (4sm   2sm)], 
+      [PitcherProfile_CurrentAndSplits].[StrikeZone%_Knuckleball] AS [StrikeZone%_Knuckleball], 
+      [PitcherProfile_CurrentAndSplits].[Chase%_Knuckleball] AS [Chase%_Knuckleball], 
+      [PitcherProfile_CurrentAndSplits].[StrikeZone%_Slider] AS [StrikeZone%_Slider], 
+      [PitcherProfile_CurrentAndSplits].[Chase%_Slider] AS [Chase%_Slider], 
+      [PitcherProfile_CurrentAndSplits].[StrikeZone%_Split-Finger] AS [StrikeZone%_Split-Finger], 
+      [PitcherProfile_CurrentAndSplits].[Chase%_Split-Finger] AS [Chase%_Split-Finger]
+      FROM [dbo].[PitcherProfile_CurrentAndSplits] AS [PitcherProfile_CurrentAndSplits]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="PitcherProfile_PitchCountLastStart" EntityType="DevColoradoRockiesModel.Store.PitcherProfile_PitchCountLastStart" store:Type="Tables" store:Schema="dbo" store:Name="PitcherProfile_PitchCountLastStart">
+      <DefiningQuery>SELECT 
+      [PitcherProfile_PitchCountLastStart].[PlayerId] AS [PlayerId], 
+      [PitcherProfile_PitchCountLastStart].[mlbam] AS [mlbam], 
+      [PitcherProfile_PitchCountLastStart].[Firstname] AS [Firstname], 
+      [PitcherProfile_PitchCountLastStart].[Lastname] AS [Lastname], 
+      [PitcherProfile_PitchCountLastStart].[Date] AS [Date], 
+      [PitcherProfile_PitchCountLastStart].[TotalPitches_vsLHH] AS [TotalPitches_vsLHH], 
+      [PitcherProfile_PitchCountLastStart].[FB_vsLHH] AS [FB_vsLHH], 
+      [PitcherProfile_PitchCountLastStart].[SL_vsLHH] AS [SL_vsLHH], 
+      [PitcherProfile_PitchCountLastStart].[CB_vsLHH] AS [CB_vsLHH], 
+      [PitcherProfile_PitchCountLastStart].[CH_vsLHH] AS [CH_vsLHH], 
+      [PitcherProfile_PitchCountLastStart].[SPL_vsLHH] AS [SPL_vsLHH], 
+      [PitcherProfile_PitchCountLastStart].[TotalPitches_vsRHH] AS [TotalPitches_vsRHH], 
+      [PitcherProfile_PitchCountLastStart].[FB_vsRHH] AS [FB_vsRHH], 
+      [PitcherProfile_PitchCountLastStart].[SL_vsRHH] AS [SL_vsRHH], 
+      [PitcherProfile_PitchCountLastStart].[CB_vsRHH] AS [CB_vsRHH], 
+      [PitcherProfile_PitchCountLastStart].[CH_vsRHH] AS [CH_vsRHH], 
+      [PitcherProfile_PitchCountLastStart].[SPL_vsRHH] AS [SPL_vsRHH], 
+      [PitcherProfile_PitchCountLastStart].[TotalPitches_Total] AS [TotalPitches_Total], 
+      [PitcherProfile_PitchCountLastStart].[FB_Total] AS [FB_Total], 
+      [PitcherProfile_PitchCountLastStart].[SL_Total] AS [SL_Total], 
+      [PitcherProfile_PitchCountLastStart].[CB_Total] AS [CB_Total], 
+      [PitcherProfile_PitchCountLastStart].[CH_Total] AS [CH_Total], 
+      [PitcherProfile_PitchCountLastStart].[SPL_Total] AS [SPL_Total]
+      FROM [dbo].[PitcherProfile_PitchCountLastStart] AS [PitcherProfile_PitchCountLastStart]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Pitchers" EntityType="DevColoradoRockiesModel.Store.Pitchers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PitcherSplits" EntityType="DevColoradoRockiesModel.Store.PitcherSplits" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserEntered" EntityType="DevColoradoRockiesModel.Store.UserEntered" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserEntered2" EntityType="DevColoradoRockiesModel.Store.UserEntered2" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="DugoutPitcher">
+    <Key>
+      <PropertyRef Name="PlayerId" />
+    </Key>
+    <Property Name="PlayerId" Type="bigint" Nullable="false" />
+    <Property Name="Firstname" Type="varchar" MaxLength="50" />
+    <Property Name="Lastname" Type="varchar" MaxLength="50" />
+    <Property Name="mlbam" Type="bigint" />
+    <Property Name="W" Type="nvarchar" MaxLength="10" />
+    <Property Name="L" Type="nvarchar" MaxLength="10" />
+    <Property Name="IP" Type="nvarchar" MaxLength="10" />
+    <Property Name="ERA" Type="nvarchar" MaxLength="10" />
+    <Property Name="H" Type="nvarchar" MaxLength="10" />
+    <Property Name="HR" Type="nvarchar" MaxLength="10" />
+    <Property Name="BB" Type="nvarchar" MaxLength="10" />
+    <Property Name="SO" Type="nvarchar" MaxLength="10" />
+    <Property Name="SB" Type="nvarchar" MaxLength="10" />
+    <Property Name="CS" Type="nvarchar" MaxLength="10" />
+    <Property Name="FB_Velo" Type="nvarchar" MaxLength="10" />
+    <Property Name="CutFB_Velo" Type="nvarchar" MaxLength="10" />
+    <Property Name="SL_Velo" Type="nvarchar" MaxLength="10" />
+    <Property Name="CB_Velo" Type="nvarchar" MaxLength="10" />
+    <Property Name="CH_Velo" Type="nvarchar" MaxLength="10" />
+    <Property Name="SPL_Velo" Type="nvarchar" MaxLength="50" />
+    <Property Name="Pitch1_Type" Type="nvarchar" MaxLength="10" />
+    <Property Name="Pitch2_Type" Type="nvarchar" MaxLength="10" />
+    <Property Name="Pitch3_Type" Type="nvarchar" MaxLength="10" />
+    <Property Name="Pitch4_Type" Type="nvarchar" MaxLength="10" />
+    <Property Name="RISP_0-0_Pitch1" Type="nvarchar" MaxLength="10" />
+    <Property Name="RISP_0-0_Pitch2" Type="nvarchar" MaxLength="10" />
+    <Property Name="RISP_0-0_Pitch3" Type="nvarchar" MaxLength="10" />
+    <Property Name="RISP_0-0_Pitch4" Type="nvarchar" MaxLength="10" />
+    <Property Name="RISP_PitAhd_Pitch1" Type="nvarchar" MaxLength="10" />
+    <Property Name="RISP_PitAhd_Pitch2" Type="nvarchar" MaxLength="10" />
+    <Property Name="RISP_PitAhd_Pitch3" Type="nvarchar" MaxLength="10" />
+    <Property Name="RISP_PitAhd_Pitch4" Type="nvarchar" MaxLength="10" />
+    <Property Name="RISP_PitBhd_Pitch1" Type="nvarchar" MaxLength="10" />
+    <Property Name="RISP_PitBhd_Pitch2" Type="nvarchar" MaxLength="10" />
+    <Property Name="RISP_PitBhd_Pitch3" Type="nvarchar" MaxLength="10" />
+    <Property Name="RISP_PitBhd_Pitch4" Type="nvarchar" MaxLength="10" />
+    <Property Name="RISP_2K_Pitch1" Type="nvarchar" MaxLength="10" />
+    <Property Name="RISP_2K_Pitch2" Type="nvarchar" MaxLength="10" />
+    <Property Name="RISP_2K_Pitch3" Type="nvarchar" MaxLength="10" />
+    <Property Name="RISP_2K_Pitch4" Type="nvarchar" MaxLength="10" />
+    <Property Name="RISP_FullCount_Pitch1" Type="nvarchar" MaxLength="10" />
+    <Property Name="RISP_FullCount_Pitch2" Type="nvarchar" MaxLength="10" />
+    <Property Name="RISP_FullCount_Pitch3" Type="nvarchar" MaxLength="10" />
+    <Property Name="RISP_FullCount_Pitch4" Type="nvarchar" MaxLength="10" />
+    <Property Name="BasesEmpty_0-0_Pitch1" Type="nvarchar" MaxLength="10" />
+    <Property Name="BasesEmpty_0-0_Pitch2" Type="nvarchar" MaxLength="10" />
+    <Property Name="BasesEmpty_0-0_Pitch3" Type="nvarchar" MaxLength="10" />
+    <Property Name="BasesEmpty_0-0_Pitch4" Type="nvarchar" MaxLength="10" />
+    <Property Name="BasesEmpty_PitAhd_Pitch1" Type="nvarchar" MaxLength="10" />
+    <Property Name="BasesEmpty_PitAhd_Pitch2" Type="nvarchar" MaxLength="10" />
+    <Property Name="BasesEmpty_PitAhd_Pitch3" Type="nvarchar" MaxLength="10" />
+    <Property Name="BasesEmpty_PitAhd_Pitch4" Type="nvarchar" MaxLength="10" />
+    <Property Name="BasesEmpty_PitBhd_Pitch1" Type="nvarchar" MaxLength="10" />
+    <Property Name="BasesEmpty_PitBhd_Pitch2" Type="nvarchar" MaxLength="10" />
+    <Property Name="BasesEmpty_PitBhd_Pitch3" Type="nvarchar" MaxLength="10" />
+    <Property Name="BasesEmpty_PitBhd_Pitch4" Type="nvarchar" MaxLength="10" />
+    <Property Name="BasesEmpty_2K_Pitch1" Type="nvarchar" MaxLength="10" />
+    <Property Name="BasesEmpty_2K_Pitch2" Type="nvarchar" MaxLength="10" />
+    <Property Name="BasesEmpty_2K_Pitch3" Type="nvarchar" MaxLength="10" />
+    <Property Name="BasesEmpty_2K_Pitch4" Type="nvarchar" MaxLength="10" />
+    <Property Name="BasesEmpty_FullCount_Pitch1" Type="nvarchar" MaxLength="10" />
+    <Property Name="BasesEmpty_FullCount_Pitch2" Type="nvarchar" MaxLength="10" />
+    <Property Name="BasesEmpty_FullCount_Pitch3" Type="nvarchar" MaxLength="10" />
+    <Property Name="BasesEmpty_FullCount_Pitch4" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'DevColoradoRockies.dbo.HitterProfile' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="HitterProfile">
+    <Key>
+      <PropertyRef Name="PlayerId" />
+    </Key>
+    <Property Name="PlayerId" Type="bigint" Nullable="false" />
+    <Property Name="MLBAM" Type="bigint" />
+    <Property Name="Firstname" Type="varchar" MaxLength="50" />
+    <Property Name="Lastname" Type="varchar" MaxLength="50" />
+    <Property Name="AVG _vsLHP" Type="varchar" MaxLength="10" />
+    <Property Name="SLG%_vsLHP" Type="varchar" MaxLength="10" />
+    <Property Name="AB_vsLHP" Type="varchar" MaxLength="10" />
+    <Property Name="H_vsLHP" Type="varchar" MaxLength="10" />
+    <Property Name="HR_vsLHP" Type="varchar" MaxLength="10" />
+    <Property Name="BB_vsLHP" Type="varchar" MaxLength="10" />
+    <Property Name="K_vsLHP" Type="varchar" MaxLength="10" />
+    <Property Name="SB_vsLHP" Type="varchar" MaxLength="10" />
+    <Property Name="CS_vsLHP" Type="varchar" MaxLength="10" />
+    <Property Name="PperPA_vsLHP" Type="varchar" MaxLength="10" />
+    <Property Name="AVG _vsRHP" Type="varchar" MaxLength="10" />
+    <Property Name="SLG%_vsRHP" Type="varchar" MaxLength="10" />
+    <Property Name="AB_vsRHP" Type="varchar" MaxLength="10" />
+    <Property Name="H_vsRHP" Type="varchar" MaxLength="10" />
+    <Property Name="HR_vsRHP" Type="varchar" MaxLength="10" />
+    <Property Name="BB_vsRHP" Type="varchar" MaxLength="10" />
+    <Property Name="K_vsRHP" Type="varchar" MaxLength="10" />
+    <Property Name="SB_vsRHP" Type="varchar" MaxLength="10" />
+    <Property Name="CS_vsRHP" Type="varchar" MaxLength="10" />
+    <Property Name="PperPA_vsRHP" Type="varchar" MaxLength="10" />
+    <Property Name="AVG _Total" Type="varchar" MaxLength="10" />
+    <Property Name="SLG%_Total" Type="varchar" MaxLength="10" />
+    <Property Name="AB_Total" Type="varchar" MaxLength="10" />
+    <Property Name="H_Total" Type="varchar" MaxLength="10" />
+    <Property Name="HR_Total" Type="varchar" MaxLength="10" />
+    <Property Name="BB_Total" Type="varchar" MaxLength="10" />
+    <Property Name="K_Total" Type="varchar" MaxLength="10" />
+    <Property Name="SB_Total" Type="varchar" MaxLength="10" />
+    <Property Name="CS_Total" Type="varchar" MaxLength="10" />
+    <Property Name="PperPA_Total" Type="varchar" MaxLength="10" />
+    <Property Name="GB%_vsLHP" Type="varchar" MaxLength="10" />
+    <Property Name="FB%_vsLHP" Type="varchar" MaxLength="10" />
+    <Property Name="GB%_vsRHP" Type="varchar" MaxLength="10" />
+    <Property Name="FB%_vsRHP" Type="varchar" MaxLength="10" />
+    <Property Name="GB%_Total" Type="varchar" MaxLength="10" />
+    <Property Name="FB%_Total" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="HitterProfile_UserEntered">
+    <Key>
+      <PropertyRef Name="PlayerId" />
+    </Key>
+    <Property Name="PlayerId" Type="bigint" Nullable="false" />
+    <Property Name="Arm" Type="nvarchar" MaxLength="50" />
+    <Property Name="Accuracy" Type="nvarchar" MaxLength="10" />
+    <Property Name="Speed" Type="nvarchar" MaxLength="10" />
+    <Property Name="Steal" Type="nvarchar" MaxLength="10" />
+    <Property Name="Push" Type="nvarchar" MaxLength="10" />
+    <Property Name="Drag" Type="nvarchar" MaxLength="10" />
+    <Property Name="RHP_HowtoPitch" Type="varchar(max)" />
+    <Property Name="LHP_HowtoPitch" Type="varchar(max)" />
+    <Property Name="RHP_2Ks_Chase" Type="varchar(max)" />
+    <Property Name="LHP_2Ks_Chase" Type="varchar(max)" />
+    <Property Name="RHP_Def_INF" Type="varchar(max)" />
+    <Property Name="LHP_Def_INF" Type="varchar(max)" />
+    <Property Name="RHP_Def_OF" Type="varchar(max)" />
+    <Property Name="LHP_Def_OF" Type="varchar(max)" />
+    <Property Name="Year" Type="int" />
+    <Property Name="Arm_Avg" Type="int" />
+    <Property Name="Accuracy_Avg" Type="int" />
+    <Property Name="Speed_Avg" Type="int" />
+  </EntityType>
+  <EntityType Name="Outfielder_Pitcher">
+    <Key>
+      <PropertyRef Name="PlayerID" />
+    </Key>
+    <Property Name="PlayerID" Type="bigint" Nullable="false" />
+    <Property Name="Aggressiveness" Type="varchar" MaxLength="255" />
+    <Property Name="SPAofHit_Summary" Type="varchar" MaxLength="255" />
+    <Property Name="SPAofHit_Detail" Type="varchar" MaxLength="255" />
+    <Property Name="SPAofHit_BuntingAbility" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'DevColoradoRockies.dbo.PitcherProfile_CurrentAndSplits' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="PitcherProfile_CurrentAndSplits">
+    <Key>
+      <PropertyRef Name="PlayerId" />
+    </Key>
+    <Property Name="PlayerId" Type="bigint" Nullable="false" />
+    <Property Name="mlbam" Type="bigint" />
+    <Property Name="Firstname" Type="nvarchar" MaxLength="50" />
+    <Property Name="Lastname" Type="nvarchar" MaxLength="50" />
+    <Property Name="G" Type="nvarchar" MaxLength="10" />
+    <Property Name="Record" Type="nvarchar" MaxLength="10" />
+    <Property Name="ERA" Type="nvarchar" MaxLength="10" />
+    <Property Name="IP" Type="nvarchar" MaxLength="10" />
+    <Property Name="H" Type="nvarchar" MaxLength="10" />
+    <Property Name="HR" Type="nvarchar" MaxLength="10" />
+    <Property Name="BB" Type="nvarchar" MaxLength="10" />
+    <Property Name="SO" Type="nvarchar" MaxLength="10" />
+    <Property Name="SBA" Type="nvarchar" MaxLength="10" />
+    <Property Name="PperPA" Type="nvarchar" MaxLength="10" />
+    <Property Name="PperIP" Type="nvarchar" MaxLength="10" />
+    <Property Name="PperGS" Type="nvarchar" MaxLength="10" />
+    <Property Name="GB%_Overall" Type="nvarchar" MaxLength="10" />
+    <Property Name="FB%_Overall" Type="nvarchar" MaxLength="10" />
+    <Property Name="AVG_vsLHH" Type="nvarchar" MaxLength="10" />
+    <Property Name="H_vsLHH" Type="nvarchar" MaxLength="10" />
+    <Property Name="HR_vsLHH" Type="nvarchar" MaxLength="10" />
+    <Property Name="BB_vsLHH" Type="nvarchar" MaxLength="10" />
+    <Property Name="SO_vsLHH" Type="nvarchar" MaxLength="10" />
+    <Property Name="PperPA_vsLHH" Type="nvarchar" MaxLength="10" />
+    <Property Name="OBP_vsLHH" Type="nvarchar" MaxLength="10" />
+    <Property Name="SLG_vsLHH" Type="nvarchar" MaxLength="10" />
+    <Property Name="GB%_vsLHH" Type="nvarchar" MaxLength="10" />
+    <Property Name="FB%_vsLHH" Type="nvarchar" MaxLength="10" />
+    <Property Name="AVG_vsRHH" Type="nvarchar" MaxLength="10" />
+    <Property Name="H_vsRHH" Type="nvarchar" MaxLength="10" />
+    <Property Name="HR_vsRHH" Type="nvarchar" MaxLength="10" />
+    <Property Name="BB_vsRHH" Type="nvarchar" MaxLength="10" />
+    <Property Name="SO_vsRHH" Type="nvarchar" MaxLength="10" />
+    <Property Name="PperPA_vsRHH" Type="nvarchar" MaxLength="10" />
+    <Property Name="OBP_vsRHH" Type="nvarchar" MaxLength="10" />
+    <Property Name="SLG_vsRHH" Type="nvarchar" MaxLength="10" />
+    <Property Name="GB%_vsRHH" Type="nvarchar" MaxLength="10" />
+    <Property Name="FB%_vsRHH" Type="nvarchar" MaxLength="10" />
+    <Property Name="BasesEmpty_AllCounts_Change_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="BasesEmpty_AllCounts_Curve_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="BasesEmpty_AllCounts_Cutter_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="BasesEmpty_AllCounts_FB (4sm   2sm)_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="BasesEmpty_AllCounts_Knuckleball_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="BasesEmpty_AllCounts_Slider_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="BasesEmpty_AllCounts_Split-Finger_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="BasesEmpty_FirstPitch_Change_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="BasesEmpty_FirstPitch_Curve_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="BasesEmpty_FirstPitch_Cutter_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="BasesEmpty_FirstPitch_FB (4sm   2sm)_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="BasesEmpty_FirstPitch_Knuckleball_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="BasesEmpty_FirstPitch_Slider_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="BasesEmpty_FirstPitch_Split-Finger_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="BasesEmpty_PitcherAhead_Change_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="BasesEmpty_PitcherAhead_Curve_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="BasesEmpty_PitcherAhead_Cutter_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="BasesEmpty_PitcherAhead_FB (4sm   2sm)_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="BasesEmpty_PitcherAhead_Knuckleball_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="BasesEmpty_PitcherAhead_Slider_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="BasesEmpty_PitcherAhead_Split-Finger_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="BasesEmpty_PitcherBehind_Change_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="BasesEmpty_PitcherBehind_Curve_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="BasesEmpty_PitcherBehind_Cutter_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="BasesEmpty_PitcherBehind_FB (4sm   2sm)_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="BasesEmpty_PitcherBehind_Knuckleball_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="BasesEmpty_PitcherBehind_Slider_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="BasesEmpty_PitcherBehind_Split-Finger_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="BasesEmpty_2Ks (Excl3-2)Change_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="BasesEmpty_2Ks (Excl3-2)Curve_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="BasesEmpty_2Ks (Excl3-2)Cutter_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="BasesEmpty_2Ks (Excl3-2)FB (4sm   2sm)_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="BasesEmpty_2Ks (Excl3-2)Knuckleball_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="BasesEmpty_2Ks (Excl3-2)Slider_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="BasesEmpty_2Ks (Excl3-2)Split-Finger_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="RISP_AllCounts_Change_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="RISP_AllCounts_Curve_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="RISP_AllCounts_Cutter_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="RISP_AllCounts_FB (4sm   2sm)_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="RISP_AllCounts_Knuckleball_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="RISP_AllCounts_Slider_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="RISP_AllCounts_Split-Finger_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="RISP_FirstPitch_Change_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="RISP_FirstPitch_Curve_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="RISP_FirstPitch_Cutter_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="RISP_FirstPitch_FB (4sm   2sm)_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="RISP_FirstPitch_Knuckleball_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="RISP_FirstPitch_Slider_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="RISP_FirstPitch_Split-Finger_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="RISP_PitcherAhead_Change_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="RISP_PitcherAhead_Curve_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="RISP_PitcherAhead_Cutter_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="RISP_PitcherAhead_FB (4sm   2sm)_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="RISP_PitcherAhead_Knuckleball_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="RISP_PitcherAhead_Slider_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="RISP_PitcherAhead_Split-Finger_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="RISP_PitcherBehind_Change_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="RISP_PitcherBehind_Curve_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="RISP_PitcherBehind_Cutter_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="RISP_PitcherBehind_FB (4sm   2sm)_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="RISP_PitcherBehind_Knuckleball_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="RISP_PitcherBehind_Slider_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="RISP_PitcherBehind_Split-Finger_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="RISP_2Ks (Excl3-2)Change_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="RISP_2Ks (Excl3-2)Curve_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="RISP_2Ks (Excl3-2)Cutter_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="RISP_2Ks (Excl3-2)FB (4sm   2sm)_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="RISP_2Ks (Excl3-2)Knuckleball_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="RISP_2Ks (Excl3-2)Slider_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="RISP_2Ks (Excl3-2)Split-Finger_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="3-2_Change_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="3-2_Curve_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="3-2_Cutter_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="3-2_FB (4sm   2sm)_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="3-2_Knuckleball_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="3-2_Slider_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="3-2_Split-Finger_%Pitches" Type="nvarchar" MaxLength="20" />
+    <Property Name="StrikeZone%_Change" Type="nvarchar" MaxLength="20" />
+    <Property Name="Chase%_Change" Type="nvarchar" MaxLength="20" />
+    <Property Name="StrikeZone%_Curve" Type="nvarchar" MaxLength="20" />
+    <Property Name="Chase%_Curve" Type="nvarchar" MaxLength="20" />
+    <Property Name="StrikeZone%_Cutter" Type="nvarchar" MaxLength="20" />
+    <Property Name="Chase%_Cutter" Type="nvarchar" MaxLength="20" />
+    <Property Name="StrikeZone%_FB (4sm   2sm)" Type="nvarchar" MaxLength="20" />
+    <Property Name="Chase%_FB (4sm   2sm)" Type="nvarchar" MaxLength="20" />
+    <Property Name="StrikeZone%_Knuckleball" Type="nvarchar" MaxLength="20" />
+    <Property Name="Chase%_Knuckleball" Type="nvarchar" MaxLength="20" />
+    <Property Name="StrikeZone%_Slider" Type="nvarchar" MaxLength="20" />
+    <Property Name="Chase%_Slider" Type="nvarchar" MaxLength="20" />
+    <Property Name="StrikeZone%_Split-Finger" Type="nvarchar" MaxLength="20" />
+    <Property Name="Chase%_Split-Finger" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'DevColoradoRockies.dbo.PitcherProfile_PitchCountLastStart' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="PitcherProfile_PitchCountLastStart">
+    <Key>
+      <PropertyRef Name="PlayerId" />
+    </Key>
+    <Property Name="PlayerId" Type="bigint" Nullable="false" />
+    <Property Name="mlbam" Type="bigint" />
+    <Property Name="Firstname" Type="varchar" MaxLength="50" />
+    <Property Name="Lastname" Type="varchar" MaxLength="50" />
+    <Property Name="Date" Type="varchar" MaxLength="10" />
+    <Property Name="TotalPitches_vsLHH" Type="varchar" MaxLength="10" />
+    <Property Name="FB_vsLHH" Type="varchar" MaxLength="10" />
+    <Property Name="SL_vsLHH" Type="varchar" MaxLength="10" />
+    <Property Name="CB_vsLHH" Type="varchar" MaxLength="10" />
+    <Property Name="CH_vsLHH" Type="varchar" MaxLength="10" />
+    <Property Name="SPL_vsLHH" Type="varchar" MaxLength="10" />
+    <Property Name="TotalPitches_vsRHH" Type="varchar" MaxLength="10" />
+    <Property Name="FB_vsRHH" Type="varchar" MaxLength="10" />
+    <Property Name="SL_vsRHH" Type="varchar" MaxLength="10" />
+    <Property Name="CB_vsRHH" Type="varchar" MaxLength="10" />
+    <Property Name="CH_vsRHH" Type="varchar" MaxLength="10" />
+    <Property Name="SPL_vsRHH" Type="varchar" MaxLength="10" />
+    <Property Name="TotalPitches_Total" Type="varchar" MaxLength="10" />
+    <Property Name="FB_Total" Type="varchar" MaxLength="10" />
+    <Property Name="SL_Total" Type="varchar" MaxLength="10" />
+    <Property Name="CB_Total" Type="varchar" MaxLength="10" />
+    <Property Name="CH_Total" Type="varchar" MaxLength="10" />
+    <Property Name="SPL_Total" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Pitchers">
+    <Key>
+      <PropertyRef Name="PlayerID" />
+    </Key>
+    <Property Name="PlayerID" Type="int" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="255" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="255" />
+    <Property Name="Dexterity" Type="nvarchar" MaxLength="255" />
+    <Property Name="FastballVelocity" Type="nvarchar" MaxLength="255" />
+    <Property Name="FastballDescription" Type="nvarchar" MaxLength="255" />
+    <Property Name="SinkerVelocity" Type="nvarchar" MaxLength="255" />
+    <Property Name="SinkerDescription" Type="nvarchar" MaxLength="255" />
+    <Property Name="CutterVelocity" Type="nvarchar" MaxLength="255" />
+    <Property Name="CutterDescription" Type="nvarchar" MaxLength="255" />
+    <Property Name="SliderVelocity" Type="nvarchar" MaxLength="255" />
+    <Property Name="SliderDescription" Type="nvarchar" MaxLength="255" />
+    <Property Name="CurveballVelocity" Type="nvarchar" MaxLength="255" />
+    <Property Name="CurveballDescription" Type="nvarchar" MaxLength="255" />
+    <Property Name="ChangeupVelocity" Type="nvarchar" MaxLength="255" />
+    <Property Name="ChangeupDescription" Type="nvarchar" MaxLength="255" />
+    <Property Name="SplitfingerVelocity" Type="nvarchar" MaxLength="255" />
+    <Property Name="SplitfingerDescription" Type="nvarchar" MaxLength="255" />
+    <Property Name="KnuckleballVelocity" Type="nvarchar" MaxLength="255" />
+    <Property Name="KnuckleballDescription" Type="nvarchar" MaxLength="255" />
+    <Property Name="ScrewballVelocity" Type="nvarchar" MaxLength="255" />
+    <Property Name="ScrewballDescription" Type="nvarchar" MaxLength="255" />
+    <Property Name="MOVES" Type="nvarchar(max)" />
+    <Property Name="NOTES" Type="nvarchar(max)" />
+    <Property Name="STRENGTHS" Type="nvarchar(max)" />
+    <Property Name="WEAKNESSES" Type="nvarchar(max)" />
+    <Property Name="TENDENCIES" Type="nvarchar(max)" />
+    <Property Name="ArmAngle" Type="nvarchar" MaxLength="255" />
+    <Property Name="TimeStamp" Type="datetime" />
+  </EntityType>
+  <EntityType Name="PitcherSplits">
+    <Key>
+      <PropertyRef Name="PlayerId" />
+    </Key>
+    <Property Name="PlayerId" Type="bigint" Nullable="false" />
+    <Property Name="CareerRHB" Type="nvarchar" MaxLength="10" />
+    <Property Name="CareerLHB" Type="nvarchar" MaxLength="10" />
+    <Property Name="Year" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserEntered">
+    <Key>
+      <PropertyRef Name="PlayerID" />
+    </Key>
+    <Property Name="PlayerID" Type="bigint" Nullable="false" />
+    <Property Name="ArmSlot" Type="varchar" MaxLength="50" />
+    <Property Name="Control" Type="varchar" MaxLength="50" />
+    <Property Name="Command" Type="varchar" MaxLength="50" />
+    <Property Name="Approach" Type="varchar" MaxLength="50" />
+    <Property Name="Out_Pitch" Type="varchar" MaxLength="50" />
+    <Property Name="PickoffMove_1B" Type="varchar" MaxLength="50" />
+    <Property Name="PickoffMove_2B" Type="varchar" MaxLength="50" />
+    <Property Name="ReleaseTimes_1B" Type="varchar" MaxLength="50" />
+    <Property Name="ReleaseTimes_2B" Type="varchar" MaxLength="50" />
+    <Property Name="ReleaseTimes_SS" Type="varchar" MaxLength="50" />
+    <Property Name="SlideStepTime_1B" Type="varchar" MaxLength="50" />
+    <Property Name="LooksWRunner_2B" Type="varchar" MaxLength="50" />
+    <Property Name="Year" Type="int" />
+  </EntityType>
+  <EntityType Name="UserEntered2">
+    <Key>
+      <PropertyRef Name="PlayerID" />
+    </Key>
+    <Property Name="PlayerID" Type="bigint" Nullable="false" />
+    <Property Name="FB2SMVelocity" Type="nvarchar" MaxLength="50" />
+    <Property Name="FB2SMDescription" Type="nvarchar" MaxLength="255" />
+    <Property Name="FB4SMVelocity" Type="nvarchar" MaxLength="50" />
+    <Property Name="FB4SMDescription" Type="nvarchar" MaxLength="255" />
+    <Property Name="FB2SMCommand" Type="nvarchar" MaxLength="255" />
+    <Property Name="FB4SMCommand" Type="nvarchar" MaxLength="255" />
+    <Property Name="CutterCommand" Type="nvarchar" MaxLength="255" />
+    <Property Name="SliderCommand" Type="nvarchar" MaxLength="255" />
+    <Property Name="CurveballCommand" Type="nvarchar" MaxLength="255" />
+    <Property Name="ChangeupCommand" Type="nvarchar" MaxLength="255" />
+    <Property Name="SplitfingerCommand" Type="nvarchar" MaxLength="255" />
+    <Property Name="KnuckleballCommand" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <Function Name="cr_sproc_NEF_Hitter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Year" Type="int" Mode="In" />
+    <Parameter Name="TeamId" Type="int" Mode="In" />
+    <Parameter Name="Active" Type="int" Mode="In" />
+  </Function>
+  <Function Name="cr_sproc_NEF_Pitcher" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Year" Type="int" Mode="In" />
+    <Parameter Name="TeamId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="cr_sproc_outfielderpitcher_agg" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Year" Type="int" Mode="In" />
+    <Parameter Name="TeamId" Type="int" Mode="In" />
+    <Parameter Name="Active" Type="int" Mode="In" />
+  </Function>
+  <Function Name="cr_sproc_outfielderpitcher_sta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Year" Type="int" Mode="In" />
+    <Parameter Name="TeamId" Type="int" Mode="In" />
+    <Parameter Name="Active" Type="int" Mode="In" />
+  </Function>
+  <Function Name="cr_sproc_pitcherprofile_currentoverallstats" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PID" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="cr_sproc_pitcherprofile_currentstatsvslhh" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PID" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="cr_sproc_pitcherprofile_currentstatsvsrhh" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PID" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="cr_sproc_pitchersplits" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Year" Type="int" Mode="In" />
+    <Parameter Name="TeamId" Type="int" Mode="In" />
+    <Parameter Name="Active" Type="int" Mode="In" />
+  </Function>
+  <Function Name="cr_sproc_runnerchart" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Year" Type="int" Mode="In" />
+    <Parameter Name="TeamId" Type="int" Mode="In" />
+    <Parameter Name="Active" Type="int" Mode="In" />
+  </Function>
+</Schema>

@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<players>
+
+  <player>
+    <fname>clayton</fname>
+    <lname>kershaw</lname>
+    <rhh2013>.201</rhh2013>
+    <rhhcareer>.217</rhhcareer>
+    <lhh2013>.171</lhh2013>
+    <lhhcareer>.188</lhhcareer>
+  </player>
+
+  <player>
+    <fname>zack</fname>
+    <lname>greinke</lname>
+    <rhh2013>.201</rhh2013>
+    <rhhcareer>.217</rhhcareer>
+    <lhh2013>.171</lhh2013>
+    <lhhcareer>.188</lhhcareer>
+  </player>
+
+  <player>
+    <fname>hyun-jin</fname>
+    <lname>ryu</lname>
+    <rhh2013>.201</rhh2013>
+    <rhhcareer>.217</rhhcareer>
+    <lhh2013>.171</lhh2013>
+    <lhhcareer>.188</lhhcareer>
+  </player>
+
+  <player>
+    <fname>kenley</fname>
+    <lname>jansen</lname>
+    <rhh2013>.201</rhh2013>
+    <rhhcareer>.217</rhhcareer>
+    <lhh2013>.171</lhh2013>
+    <lhhcareer>.188</lhhcareer>
+  </player>
+
+  <player>
+    <fname>ronald</fname>
+    <lname>bellsario</lname>
+    <rhh2013>.201</rhh2013>
+    <rhhcareer>.217</rhhcareer>
+    <lhh2013>.171</lhh2013>
+    <lhhcareer>.188</lhhcareer>
+  </player>
+
+  <player>
+    <fname>J.P.</fname>
+    <lname>Howell</lname>
+    <rhh2013>.201</rhh2013>
+    <rhhcareer>.217</rhhcareer>
+    <lhh2013>.171</lhh2013>
+    <lhhcareer>.188</lhhcareer>
+  </player>
+
+  <player>
+    <fname>brian</fname>
+    <lname>wilson</lname>
+    <rhh2013>.201</rhh2013>
+    <rhhcareer>.217</rhhcareer>
+    <lhh2013>.171</lhh2013>
+    <lhhcareer>.188</lhhcareer>
+  </player>
+
+  <player>
+    <fname>carlos</fname>
+    <lname>marmol</lname>
+    <rhh2013>.201</rhh2013>
+    <rhhcareer>.217</rhhcareer>
+    <lhh2013>.171</lhh2013>
+    <lhhcareer>.188</lhhcareer>
+  </player>
+
+  <player>
+    <fname>brandon</fname>
+    <lname>league</lname>
+    <rhh2013>.201</rhh2013>
+    <rhhcareer>.217</rhhcareer>
+    <lhh2013>.171</lhh2013>
+    <lhhcareer>.188</lhhcareer>
+  </player>
+
+  <player>
+    <fname>edinson</fname>
+    <lname>volquez</lname>
+    <rhh2013>.201</rhh2013>
+    <rhhcareer>.217</rhhcareer>
+    <lhh2013>.171</lhh2013>
+    <lhhcareer>.188</lhhcareer>
+  </player>
+
+  <player>
+    <fname>chris</fname>
+    <lname>withrow</lname>
+    <rhh2013>.201</rhh2013>
+    <rhhcareer>.217</rhhcareer>
+    <lhh2013>.171</lhh2013>
+    <lhhcareer>.188</lhhcareer>
+  </player>
+
+  <player>
+    <fname>peter</fname>
+    <lname>moylan</lname>
+    <rhh2013>.201</rhh2013>
+    <rhhcareer>.217</rhhcareer>
+    <lhh2013>.171</lhh2013>
+    <lhhcareer>.188</lhhcareer>
+  </player>
+
+  <player>
+    <fname>stephen</fname>
+    <lname>fife</lname>
+    <rhh2013>.201</rhh2013>
+    <rhhcareer>.217</rhhcareer>
+    <lhh2013>.171</lhh2013>
+    <lhhcareer>.188</lhhcareer>
+  </player>
+
+  <player>
+    <fname>onelki</fname>
+    <lname>garcia</lname>
+    <rhh2013>.201</rhh2013>
+    <rhhcareer>.217</rhhcareer>
+    <lhh2013>.171</lhh2013>
+    <lhhcareer>.188</lhhcareer>
+  </player>
+  
+</players>

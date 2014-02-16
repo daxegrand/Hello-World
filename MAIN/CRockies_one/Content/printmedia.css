@@ -1,0 +1,16 @@
+﻿body {
+}
+
+
+#reportBtns {
+	display:none;
+}
+
+#selectRow {
+	display:none;
+}
+
+/*header, .maincontainer, header.rp4width, .maincontainer.rp4width {
+	width:400px;
+	margin:auto;
+}*/

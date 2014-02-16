@@ -1,0 +1,1369 @@
+﻿@model CRockies_one.Models.HitterProfileModels
+@{
+    ViewBag.Title = "Hitter Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="commonMessage"></div>
+<h2>Hitter Profile </h2>
+@if (Model != null)
+{
+<div class="standardTable repStdTblSkin_border fullTblWFixed">
+    <div class="standardTableRow">
+        @* remove any attributes to the image here, width is controlled in css *@
+        <div class="standardTableCell reportTeamLogo"><img src="~/Images/Logos/@(Model.playerinfo.TeamId + ".gif")" /></div>
+        <div class="standardTableCell playerName">
+            <h2 class="playerName"># @Model.playerinfo.Uniform @Model.playerinfo.Firstname @Model.playerinfo.Lastname <span class="player_playtype">@Model.playerinfo.Bats/@Model.playerinfo.Throws</span></h2>
+            <p># OF GAMES BY POS.        (Ex. 1B-42, RF-30)</p>
+        </div>
+    </div>
+
+</div>
+<div class="standardTable noBorders fullTblWFixed">
+    <div class="standardTableRow">
+        <div class="standardTableCell reportTeamLogo"></div>
+        <div class="standardTableCell" style="text-align:center">
+            <table class="stdTable" id="tablePlayerAttr" style="margin:auto; border-top:none;">
+                <tr>
+                  <td rowspan="2" class="bgBigBlueTh" style="border-top:none;">ATTRIBUTES</td>
+                  <td id="th_Arm" class="subheads">Arm</td>
+                  <td id="th_Accuracy" class="subheads">Accuracy</td>
+                  <td id="th_Speed" class="subheads">Speed</td>
+                  <td id="th_Steal" class="subheads">Steal</td>
+                  <td id="th_Push" class="subheads">Push</td>
+                  <td id="th_Drag" class="subheads">Drag</td>
+                </tr>
+                <tr style="height:20px;">
+                  <td id="td_Arm"></td>
+                  <td id="td_Accuracy"></td>
+                  <td id="td_Speed"></td>
+                  <td id="td_Steal" class="bgGreen">@try
+                                      { @Model.UserEntered.Steal }
+                                      catch { }</td>
+                  <td id="td_Push" class="bgRed">@try
+                                    { @Model.UserEntered.Push }
+                                    catch { }</td>
+                  <td id="td_Drag" class="bgGreen">@try
+                                      { @Model.UserEntered.Drag }
+                                      catch { }</td>
+                </tr>
+              </table>
+            
+            
+        </div>
+    </div>
+
+    <div class="standardTableRow">
+        <div class="standardTableCell reportTeamLogo"></div>
+        <div class="standardTableCell" style="text-align:center">
+            &nbsp;
+            
+            
+        </div>
+    </div>
+    <div class="standardTableRow">
+        <div class="standardTableCell reportTeamLogo"></div>
+        <div class="standardTableCell" style="text-align:center">
+            <table class="stdTable tablePlayerAvgs">
+                <thead>
+                  <tr>
+                    <th>&nbsp;</th>
+                    <th>AVG.</th>
+                    <th>SLG%</th>
+                    <th>AB</th>
+                    <th>H</th>
+                    <th>HR</th>
+                    <th>BB</th>
+                    <th>K</th>
+                    <th>SB</th>
+                    <th>CS</th>
+                    <th>GB%</th>
+                    <th>FB%</th>
+                    <th>P/PA</th>
+                    </tr>
+                  </thead>
+                <tfoot>
+                    <tr>
+                      <td class="bgWhite headersRow">Total</td>
+                      @if (Model.HitterProfile.AVG__Total == string.Empty || Model.HitterProfile.AVG__Total.Equals("", StringComparison.OrdinalIgnoreCase))
+                      {
+                        <td class="bgWhite"></td>
+                      }
+                      else
+                      {
+                        <td class="bgWhite">@Convert.ToDecimal(Model.HitterProfile.AVG__Total).ToString("#.000")</td>
+                      }
+                  @if (Model.HitterProfile.SLG__Total == string.Empty || Model.HitterProfile.SLG__Total.Equals("", StringComparison.OrdinalIgnoreCase))
+                  {
+                        <td class="bgWhite"></td>
+                  }
+                  else
+                  {
+                        <td class="bgWhite">@Convert.ToDecimal(Model.HitterProfile.SLG__Total).ToString("#.000")</td>
+                  }
+                  
+                  <td class="bgWhite">@Model.HitterProfile.AB_Total</td>
+                  <td class="bgWhite">@Model.HitterProfile.H_Total</td>
+                  <td class="bgWhite">@Model.HitterProfile.HR_Total</td>
+                  <td class="bgWhite">@Model.HitterProfile.BB_Total</td>
+                  <td class="bgWhite">@Model.HitterProfile.K_Total</td>
+                  <td class="bgWhite">@Model.HitterProfile.SB_Total</td>
+                  <td class="bgWhite">@Model.HitterProfile.CS_Total</td>
+                  @if (Model.HitterProfile.GB__Total == string.Empty || Model.HitterProfile.GB__Total.Equals("", StringComparison.OrdinalIgnoreCase))
+                  {
+                        <td class="bgWhite"></td>
+                  }
+                  else
+                  {
+                        <td class="bgWhite">@Math.Round(Convert.ToDecimal(Model.HitterProfile.GB__Total) * 100, 1)%</td>
+                  }
+                  @if (Model.HitterProfile.FB__Total == string.Empty || Model.HitterProfile.FB__Total.Equals("", StringComparison.OrdinalIgnoreCase))
+                  {
+                        <td class="bgWhite"></td>
+                  }
+                  else
+                  {
+                        <td class="bgWhite">@Math.Round(Convert.ToDecimal(Model.HitterProfile.FB__Total) * 100, 1)%</td>
+                  }
+                  <td class="bgWhite">@Model.HitterProfile.PperPA_Total</td>
+                    </tr>
+                </tfoot>
+                <tr>
+                  <td class="bgWhite headersRow">Vs. RHP</td>
+                  @if (Model.HitterProfile.AVG__vsRHP == string.Empty || Model.HitterProfile.AVG__vsRHP.Equals("", StringComparison.OrdinalIgnoreCase))
+                  {
+                        <td class="bgWhite"></td>
+                  }
+                  else
+                  {
+                        <td class="bgWhite">@Convert.ToDecimal(Model.HitterProfile.AVG__vsRHP).ToString("#.000")</td>
+                  }
+                  @if (Model.HitterProfile.SLG__vsRHP == string.Empty || Model.HitterProfile.SLG__vsRHP.Equals("", StringComparison.OrdinalIgnoreCase))
+                  {
+                        <td class="bgWhite"></td>
+                  }
+                  else
+                  {
+                        <td class="bgWhite">@Convert.ToDecimal(Model.HitterProfile.SLG__vsRHP).ToString("#.000")</td>
+                  }
+                  
+                  <td class="bgWhite">@Model.HitterProfile.AB_vsRHP</td>
+                  <td class="bgWhite">@Model.HitterProfile.H_vsRHP</td>
+                  <td class="bgWhite">@Model.HitterProfile.HR_vsRHP</td>
+                  <td class="bgWhite">@Model.HitterProfile.BB_vsRHP</td>
+                  <td class="bgWhite">@Model.HitterProfile.K_vsRHP</td>
+                  <td class="bgWhite">@Model.HitterProfile.SB_vsRHP</td>
+                  <td class="bgWhite">@Model.HitterProfile.CS_vsRHP</td>
+                  @if (Model.HitterProfile.GB__vsRHP == string.Empty || Model.HitterProfile.GB__vsRHP.Equals("", StringComparison.OrdinalIgnoreCase))
+                  {
+                        <td class="bgWhite"></td>
+                  }
+                  else
+                  {
+                        <td class="bgWhite">@Math.Round(Convert.ToDecimal(Model.HitterProfile.GB__vsRHP) * 100, 1)%</td>
+                  }
+                  @if (Model.HitterProfile.FB__vsRHP == string.Empty || Model.HitterProfile.FB__vsRHP.Equals("", StringComparison.OrdinalIgnoreCase))
+                  {
+                        <td class="bgWhite"></td>
+                  }
+                  else
+                  {
+                        <td class="bgWhite">@Math.Round(Convert.ToDecimal(Model.HitterProfile.FB__vsRHP) * 100, 1)%</td>
+                  }
+                  <td class="bgWhite">@Model.HitterProfile.PperPA_vsRHP</td>
+                  </tr>
+                <tr>
+                  <td class="bgWhite headersRow">Vs. LHP</td>
+                  @if (Model.HitterProfile.AVG__vsLHP == string.Empty || Model.HitterProfile.AVG__vsLHP.Equals("", StringComparison.OrdinalIgnoreCase))
+                  {
+                        <td class="bgWhite"></td>
+                  }
+                  else
+                  {
+                        <td class="bgWhite">@Convert.ToDecimal(Model.HitterProfile.AVG__vsLHP).ToString("#.000")</td>
+                  }
+                  @if (Model.HitterProfile.SLG__vsLHP == string.Empty || Model.HitterProfile.SLG__vsLHP.Equals("", StringComparison.OrdinalIgnoreCase))
+                  {
+                        <td class="bgWhite"></td>
+                  }
+                  else
+                  {
+                        <td class="bgWhite">@Convert.ToDecimal(Model.HitterProfile.SLG__vsLHP).ToString("#.000")</td>
+                  }
+                  
+                  <td class="bgWhite">@Model.HitterProfile.AB_vsLHP</td>
+                  <td class="bgWhite">@Model.HitterProfile.H_vsLHP</td>
+                  <td class="bgWhite">@Model.HitterProfile.HR_vsLHP</td>
+                  <td class="bgWhite">@Model.HitterProfile.BB_vsLHP</td>
+                  <td class="bgWhite">@Model.HitterProfile.K_vsLHP</td>
+                  <td class="bgWhite">@Model.HitterProfile.SB_vsLHP</td>
+                  <td class="bgWhite">@Model.HitterProfile.CS_vsLHP</td>
+                  @if (Model.HitterProfile.GB__vsLHP == string.Empty || Model.HitterProfile.GB__vsLHP.Equals("", StringComparison.OrdinalIgnoreCase))
+                  {
+                        <td class="bgWhite"></td>
+                  }
+                  else
+                  {
+                        <td class="bgWhite">@Math.Round(Convert.ToDecimal(Model.HitterProfile.GB__vsLHP) * 100, 1)%</td>
+                  }
+                  @if (Model.HitterProfile.FB__vsLHP == string.Empty || Model.HitterProfile.FB__vsLHP.Equals("", StringComparison.OrdinalIgnoreCase))
+                  {
+                        <td class="bgWhite"></td>
+                  }
+                  else
+                  {
+                        <td class="bgWhite">@Math.Round(Convert.ToDecimal(Model.HitterProfile.FB__vsLHP) * 100, 1)%</td>
+                  }
+                  <td class="bgWhite">@Model.HitterProfile.PperPA_vsLHP</td>
+                  </tr>
+                
+              </table>
+        </div>
+    </div>
+
+</div>
+
+<div class="standardTable noBorders fullTblWFixed marginTop">
+    <div class="standardTableRow">
+        <div class="standardTableCell vsTableCell">
+            @*start of inner tables*@
+            <div class="standardTable repStdTblSkin_border fullTblWFixed ">
+                <div class="standardTableRow">
+                    <div class="standardTableCell playerHandImg">
+                        <img src="~/Images/player.png" />
+                    </div>
+                    <div class="standardTableCell playerHandHead">
+                        <h3>vs rhp</h3>
+                        <p>1st Pitch Swing % By At-Bat</p>
+                    </div>
+               </div>
+            </div>
+            @* end of inner tables *@
+        </div>
+        <div class="standardTableCell vsTableCell">
+            @*start of inner tables*@
+            <div class="standardTable repStdTblSkin_border fullTblWFixed ">
+                <div class="standardTableRow">
+                    <div class="standardTableCell playerHandImg">
+                        <img src="~/Images/player.png" />
+                    </div>
+                    <div class="standardTableCell playerHandHead">
+                        <h3>vs lhp</h3>
+                        <p>1st Pitch Swing % By At-Bat</p>
+                    </div>
+               </div>
+            </div>
+            @* end of inner tables *@
+        </div>
+   </div>
+    @* row ends *@
+   <div class="standardTableRow">
+        <div class="standardTableCell vsTableCell">
+            @*start of inner tables*@
+            <div class="standardTable noBorders fullTblWFixed playerHand">
+                <div class="standardTableRow">
+                    <div class="standardTableCell playerHandImg">
+                        
+                    </div>
+                    <div class="standardTableCell playerHandAtt">
+                        <table>
+                            <thead>
+                                <tr>
+                                  <th>1st AB</th>
+                                  <th>2nd AB</th>
+                                  <th>3rd AB</th>
+                                  <th>4th AB</th>
+                                </tr>
+                            </thead>
+                            <tr>
+                              <td>50%</td>
+                              <td>50%</td>
+                              <td>50%</td>
+                              <td>50%</td>
+                            </tr>
+                          </table>
+                    </div>
+               </div>
+            </div>
+            @* attributes end *@
+            <table class="stdTable tablePlayerAvgsLRH">
+                <thead>
+                    <tr>
+                      <th class="bgPtBluHeaders">&nbsp;</th>
+                      <th class="bgPtBluHeaders">All Counts</th>
+                      <th class="bgPtBluHeaders">1st Pitch<br />Bases Empty</th>
+                      <th class="bgPtBluHeaders">1st Pitch<br />RISP</th>
+                      <th class="bgPtBluHeaders">Pitcher Ahead</th>
+                      <th class="bgPtBluHeaders">Pitcher Behind</th>
+                      <th class="bgPtBluHeaders">2K's</th>
+                      <th class="bgPtBluHeaders">Full Count</th>
+                      <th class="bgPtBluHeaders">Chase% </th>
+                      <th class="bgPtBluHeaders">Take% </th>
+                      <th class="bgPtBluHeaders">Legend</th>
+                    </tr>
+                </thead>
+                <tr>
+                  <td rowspan="2" class="bgPtBluHeaders">F<br />B</td>
+                  <td class="bgRed">.432</td>
+                  <td class="bgRed">.647</td>
+                  <td class="bgRed">.333</td>
+                  <td class="bgRed">.314</td>
+                  <td class="bgRed">.500</td>
+                  <td class="bgRed">.300</td>
+                  <td class="bgRed">.333</td>
+                  <td rowspan="2" class="bgRed">42%</td>
+                  <td rowspan="2">28%</td>
+                  <td rowspan="12">
+                      <ul class="legendBoxes">
+                          <li>Avg</li>
+                          <li class="bgBlack">Swings/<br />Total</li>
+                          <li class="bgRed">&gt;-<br />.300</li>
+                          <li class="bgBlue">&lt;-<br />.200</li>
+                          <li class="bgRed">%&gt;-<br />.400</li>
+                      </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="bgBlack">183/323</td>
+                  <td class="bgBlack">28/57</td>
+                  <td class="bgBlack">17/28</td>
+                  <td class="bgBlack">53/97</td>
+                  <td class="bgBlack">60/103</td>
+                  <td class="bgBlack">45/66</td>
+                  <td class="bgBlack">13/16</td>
+                </tr>
+                <tr>
+                  <td rowspan="2" class="bgPtBluHeaders">S<br />L</td>
+                  <td class="bgRed">.333</td>
+                  <td class="bgBlue">.000</td>
+                  <td class="bgRed">1.000</td>
+                  <td>.241</td>
+                  <td class="bgRed">.600</td>
+                  <td>.222</td>
+                  <td class="bgRed">.333</td>
+                  <td rowspan="2">36%</td>
+                  <td rowspan="2">28%</td>
+                </tr>
+                <tr>
+                  <td class="bgBlack">79/159</td>
+                  <td class="bgBlack">8/22</td>
+                  <td class="bgBlack">6/14</td>
+                  <td class="bgBlack">41/69</td>
+                  <td class="bgBlack">19/41</td>
+                  <td class="bgBlack">34/57</td>
+                  <td class="bgBlack">3/6</td>
+                </tr>
+                <tr>
+                  <td rowspan="2" class="bgPtBluHeaders">C<br />H</td>
+                  <td class="bgRed">.333</td>
+                  <td class="bgRed">1.000</td>
+                  <td class="bgRed">1.000</td>
+                  <td class="bgBlue">.167</td>
+                  <td class="bgRed">.333</td>
+                  <td class="bgBlue">.167</td>
+                  <td class="bgBlue">.000</td>
+                  <td rowspan="2">27%</td>
+                  <td rowspan="2">17%</td>
+                </tr>
+                <tr>
+                  <td class="bgBlack">27/50</td>
+                  <td class="bgBlack">1/5</td>
+                  <td class="bgBlack">1/2</td>
+                  <td class="bgBlack">13/17</td>
+                  <td class="bgBlack">8/17</td>
+                  <td class="bgBlack">12/16</td>
+                  <td class="bgBlack">3/4</td>
+                </tr>
+                <tr>
+                  <td rowspan="2" class="bgPtBluHeaders">C<br />B</td>
+                  <td>.273</td>
+                  <td class="bgBlue">.000</td>
+                  <td class="bgBlue">.000</td>
+                  <td class="bgBlue">.143</td>
+                  <td class="bgRed">.500</td>
+                  <td class="bgBlue">.200</td>
+                  <td class="bgRed">1.000</td>
+                  <td rowspan="2" class="bgRed">34%</td>
+                  <td rowspan="2">33%</td>
+                </tr>
+                <tr>
+                  <td class="bgBlack">23/53</td>
+                  <td class="bgBlack">3/12</td>
+                  <td class="bgBlack">1/2</td>
+                  <td class="bgBlack">11/19</td>
+                  <td class="bgBlack">7/13</td>
+                  <td class="bgBlack">6/11</td>
+                  <td class="bgBlack">1/1</td>
+                </tr>
+                <tr>
+                  <td rowspan="2" class="bgPtBluHeaders">C<br />U<br />T</td>
+                  <td class="bgBlue">.000</td>
+                  <td class="bgBlue">.000</td>
+                  <td class="bgBlue">.000</td>
+                  <td class="bgBlue">.000</td>
+                  <td class="bgBlue">.000</td>
+                  <td class="bgBlue">.000</td>
+                  <td class="bgBlue">.000</td>
+                  <td rowspan="2" class="bgRed">43%</td>
+                  <td rowspan="2">30%</td>
+                </tr>
+                <tr>
+                  <td class="bgBlack">17/33</td>
+                  <td class="bgBlack">2/4</td>
+                  <td class="bgBlack">2/4</td>
+                  <td class="bgBlack">9/17</td>
+                  <td class="bgBlack">3/6</td>
+                  <td class="bgBlack">6/11</td>
+                  <td class="bgBlack">0/0</td>
+                </tr>
+                <tr>
+                  <td rowspan="2" class="bgPtBluHeaders">S<br />P<br />L</td>
+                  <td class="bgBlue">.167</td>
+                  <td class="bgBlue">.000</td>
+                  <td class="bgBlue">.000</td>
+                  <td class="bgBlue">.000</td>
+                  <td class="bgRed">1.000</td>
+                  <td class="bgBlue">.000</td>
+                  <td class="bgBlue">.000</td>
+                  <td rowspan="2" class="bgRed">75%</td>
+                  <td rowspan="2">0%</td>
+                </tr>
+                <tr>
+                  <td class="bgBlack">12/15</td>
+                  <td class="bgBlack">0/0</td>
+                  <td class="bgBlack">0/0</td>
+                  <td class="bgBlack">5/8</td>
+                  <td class="bgBlack">5/5</td>
+                  <td class="bgBlack">7/8</td>
+                  <td class="bgBlack">2/2</td>
+                </tr>
+              </table>
+            @* end of player score table *@
+            <table class="stdTable fullTblWFixed">
+                <thead>
+                    <tr>
+                      <th>vs fb</th>
+                      <th>vs off-speed</th>
+                      <th>spray chart</th>
+                    </tr>
+                </thead>
+                <tr>
+                  <td class="textCenter"><img src="~/Images/vsfb.png" /></td>
+                  <td class="textCenter"><img src="~/Images/vsospeed.png" /></td>
+                  <td class="textCenter"><img src="~/Images/spraychartsmall.png" /></td>
+                </tr>
+              </table>
+            @* end of player chart and or spray chart *@
+            <table class="stdTable fullTblWFixed howToNotes">
+                <tr>
+                  <td id="td_RHP_HowtoPitch"><h4>HOW TO PITCH</h4>
+                      <p id="p_RHP_HowtoPitch">@try
+                         { @Model.UserEntered.RHP_HowtoPitch }
+                         catch { }</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td id="td_RHP_2Ks_Chase"><h4>2K'S / Chase</h4>
+                      <p id="p_RHP_2Ks_Chase">@try
+                         { @Model.UserEntered.RHP_2Ks_Chase }
+                         catch { }</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td id="td_RHP_Def"><h4>Defense - INF</h4>
+                      <p id="p_RHP_Def_INF">@try
+                         { @Model.UserEntered.RHP_Def_INF }
+                         catch { }</p>
+                      <h4>Defense - OF</h4>
+                      <p id="p_RHP_Def_OF">@try
+                         { @Model.UserEntered.RHP_Def_OF }
+                         catch { }</p>
+                  </td>
+                </tr>
+              </table>
+            @* end of how to pitch info table *@
+            @* end of inner tables *@
+        </div>
+        <div class="standardTableCell vsTableCell">
+            @*start of inner tables*@
+            <div class="standardTable noBorders fullTblWFixed playerHand">
+                <div class="standardTableRow">
+                    <div class="standardTableCell playerHandImg">
+                        
+                    </div>
+                    <div class="standardTableCell playerHandAtt">
+                        <table>
+                            <thead>
+                                <tr>
+                                  <th>1st AB</th>
+                                  <th>2nd AB</th>
+                                  <th>3rd AB</th>
+                                  <th>4th AB</th>
+                                </tr>
+                            </thead>
+                            <tr>
+                              <td>50%</td>
+                              <td>45%</td>
+                              <td>45%</td>
+                              <td>50%</td>
+                            </tr>
+                          </table>
+                    </div>
+               </div>
+            </div>
+
+            <table class="stdTable tablePlayerAvgsLRH">
+                <thead>
+                    <tr>
+                      <th class="bgPtBluHeaders">&nbsp;</th>
+                      <th class="bgPtBluHeaders">All Counts</th>
+                      <th class="bgPtBluHeaders">1st Pitch<br />Bases Empty</th>
+                      <th class="bgPtBluHeaders">1st Pitch<br />RISP</th>
+                      <th class="bgPtBluHeaders">Pitcher Ahead</th>
+                      <th class="bgPtBluHeaders">Pitcher Behind</th>
+                      <th class="bgPtBluHeaders">2K's</th>
+                      <th class="bgPtBluHeaders">Full Count</th>
+                      <th class="bgPtBluHeaders">Chase% </th>
+                      <th class="bgPtBluHeaders">Take% </th>
+                      <th class="bgPtBluHeaders">Legend</th>
+                    </tr>
+                </thead>
+                <tr>
+                  <td rowspan="2" class="bgPtBluHeaders">F<br />B</td>
+                  <td class="bgRed">.432</td>
+                  <td class="bgRed">.647</td>
+                  <td class="bgRed">.333</td>
+                  <td class="bgRed">.314</td>
+                  <td class="bgRed">.500</td>
+                  <td class="bgRed">.300</td>
+                  <td class="bgRed">.333</td>
+                  <td rowspan="2" class="bgRed">42%</td>
+                  <td rowspan="2">28%</td>
+                  <td rowspan="12">
+                      <ul class="legendBoxes">
+                          <li>Avg</li>
+                          <li class="bgBlack">Swings/<br />Total</li>
+                          <li class="bgRed">&gt;-<br />.300</li>
+                          <li class="bgBlue">&lt;-<br />.200</li>
+                          <li class="bgRed">%&gt;-<br />.400</li>
+                      </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="bgBlack">183/323</td>
+                  <td class="bgBlack">28/57</td>
+                  <td class="bgBlack">17/28</td>
+                  <td class="bgBlack">53/97</td>
+                  <td class="bgBlack">60/103</td>
+                  <td class="bgBlack">45/66</td>
+                  <td class="bgBlack">13/16</td>
+                </tr>
+                <tr>
+                  <td rowspan="2" class="bgPtBluHeaders">S<br />L</td>
+                  <td class="bgRed">.333</td>
+                  <td class="bgBlue">.000</td>
+                  <td class="bgRed">1.000</td>
+                  <td>.241</td>
+                  <td class="bgRed">.600</td>
+                  <td>.222</td>
+                  <td class="bgRed">.333</td>
+                  <td rowspan="2">36%</td>
+                  <td rowspan="2">28%</td>
+                </tr>
+                <tr>
+                  <td class="bgBlack">79/159</td>
+                  <td class="bgBlack">8/22</td>
+                  <td class="bgBlack">6/14</td>
+                  <td class="bgBlack">41/69</td>
+                  <td class="bgBlack">19/41</td>
+                  <td class="bgBlack">34/57</td>
+                  <td class="bgBlack">3/6</td>
+                </tr>
+                <tr>
+                  <td rowspan="2" class="bgPtBluHeaders">C<br />H</td>
+                  <td class="bgRed">.333</td>
+                  <td class="bgRed">1.000</td>
+                  <td class="bgRed">1.000</td>
+                  <td class="bgBlue">.167</td>
+                  <td class="bgRed">.333</td>
+                  <td class="bgBlue">.167</td>
+                  <td class="bgBlue">.000</td>
+                  <td rowspan="2">27%</td>
+                  <td rowspan="2">17%</td>
+                </tr>
+                <tr>
+                  <td class="bgBlack">27/50</td>
+                  <td class="bgBlack">1/5</td>
+                  <td class="bgBlack">1/2</td>
+                  <td class="bgBlack">13/17</td>
+                  <td class="bgBlack">8/17</td>
+                  <td class="bgBlack">12/16</td>
+                  <td class="bgBlack">3/4</td>
+                </tr>
+                <tr>
+                  <td rowspan="2" class="bgPtBluHeaders">C<br />B</td>
+                  <td>.273</td>
+                  <td class="bgBlue">.000</td>
+                  <td class="bgBlue">.000</td>
+                  <td class="bgBlue">.143</td>
+                  <td class="bgRed">.500</td>
+                  <td class="bgBlue">.200</td>
+                  <td class="bgRed">1.000</td>
+                  <td rowspan="2" class="bgRed">34%</td>
+                  <td rowspan="2">33%</td>
+                </tr>
+                <tr>
+                  <td class="bgBlack">23/53</td>
+                  <td class="bgBlack">3/12</td>
+                  <td class="bgBlack">1/2</td>
+                  <td class="bgBlack">11/19</td>
+                  <td class="bgBlack">7/13</td>
+                  <td class="bgBlack">6/11</td>
+                  <td class="bgBlack">1/1</td>
+                </tr>
+                <tr>
+                  <td rowspan="2" class="bgPtBluHeaders">C<br />U<br />T</td>
+                  <td class="bgBlue">.000</td>
+                  <td class="bgBlue">.000</td>
+                  <td class="bgBlue">.000</td>
+                  <td class="bgBlue">.000</td>
+                  <td class="bgBlue">.000</td>
+                  <td class="bgBlue">.000</td>
+                  <td class="bgBlue">.000</td>
+                  <td rowspan="2" class="bgRed">43%</td>
+                  <td rowspan="2">30%</td>
+                </tr>
+                <tr>
+                  <td class="bgBlack">17/33</td>
+                  <td class="bgBlack">2/4</td>
+                  <td class="bgBlack">2/4</td>
+                  <td class="bgBlack">9/17</td>
+                  <td class="bgBlack">3/6</td>
+                  <td class="bgBlack">6/11</td>
+                  <td class="bgBlack">0/0</td>
+                </tr>
+                <tr>
+                  <td rowspan="2" class="bgPtBluHeaders">S<br />P<br />L</td>
+                  <td class="bgBlue">.167</td>
+                  <td class="bgBlue">.000</td>
+                  <td class="bgBlue">.000</td>
+                  <td class="bgBlue">.000</td>
+                  <td class="bgRed">1.000</td>
+                  <td class="bgBlue">.000</td>
+                  <td class="bgBlue">.000</td>
+                  <td rowspan="2" class="bgRed">75%</td>
+                  <td rowspan="2">0%</td>
+                </tr>
+                <tr>
+                  <td class="bgBlack">12/15</td>
+                  <td class="bgBlack">0/0</td>
+                  <td class="bgBlack">0/0</td>
+                  <td class="bgBlack">5/8</td>
+                  <td class="bgBlack">5/5</td>
+                  <td class="bgBlack">7/8</td>
+                  <td class="bgBlack">2/2</td>
+                </tr>
+              </table>
+            @* end of player score table *@
+            <table class="stdTable fullTblWFixed">
+                <thead>
+                    <tr>
+                      <th>vs fb</th>
+                      <th>vs off-speed</th>
+                      <th>spray chart</th>
+                    </tr>
+                </thead>
+                <tr>
+                  <td class="textCenter"><img src="~/Images/vsfb.png" /></td>
+                  <td class="textCenter"><img src="~/Images/vsospeed.png" /></td>
+                  <td class="textCenter"><img src="~/Images/spraychartsmall.png" /></td>
+                </tr>
+              </table>
+            @* end of player chart and or spray chart *@
+            <table class="stdTable fullTblWFixed howToNotes">
+                <tr>
+                  <td id="td_LHP_HowtoPitch"><h4>HOW TO PITCH</h4>
+                      <p id="p_LHP_HowtoPitch">@try
+                         { @Model.UserEntered.LHP_HowtoPitch }
+                         catch { }</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td id="td_LHP_2Ks_Chase"><h4>2K'S / Chase</h4>
+                      <p id="p_LHP_2Ks_Chase">@try
+                         { @Model.UserEntered.LHP_2Ks_Chase }
+                         catch { }</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td id="td_LHP_Def"><h4>Defense - INF</h4>
+                      <p id="p_LHP_Def_INF">@try
+                         { @Model.UserEntered.LHP_Def_INF }
+                         catch { }</p>
+                      <h4>Defense - OF</h4>
+                      <p id="p_LHP_Def_OF">@try
+                         { @Model.UserEntered.LHP_Def_OF }
+                         catch { }</p>
+                  </td>
+                </tr>
+              </table>
+            @* end of how to pitch info table *@
+            @* end of inner tables *@
+        </div>
+   </div>
+    @* row ends *@ 
+</div>
+
+@* end of table *@
+}
+<textarea id="lbl_Arm_Avg" style="display:none;">@try
+                                                 {@Model.UserEntered.Arm_Avg}
+                                                 catch { }</textarea>
+<textarea id="lbl_Accuracy_Avg" style="display:none;">@try
+                                                 {@Model.UserEntered.Accuracy_Avg}
+                                                 catch { }</textarea>
+<textarea id="lbl_Speed_Avg" style="display:none;">@try
+                                                 {@Model.UserEntered.Speed_Avg}
+                                                 catch { }</textarea>
+<div id="dialog_Arm" title="Arm">
+    <select id="Arm_Avg">
+        <option id="arm_abvavg" value="3">Abv Avg</option>
+        <option id="arm_eavg" value="2">Avg</option>
+        <option id="arm_belavg" value="1">Bel Avg</option>
+    </select>
+
+    @*<textarea id="txt_Arm" style="resize:none;" class="styleid">@try { @Model.UserEntered.Arm } catch { }</textarea>*@
+
+</div>
+<div id="dialog_Accuracy" title="Accuracy">
+    <select id="Accuracy_Avg">
+        <option id="accuracy_abvavg" value="3">Abv Avg</option>
+        <option id="accuracy_eavg" value="2">Avg</option>
+        <option id="accuracy_belavg" value="1">Bel Avg</option>
+    </select>
+    @*<textarea id="txt_Accuracy" style="resize:none;" class="styleid">@try { @Model.UserEntered.Accuracy } catch { }</textarea>*@
+
+</div>
+<div id="dialog_Speed" title="Speed">
+    <select id="Speed_Avg">
+        <option id="speed_abvavg" value="3">Abv Avg</option>
+        <option id="speed_eavg" value="2">Avg</option>
+        <option id="speed_belavg" value="1">Bel Avg</option>
+    </select>
+    @*<textarea id="txt_Speed" style="resize:none;" class="styleid">@try { @Model.UserEntered.Speed } catch { }</textarea>*@
+
+</div>
+<div id="dialog_Steal" title="Steal"><textarea id="txt_Steal" style="resize:none;">@try { @Model.UserEntered.Steal } catch { }</textarea></div>
+<div id="dialog_Push" title="Push"><textarea id="txt_Push" style="resize:none;">@try { @Model.UserEntered.Push } catch { }</textarea></div>
+<div id="dialog_Drag" title="Drag"><textarea id="txt_Drag" style="resize:none;">@try { @Model.UserEntered.Drag } catch { }</textarea></div>
+<div id="dialog_RHP_HowtoPitch" title="RHP HOW TO PITCH">
+    <textarea id="txt_RHP_HowtoPitch" style="resize:none;width:517px; height:100px;">@try { @Model.UserEntered.RHP_HowtoPitch } catch { }</textarea>
+</div>
+<div id="dialog_RHP_2Ks_Chase" title="RHP 2K'S / Chase">
+    <textarea id="txt_RHP_2Ks_Chase" style="resize:none;width:517px; height:100px;">@try { @Model.UserEntered.RHP_2Ks_Chase } catch { }</textarea>
+</div>
+<div id="dialog_RHP_Def" title="RHP Defense">
+    <h4>INF</h4>
+    <textarea id="txt_RHP_Def_INF" style="resize:none;width:517px; height:100px;">@try { @Model.UserEntered.RHP_Def_INF } catch { }</textarea>
+    <h4>OF</h4>
+    <textarea id="txt_RHP_Def_OF" style="resize:none;width:517px; height:100px;">@try { @Model.UserEntered.RHP_Def_OF } catch { }</textarea>
+</div>
+
+
+<div id="dialog_LHP_HowtoPitch" title="LHP HOW TO PITCH">
+    <textarea id="txt_LHP_HowtoPitch" style="resize:none;width:517px; height:100px;">@try { @Model.UserEntered.LHP_HowtoPitch } catch { }</textarea>
+</div>
+<div id="dialog_LHP_2Ks_Chase" title="LHP 2K'S / Chase">
+    <textarea id="txt_LHP_2Ks_Chase" style="resize:none;width:517px; height:100px;">@try { @Model.UserEntered.LHP_2Ks_Chase } catch { }</textarea>
+</div>
+<div id="dialog_LHP_Def" title="LHP Defense">
+    <h4>INF</h4>
+    <textarea id="txt_LHP_Def_INF" style="resize:none;width:517px; height:100px;">@try { @Model.UserEntered.LHP_Def_INF } catch { }</textarea>
+    <h4>OF</h4>
+    <textarea id="txt_LHP_Def_OF" style="resize:none;width:517px; height:100px;">@try { @Model.UserEntered.LHP_Def_OF } catch { }</textarea>
+</div>
+
+
+@section customstyle{
+    <link href="~/Content/themes/report4.css" rel="stylesheet" />
+}
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("header").addClass("rp4width");
+            $(".maincontainer").addClass("rp4width");
+
+            var td_Arm_Avg = document.getElementById("lbl_Arm_Avg").value
+
+            switch (td_Arm_Avg) {
+                case '3': $("#td_Arm").addClass('bgGreen'); $("#td_Arm").empty().append('Abv Avg');
+                    break;
+                case '2': $("#td_Arm").addClass(''); $("#td_Arm").empty().append('Avg');
+                    break;
+                case '1': $("#td_Arm").addClass('bgRed'); $("#td_Arm").empty().append('Bel Avg');
+                    break;
+            }
+
+            var td_Accuracy_Avg = document.getElementById("lbl_Accuracy_Avg").value
+
+            switch (td_Accuracy_Avg) {
+                case '3': $("#td_Accuracy").addClass('bgGreen'); $("#td_Accuracy").empty().append('Abv Avg');
+                    break;
+                case '2': $("#td_Accuracy").addClass(''); $("#td_Accuracy").empty().append('Avg');
+                    break;
+                case '1': $("#td_Accuracy").addClass('bgRed'); $("#td_Accuracy").empty().append('Bel Avg');
+                    break;
+            }
+
+            var td_Speed_Avg = document.getElementById("lbl_Speed_Avg").value
+
+            switch (td_Speed_Avg) {
+                case '3': $("#td_Speed").addClass('bgGreen'); $("#td_Speed").empty().append('Abv Avg');
+                    break;
+                case '2': $("#td_Speed").addClass(''); $("#td_Speed").empty().append('Avg');
+                    break;
+                case '1': $("#td_Speed").addClass('bgRed'); $("#td_Speed").empty().append('Bel Avg');
+                    break;
+            }
+
+        });
+        $("#Arm_Avg").find('option').each(function (i, opt) {
+            var td_Arm_Avg = document.getElementById("lbl_Arm_Avg").value
+            if (opt.value === td_Arm_Avg)
+                $(opt).attr('selected', 'selected');
+        });
+
+
+        $("#Accuracy_Avg").find('option').each(function (i, opt) {
+            var td_Accuracy_Avg = document.getElementById("lbl_Accuracy_Avg").value
+            if (opt.value === td_Accuracy_Avg)
+                $(opt).attr('selected', 'selected');
+        });
+
+        $("#Speed_Avg").find('option').each(function (i, opt) {
+            var td_Speed_Avg = document.getElementById("lbl_Speed_Avg").value
+            if (opt.value === td_Speed_Avg)
+                $(opt).attr('selected', 'selected');
+        });
+
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        };
+        //Arm
+        $(function () {
+            $('#dialog_Arm').dialog({
+                autoOpen: false,
+                width: 400,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Update": function () {
+                        var selects = document.getElementById("Arm_Avg");
+                        var selectedAvgValue = selects.options[selects.selectedIndex].value;
+                        var _pid = getParameterByName("_pid");
+                        /*var _Arm = document.getElementById("td_Arm").value
+                        if (_Arm == '') {
+                            selectedAvgValue = '2';
+                        }*/
+                        //var data = { "PlayerID": _pid, "Arm": _Arm, Arm_Avg: selectedAvgValue }
+                        var data = { "PlayerID": _pid, Arm_Avg: selectedAvgValue }
+                        $.post("/Home/EditArm", data, updateSuccess())
+                    },
+                    "Cancel": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            function updateSuccess() {
+                //var _Arm = document.getElementById("txt_Arm").value
+                var selects = document.getElementById("Arm_Avg");
+                var selectedAvgValue = selects.options[selects.selectedIndex].value;
+                $("#lbl_Arm_Avg").empty().append(selectedAvgValue);
+                //$("#td_Arm").empty().append(_Arm);
+                $('#commonMessage').stop(true, true);
+
+                var oldclass = $("#td_Arm").attr("class");
+                var newclass='';
+                switch (selectedAvgValue) {
+                    case '3': newclass = 'bgGreen'; $("#td_Arm").empty().append('Abv Avg');
+                        break;
+                    case '2': newclass = ''; $("#td_Arm").empty().append('Avg');
+                        break;
+                    case '1': newclass = 'bgRed'; $("#td_Arm").empty().append('Bel Avg');
+                        break;
+                }
+                $("#td_Arm").removeClass(oldclass).addClass(newclass);
+
+                $('#dialog_Arm').dialog('close');
+                $('#commonMessage').html("Update Complete");
+                $('#commonMessage').delay(300).slideDown(300).delay(2000).slideUp(300);
+            }
+
+            $("#td_Arm").click(function () {
+                $("#dialog_Arm").dialog("open");
+            });
+
+            $("#th_Arm").click(function () {
+                $("#dialog_Arm").dialog("open");
+            });
+        });
+
+        //Accuracy
+        $(function () {
+            $('#dialog_Accuracy').dialog({
+                autoOpen: false,
+                width: 400,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Update": function () {
+                        var selects = document.getElementById("Accuracy_Avg");
+                        var selectedAvgValue = selects.options[selects.selectedIndex].value;
+                        var _pid = getParameterByName("_pid");
+                        //var _Accuracy = document.getElementById("txt_Accuracy").value
+                        /*
+                        if (_Accuracy == '') {
+                            selectedAvgValue = '2';
+                        }*/
+                        //var data = { "PlayerID": _pid, "Accuracy": _Accuracy, "Accuracy_Avg": selectedAvgValue }
+                        var data = { "PlayerID": _pid, "Accuracy_Avg": selectedAvgValue }
+                        $.post("/Home/EditAccuracy", data, updateSuccess())
+                    },
+                    "Cancel": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            function updateSuccess() {
+                //var _Accuracy = document.getElementById("txt_Accuracy").value
+                var selects = document.getElementById("Accuracy_Avg");
+                var selectedAvgValue = selects.options[selects.selectedIndex].value;
+                $("#lbl_Accuracy_Avg").empty().append(selectedAvgValue);
+                //$("#td_Accuracy").empty().append(_Accuracy);
+                $('#commonMessage').stop(true, true);
+                var _Accuracy = '';
+                var oldclass = $("#td_Accuracy").attr("class");
+                var newclass = '';
+                switch (selectedAvgValue) {
+                    case '3': newclass = 'bgGreen'; _Accuracy = 'Abv Avg';
+                        break;
+                    case '2': newclass = ''; _Accuracy = 'Avg';
+                        break;
+                    case '1': newclass = 'bgRed'; _Accuracy = 'bel Avg';
+                        break;
+                }
+                $("#td_Accuracy").removeClass(oldclass).addClass(newclass);
+                $("#td_Accuracy").empty().append(_Accuracy);
+                $('#dialog_Accuracy').dialog('close');
+                $('#commonMessage').html("Update Complete");
+                $('#commonMessage').delay(300).slideDown(300).delay(2000).slideUp(300);
+            }
+
+            $("#td_Accuracy").click(function () {
+                $("#dialog_Accuracy").dialog("open");
+            });
+            $("#th_Accuracy").click(function () {
+                $("#dialog_Accuracy").dialog("open");
+            });
+        });
+
+        //Speed
+        $(function () {
+            $('#dialog_Speed').dialog({
+                autoOpen: false,
+                width: 400,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Update": function () {
+                        var selects = document.getElementById("Speed_Avg");
+                        var selectedAvgValue = selects.options[selects.selectedIndex].value;
+                        var _pid = getParameterByName("_pid");
+                        //var _Speed = document.getElementById("txt_Speed").value
+
+                        /*if (_Speed == '') {
+                            selectedAvgValue = '2';
+                        }*/
+                        //var data = { "PlayerID": _pid, "Speed": _Speed, "Speed_Avg": Speed_Avg }
+                        var data = { "PlayerID": _pid, "Speed_Avg": selectedAvgValue }
+                        $.post("/Home/EditSpeed", data, updateSuccess())
+                    },
+                    "Cancel": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            function updateSuccess() {
+                //var _Speed = document.getElementById("txt_Speed").value
+                var selects = document.getElementById("Speed_Avg");
+                var selectedAvgValue = selects.options[selects.selectedIndex].value;
+                $("#lbl_Speed_Avg").empty().append(selectedAvgValue);
+                $("#td_Speed").empty().append(_Speed);
+                var _Speed = '';
+                var oldclass = $("#td_Speed").attr("class");
+                var newclass;
+                switch (selectedAvgValue) {
+                    case '3': newclass = 'bgGreen'; _Speed = 'Abv Avg';
+                        break;
+                    case '2': newclass = ''; _Speed = 'Avg';
+                        break;
+                    case '1': newclass = 'bgRed'; _Speed = 'Bel Avg';
+                        break;
+                }
+                $("#td_Speed").removeClass(oldclass).addClass(newclass);
+                $("#td_Speed").empty().append(_Speed);
+                $('#commonMessage').stop(true, true);
+                $('#dialog_Speed').dialog('close');
+                $('#commonMessage').html("Update Complete");
+                $('#commonMessage').delay(300).slideDown(300).delay(2000).slideUp(300);
+            }
+
+            $("#td_Speed").click(function () {
+                $("#dialog_Speed").dialog("open");
+            });
+
+            $("#th_Speed").click(function () {
+                $("#dialog_Speed").dialog("open");
+            });
+        });
+
+        //Steal
+        $(function () {
+            $('#dialog_Steal').dialog({
+                autoOpen: false,
+                width: 400,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Update": function () {
+                        var _pid = getParameterByName("_pid");
+                        var _Steal = document.getElementById("txt_Steal").value
+                        var data = { "PlayerID": _pid, "Steal": _Steal }
+                        $.post("/Home/EditSteal", data, updateSuccess())
+                    },
+                    "Cancel": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            function updateSuccess() {
+                var _Steal = document.getElementById("txt_Steal").value
+                $("#td_Steal").empty().append(_Steal);
+                $('#commonMessage').stop(true, true);
+                $('#dialog_Steal').dialog('close');
+                $('#commonMessage').html("Update Complete");
+                $('#commonMessage').delay(300).slideDown(300).delay(2000).slideUp(300);
+            }
+
+            $("#td_Steal").click(function () {
+                $("#dialog_Steal").dialog("open");
+            });
+
+            $("#th_Steal").click(function () {
+                $("#dialog_Steal").dialog("open");
+            });
+        });
+
+        //Push
+        $(function () {
+            $('#dialog_Push').dialog({
+                autoOpen: false,
+                width: 400,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Update": function () {
+                        var _pid = getParameterByName("_pid");
+                        var _Push = document.getElementById("txt_Push").value
+                        var data = { "PlayerID": _pid, "Push": _Push }
+                        $.post("/Home/EditPush", data, updateSuccess())
+                    },
+                    "Cancel": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            function updateSuccess() {
+                var _Push = document.getElementById("txt_Push").value
+                $("#td_Push").empty().append(_Push);
+                $('#commonMessage').stop(true, true);
+                $('#dialog_Push').dialog('close');
+                $('#commonMessage').html("Update Complete");
+                $('#commonMessage').delay(300).slideDown(300).delay(2000).slideUp(300);
+            }
+
+            $("#td_Push").click(function () {
+                $("#dialog_Push").dialog("open");
+            });
+
+            $("#th_Push").click(function () {
+                $("#dialog_Push").dialog("open");
+            });
+        });
+
+        //Drag
+        $(function () {
+            $('#dialog_Drag').dialog({
+                autoOpen: false,
+                width: 400,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Update": function () {
+                        var _pid = getParameterByName("_pid");
+                        var _Drag = document.getElementById("txt_Drag").value
+                        var data = { "PlayerID": _pid, "Drag": _Drag }
+                        $.post("/Home/EditDrag", data, updateSuccess())
+                    },
+                    "Cancel": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            function updateSuccess() {
+                var _Drag = document.getElementById("txt_Drag").value
+                $("#td_Drag").empty().append(_Drag);
+                $('#commonMessage').stop(true, true);
+                $('#dialog_Drag').dialog('close');
+                $('#commonMessage').html("Update Complete");
+                $('#commonMessage').delay(300).slideDown(300).delay(2000).slideUp(300);
+            }
+
+            $("#td_Drag").click(function () {
+                $("#dialog_Drag").dialog("open");
+            });
+
+            $("#th_Drag").click(function () {
+                $("#dialog_Drag").dialog("open");
+            });
+        });
+
+
+
+        //RHP_HowtoPitch
+        $(function () {
+            $('#dialog_RHP_HowtoPitch').dialog({
+                autoOpen: false,
+                width: 550,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Update": function () {
+                        var _pid = getParameterByName("_pid");
+                        var _RHP_HowtoPitch = document.getElementById("txt_RHP_HowtoPitch").value
+                        var data = { "PlayerID": _pid, "RHP_HowtoPitch": _RHP_HowtoPitch }
+                        $.post("/Home/EditRHP_HowtoPitch", data, updateSuccess())
+                    },
+                    "Cancel": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            function updateSuccess() {
+                var _RHP_HowtoPitch = document.getElementById("txt_RHP_HowtoPitch").value
+                $("#p_RHP_HowtoPitch").empty().append(_RHP_HowtoPitch);
+                $('#commonMessage').stop(true, true);
+                $('#dialog_RHP_HowtoPitch').dialog('close');
+                $('#commonMessage').html("Update Complete");
+                $('#commonMessage').delay(300).slideDown(300).delay(2000).slideUp(300);
+            }
+
+            $("#td_RHP_HowtoPitch").click(function () {
+                $("#dialog_RHP_HowtoPitch").dialog("open");
+            });
+        });
+
+        //RHP_Def
+        $(function () {
+            $('#dialog_RHP_Def').dialog({
+                autoOpen: false,
+                width: 550,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Update": function () {
+                        var _pid = getParameterByName("_pid");
+                        var _RHP_Def_INF = document.getElementById("txt_RHP_Def_INF").value
+                        var _RHP_Def_OF = document.getElementById("txt_RHP_Def_OF").value
+                        var data = { "PlayerID": _pid, "RHP_Def_INF": _RHP_Def_INF, "RHP_Def_OF": _RHP_Def_OF }
+                        $.post("/Home/EditRHP_Def", data, updateSuccess())
+                    },
+                    "Cancel": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            function updateSuccess() {
+                var _RHP_Def_INF = document.getElementById("txt_RHP_Def_INF").value
+                $("#p_RHP_Def_INF").empty().append(_RHP_Def_INF);
+                var _RHP_Def_OF = document.getElementById("txt_RHP_Def_OF").value
+                $("#p_RHP_Def_OF").empty().append(_RHP_Def_OF);
+                $('#commonMessage').stop(true, true);
+                $('#dialog_RHP_Def').dialog('close');
+                $('#commonMessage').html("Update Complete");
+                $('#commonMessage').delay(300).slideDown(300).delay(2000).slideUp(300);
+            }
+
+            $("#td_RHP_Def").click(function () {
+                $("#dialog_RHP_Def").dialog("open");
+            });
+        });
+
+        //RHP_2Ks_Chase
+        $(function () {
+            $('#dialog_RHP_2Ks_Chase').dialog({
+                autoOpen: false,
+                width: 550,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Update": function () {
+                        var _pid = getParameterByName("_pid");
+                        var _RHP_2Ks_Chase = document.getElementById("txt_RHP_2Ks_Chase").value
+                        var data = { "PlayerID": _pid, "RHP_2Ks_Chase": _RHP_2Ks_Chase }
+                        $.post("/Home/EditRHP_2Ks_Chase", data, updateSuccess())
+                    },
+                    "Cancel": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            function updateSuccess() {
+                var _RHP_2Ks_Chase = document.getElementById("txt_RHP_2Ks_Chase").value
+                $("#p_RHP_2Ks_Chase").empty().append(_RHP_2Ks_Chase);
+                $('#commonMessage').stop(true, true);
+                $('#dialog_RHP_2Ks_Chase').dialog('close');
+                $('#commonMessage').html("Update Complete");
+                $('#commonMessage').delay(300).slideDown(300).delay(2000).slideUp(300);
+            }
+
+            $("#td_RHP_2Ks_Chase").click(function () {
+                $("#dialog_RHP_2Ks_Chase").dialog("open");
+            });
+        });
+
+
+
+
+        //LHP_HowtoPitch
+        $(function () {
+            $('#dialog_LHP_HowtoPitch').dialog({
+                autoOpen: false,
+                width: 550,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Update": function () {
+                        var _pid = getParameterByName("_pid");
+                        var _LHP_HowtoPitch = document.getElementById("txt_LHP_HowtoPitch").value
+                        var data = { "PlayerID": _pid, "LHP_HowtoPitch": _LHP_HowtoPitch }
+                        $.post("/Home/EditLHP_HowtoPitch", data, updateSuccess())
+                    },
+                    "Cancel": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            function updateSuccess() {
+                var _LHP_HowtoPitch = document.getElementById("txt_LHP_HowtoPitch").value
+                $("#p_LHP_HowtoPitch").empty().append(_LHP_HowtoPitch);
+                $('#commonMessage').stop(true, true);
+                $('#dialog_LHP_HowtoPitch').dialog('close');
+                $('#commonMessage').html("Update Complete");
+                $('#commonMessage').delay(300).slideDown(300).delay(2000).slideUp(300);
+            }
+
+            $("#td_LHP_HowtoPitch").click(function () {
+                $("#dialog_LHP_HowtoPitch").dialog("open");
+            });
+        });
+
+        //LHP_Def
+        $(function () {
+            $('#dialog_LHP_Def').dialog({
+                autoOpen: false,
+                width: 550,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Update": function () {
+                        var _pid = getParameterByName("_pid");
+                        var _LHP_Def_INF = document.getElementById("txt_LHP_Def_INF").value
+                        var _LHP_Def_OF = document.getElementById("txt_LHP_Def_OF").value
+                        var data = { "PlayerID": _pid, "LHP_Def_INF": _LHP_Def_INF, "LHP_Def_OF": _LHP_Def_OF }
+                        $.post("/Home/EditLHP_Def", data, updateSuccess())
+                    },
+                    "Cancel": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            function updateSuccess() {
+                var _LHP_Def_INF = document.getElementById("txt_LHP_Def_INF").value
+                $("#p_LHP_Def_INF").empty().append(_LHP_Def_INF);
+                var _LHP_Def_OF = document.getElementById("txt_LHP_Def_OF").value
+                $("#p_LHP_Def_OF").empty().append(_LHP_Def_OF);
+                $('#commonMessage').stop(true, true);
+                $('#dialog_LHP_Def').dialog('close');
+                $('#commonMessage').html("Update Complete");
+                $('#commonMessage').delay(300).slideDown(300).delay(2000).slideUp(300);
+            }
+
+            $("#td_LHP_Def").click(function () {
+                $("#dialog_LHP_Def").dialog("open");
+            });
+        });
+
+        //LHP_2Ks_Chase
+        $(function () {
+            $('#dialog_LHP_2Ks_Chase').dialog({
+                autoOpen: false,
+                width: 550,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Update": function () {
+                        var _pid = getParameterByName("_pid");
+                        var _LHP_2Ks_Chase = document.getElementById("txt_LHP_2Ks_Chase").value
+                        var data = { "PlayerID": _pid, "LHP_2Ks_Chase": _LHP_2Ks_Chase }
+                        $.post("/Home/EditLHP_2Ks_Chase", data, updateSuccess())
+                    },
+                    "Cancel": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            function updateSuccess() {
+                var _LHP_2Ks_Chase = document.getElementById("txt_LHP_2Ks_Chase").value
+                $("#p_LHP_2Ks_Chase").empty().append(_LHP_2Ks_Chase);
+                $('#commonMessage').stop(true, true);
+                $('#dialog_LHP_2Ks_Chase').dialog('close');
+                $('#commonMessage').html("Update Complete");
+                $('#commonMessage').delay(300).slideDown(300).delay(2000).slideUp(300);
+            }
+
+            $("#td_LHP_2Ks_Chase").click(function () {
+                $("#dialog_LHP_2Ks_Chase").dialog("open");
+            });
+        });
+
+
+</script>
+}
+
+

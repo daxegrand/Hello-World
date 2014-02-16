@@ -1,0 +1,24 @@
+﻿table.stdTable tbody tr td{
+	vertical-align:top;
+    padding:3px;
+}
+
+    table.stdTable tbody tr td p {
+        padding:0 0 8px 0;
+    }
+
+    table.stdTable#r6Rep2 tbody tr td:nth-child(1) {
+        width:15%;
+    }
+
+    table.stdTable#r6Rep2 tbody tr td:nth-child(2) {
+        width:17%;
+    }
+
+    table.stdTable#r6Rep2 tbody tr td:nth-child(3) {
+        width:50%;
+    }
+
+    table.stdTable#r6Rep2 tbody tr td:nth-child(4) {
+        width:18%;
+    }

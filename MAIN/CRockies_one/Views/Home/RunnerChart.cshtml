@@ -1,0 +1,131 @@
+﻿@model CRockies_one.Models.RunnerChartModels
+@{
+    ViewBag.Title = "Runner Chart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="commonMessage"></div>
+<h2>Runner Chart</h2>
+<div class="r5opp" style="text-transform:uppercase;">Opposition : @Model.rcteam.City_or_State @Model.rcteam.Nickname</div>
+<table  id="r5table" style="width:100%;">
+  <thead>
+  	<tr>
+    <th rowspan="2" id="r5pitchname">Pitcher Name</th>
+    <th colspan="3">Runner &#64; 1st</th>
+    <th colspan="3">Runner &#64; 2nd</th>
+  </tr>
+  <tr>
+    <th width="80" class="r5subheads">Release Time</th>
+    <th width="80" class="r5subheads">Slide Step Time</th>
+    <th class="r5subheads">Pickoff Move / Tips</th>
+    <th width="80" class="r5subheads">Release Time</th>
+    <th class="r5subheads">Pickoff Move / Tips</th>
+    <th class="r5subheads">Looks w/ runner &#64;2b</th>
+  </tr>
+  
+  </thead>
+  <tbody>
+  	<tbody id="rcTable">
+  	@if (Model.ListRunnerChart != null && Model.ListRunnerChart != null)
+    {
+        foreach (var item in Model.ListRunnerChart)
+        {
+            <tr id="@item.PlayerId" class="pl">
+              <td class="r5playername">@item.Name</td>
+              <td id="tdrt1B" class="r5w80">@item.ReleaseTimes_1B</td>
+              <td id="tdss1B" class="r5w80 r5redTxt">@item.SlideStepTime_1B</td>
+              <td id="tdpm1B">@item.PickoffMove_1B</td>
+              <td id="tdrt2B" class="r5w80">@item.ReleaseTimes_2B</td>
+              <td id="tdpm2B">@item.PickoffMove_2B</td>
+              <td id="tdlwr2B">@item.LooksWRunner_2B</td>
+  	        </tr>
+        }
+    }
+  </tbody>
+    
+</table>
+<div id="udRC">
+    <textarea id="myplayerid" style="visibility:hidden;height:1px;"></textarea><br />
+    <h2>Runner &#64; 1st</h2>
+    <label>RELEASE TIME</label><br />
+    <textarea id="txtrt1B" style="resize:none;width:367px;">
+    </textarea><br /><br />
+    <label>SLIDE STEP TIME</label><br />
+    <textarea id="txtss1B" style="resize:none;width:367px;">
+    </textarea><br />
+    <label>PICKOFF MOVE / TIPS</label><br />
+    <textarea id="txtpm1B" style="resize:none;width:367px;">
+    </textarea><br />
+    <h2>Runner &#64; 2nd</h2>
+    <label>RELEASE TIME</label><br />
+    <textarea id="txtrt2B" style="resize:none;width:367px;">
+    </textarea><br />
+    <label>PICKOFF MOVE / TIPS</label><br />
+    <textarea id="txtpm2B" style="resize:none;width:367px;">
+    </textarea><br />
+    <label>LOOKS W/ RUNNER &#64;2B</label><br />
+    <textarea id="txtlwr2B" style="resize:none;width:367px;">
+    </textarea><br />
+</div>
+
+@section scripts{
+    <script>
+        $(function () {
+            $('#udRC').dialog({
+                autoOpen: false,
+                width: 400,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Update": function () {
+                        var _pid = document.getElementById("myplayerid").value
+                        var _rt1B = document.getElementById("txtrt1B").value
+                        var _ss1B = document.getElementById("txtss1B").value
+                        var _pm1B = document.getElementById("txtpm1B").value
+                        var _rt2B = document.getElementById("txtrt2B").value
+                        var _pm2B = document.getElementById("txtpm2B").value
+                        var _lwr2B = document.getElementById("txtlwr2B").value
+                        var data = { "PlayerID": _pid, "rt1B": _rt1B, "ss1B": _ss1B, "pm1B": _pm1B, "rt2B": _rt2B, "pm2B": _pm2B, "lwr2B": _lwr2B }
+                        $.post("/Home/rcEdit", data, updateSuccess(_pid, _rt1B, _ss1B, _pm1B, _rt2B, _pm2B, _lwr2B))
+                    },
+                    "Cancel": function () {
+                        $(this).dialog("close");
+                    }
+                } 
+            });
+            function updateSuccess(_pid,_rt1B,_ss1B,_pm1B,_rt2B,_pm2B,_lwr2B) {
+
+                $('#' + _pid + ' ' + "#tdrt1B").empty().append(_rt1B);
+                $('#' + _pid + ' ' + "#tdss1B").empty().append(_ss1B);
+                $('#' + _pid + ' ' + "#tdpm1B").empty().append(_pm1B);
+                $('#' + _pid + ' ' + "#tdrt2B").empty().append(_rt2B);
+                $('#' + _pid + ' ' + "#tdpm2B").empty().append(_pm2B);
+                $('#' + _pid + ' ' + "#tdlwr2B").empty().append(_lwr2B);
+                $('#commonMessage').stop(true, true);
+                $('#udRC').dialog('close');
+                $('#commonMessage').html("Update Complete");
+                $('#commonMessage').delay(300).slideDown(300).delay(2000).slideUp(300);
+            }
+        $('#rcTable').on('click', 'tr', function () {
+            var values = $(this).find('td').map(function () {
+                return $(this).text();
+            });
+
+            //var id = $(this).children('tr').attr('id');
+            var id = $(this).closest('tr').attr('id');
+            //$("#myplayerid").empty().append(values[7]);
+            $("#myplayerid").empty().append(id);
+            $("#txtrt1B").empty().append(values[1]);
+            $("#txtss1B").empty().append(values[2]);
+            $("#txtpm1B").empty().append(values[3]);
+            $("#txtrt2B").empty().append(values[4]);
+            $("#txtpm2B").empty().append(values[5]);
+            $("#txtlwr2B").empty().append(values[6]);
+
+            $('#udRC').dialog('option', 'title', values[0]);
+
+            $("#udRC").dialog("open");
+        });
+    });
+    </script>
+}
+

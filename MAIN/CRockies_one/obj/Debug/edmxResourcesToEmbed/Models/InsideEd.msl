@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="InsideEdModelStoreContainer" CdmEntityContainer="InsideEdEntities">
+    <EntitySetMapping Name="player_tables">
+      <EntityTypeMapping TypeName="InsideEdModel.player_table">
+        <MappingFragment StoreEntitySet="player table">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Player_ID" ColumnName="Player ID" />
+          <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+          <ScalarProperty Name="MI" ColumnName="MI" />
+          <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
+          <ScalarProperty Name="Team_ID" ColumnName="Team ID" />
+          <ScalarProperty Name="Bats" ColumnName="Bats" />
+          <ScalarProperty Name="Throws" ColumnName="Throws" />
+          <ScalarProperty Name="Hitter_or_Pitcher" ColumnName="Hitter or Pitcher" />
+          <ScalarProperty Name="Uniform__" ColumnName="Uniform #" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="select_" ColumnName="select?" />
+          <ScalarProperty Name="Active_" ColumnName="Active?" />
+          <ScalarProperty Name="Stance" ColumnName="Stance" />
+          <ScalarProperty Name="C5th_Pitch" ColumnName="5th Pitch" />
+          <ScalarProperty Name="Time_to_Plate" ColumnName="Time to Plate" />
+          <ScalarProperty Name="Secondary" ColumnName="Secondary" />
+          <ScalarProperty Name="txn" ColumnName="txn" />
+          <ScalarProperty Name="MLBID" ColumnName="MLBID" />
+          <ScalarProperty Name="espnID" ColumnName="espnID" />
+          <ScalarProperty Name="TwoKID" ColumnName="TwoKID" />
+          <ScalarProperty Name="YahooID" ColumnName="YahooID" />
+          <ScalarProperty Name="mlbam" ColumnName="mlbam" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="NickNotes" ColumnName="NickNotes" />
+          <ScalarProperty Name="C40Man" ColumnName="40Man" />
+          <ScalarProperty Name="BBRefID" ColumnName="BBRefID" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="MLB_TeamID" ColumnName="MLB_TeamID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Team_tables">
+      <EntityTypeMapping TypeName="InsideEdModel.Team_table">
+        <MappingFragment StoreEntitySet="Team table">
+          <ScalarProperty Name="Team_ID" ColumnName="Team ID" />
+          <ScalarProperty Name="City_or_State" ColumnName="City or State" />
+          <ScalarProperty Name="Nickname" ColumnName="Nickname" />
+          <ScalarProperty Name="League" ColumnName="League" />
+          <ScalarProperty Name="Division" ColumnName="Division" />
+          <ScalarProperty Name="Shortname" ColumnName="Shortname" />
+          <ScalarProperty Name="espnShortname" ColumnName="espnShortname" />
+          <ScalarProperty Name="Stadium" ColumnName="Stadium" />
+          <ScalarProperty Name="CustomDims" ColumnName="CustomDims" />
+          <ScalarProperty Name="LF" ColumnName="LF" />
+          <ScalarProperty Name="MidLF" ColumnName="MidLF" />
+          <ScalarProperty Name="LCF" ColumnName="LCF" />
+          <ScalarProperty Name="MidLCF" ColumnName="MidLCF" />
+          <ScalarProperty Name="CF" ColumnName="CF" />
+          <ScalarProperty Name="MidRCF" ColumnName="MidRCF" />
+          <ScalarProperty Name="RCF" ColumnName="RCF" />
+          <ScalarProperty Name="MidRF" ColumnName="MidRF" />
+          <ScalarProperty Name="RF" ColumnName="RF" />
+          <ScalarProperty Name="Last_Referenced" ColumnName="Last Referenced" />
+          <ScalarProperty Name="MLBID" ColumnName="MLBID" />
+          <ScalarProperty Name="TwoKTeamID" ColumnName="TwoKTeamID" />
+          <ScalarProperty Name="Active_" ColumnName="Active?" />
+          <ScalarProperty Name="YahooTeamID" ColumnName="YahooTeamID" />
+          <ScalarProperty Name="MLBcity" ColumnName="MLBcity" />
+          <ScalarProperty Name="C2k_Mnemonic" ColumnName="2k_Mnemonic" />
+          <ScalarProperty Name="MLB_AffiliateID" ColumnName="MLB_AffiliateID" />
+          <ScalarProperty Name="BITteamName" ColumnName="BITteamName" />
+          <ScalarProperty Name="mlb_shortName" ColumnName="mlb_shortName" />
+          <ScalarProperty Name="mlb_sportcode" ColumnName="mlb_sportcode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sproc_depthchart_bench" FunctionName="InsideEdModel.Store.sproc_depthchart_bench" />
+    <FunctionImportMapping FunctionImportName="sproc_depthchart_disabledlist" FunctionName="InsideEdModel.Store.sproc_depthchart_disabledlist" />
+    <FunctionImportMapping FunctionImportName="sproc_depthchart_startinglineup" FunctionName="InsideEdModel.Store.sproc_depthchart_startinglineup" />
+    <FunctionImportMapping FunctionImportName="sproc_depthchart_startingrotation" FunctionName="InsideEdModel.Store.sproc_depthchart_startingrotation">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="InsideEdModel.sproc_depthchart_startingrotation_Result">
+          <ScalarProperty Name="Starting_Rotation" ColumnName="Starting Rotation" />
+          <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sproc_playerinfo" FunctionName="InsideEdModel.Store.sproc_playerinfo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="InsideEdModel.sproc_playerinfo_Result">
+          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+          <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+          <ScalarProperty Name="Uniform" ColumnName="Uniform" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="HorP" ColumnName="HorP" />
+          <ScalarProperty Name="TeamNickname" ColumnName="TeamNickname" />
+          <ScalarProperty Name="TeamFullname" ColumnName="TeamFullname" />
+          <ScalarProperty Name="TeamId" ColumnName="TeamId" />
+          <ScalarProperty Name="Bats" ColumnName="Bats" />
+          <ScalarProperty Name="Throws" ColumnName="Throws" />
+          <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
+          <ScalarProperty Name="MLBID" ColumnName="MLBID" />
+          <ScalarProperty Name="mlbam" ColumnName="mlbam" />
+          <ScalarProperty Name="Active_" ColumnName="Active?" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

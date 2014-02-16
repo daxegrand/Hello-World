@@ -1,0 +1,525 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DevColoradoRockiesModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="DevColoradoRockiesEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="PitcherProfile_CurrentAndSplits" EntityType="DevColoradoRockiesModel.PitcherProfile_CurrentAndSplits" />
+    <EntitySet Name="Pitchers" EntityType="DevColoradoRockiesModel.Pitcher" />
+    <EntitySet Name="UserEntereds" EntityType="DevColoradoRockiesModel.UserEntered" />
+    <EntitySet Name="UserEntered2" EntityType="DevColoradoRockiesModel.UserEntered2" />
+    <FunctionImport Name="cr_sproc_pitcherprofile_currentoverallstats" ReturnType="Collection(DevColoradoRockiesModel.cr_sproc_pitcherprofile_currentoverallstats_Result)">
+      <Parameter Name="PID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="cr_sproc_pitcherprofile_currentstatsvslhh" ReturnType="Collection(DevColoradoRockiesModel.cr_sproc_pitcherprofile_currentstatsvslhh_Result)">
+      <Parameter Name="PID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="cr_sproc_pitcherprofile_currentstatsvsrhh" ReturnType="Collection(DevColoradoRockiesModel.cr_sproc_pitcherprofile_currentstatsvsrhh_Result)">
+      <Parameter Name="PID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="cr_sproc_pitchersplits" ReturnType="Collection(DevColoradoRockiesModel.cr_sproc_pitchersplits_Result)">
+      <Parameter Name="Year" Mode="In" Type="Int32" />
+      <Parameter Name="TeamId" Mode="In" Type="Int32" />
+      <Parameter Name="Active" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="PitcherSplits" EntityType="DevColoradoRockiesModel.PitcherSplit" />
+    <FunctionImport Name="cr_sproc_runnerchart" ReturnType="Collection(DevColoradoRockiesModel.cr_sproc_runnerchart_Result)">
+      <Parameter Name="Year" Mode="In" Type="Int32" />
+      <Parameter Name="TeamId" Mode="In" Type="Int32" />
+      <Parameter Name="Active" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Outfielder_Pitcher" EntityType="DevColoradoRockiesModel.Outfielder_Pitcher" />
+    <FunctionImport Name="cr_sproc_outfielderpitcher_agg" ReturnType="Collection(DevColoradoRockiesModel.cr_sproc_outfielderpitcher_agg_Result)">
+      <Parameter Name="Year" Mode="In" Type="Int32" />
+      <Parameter Name="TeamId" Mode="In" Type="Int32" />
+      <Parameter Name="Active" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="cr_sproc_outfielderpitcher_sta" ReturnType="Collection(DevColoradoRockiesModel.cr_sproc_outfielderpitcher_sta_Result)">
+      <Parameter Name="Year" Mode="In" Type="Int32" />
+      <Parameter Name="TeamId" Mode="In" Type="Int32" />
+      <Parameter Name="Active" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="HitterProfiles" EntityType="DevColoradoRockiesModel.HitterProfile" />
+    <EntitySet Name="HitterProfile_UserEntered" EntityType="DevColoradoRockiesModel.HitterProfile_UserEntered" />
+    <EntitySet Name="DugoutPitchers" EntityType="DevColoradoRockiesModel.DugoutPitcher" />
+    <FunctionImport Name="cr_sproc_NEF_Hitter" ReturnType="Collection(DevColoradoRockiesModel.cr_sproc_NEF_Hitter_Result)">
+      <Parameter Name="Year" Mode="In" Type="Int32" />
+      <Parameter Name="TeamId" Mode="In" Type="Int32" />
+      <Parameter Name="Active" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="cr_sproc_NEF_Pitcher" ReturnType="Collection(DevColoradoRockiesModel.cr_sproc_NEF_Pitcher_Result)">
+      <Parameter Name="Year" Mode="In" Type="Int32" />
+      <Parameter Name="TeamId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="PitcherProfile_PitchCountLastStart" EntityType="DevColoradoRockiesModel.PitcherProfile_PitchCountLastStart" />
+  </EntityContainer>
+  <EntityType Name="PitcherProfile_CurrentAndSplits">
+    <Key>
+      <PropertyRef Name="PlayerId" />
+    </Key>
+    <Property Name="PlayerId" Type="Int64" Nullable="false" />
+    <Property Name="mlbam" Type="Int64" />
+    <Property Name="Firstname" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Lastname" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="G" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="Record" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="ERA" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="IP" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="H" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="HR" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="BB" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="SO" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="SBA" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="PperPA" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="PperIP" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="PperGS" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="GB__Overall" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="FB__Overall" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="AVG_vsLHH" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="H_vsLHH" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="HR_vsLHH" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="BB_vsLHH" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="SO_vsLHH" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="PperPA_vsLHH" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="OBP_vsLHH" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="SLG_vsLHH" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="GB__vsLHH" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="FB__vsLHH" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="AVG_vsRHH" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="H_vsRHH" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="HR_vsRHH" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="BB_vsRHH" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="SO_vsRHH" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="PperPA_vsRHH" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="OBP_vsRHH" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="SLG_vsRHH" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="GB__vsRHH" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="FB__vsRHH" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="BasesEmpty_AllCounts_Change__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="BasesEmpty_AllCounts_Curve__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="BasesEmpty_AllCounts_Cutter__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="BasesEmpty_AllCounts_FB__4sm___2sm___Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="BasesEmpty_AllCounts_Knuckleball__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="BasesEmpty_AllCounts_Slider__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="BasesEmpty_AllCounts_Split_Finger__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="BasesEmpty_FirstPitch_Change__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="BasesEmpty_FirstPitch_Curve__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="BasesEmpty_FirstPitch_Cutter__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="BasesEmpty_FirstPitch_FB__4sm___2sm___Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="BasesEmpty_FirstPitch_Knuckleball__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="BasesEmpty_FirstPitch_Slider__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="BasesEmpty_FirstPitch_Split_Finger__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="BasesEmpty_PitcherAhead_Change__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="BasesEmpty_PitcherAhead_Curve__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="BasesEmpty_PitcherAhead_Cutter__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="BasesEmpty_PitcherAhead_FB__4sm___2sm___Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="BasesEmpty_PitcherAhead_Knuckleball__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="BasesEmpty_PitcherAhead_Slider__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="BasesEmpty_PitcherAhead_Split_Finger__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="BasesEmpty_PitcherBehind_Change__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="BasesEmpty_PitcherBehind_Curve__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="BasesEmpty_PitcherBehind_Cutter__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="BasesEmpty_PitcherBehind_FB__4sm___2sm___Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="BasesEmpty_PitcherBehind_Knuckleball__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="BasesEmpty_PitcherBehind_Slider__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="BasesEmpty_PitcherBehind_Split_Finger__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="BasesEmpty_2Ks__Excl3_2_Change__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="BasesEmpty_2Ks__Excl3_2_Curve__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="BasesEmpty_2Ks__Excl3_2_Cutter__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="BasesEmpty_2Ks__Excl3_2_FB__4sm___2sm___Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="BasesEmpty_2Ks__Excl3_2_Knuckleball__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="BasesEmpty_2Ks__Excl3_2_Slider__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="BasesEmpty_2Ks__Excl3_2_Split_Finger__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="RISP_AllCounts_Change__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="RISP_AllCounts_Curve__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="RISP_AllCounts_Cutter__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="RISP_AllCounts_FB__4sm___2sm___Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="RISP_AllCounts_Knuckleball__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="RISP_AllCounts_Slider__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="RISP_AllCounts_Split_Finger__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="RISP_FirstPitch_Change__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="RISP_FirstPitch_Curve__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="RISP_FirstPitch_Cutter__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="RISP_FirstPitch_FB__4sm___2sm___Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="RISP_FirstPitch_Knuckleball__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="RISP_FirstPitch_Slider__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="RISP_FirstPitch_Split_Finger__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="RISP_PitcherAhead_Change__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="RISP_PitcherAhead_Curve__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="RISP_PitcherAhead_Cutter__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="RISP_PitcherAhead_FB__4sm___2sm___Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="RISP_PitcherAhead_Knuckleball__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="RISP_PitcherAhead_Slider__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="RISP_PitcherAhead_Split_Finger__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="RISP_PitcherBehind_Change__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="RISP_PitcherBehind_Curve__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="RISP_PitcherBehind_Cutter__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="RISP_PitcherBehind_FB__4sm___2sm___Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="RISP_PitcherBehind_Knuckleball__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="RISP_PitcherBehind_Slider__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="RISP_PitcherBehind_Split_Finger__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="RISP_2Ks__Excl3_2_Change__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="RISP_2Ks__Excl3_2_Curve__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="RISP_2Ks__Excl3_2_Cutter__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="RISP_2Ks__Excl3_2_FB__4sm___2sm___Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="RISP_2Ks__Excl3_2_Knuckleball__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="RISP_2Ks__Excl3_2_Slider__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="RISP_2Ks__Excl3_2_Split_Finger__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="C3_2_Change__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="C3_2_Curve__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="C3_2_Cutter__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="C3_2_FB__4sm___2sm___Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="C3_2_Knuckleball__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="C3_2_Slider__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="C3_2_Split_Finger__Pitches" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="StrikeZone__Change" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="Chase__Change" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="StrikeZone__Curve" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="Chase__Curve" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="StrikeZone__Cutter" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="Chase__Cutter" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="StrikeZone__FB__4sm___2sm_" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="Chase__FB__4sm___2sm_" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="StrikeZone__Knuckleball" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="Chase__Knuckleball" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="StrikeZone__Slider" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="Chase__Slider" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="StrikeZone__Split_Finger" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="Chase__Split_Finger" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Pitcher">
+    <Key>
+      <PropertyRef Name="PlayerID" />
+    </Key>
+    <Property Name="PlayerID" Type="Int32" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="FirstName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Dexterity" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="FastballVelocity" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="FastballDescription" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="SinkerVelocity" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="SinkerDescription" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="CutterVelocity" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="CutterDescription" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="SliderVelocity" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="SliderDescription" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="CurveballVelocity" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="CurveballDescription" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="ChangeupVelocity" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="ChangeupDescription" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="SplitfingerVelocity" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="SplitfingerDescription" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="KnuckleballVelocity" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="KnuckleballDescription" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="ScrewballVelocity" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="ScrewballDescription" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="MOVES" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="NOTES" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="STRENGTHS" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="WEAKNESSES" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="TENDENCIES" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="ArmAngle" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="TimeStamp" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="UserEntered">
+    <Key>
+      <PropertyRef Name="PlayerID" />
+    </Key>
+    <Property Name="PlayerID" Type="Int64" Nullable="false" />
+    <Property Name="ArmSlot" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Control" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Command" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Approach" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Out_Pitch" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="PickoffMove_1B" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="PickoffMove_2B" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ReleaseTimes_1B" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ReleaseTimes_2B" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ReleaseTimes_SS" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Type="String" Name="SlideStepTime_1B" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="LooksWRunner_2B" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="Year" />
+  </EntityType>
+  <EntityType Name="UserEntered2">
+    <Key>
+      <PropertyRef Name="PlayerID" />
+    </Key>
+    <Property Name="PlayerID" Type="Int64" Nullable="false" />
+    <Property Name="FB2SMVelocity" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="FB2SMDescription" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="FB4SMVelocity" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="FB4SMDescription" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="FB2SMCommand" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="FB4SMCommand" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="CutterCommand" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="SliderCommand" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="CurveballCommand" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="ChangeupCommand" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="SplitfingerCommand" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="KnuckleballCommand" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <ComplexType Name="cr_sproc_pitcherprofile_currentoverallstats_Result">
+    <Property Type="String" Name="Record" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="G" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="ERA" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="IP" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="H" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="HR" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="BB" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="SO" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="SBA" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="PperPA" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="PperIP" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="PperGS" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="GB__Overall" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="FB__Overall" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="cr_sproc_pitcherprofile_currentstatsvslhh_Result">
+    <Property Type="String" Name="Record" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="AVG_vsLHH" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="H_vsLHH" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="HR_vsLHH" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="BB_vsLHH" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="SO_vsLHH" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="PperPA_vsLHH" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="GB__vsLHH" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="FB__vsLHH" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="SLG_vsLHH" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="OBP_vsLHH" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="cr_sproc_pitcherprofile_currentstatsvsrhh_Result">
+    <Property Type="String" Name="Record" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="AVG_vsRHH" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="H_vsRHH" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="HR_vsRHH" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="BB_vsRHH" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="SO_vsRHH" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="PperPA_vsRHH" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="GB__vsRHH" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="FB__vsRHH" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="SLG_vsRHH" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="OBP_vsRHH" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="cr_sproc_pitchersplits_Result">
+    <Property Type="Double" Name="PlayerId" Nullable="true" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="201" />
+    <Property Type="Decimal" Name="RHH" Nullable="true" Precision="8" Scale="3" />
+    <Property Type="String" Name="Career_RHB" Nullable="true" MaxLength="10" />
+    <Property Type="Decimal" Name="LHH" Nullable="true" Precision="8" Scale="3" />
+    <Property Type="String" Name="Career_LHB" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <EntityType Name="PitcherSplit">
+    <Key>
+      <PropertyRef Name="PlayerId" />
+    </Key>
+    <Property Type="Int64" Name="PlayerId" Nullable="false" />
+    <Property Type="String" Name="CareerRHB" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CareerLHB" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Year" Nullable="false" />
+  </EntityType>
+  <ComplexType Name="cr_sproc_runnerchart_Result">
+    <Property Type="Double" Name="PlayerId" Nullable="true" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="201" />
+    <Property Type="String" Name="ReleaseTimes_1B" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SlideStepTime_1B" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PickoffMove_1B" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ReleaseTimes_2B" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PickoffMove_2B" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LooksWRunner_2B" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="Outfielder_Pitcher">
+    <Key>
+      <PropertyRef Name="PlayerID" />
+    </Key>
+    <Property Type="Int64" Name="PlayerID" Nullable="false" />
+    <Property Type="String" Name="Aggressiveness" MaxLength="255" FixedLength="false" Unicode="false" Nullable="true" />
+    <Property Type="String" Name="SPAofHit_Summary" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="SPAofHit_Detail" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="SPAofHit_BuntingAbility" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="cr_sproc_outfielderpitcher_agg_Result">
+    <Property Type="Double" Name="PlayerId" Nullable="true" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="201" />
+    <Property Type="String" Name="Aggressiveness" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="cr_sproc_outfielderpitcher_sta_Result">
+    <Property Type="Double" Name="PlayerId" Nullable="true" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="201" />
+    <Property Type="String" Name="SPAofHit_Summary" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="SPAofHit_Detail" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="SPAofHit_BuntingAbility" Nullable="true" MaxLength="255" />
+  </ComplexType>
+  <EntityType Name="HitterProfile">
+    <Key>
+      <PropertyRef Name="PlayerId" />
+    </Key>
+    <Property Type="Int64" Name="PlayerId" Nullable="false" />
+    <Property Type="Int64" Name="MLBAM" />
+    <Property Type="String" Name="Firstname" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Lastname" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="AVG__vsLHP" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="SLG__vsLHP" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="AB_vsLHP" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="H_vsLHP" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="HR_vsLHP" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BB_vsLHP" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="K_vsLHP" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="SB_vsLHP" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CS_vsLHP" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PperPA_vsLHP" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="AVG__vsRHP" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="SLG__vsRHP" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="AB_vsRHP" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="H_vsRHP" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="HR_vsRHP" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BB_vsRHP" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="K_vsRHP" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="SB_vsRHP" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CS_vsRHP" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PperPA_vsRHP" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="AVG__Total" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="SLG__Total" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="AB_Total" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="H_Total" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="HR_Total" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BB_Total" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="K_Total" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="SB_Total" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CS_Total" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PperPA_Total" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="GB__vsLHP" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FB__vsLHP" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="GB__vsRHP" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FB__vsRHP" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="GB__Total" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FB__Total" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="HitterProfile_UserEntered">
+    <Key>
+      <PropertyRef Name="PlayerId" />
+    </Key>
+    <Property Type="Int64" Name="PlayerId" Nullable="false" />
+    <Property Type="String" Name="Arm" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Accuracy" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Speed" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Steal" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Push" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Drag" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RHP_HowtoPitch" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="LHP_HowtoPitch" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="RHP_2Ks_Chase" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="LHP_2Ks_Chase" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="RHP_Def_INF" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="LHP_Def_INF" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="RHP_Def_OF" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="LHP_Def_OF" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="Year" />
+    <Property Type="Int32" Name="Arm_Avg" />
+    <Property Type="Int32" Name="Accuracy_Avg" />
+    <Property Type="Int32" Name="Speed_Avg" />
+  </EntityType>
+  <EntityType Name="DugoutPitcher">
+    <Key>
+      <PropertyRef Name="PlayerId" />
+    </Key>
+    <Property Type="Int64" Name="PlayerId" Nullable="false" />
+    <Property Type="String" Name="Firstname" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Lastname" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Int64" Name="mlbam" />
+    <Property Type="String" Name="W" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="L" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="IP" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ERA" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="H" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="HR" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="BB" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="SO" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="SB" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CS" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FB_Velo" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CutFB_Velo" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="SL_Velo" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CB_Velo" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CH_Velo" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="SPL_Velo" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Pitch1_Type" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Pitch2_Type" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Pitch3_Type" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Pitch4_Type" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RISP_0_0_Pitch1" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RISP_0_0_Pitch2" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RISP_0_0_Pitch3" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RISP_0_0_Pitch4" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RISP_PitAhd_Pitch1" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RISP_PitAhd_Pitch2" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RISP_PitAhd_Pitch3" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RISP_PitAhd_Pitch4" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RISP_PitBhd_Pitch1" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RISP_PitBhd_Pitch2" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RISP_PitBhd_Pitch3" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RISP_PitBhd_Pitch4" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RISP_2K_Pitch1" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RISP_2K_Pitch2" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RISP_2K_Pitch3" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RISP_2K_Pitch4" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RISP_FullCount_Pitch1" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RISP_FullCount_Pitch2" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RISP_FullCount_Pitch3" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RISP_FullCount_Pitch4" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="BasesEmpty_0_0_Pitch1" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="BasesEmpty_0_0_Pitch2" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="BasesEmpty_0_0_Pitch3" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="BasesEmpty_0_0_Pitch4" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="BasesEmpty_PitAhd_Pitch1" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="BasesEmpty_PitAhd_Pitch2" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="BasesEmpty_PitAhd_Pitch3" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="BasesEmpty_PitAhd_Pitch4" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="BasesEmpty_PitBhd_Pitch1" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="BasesEmpty_PitBhd_Pitch2" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="BasesEmpty_PitBhd_Pitch3" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="BasesEmpty_PitBhd_Pitch4" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="BasesEmpty_2K_Pitch1" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="BasesEmpty_2K_Pitch2" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="BasesEmpty_2K_Pitch3" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="BasesEmpty_2K_Pitch4" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="BasesEmpty_FullCount_Pitch1" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="BasesEmpty_FullCount_Pitch2" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="BasesEmpty_FullCount_Pitch3" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="BasesEmpty_FullCount_Pitch4" MaxLength="10" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <ComplexType Name="cr_sproc_NEF_Hitter_Result">
+    <Property Type="Double" Name="PlayerId" Nullable="true" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="201" />
+    <Property Type="Int32" Name="grandtotalnulls" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="cr_sproc_NEF_Pitcher_Result">
+    <Property Type="Double" Name="PlayerId" Nullable="true" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="201" />
+    <Property Type="Int32" Name="grandtotalnulls" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="PitcherProfile_PitchCountLastStart">
+    <Key>
+      <PropertyRef Name="PlayerId" />
+    </Key>
+    <Property Type="Int64" Name="PlayerId" Nullable="false" />
+    <Property Type="Int64" Name="mlbam" />
+    <Property Type="String" Name="Firstname" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Lastname" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Date" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="TotalPitches_vsLHH" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FB_vsLHH" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="SL_vsLHH" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CB_vsLHH" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CH_vsLHH" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="SPL_vsLHH" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="TotalPitches_vsRHH" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FB_vsRHH" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="SL_vsRHH" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CB_vsRHH" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CH_vsRHH" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="SPL_vsRHH" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="TotalPitches_Total" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FB_Total" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="SL_Total" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CB_Total" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CH_Total" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="SPL_Total" MaxLength="10" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

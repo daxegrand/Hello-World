@@ -1,0 +1,282 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title </title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <link href='http://fonts.googleapis.com/css?family=Noto+Sans:400,400italic,700,700italic|PT+Sans:400,700,400italic,700italic|Ubuntu+Mono:400,700,400italic,700italic|Merriweather+Sans:400,300,300italic,400italic,700,700italic,800,800italic|PT+Sans+Narrow:400,700|Droid+Sans:400,700|Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic|Open+Sans+Condensed:300,300italic,700|Cuprum:400,400italic,700,700italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Content/printmedia.css" rel="stylesheet" media="print" />
+    @RenderSection("customstyle", required: false)
+
+</head>
+<body>
+    <header>
+        <div id="teamLogo">@Html.ActionLink("your logo here", "Index", "Home")</div>
+        <div id="ieLogo"></div>
+
+    </header>
+
+    <div id="body" class="maincontainer">
+        <section class="content-wrapper main-content clear-fix">
+            <div id="reportBtns">
+                <ul>
+                    <li id="dchart"><a>Depth Chart</a></li>
+                    <li id="neform"><a>Notes Entry Form</a></li>
+                    <li id="pprofile"><a>Pitcher Profile</a></li>
+                    <li id="hprofile"><a>Hitter Profile</a></li>
+                    <li id="rchart"><a>Runner Chart</a></li>
+                    <li id="psplits"><a>Pitcher Splits</a></li>
+                    <li id="opitcher"><a>Outfielder/Pitcher</a></li>
+                    <li id="dpitcher"><a>Dugout Pitcher</a></li>
+                </ul>
+            </div>
+
+            @if (ViewContext.RouteData.GetRequiredString("action").Equals("PitcherProfile", StringComparison.OrdinalIgnoreCase)
+                || ViewContext.RouteData.GetRequiredString("action").Equals("HitterProfile", StringComparison.OrdinalIgnoreCase)
+                || ViewContext.RouteData.GetRequiredString("action").Equals("DugoutPitcher", StringComparison.OrdinalIgnoreCase))
+            {
+                <div id="selectRow">
+                    Select player: 
+                    <select id="pr" style="width: 250px; margin-bottom: 3px;"></select>
+                    @if(ViewContext.RouteData.GetRequiredString("action").Equals("PitcherProfile", StringComparison.OrdinalIgnoreCase))
+                    {
+                        @Html.ActionLink("Export", "ExportPitcherProfile", "Home", new { _pid = @Request.QueryString["_pid"] }, null)
+                    }
+                </div>
+            }
+            @if (ViewContext.RouteData.GetRequiredString("action").Equals("NotesEntryForm", StringComparison.OrdinalIgnoreCase)
+                || ViewContext.RouteData.GetRequiredString("action").Equals("RunnerChart", StringComparison.OrdinalIgnoreCase)
+                || ViewContext.RouteData.GetRequiredString("action").Equals("PitcherSplits", StringComparison.OrdinalIgnoreCase)
+                || ViewContext.RouteData.GetRequiredString("action").Equals("OutfielderPitcher", StringComparison.OrdinalIgnoreCase)
+                )
+            {
+                <div id="selectRow">
+                    Select player: 
+                   <input id="Player" type="text" class="TextboxPlayer" />
+                   <button id="addPlayers">add players to roster</button>
+                   <textarea id="hvalue" style="visibility:hidden;width:1px;"></textarea>
+                    @if (ViewContext.RouteData.GetRequiredString("action").Equals("RunnerChart", StringComparison.OrdinalIgnoreCase))
+                    {
+                        @Html.ActionLink("Export", "ExportRunnerChart", "Home", new { _teamid = @Request.QueryString["_teamid"] }, null)
+                    }
+                    else if (ViewContext.RouteData.GetRequiredString("action").Equals("PitcherSplits", StringComparison.OrdinalIgnoreCase))
+                    {
+                        @Html.ActionLink("Export", "ExportPitcherSplits", "Home", new { _teamid = @Request.QueryString["_teamid"] }, null)
+                    }
+                </div>
+            }
+            else if (ViewContext.RouteData.GetRequiredString("action").Equals("DepthChart", StringComparison.OrdinalIgnoreCase))
+            {
+                <div id="selectRow">
+                    Select Team: 
+                            <select id="teamSelect" style="width: 250px; margin-bottom: 3px;">
+                                <option value="0"></option>
+                                <optgroup label="National League">
+                                    <option value="30">Arizona Diamondbacks</option>
+                                    <option value="5">Colorado Rockies</option>
+                                    <option value="21">Los Angeles Dodgers</option>
+                                    <option value="4">San Diego Padres</option>
+                                    <option value="7">San Francisco Giants</option>
+                                    <option value="8">Chicago Cubs</option>
+                                    <option value="24">Cincinnati Reds</option>
+                                    <option value="1">Milwaukee Brewers</option>
+                                    <option value="27">Pittsburgh Pirates</option>
+                                    <option value="25">St. Louis Cardinals</option>
+                                    <option value="14">Atlanta Braves</option>
+                                    <option value="20">Miami Marlins</option>
+                                    <option value="26">New York Mets</option>
+                                    <option value="22">Philadelphia Phillies</option>
+                                    <option value="23">Washington Nationals</option>
+                                </optgroup>
+                                <optgroup label="American League">
+                                    <option value="10">Baltimore Orioles</option>
+                                    <option value="15">Boston Red Sox</option>
+                                    <option value="12">Chicago White Sox</option>
+                                    <option value="17">Cleveland Indians</option>
+                                    <option value="11">Detroit Tigers</option>
+                                    <option value="28">Houston Astros</option>
+                                    <option value="16">Kansas City Royals</option>
+                                    <option value="6">Los Angeles Angels</option>
+                                    <option value="13">Minnesota Twins</option>
+                                    <option value="18">New York Yankees</option>
+                                    <option value="3">Oakland Athletics</option>
+                                    <option value="2">Seattle Mariners</option>
+                                    <option value="29">Tampa Bay Rays</option>
+                                    <option value="9">Texas Rangers</option>
+                                    <option value="19">Toronto Blue Jays</option>
+                                </optgroup>
+                            </select>
+                    <textarea id="tvalue" style="visibility:hidden;width:1px;"></textarea>
+                </div>
+            }
+
+            @RenderBody()
+
+
+        </section>
+    </div>
+    <footer class="maincontainer">
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p>&copy; @DateTime.Now.Year - </p>
+            </div>
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    <script src="~/Scripts/jquery-ui-1.10.3.js"></script>
+    <script type="text/javascript" src="/Scripts/jstorage.js"></script>
+    <script src="/Scripts/select2.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/Scripts/default.js"></script>
+
+    @Scripts.Render("~/bundles/jqueryval")
+    @RenderSection("scripts", required: false)
+
+    <script type="text/javascript">
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        };
+        $(document).ready(function () {
+            $("#teamSelect").select2();
+        });
+        $('#dchart').click(function () {
+            selectedValue = $.jStorage.get('tkey')
+            location.replace('/Home/DepthChart?_teamid=' + selectedValue);
+        });
+        $('#neform').click(function () {
+            selectedValue = $.jStorage.get('tkey')
+            location.replace('/Home/NotesEntryForm?_teamid=' + selectedValue);
+        });
+        $('#rchart').click(function () {
+            selectedValue = $.jStorage.get('tkey')
+            location.replace('/Home/RunnerChart?_teamid=' + selectedValue);
+        });
+
+        $('#psplits').click(function () {
+            selectedValue = $.jStorage.get('tkey')
+            location.replace('/Home/PitcherSplits?_teamid=' + selectedValue);
+        });
+        $('#opitcher').click(function () {
+            selectedValue = $.jStorage.get('tkey')
+            location.replace('/Home/OutfielderPitcher?_teamid=' + selectedValue);
+        });
+        $('#pprofile').click(function () {
+            selectedValue = $.jStorage.get('tkey')
+            Default.init(selectedValue, 'p');
+            location.replace('/Home/PitcherProfile');
+            $('#pr').select2();
+        });
+        $('#hprofile').click(function () {
+            selectedValue = $.jStorage.get('tkey')
+            Default.init(selectedValue, 'h');
+            location.replace('/Home/HitterProfile');
+            $('#pr').select2();
+        });
+        $('#dpitcher').click(function () {
+            selectedValue = $.jStorage.get('tkey')
+            Default.init(selectedValue, 'p');
+            location.replace('/Home/DugoutPitcher');
+            $('#pr').select2();
+        });
+
+
+        $(document).ready(function () {
+            selectedValue = $.jStorage.get('tkey')
+            var horp;
+            if ('@ViewContext.RouteData.GetRequiredString("action").ToString()' == 'PitcherProfile') {
+                horp = 'p';
+                Default.init(selectedValue, horp);
+            }
+            else if ('@ViewContext.RouteData.GetRequiredString("action").ToString()' == 'HitterProfile') {
+                horp = 'h';
+                Default.init(selectedValue, horp);
+            }
+            else if ('@ViewContext.RouteData.GetRequiredString("action").ToString()' == 'DugoutPitcher') {
+                horp = 'p';
+                Default.init(selectedValue, horp);
+            }
+            else if ('@ViewContext.RouteData.GetRequiredString("action").ToString()' == 'NotesEntryForm') {
+                
+                $("#Player").autocomplete({
+                    source: function (request, response) {
+                        $.ajax({
+                            url: "/Home/SearchPlayers",
+                            type: "POST",
+                            dataType: "json",
+                            data: { term: request.term },
+                            success: function (data) {
+                                response($.map(data, function (item) {
+                                    return { label: item.Firstname + ' ' + item.Lastname, value: item.Firstname + ' ' + item.Lastname, hvalue: item.Player_ID };
+                                }))
+                            }
+                        })
+                    },
+                    autoFocus: true,
+                    my: "left top", at: "left bottom",
+                    select: function (event, ui) {
+                        $("#hvalue").empty().append(ui.item.hvalue);
+                        console.log(ui.item.hvalue);
+                    }
+                });
+            }
+            $('#pr').select2();
+        });
+        $('#addPlayers').click(function () {
+            var _pid = document.getElementById("hvalue").value;
+            //console.log(_pid);
+            var _teamid = getParameterByName("_teamid");
+            var data = { "PlayerID": _pid, "TeamID": _teamid }
+            $.post("/Home/AddPlayer", data, null)
+
+            location.replace('/Home/NotesEntryForm?_teamid=' + _teamid);
+        });
+$('#teamSelect').change(function () {
+    var selects = document.getElementById("teamSelect");
+    var selectedValue = selects.options[selects.selectedIndex].value;// will gives u 2
+    //var selectedText = selects.options[selects.selectedIndex].text;// gives u value2
+    //console.log(selectedValue);
+    //console.log(selectedText);
+    $.jStorage.set('tkey', selectedValue)
+    if ('@ViewContext.RouteData.GetRequiredString("action").ToString()' == 'PitcherSplits') {
+                location.replace('/Home/PitcherSplits?_teamid=' + selectedValue);
+            }
+            else if ('@ViewContext.RouteData.GetRequiredString("action").ToString()' == 'RunnerChart') {
+                location.replace('/Home/RunnerChart?_teamid=' + selectedValue);
+            }
+            else if ('@ViewContext.RouteData.GetRequiredString("action").ToString()' == 'OutfielderPitcher') {
+                location.replace('/Home/OutfielderPitcher?_teamid=' + selectedValue);
+            }
+
+            else if ('@ViewContext.RouteData.GetRequiredString("action").ToString()' == 'NotesEntryForm') {
+                location.replace('/Home/NotesEntryForm?_teamid=' + selectedValue);
+            }
+            else if ('@ViewContext.RouteData.GetRequiredString("action").ToString()' == 'DepthChart') {
+                location.replace('/Home/DepthChart?_teamid=' + selectedValue);
+            }
+        });
+$('#pr').change(function () {
+    var selects = document.getElementById("pr");
+    var selectedValue = selects.options[selects.selectedIndex].value;// will gives u 2
+    //var selectedText = selects.options[selects.selectedIndex].text;// gives u value2
+    //console.log(selectedValue);
+    //console.log(selectedText);
+    if ('@ViewContext.RouteData.GetRequiredString("action").ToString()' == 'PitcherProfile') {
+                location.replace('/Home/PitcherProfile?_pid=' + selectedValue);
+            }
+            else if ('@ViewContext.RouteData.GetRequiredString("action").ToString()' == 'HitterProfile') {
+                location.replace('/Home/HitterProfile?_pid=' + selectedValue);
+            }
+            else if ('@ViewContext.RouteData.GetRequiredString("action").ToString()' == 'DugoutPitcher') {
+                location.replace('/Home/DugoutPitcher?_pid=' + selectedValue);
+            }
+        });
+    </script>
+</body>
+</html>

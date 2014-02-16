@@ -1,0 +1,234 @@
+﻿@model CRockies_one.Models.PitcherSplitsModels
+@{
+    ViewBag.Title = "Pitcher Splits";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="commonMessage"></div>
+<h2>Pitcher Splits</h2>
+<div id="teamname" class="r5opp" style="text-transform:uppercase;">@Model.team.City_or_State @Model.team.Nickname</div>
+<table class="stdTable fullTblW" id="r5table">
+    <thead>
+        <tr>
+      <th rowspan="2" id="r5pitchname" style="width:270px;">Pitcher Name</th>
+      <th colspan="2">vs rhh</th>
+      <th colspan="2">vs lhh</th>
+    </tr>
+    <tr>
+      <th class="r5subheads">2013</th>
+      <th class="r5subheads">career</th>
+      <th class="r5subheads">2013</th>
+      <th class="r5subheads">career</th>
+    </tr>
+    </thead>
+    <tfoot>
+        <tr class="tot">
+        <td>Team Totals</td>
+        <td id="totrhh"></td>
+        <td id="totCrhb"></td>
+        <td id="totlhh"></td>
+        <td id="totClhb"></td>
+      </tr>
+    </tfoot>
+    <tbody id="psTable">
+    @if (Model.ListPitcherSplits != null && Model.ListPitcherSplits != null)
+    {
+        foreach (var item in Model.ListPitcherSplits)
+        {
+            <tr id="@item.PlayerId" class="pl">
+                <td class="r5playername">@item.Name</td>
+                @if (Convert.ToDecimal(item.RHH) > Convert.ToDecimal(item.LHH))
+                {
+                    <td id="tdrhh" class="bgRed">@Convert.ToDecimal(item.RHH).ToString("#.000")</td>
+                    <td id="tdCrhb" class="bgRed">@try
+                                                  { @item.Career_RHB }
+                                                  catch { }</td>
+                    <td id="tdlhh" class="bgBlue">@Convert.ToDecimal(item.LHH).ToString("#.000")</td>
+                    <td id="tdClhb" class="bgBlue">@try
+                                                   { @item.Career_LHB }
+                                                   catch { }</td>
+                }
+                else if (Convert.ToDecimal(item.RHH) < Convert.ToDecimal(item.LHH))
+                {
+                    <td id="tdrhh" class="bgBlue">@Convert.ToDecimal(item.RHH).ToString("#.000")</td>
+                    <td id="tdCrhb" class="bgBlue">@try
+                                                   { @item.Career_RHB }
+                                                   catch { }</td>
+                    <td id="tdlhh" class="bgRed">@Convert.ToDecimal(item.LHH).ToString("#.000")</td>
+                    <td id="tdClhb" class="bgRed">@try
+                                                  { @item.Career_LHB }
+                                                  catch { }</td>
+                }
+                else
+                {
+                    <td id="tdrhh">@Convert.ToDecimal(item.RHH).ToString("#.000")</td>
+                    <td id="tdCrhb">@try
+                                                   { @item.Career_RHB }
+                                                   catch { }</td>
+                    <td id="tdlhh">@Convert.ToDecimal(item.LHH).ToString("#.000")</td>
+                    <td id="tdClhb">@try
+                                                  { @item.Career_LHB }
+                                                  catch { }</td>
+                }
+                
+                
+                @*<td id="plid" style="visibility:hidden;">@item.PlayerId</td>*@
+            </tr>
+        }
+
+    }
+    </tbody>
+  </table>
+<div id="loading" style="text-align:center; display:none">Please wait, loading data...</div>
+<div id="udCareer">
+    <textarea id="myplayerid" style="visibility:hidden;height:1px;"></textarea><br />
+    
+    <label>Career RHH</label><br />
+    <textarea id="txtCrhb" style="resize:none;">
+    </textarea><br /><br />
+    <label>Career LHH</label><br />
+    <textarea id="txtClhb" style="resize:none;">
+    </textarea></div>
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $('#udCareer').dialog({
+                autoOpen: false,
+                width: 400,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Update": function () {
+                        var _pid = document.getElementById("myplayerid").value
+                        var _rhb = document.getElementById("txtCrhb").value
+                        var _lhb = document.getElementById("txtClhb").value
+                        var data = { "PlayerID": _pid, "rhb": _rhb, "lhb": _lhb }
+                        $.post("/Home/EditCareer", data, updateSuccess(_pid,_rhb,_lhb))
+                    },
+                    "Cancel": function () {
+                        $(this).dialog("close");
+                    }
+                } 
+            });
+
+            function updateSuccess(_pid,_rhb,_lhb) {
+
+                $('#' + _pid + ' ' + "#tdCrhb").empty().append(_rhb);
+                $('#' + _pid + ' ' + "#tdClhb").empty().append(_lhb);
+
+                $('#commonMessage').stop(true, true);
+                
+
+                var countmerhb = $('.pl #tdCrhb'), totalrhb = 0, countrhb = 0;
+                countmerhb.each(function (key, val) {
+
+                    totalrhb += parseFloat($(this).text().slice(0)) || 0;
+                    if ($(this).text().slice(1) != '') {
+                        countrhb++;
+                    }
+                });
+                var avgrhb = isNaN(parseFloat(totalrhb / countrhb).toFixed(3)) ? '' : parseFloat(totalrhb / countrhb).toFixed(3);
+                $('#totCrhb').html(String(avgrhb).replace('0.', '.'));
+
+                
+                var countmelhb = $('.pl #tdClhb'), totallhb = 0, countlhb = 0;
+                countmelhb.each(function (key, val) {
+
+                    totallhb += parseFloat($(this).text().slice(0)) || 0;
+                    if ($(this).text().slice(1) != '') {
+                        countlhb++;
+                    }
+                });
+                var avglhb = isNaN(parseFloat(totallhb / countlhb).toFixed(3)) ? '' : parseFloat(totallhb / countlhb).toFixed(3);
+                $('#totClhb').html(String(avglhb).replace('0.', '.'));
+
+                $('#udCareer').dialog('close');
+                $('#commonMessage').html("Update Complete");
+                $('#commonMessage').delay(300).slideDown(300).delay(2000).slideUp(300);
+            }
+
+            $('#psTable').on('click', 'tr', function () {
+                var values = $(this).find('td').map(function () {
+                    return $(this).text();
+                });
+                var id = $(this).closest('tr').attr('id');
+                //$("#myplayerid").empty().append(values[5]);
+                $("#myplayerid").empty().append(id);
+                $("#txtCrhb").empty().append(values[2]);
+                $("#txtClhb").empty().append(values[4]);
+
+                $('#udCareer').dialog('option', 'title', values[0]);
+
+                $("#udCareer").dialog("open");
+            });
+
+
+            $(function AVGRHH() {
+                var countmerhh = $('.pl #tdrhh'), totalrhh = 0, countrhh = 0;
+                countmerhh.each(function (key, val) {
+
+                    totalrhh += parseFloat($(this).text().slice(0)) || 0;
+                    if ($(this).text().slice(1) != '' && $(this).text().slice(1) != '.000') {
+                        countrhh++;
+                    }
+                });
+                var avgrhh = parseFloat(totalrhh / countrhh).toFixed(3);
+                $('#totrhh').html(String(avgrhh).replace('0.', '.'));
+            })
+
+            $(function AVGCareerRHH() {
+                var countmerhb = $('.pl #tdCrhb'), totalrhb = 0, countrhb = 0;
+                countmerhb.each(function (key, val) {
+                    
+                    totalrhb += parseFloat($(this).text().slice(0)) || 0;
+                    if ($(this).text().slice(1) != '') {
+                        countrhb++;
+                    }
+                });
+                var avgrhb = isNaN(parseFloat(totalrhb / countrhb).toFixed(3)) ? '' : parseFloat(totalrhb / countrhb).toFixed(3);
+                $('#totCrhb').html(String(avgrhb).replace('0.', '.'));
+            })
+
+            $(function AVGLHH() {
+                var countmelhh = $('.pl #tdlhh'), totallhh = 0, countlhh = 0;
+                countmelhh.each(function (key, val) {
+
+                    totallhh += parseFloat($(this).text().slice(0)) || 0;
+                    if ($(this).text().slice(1) != '' && $(this).text().slice(1) != '.000') {
+                        countlhh++;
+                    }
+                });
+                var avglhh = parseFloat(totallhh / countlhh).toFixed(3);
+                $('#totlhh').html(String(avglhh).replace('0.', '.'));
+            })
+
+            $(function AVGCareerLHH() {
+                var countmelhb = $('.pl #tdClhb'), totallhb = 0, countlhb = 0;
+                countmelhb.each(function (key, val) {
+
+                    totallhb += parseFloat($(this).text().slice(0)) || 0;
+                    if ($(this).text().slice(1) != '' && $(this).text().slice(1) != '.000') {
+                        countlhb++;
+                    }
+                });
+                var avglhb = isNaN(parseFloat(totallhb / countlhb).toFixed(3)) ? '' : parseFloat(totallhb / countlhb).toFixed(3);
+                $('#totClhb').html(String(avglhb).replace('0.', '.'));
+            })
+            //$(function TOTAL() {
+            //    var _totrhh = '0' + document.getElementById("totrhh").value
+            //    var _totlhh = '0' + document.getElementById("totlhh").value
+            //    if (parseFloat(_totrhh) > parseFloat(_totlhh)) {
+            //        $('#totrhh').addClass('bgRed');
+            //        $('#totCrhb').addClass('bgRed');
+            //        $('#totlhh').addClass('bgBlue');
+            //        $('#totClhb').addClass('bgBlue');
+            //    }
+            //    else {
+            //        $('#totrhh').addClass('bgBlue');
+            //        $('#totCrhb').addClass('bgBlue');
+            //        $('#totlhh').addClass('bgRed');
+            //        $('#totClhb').addClass('bgRed');
+            //    }
+            //})
+        });
+    </script>
+}

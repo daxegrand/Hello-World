@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cc2967212f5d422992019c4710da36f6" Name="Diagram1" ZoomLevel="81">
+        <EntityTypeShape EntityType="DevColoradoRockiesModel.PitcherProfile_CurrentAndSplits" Width="3.5" PointX="0.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DevColoradoRockiesModel.Pitcher" Width="1.5" PointX="4.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DevColoradoRockiesModel.UserEntered" Width="1.5" PointX="6.75" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DevColoradoRockiesModel.UserEntered2" Width="1.5" PointX="6.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DevColoradoRockiesModel.PitcherSplit" Width="1.5" PointX="4.375" PointY="10.375" />
+        <EntityTypeShape EntityType="DevColoradoRockiesModel.Outfielder_Pitcher" Width="2.375" PointX="6.75" PointY="12.125" />
+        <EntityTypeShape EntityType="DevColoradoRockiesModel.HitterProfile" Width="1.5" PointX="5.7951108449115933" PointY="14.34274039340333" />
+        <EntityTypeShape EntityType="DevColoradoRockiesModel.HitterProfile_UserEntered" Width="1.5" PointX="10.709614024828008" PointY="16.51866871887756" />
+        <EntityTypeShape EntityType="DevColoradoRockiesModel.DugoutPitcher" Width="1.5" PointX="10.5" PointY="2.5" />
+        <EntityTypeShape EntityType="DevColoradoRockiesModel.PitcherProfile_PitchCountLastStart" Width="1.5" PointX="12.875" PointY="10" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
